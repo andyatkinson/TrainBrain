@@ -15,6 +15,23 @@
 		2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E55F0DE3E45000AC0155 /* RootViewController.xib */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		A115173C102F962E007CFBF6 /* TimeEntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */; };
+		A115173D102F962E007CFBF6 /* TimeEntryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A115173B102F962E007CFBF6 /* TimeEntryController.xib */; };
+		A1151746102F9650007CFBF6 /* ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1151740102F9650007CFBF6 /* ProgressViewController.m */; };
+		A1151747102F9650007CFBF6 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1151741102F9650007CFBF6 /* ProgressViewController.xib */; };
+		A1151750102F96BF007CFBF6 /* CustomUIBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174D102F96BF007CFBF6 /* CustomUIBarButtonItem.m */; };
+		A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */; };
+		A169E495102F91E500A65E05 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E494102F91E500A65E05 /* CustomCell.m */; };
+		A169E4B0102F928E00A65E05 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4A5102F928E00A65E05 /* NSObject+SBJSON.m */; };
+		A169E4B1102F928E00A65E05 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4A7102F928E00A65E05 /* NSString+SBJSON.m */; };
+		A169E4B2102F928E00A65E05 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4A9102F928E00A65E05 /* SBJSON.m */; };
+		A169E4B3102F928E00A65E05 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4AB102F928E00A65E05 /* SBJsonBase.m */; };
+		A169E4B4102F928E00A65E05 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4AD102F928E00A65E05 /* SBJsonParser.m */; };
+		A169E4B5102F928E00A65E05 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4AF102F928E00A65E05 /* SBJsonWriter.m */; };
+		A169E4BC102F931800A65E05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169E4BB102F931800A65E05 /* CoreLocation.framework */; };
+		A169E4DD102F934300A65E05 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A169E4DC102F934300A65E05 /* Default.png */; };
+		A169E501102F952600A65E05 /* TimeEntryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A169E500102F952600A65E05 /* TimeEntryController.xib */; };
+		A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +48,37 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TrainBrain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TrainBrain-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A1151739102F962E007CFBF6 /* TimeEntryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeEntryController.h; sourceTree = "<group>"; };
+		A115173A102F962E007CFBF6 /* TimeEntryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeEntryController.m; sourceTree = "<group>"; };
+		A115173B102F962E007CFBF6 /* TimeEntryController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeEntryController.xib; sourceTree = "<group>"; };
+		A115173F102F9650007CFBF6 /* ProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressViewController.h; sourceTree = "<group>"; };
+		A1151740102F9650007CFBF6 /* ProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressViewController.m; sourceTree = "<group>"; };
+		A1151741102F9650007CFBF6 /* ProgressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
+		A115174C102F96BF007CFBF6 /* CustomUIBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUIBarButtonItem.h; sourceTree = "<group>"; };
+		A115174D102F96BF007CFBF6 /* CustomUIBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUIBarButtonItem.m; sourceTree = "<group>"; };
+		A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureDetailCell.h; sourceTree = "<group>"; };
+		A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureDetailCell.m; sourceTree = "<group>"; };
+		A169E493102F91C600A65E05 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		A169E494102F91E500A65E05 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		A169E497102F923D00A65E05 /* CustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
+		A169E498102F923D00A65E05 /* CustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
+		A169E4A3102F928E00A65E05 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
+		A169E4A4102F928E00A65E05 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		A169E4A5102F928E00A65E05 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		A169E4A6102F928E00A65E05 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
+		A169E4A7102F928E00A65E05 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
+		A169E4A8102F928E00A65E05 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
+		A169E4A9102F928E00A65E05 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
+		A169E4AA102F928E00A65E05 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
+		A169E4AB102F928E00A65E05 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
+		A169E4AC102F928E00A65E05 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
+		A169E4AD102F928E00A65E05 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
+		A169E4AE102F928E00A65E05 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
+		A169E4AF102F928E00A65E05 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		A169E4BB102F931800A65E05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		A169E4DC102F934300A65E05 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A169E500102F952600A65E05 /* TimeEntryController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TimeEntryController.xib; path = ../_TrainBrain/Classes/TimeEntryController.xib; sourceTree = SOURCE_ROOT; };
+		A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureDetailCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +89,7 @@
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
+				A169E4BC102F931800A65E05 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +99,21 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A115174C102F96BF007CFBF6 /* CustomUIBarButtonItem.h */,
+				A115174D102F96BF007CFBF6 /* CustomUIBarButtonItem.m */,
+				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
+				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
+				A115173F102F9650007CFBF6 /* ProgressViewController.h */,
+				A1151740102F9650007CFBF6 /* ProgressViewController.m */,
+				A1151741102F9650007CFBF6 /* ProgressViewController.xib */,
+				A1151739102F962E007CFBF6 /* TimeEntryController.h */,
+				A115173A102F962E007CFBF6 /* TimeEntryController.m */,
+				A115173B102F962E007CFBF6 /* TimeEntryController.xib */,
+				A169E49D102F927100A65E05 /* JSON */,
+				A169E497102F923D00A65E05 /* CustomCell.h */,
+				A169E498102F923D00A65E05 /* CustomCell.m */,
+				A169E494102F91E500A65E05 /* CustomCell.m */,
+				A169E493102F91C600A65E05 /* CustomCell.h */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */,
@@ -90,6 +154,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */,
+				A169E500102F952600A65E05 /* TimeEntryController.xib */,
+				A169E4DC102F934300A65E05 /* Default.png */,
 				2899E55F0DE3E45000AC0155 /* RootViewController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				8D1107310486CEB800E47090 /* TrainBrain-Info.plist */,
@@ -100,11 +167,32 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A169E4BB102F931800A65E05 /* CoreLocation.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A169E49D102F927100A65E05 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				A169E4A3102F928E00A65E05 /* JSON.h */,
+				A169E4A4102F928E00A65E05 /* NSObject+SBJSON.h */,
+				A169E4A5102F928E00A65E05 /* NSObject+SBJSON.m */,
+				A169E4A6102F928E00A65E05 /* NSString+SBJSON.h */,
+				A169E4A7102F928E00A65E05 /* NSString+SBJSON.m */,
+				A169E4A8102F928E00A65E05 /* SBJSON.h */,
+				A169E4A9102F928E00A65E05 /* SBJSON.m */,
+				A169E4AA102F928E00A65E05 /* SBJsonBase.h */,
+				A169E4AB102F928E00A65E05 /* SBJsonBase.m */,
+				A169E4AC102F928E00A65E05 /* SBJsonParser.h */,
+				A169E4AD102F928E00A65E05 /* SBJsonParser.m */,
+				A169E4AE102F928E00A65E05 /* SBJsonWriter.h */,
+				A169E4AF102F928E00A65E05 /* SBJsonWriter.m */,
+			);
+			name = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,6 +246,11 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */,
+				A169E4DD102F934300A65E05 /* Default.png in Resources */,
+				A169E501102F952600A65E05 /* TimeEntryController.xib in Resources */,
+				A115173D102F962E007CFBF6 /* TimeEntryController.xib in Resources */,
+				A1151747102F9650007CFBF6 /* ProgressViewController.xib in Resources */,
+				A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +264,17 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* TrainBrainAppDelegate.m in Sources */,
 				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
+				A169E495102F91E500A65E05 /* CustomCell.m in Sources */,
+				A169E4B0102F928E00A65E05 /* NSObject+SBJSON.m in Sources */,
+				A169E4B1102F928E00A65E05 /* NSString+SBJSON.m in Sources */,
+				A169E4B2102F928E00A65E05 /* SBJSON.m in Sources */,
+				A169E4B3102F928E00A65E05 /* SBJsonBase.m in Sources */,
+				A169E4B4102F928E00A65E05 /* SBJsonParser.m in Sources */,
+				A169E4B5102F928E00A65E05 /* SBJsonWriter.m in Sources */,
+				A115173C102F962E007CFBF6 /* TimeEntryController.m in Sources */,
+				A1151746102F9650007CFBF6 /* ProgressViewController.m in Sources */,
+				A1151750102F96BF007CFBF6 /* CustomUIBarButtonItem.m in Sources */,
+				A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
