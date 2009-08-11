@@ -28,6 +28,7 @@
 - (void) loadRailStations {
 	self.progressViewController = [[ProgressViewController alloc] init];
 	[self.view addSubview:progressViewController.view];
+
 	
 	self.locationManager = [[CLLocationManager alloc] init];
 	locationManager.delegate = self;

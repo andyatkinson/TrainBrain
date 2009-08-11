@@ -76,6 +76,7 @@
 	[super viewDidLoad];
 	
 	timeEntriesTableView.backgroundColor = [UIColor clearColor];
+
 	
 	[self loadTimeEntries];
 
@@ -195,7 +196,8 @@
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	return @"Upcoming Departures";
+	// return nil since label is static
+	return nil;
 }
 
 
