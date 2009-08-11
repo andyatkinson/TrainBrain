@@ -21,6 +21,7 @@
 		A1151747102F9650007CFBF6 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1151741102F9650007CFBF6 /* ProgressViewController.xib */; };
 		A1151750102F96BF007CFBF6 /* CustomUIBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174D102F96BF007CFBF6 /* CustomUIBarButtonItem.m */; };
 		A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */; };
+		A129168110312B8E00C0E094 /* GrayBackgroundTitle.png in Resources */ = {isa = PBXBuildFile; fileRef = A129168010312B8E00C0E094 /* GrayBackgroundTitle.png */; };
 		A169E495102F91E500A65E05 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E494102F91E500A65E05 /* CustomCell.m */; };
 		A169E4B0102F928E00A65E05 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4A5102F928E00A65E05 /* NSObject+SBJSON.m */; };
 		A169E4B1102F928E00A65E05 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4A7102F928E00A65E05 /* NSString+SBJSON.m */; };
@@ -58,6 +59,7 @@
 		A115174D102F96BF007CFBF6 /* CustomUIBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUIBarButtonItem.m; sourceTree = "<group>"; };
 		A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureDetailCell.h; sourceTree = "<group>"; };
 		A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureDetailCell.m; sourceTree = "<group>"; };
+		A129168010312B8E00C0E094 /* GrayBackgroundTitle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GrayBackgroundTitle.png; sourceTree = "<group>"; };
 		A169E493102F91C600A65E05 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		A169E494102F91E500A65E05 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		A169E497102F923D00A65E05 /* CustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A129168010312B8E00C0E094 /* GrayBackgroundTitle.png */,
 				A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */,
 				A169E500102F952600A65E05 /* TimeEntryController.xib */,
 				A169E4DC102F934300A65E05 /* Default.png */,
@@ -251,6 +254,7 @@
 				A115173D102F962E007CFBF6 /* TimeEntryController.xib in Resources */,
 				A1151747102F9650007CFBF6 /* ProgressViewController.xib in Resources */,
 				A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */,
+				A129168110312B8E00C0E094 /* GrayBackgroundTitle.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

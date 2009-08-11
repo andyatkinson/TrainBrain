@@ -4,15 +4,15 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1091, 448}}";
 			sepNavSelRange = "{297, 0}";
-			sepNavVisRange = "{3, 986}";
+			sepNavVisRange = "{0, 989}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
 		};
 	};
 	1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1091, 2128}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1091, 2156}}";
 			sepNavSelRange = "{1273, 0}";
-			sepNavVisRange = "{0, 722}";
+			sepNavVisRange = "{0, 744}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* TrainBrain */ = {
@@ -30,16 +30,16 @@
 	};
 	28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1091, 546}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1091, 560}}";
 			sepNavSelRange = "{0, 0}";
-			sepNavVisRange = "{0, 1123}";
+			sepNavVisRange = "{174, 1125}";
 		};
 	};
 	28C286E00D94DF7D0034E888 /* RootViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1091, 3514}}";
-			sepNavSelRange = "{4552, 0}";
-			sepNavVisRange = "{3935, 1305}";
+			sepNavIntBoundsRect = "{{0, 0}, {1128, 3374}}";
+			sepNavSelRange = "{9026, 9}";
+			sepNavVisRange = "{8055, 1286}";
 			sepNavWindowFrame = "{{31, 307}, {977, 671}}";
 		};
 	};
@@ -128,6 +128,21 @@
 			sepNavVisRange = "{0, 364}";
 		};
 	};
+	A1151739102F962E007CFBF6 /* TimeEntryController.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1091, 532}}";
+			sepNavSelRange = "{581, 0}";
+			sepNavVisRange = "{3, 1125}";
+		};
+	};
+	A115173A102F962E007CFBF6 /* TimeEntryController.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1091, 3960}}";
+			sepNavSelRange = "{9246, 0}";
+			sepNavVisRange = "{2185, 871}";
+			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
+		};
+	};
 	A115173F102F9650007CFBF6 /* ProgressViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1091, 370}}";
@@ -139,7 +154,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1091, 756}}";
 			sepNavSelRange = "{188, 0}";
-			sepNavVisRange = "{0, 735}";
+			sepNavVisRange = "{188, 818}";
 		};
 	};
 	A115174C102F96BF007CFBF6 /* CustomUIBarButtonItem.h */ = {
