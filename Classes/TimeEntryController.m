@@ -18,7 +18,7 @@
 
 @implementation TimeEntryController
 
-@synthesize responseData, railStationId, railStationName, timeEntryRows, progressViewController, southbound, timeEntriesTableView, bigTime, nextTime;
+@synthesize responseData, railStationId, railStationName, timeEntryRows, progressViewController, southbound, timeEntriesTableView, bigTime, nextTime, bigTimeHeaderText;
 
 - (void)updateSouthbound:(NSInteger)newVal {
 	self.southbound = newVal;
@@ -98,20 +98,15 @@
 
 
 - (void) onTimer:(NSTimer*)theTimer {
-	bigTime.textColor = [UIColor blackColor];
+	bigTime.textColor = [UIColor whiteColor];
 	NSInteger *time = (NSInteger *)([self nextTime] - 1);
 	NSLog(@"logged start time %d", time);
 	[self setNextTime:time];
 	NSString *theTime = [[NSString alloc] initWithFormat:@"%d mins", time];
-	if(time <= 5 && (bigTime.textColor != [UIColor redColor])) {
-		bigTime.textColor = [UIColor redColor];
-	}
-	if(time <= 0) {
-		bigTime.text = @"Now";
-		[theTimer invalidate];
-	} else {
+	if(time > 0) {
 		bigTime.text = theTime;
 	}
+	[theTimer invalidate];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -186,9 +181,9 @@
 		if(nextDepartureHour == nowHour && nextDepartureMinute > nowMinute) {
 			int minutesRemaining = nextDepartureMinute - nowMinute;
 			[self setNextTime:minutesRemaining];
-			[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];	
+			[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
 		} else {
-			bigTime.text = @"> 1 hour";
+			bigTime.text = @"4:30";
 		}
 	}
 }
@@ -225,8 +220,9 @@
 		}
 	
 		if([timeEntryRows count] > 0) {
+			[cell setBackgroundColor:[UIColor redColor]];
 			[[cell departureTime] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"departureTime"]];
-			[[cell departureCost] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"cost"]];			
+			[[cell departureCost] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"cost"]];
 	
 			int minutes = [[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"minutesRemaining"] intValue];
 			NSLog(@"minutes %d", minutes);

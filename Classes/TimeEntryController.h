@@ -18,6 +18,7 @@
 	IBOutlet NSMutableArray *timeEntryRows;
 	ProgressViewController *progressViewController;
 	NSInteger southbound;
+	IBOutlet UILabel *bigTimeHeaderText;
 	IBOutlet UILabel *bigTime;
 	NSInteger nextTime;
 }
@@ -30,6 +31,7 @@
 @property (nonatomic, retain)	ProgressViewController *progressViewController;
 @property (nonatomic) NSInteger southbound;
 @property (nonatomic, retain) IBOutlet UILabel *bigTime;
+@property (nonatomic, retain) IBOutlet UILabel *bigTimeHeaderText;
 @property (nonatomic) NSInteger nextTime;
 
 -(void)updateSouthbound:(NSInteger) newValue;
