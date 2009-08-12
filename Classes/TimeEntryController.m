@@ -97,17 +97,24 @@
 	NSLog(@"Connection failed: %@", [error description]);  // remove me, consider adding label to UI
 }
 
-
+// TODO is this called immediately when it is created, or does one INTERVAL pass before it is called?
+// NOTE: decrementing before updating value now, need to change FIXME can change this?
 - (void) onTimer:(NSTimer*)theTimer {
-	bigTime.textColor = [UIColor whiteColor];
-	NSInteger *time = (NSInteger *)([self nextTime] - 1);
-	NSLog(@"logged start time %d", time);
-	[self setNextTime:time];
-	NSString *theTime = [[NSString alloc] initWithFormat:@"%d mins", time];
-	if(time > 0) {
-		bigTime.text = theTime;
+	NSLog(@"MINUTES remaining (nextTime): %d", [self nextTime]);
+	if(0 < [self nextTime] < 60) {
+		if([self nextTime] <= 5) {
+			bigTime.textColor = [UIColor redColor];
+		} else {
+			bigTime.textColor = [UIColor whiteColor];
+		}
+		bigTimeHeaderText = @"Minutes Until Next Departure";
+		[self setNextTime:([self nextTime] -1)];
+		bigTime.text = [[NSString alloc] initWithFormat:@"%d", [self nextTime]];
+	} else {
+		bigTimeHeaderText = @"Next Train Departs At";
+		bigTime.text = @"--";
+		[theTimer invalidate];
 	}
-	[theTimer invalidate];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -126,9 +133,9 @@
 	NSDate *now = [NSDate date];
 	NSCalendar *calendar = [NSCalendar currentCalendar];
 	NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
-	int *nowHour = (int *)[components hour];
+	int nowHour = (int)[components hour];
 	components = [calendar components:NSMinuteCalendarUnit fromDate:now];
-	int *nowMinute = (int *)[components minute];
+	int nowMinute = (int)[components minute];
 	NSLog(@"nowHour %d nowMinute %d", nowHour, nowMinute);
 
 	timeEntryRows = [[NSMutableArray alloc] init];
@@ -168,23 +175,46 @@
 	// IMPORTANT: reloads table view cell data
 	[timeEntriesTableView reloadData];
 	
-	// remove the progress view
 	[progressViewController.view	removeFromSuperview];
 	
 	// get the first item from the array
 	if([entries count] > 0) {
 		NSMutableDictionary *nextDeparture = [entries objectAtIndex:0];
-		int *nextDepartureHour = (int *)[[nextDeparture objectForKey:@"hour"] intValue];
-		int *nextDepartureMinute = (int *)[[nextDeparture objectForKey:@"minute"] intValue];
+		int nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
+		int nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
+		NSLog(@"nowHour %d nowMinute %d", nowHour, nowMinute);
 		NSLog(@"nextDepartureHour %d nextDepartureMinute %d", nextDepartureHour, nextDepartureMinute);
+		
 		// e.g. currentTime 11:10 nextDeparture 11:21 => "11..10..9...1..NOW"
 		// more than hour out, set label, else show minutes countdown
 		if(nextDepartureHour == nowHour && nextDepartureMinute > nowMinute) {
 			int minutesRemaining = nextDepartureMinute - nowMinute;
-			[self setNextTime:minutesRemaining];
-			[NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+			
+			if(minutesRemaining <= 5) {
+				bigTime.textColor = [UIColor redColor];
+			} else {
+				bigTime.textColor = [UIColor whiteColor];
+			}
+			
+			
+			if(0 < minutesRemaining < 60) {
+				[self setNextTime:minutesRemaining];
+				bigTimeHeaderText = @"Minutes Until Next Departure";
+				bigTime.text = [[NSString alloc] initWithFormat:@"%d", [self nextTime]];
+				[NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+			}
 		} else {
-			bigTime.text = @"4:30";
+			bigTime.textColor = [UIColor whiteColor];
+			bigTimeHeaderText = @"Next Train Departs At";
+			
+			NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
+			[timeFormatter setDateStyle:NSDateFormatterNoStyle];
+			[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
+			NSString *departureTime = [NSString stringWithFormat:@"%@:%@", nextDepartureHour, nextDepartureMinute];
+			NSDate *stringTime = [NSDate dateWithNaturalLanguageString:departureTime];
+			NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
+			NSLog(@"formattedDateStringTime: %@", formattedDateStringTime);
+			bigTime.text = stringTime;
 		}
 	}
 }

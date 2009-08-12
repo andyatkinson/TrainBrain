@@ -117,12 +117,12 @@
 					<object class="IBUILabel" id="105192271">
 						<reference key="NSNextResponder" ref="175278009"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 28}, {320, 115}}</string>
+						<string key="NSFrame">{{0, 20}, {320, 128}}</string>
 						<reference key="NSSuperview" ref="175278009"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="IBUIText">4:30</string>
+						<string key="IBUIText">59</string>
 						<object class="NSFont" key="IBUIFont">
 							<string key="NSName">Helvetica</string>
 							<double key="NSSize">1.100000e+02</double>
@@ -151,7 +151,7 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="IBUIText">Next Train Departs At</string>
+						<string key="IBUIText">Minutes Until Next Departure</string>
 						<reference key="IBUIFont" ref="654110970"/>
 						<reference key="IBUITextColor" ref="908690257"/>
 						<nil key="IBUIHighlightedColor"/>
