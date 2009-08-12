@@ -71,18 +71,18 @@
 	return self;
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-	[super viewDidLoad];
-	
-	timeEntriesTableView.backgroundColor = [UIColor clearColor];
-
-	
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
 	[self loadTimeEntries];
-
 	
 	// set the title of the main navigation
 	self.title = [self railStationName];
+}
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+- (void)viewDidLoad {
+	[super viewDidLoad];
+	timeEntriesTableView.backgroundColor = [UIColor clearColor];	
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -217,6 +217,15 @@
 			bigTime.font = [UIFont systemFontOfSize:60];
 			bigTime.text = formattedDateStringTime;
 		}
+	} else {
+		[timeEntriesTableView reloadData];
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No departure times found. Change the direction or tap the refresh button." 
+																										message:nil 
+																									 delegate:nil 
+																					cancelButtonTitle:@"Okay" 
+																					otherButtonTitles:nil];
+		[alert show];
+		[alert release];
 	}
 }
 

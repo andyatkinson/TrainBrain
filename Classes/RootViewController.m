@@ -200,10 +200,10 @@
 
 - (void)updateSouthbound:(NSInteger)newVal {
 	self.southbound = newVal;
-}
+} 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here -- for example, create and push another view controller.	
+	// Navigation logic may go here -- for example, create and push another view controller.	
 	UIViewController *targetViewController = [[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
 	
 	// trying a crazy hack to read the value of RootViewControll.southbound and set it on TimeEntryController.southbound
