@@ -44,11 +44,10 @@
 							<object class="IBUISegmentedControl" id="960741589">
 								<reference key="NSNextResponder" ref="938747286"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrameSize">{320, 30}</string>
+								<string key="NSFrameSize">{320, 44}</string>
 								<reference key="NSSuperview" ref="938747286"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-								<int key="IBSegmentControlStyle">2</int>
 								<int key="IBNumberOfSegments">2</int>
 								<int key="IBSelectedSegmentIndex">0</int>
 								<object class="NSArray" key="IBSegmentTitles">

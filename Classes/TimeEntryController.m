@@ -107,12 +107,12 @@
 		} else {
 			bigTime.textColor = [UIColor whiteColor];
 		}
-		bigTimeHeaderText = @"Minutes Until Next Departure";
+		bigTimeHeaderText.text = @"Minutes Until Next Departure";
 		[self setNextTime:([self nextTime] -1)];
 		bigTime.text = [[NSString alloc] initWithFormat:@"%d", [self nextTime]];
 	} else {
-		bigTimeHeaderText = @"Next Train Departs At";
-		bigTime.text = @"--";
+		bigTimeHeaderText.text = @"";
+		bigTime.text = @"";
 		[theTimer invalidate];
 	}
 }
@@ -198,23 +198,24 @@
 			
 			if(0 < minutesRemaining < 60) {
 				[self setNextTime:minutesRemaining];
-				bigTimeHeaderText = @"Minutes Until Next Departure";
+				bigTimeHeaderText.text = @"Minutes Until Next Departure";
 				bigTime.text = [[NSString alloc] initWithFormat:@"%d", [self nextTime]];
 				[NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
 			}
 		} else {
 			NSLog(@"-- No upcoming departures in next hour.");
-			bigTime.textColor = [UIColor whiteColor];
-			bigTimeHeaderText = @"Next Train Departs At";
+			bigTimeHeaderText.text = @"Next Train Departs At";
 			
 			NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
 			[timeFormatter setDateStyle:NSDateFormatterNoStyle];
 			[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
-			NSString *departureTime = [NSString stringWithFormat:@"%@:%@", nextDepartureHour, nextDepartureMinute];
+			NSString *departureTime = [NSString stringWithFormat:@"%d:%d", nextDepartureHour, nextDepartureMinute];
 			NSDate *stringTime = [NSDate dateWithNaturalLanguageString:departureTime];
 			NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
 			NSLog(@"formattedDateStringTime: %@", formattedDateStringTime);
-			bigTime.text = stringTime;
+			bigTime.textColor = [UIColor whiteColor];
+			bigTime.font = [UIFont systemFontOfSize:60];
+			bigTime.text = formattedDateStringTime;
 		}
 	}
 }
