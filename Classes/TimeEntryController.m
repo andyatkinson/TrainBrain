@@ -189,7 +189,6 @@
 		// more than hour out, set label, else show minutes countdown
 		if(nextDepartureHour == nowHour && nextDepartureMinute > nowMinute) {
 			int minutesRemaining = nextDepartureMinute - nowMinute;
-			
 			if(minutesRemaining <= 5) {
 				bigTime.textColor = [UIColor redColor];
 			} else {
@@ -204,6 +203,7 @@
 				[NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
 			}
 		} else {
+			NSLog(@"-- No upcoming departures in next hour.");
 			bigTime.textColor = [UIColor whiteColor];
 			bigTimeHeaderText = @"Next Train Departs At";
 			
@@ -252,21 +252,26 @@
 		}
 	
 		if([timeEntryRows count] > 0) {
-			[cell setBackgroundColor:[UIColor redColor]];
 			[[cell departureTime] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"departureTime"]];
 			[[cell departureCost] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"cost"]];
 	
 			int minutes = [[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"minutesRemaining"] intValue];
 			NSLog(@"minutes %d", minutes);
-//			if(minutes > 60) {
-//				[[cell timeRemaining] setText:@"> 1 hour"];
-//			} else {
-//				[[cell timeRemaining] setTextColor:[UIColor blackColor]];
-//				if(minutes <= 5){
-//					[[cell timeRemaining] setTextColor:[UIColor redColor]];
-//				}
-//				[[cell timeRemaining] setText:minutes];
-//			}
+			if(minutes < 60) {
+				if(minutes < 6) {
+					[cell setBackgroundColor:[UIColor redColor]];
+					[cell setTextColor:[UIColor whiteColor]];
+				} else {
+					[cell setBackgroundColor:[UIColor whiteColor]];
+					[cell setTextColor:[UIColor blackColor]];
+				}
+		
+				[[cell timeRemaining] setText:[[NSString alloc] initWithFormat:@"%d min", minutes]];
+			} else {
+				[[cell timeRemaining] setTextColor:[UIColor blackColor]];
+				[cell setBackgroundColor:[UIColor whiteColor]];
+				[[cell timeRemaining] setText:@""];
+			}
 		}
 		return cell;
 	}
