@@ -20,6 +20,7 @@
 	NSInteger southbound;
 	IBOutlet UILabel *bigTimeHeaderText;
 	IBOutlet UILabel *bigTime;
+	IBOutlet UILabel *upcomingDeparturesLabel;
 	NSInteger nextTime;
 }
 
@@ -32,6 +33,7 @@
 @property (nonatomic) NSInteger southbound;
 @property (nonatomic, retain) IBOutlet UILabel *bigTime;
 @property (nonatomic, retain) IBOutlet UILabel *bigTimeHeaderText;
+@property (nonatomic, retain)	IBOutlet UILabel *upcomingDeparturesLabel;
 @property (nonatomic) NSInteger nextTime;
 
 -(void)updateSouthbound:(NSInteger) newValue;

@@ -18,7 +18,8 @@
 
 @implementation TimeEntryController
 
-@synthesize responseData, railStationId, railStationName, timeEntryRows, progressViewController, southbound, timeEntriesTableView, bigTime, nextTime, bigTimeHeaderText;
+@synthesize responseData, railStationId, railStationName, timeEntryRows, progressViewController, southbound, timeEntriesTableView, 
+bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 
 - (void)updateSouthbound:(NSInteger)newVal {
 	self.southbound = newVal;
@@ -74,15 +75,14 @@
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
 	[self loadTimeEntries];
-	
-	// set the title of the main navigation
-	self.title = [self railStationName];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	timeEntriesTableView.backgroundColor = [UIColor clearColor];	
+	// set the title of the main navigation
+	self.title = [self railStationName];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -218,8 +218,11 @@
 			bigTime.text = formattedDateStringTime;
 		}
 	} else {
+		bigTime.text = @"";
+		bigTimeHeaderText.text = @"";
+		upcomingDeparturesLabel.text = @"";
 		[timeEntriesTableView reloadData];
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No departure times found. Change the direction or tap the refresh button." 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No departure times found.\n\nTry changing the direction or tapping the refresh button." 
 																										message:nil 
 																									 delegate:nil 
 																					cancelButtonTitle:@"Okay" 
