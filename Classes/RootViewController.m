@@ -72,7 +72,14 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	NSLog(@"Connection failed: %@", [error description]);  // remove me, consider adding label to UI
+	NSLog(@"Connection failed: %@", [error description]);
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error fetching stations." 
+																									message:[error description] 
+																								 delegate:nil 
+																				cancelButtonTitle:@"Okay" 
+																				otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -93,23 +100,33 @@
 	views = [[NSMutableArray alloc] init];
 	
 	int count = [stations count];
-	for(int i=0; i < count; i++) {
-		NSMutableDictionary *station = [stations objectAtIndex:i];
-		NSString *stationName = [station objectForKey:@"name"];
-		NSString *distance = [station objectForKey:@"distance"];
-		NSString *lat = [station objectForKey:@"lat"];
-		NSString *lng = [station objectForKey:@"lng"];
-		TimeEntryController *timeEntryController = [[TimeEntryController alloc] init];
-		[timeEntryController setRailStationId:[station objectForKey:@"id"]]; // TODO should probably extract an object here
-		[timeEntryController setRailStationName:stationName];
-		[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-											stationName, @"title",
-											timeEntryController, @"controller",
-											distance, @"distance",
-											lat, @"lat",
-											lng, @"lng",
-											nil]];
-		[timeEntryController release];
+	if(count > 0) {
+		for(int i=0; i < count; i++) {
+			NSMutableDictionary *station = [stations objectAtIndex:i];
+			NSString *stationName = [station objectForKey:@"name"];
+			NSString *distance = [station objectForKey:@"distance"];
+			NSString *lat = [station objectForKey:@"lat"];
+			NSString *lng = [station objectForKey:@"lng"];
+			TimeEntryController *timeEntryController = [[TimeEntryController alloc] init];
+			[timeEntryController setRailStationId:[station objectForKey:@"id"]]; // TODO should probably extract an object here
+			[timeEntryController setRailStationName:stationName];
+			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+												stationName, @"title",
+												timeEntryController, @"controller",
+												distance, @"distance",
+												lat, @"lat",
+												lng, @"lng",
+												nil]];
+			[timeEntryController release];
+		}
+	} else {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Stations Found.\n\nPlease try tapping the refresh button." 
+																										message:nil 
+																									 delegate:nil 
+																					cancelButtonTitle:@"Okay" 
+																					otherButtonTitles:nil];
+		[alert show];
+		[alert release];
 	}
 	
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
