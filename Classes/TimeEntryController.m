@@ -101,7 +101,13 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 // NOTE: decrementing before updating value now, need to change FIXME can change this?
 - (void) onTimer:(NSTimer*)theTimer {
 	NSLog(@"MINUTES remaining (nextTime): %d", [self nextTime]);
-	if(0 < [self nextTime] < 60) {
+	if([self nextTime] <= 0) {
+		bigTimeHeaderText.text = @"";
+		bigTime.text = @"";
+		NSLog(@"Invalidating timer and reloading time entries.");
+		[theTimer invalidate];
+		[self loadTimeEntries];
+	} else {
 		if([self nextTime] <= 5) {
 			bigTime.textColor = [UIColor redColor];
 		} else {
@@ -110,10 +116,6 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 		bigTimeHeaderText.text = @"Minutes Until Next Departure";
 		[self setNextTime:([self nextTime] -1)];
 		bigTime.text = [[NSString alloc] initWithFormat:@"%d", [self nextTime]];
-	} else {
-		bigTimeHeaderText.text = @"";
-		bigTime.text = @"";
-		[theTimer invalidate];
 	}
 }
 
