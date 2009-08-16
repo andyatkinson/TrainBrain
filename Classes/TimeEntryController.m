@@ -146,6 +146,7 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 		NSString *hour = [entry objectForKey:@"hour"];
 		NSString *minute = [entry objectForKey:@"minute"];
 		NSString *cost = [entry objectForKey:@"cost"];
+		NSString *type = [entry objectForKey:@"type"];
 		
 		NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
 		[timeFormatter setDateStyle:NSDateFormatterNoStyle];
@@ -169,6 +170,7 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 															formattedDateStringTime, @"departureTime",
 															cost, @"cost",
 															minutesRemainingString, @"minutesRemaining",
+															type, @"type",
 															nil]];
 	}
 	
@@ -267,6 +269,7 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 		if([timeEntryRows count] > 0) {
 			[[cell departureTime] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"departureTime"]];
 			[[cell departureCost] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"cost"]];
+			[[cell type] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"type"]];
 	
 			int minutes = [[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"minutesRemaining"] intValue];
 			NSLog(@"minutes %d", minutes);

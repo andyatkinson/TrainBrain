@@ -155,7 +155,7 @@
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	NSString *errorType = (error.code == kCLErrorDenied) ? @"Access Denied" : @"Unknown Error";
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error getting location" 
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"TrainBrain requires your location to show you train stations sorted by distance." 
 																									message:errorType 
 																								 delegate:nil 
 																				cancelButtonTitle:@"Okay" 

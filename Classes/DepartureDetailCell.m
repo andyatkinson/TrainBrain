@@ -11,7 +11,7 @@
 
 @implementation DepartureDetailCell
 
-@synthesize departureTime, departureCost, timeRemaining;
+@synthesize departureTime, departureCost, timeRemaining, type;
 
 - (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {

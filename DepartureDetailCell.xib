@@ -44,7 +44,7 @@
 							<object class="IBUILabel" id="118177660">
 								<reference key="NSNextResponder" ref="724707572"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{49, 11}, {58, 21}}</string>
+								<string key="NSFrame">{{49, 12}, {58, 21}}</string>
 								<reference key="NSSuperview" ref="724707572"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -71,15 +71,15 @@
 							<object class="IBUILabel" id="247609950">
 								<reference key="NSNextResponder" ref="724707572"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{143, 11}, {49, 21}}</string>
+								<string key="NSFrame">{{165, 13}, {49, 21}}</string>
 								<reference key="NSSuperview" ref="724707572"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="IBUIText">$2.50</string>
-								<object class="NSColor" key="IBUITextColor" id="172937444">
+								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MCAwIDAAA</bytes>
+									<bytes key="NSRGB">MC4yNTA5ODA0MSAwLjUwMTk2MDgxIDAAA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
@@ -88,14 +88,17 @@
 							<object class="IBUILabel" id="169564">
 								<reference key="NSNextResponder" ref="724707572"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{220, 11}, {60, 21}}</string>
+								<string key="NSFrame">{{222, 13}, {58, 21}}</string>
 								<reference key="NSSuperview" ref="724707572"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="IBUIText">5 min</string>
 								<reference key="IBUIFont" ref="865870500"/>
-								<reference key="IBUITextColor" ref="172937444"/>
+								<object class="NSColor" key="IBUITextColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MCAwIDAAA</bytes>
+								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
 								<float key="IBUIMinimumFontSize">1.000000e+01</float>
@@ -103,7 +106,7 @@
 							<object class="IBUIImageView" id="808032709">
 								<reference key="NSNextResponder" ref="724707572"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{8, -12}, {46, 68}}</string>
+								<string key="NSFrame">{{8, -11}, {46, 68}}</string>
 								<reference key="NSSuperview" ref="724707572"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -114,8 +117,30 @@
 									<string key="NSResourceName">clock.png</string>
 								</object>
 							</object>
+							<object class="IBUILabel" id="170594218">
+								<reference key="NSNextResponder" ref="724707572"/>
+								<int key="NSvFlags">292</int>
+								<string key="NSFrame">{{115, 13}, {42, 21}}</string>
+								<reference key="NSSuperview" ref="724707572"/>
+								<bool key="IBUIOpaque">NO</bool>
+								<bool key="IBUIClipsSubviews">YES</bool>
+								<bool key="IBUIUserInteractionEnabled">NO</bool>
+								<string key="IBUIText">M-F</string>
+								<object class="NSFont" key="IBUIFont">
+									<string key="NSName">Helvetica-Oblique</string>
+									<double key="NSSize">1.700000e+01</double>
+									<int key="NSfFlags">16</int>
+								</object>
+								<object class="NSColor" key="IBUITextColor">
+									<int key="NSColorSpace">1</int>
+									<bytes key="NSRGB">MC40MDAwMDAwMSAwLjQwMDAwMDAxIDAuNDAwMDAwMDEAA</bytes>
+								</object>
+								<nil key="IBUIHighlightedColor"/>
+								<int key="IBUIBaselineAdjustment">1</int>
+								<float key="IBUIMinimumFontSize">1.000000e+01</float>
+							</object>
 						</object>
-						<string key="NSFrameSize">{300, 56}</string>
+						<string key="NSFrameSize">{300, 50}</string>
 						<reference key="NSSuperview" ref="193997876"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -127,7 +152,7 @@
 						<bool key="IBUIMultipleTouchEnabled">YES</bool>
 					</object>
 				</object>
-				<string key="NSFrameSize">{300, 57}</string>
+				<string key="NSFrameSize">{300, 51}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
@@ -167,6 +192,14 @@
 					</object>
 					<int key="connectionID">15</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">type</string>
+						<reference key="source" ref="193997876"/>
+						<reference key="destination" ref="170594218"/>
+					</object>
+					<int key="connectionID">19</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -195,10 +228,11 @@
 						<reference key="object" ref="193997876"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="247609950"/>
 							<reference ref="169564"/>
-							<reference ref="808032709"/>
 							<reference ref="118177660"/>
+							<reference ref="170594218"/>
+							<reference ref="808032709"/>
+							<reference ref="247609950"/>
 						</object>
 						<reference key="parent" ref="424939828"/>
 					</object>
@@ -222,6 +256,11 @@
 						<reference key="object" ref="808032709"/>
 						<reference key="parent" ref="193997876"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">18</int>
+						<reference key="object" ref="170594218"/>
+						<reference key="parent" ref="193997876"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -230,6 +269,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>-2.CustomClassName</string>
 					<string>16.IBPluginDependency</string>
+					<string>18.IBPluginDependency</string>
 					<string>3.CustomClassName</string>
 					<string>3.IBEditorWindowLastContentRect</string>
 					<string>3.IBPluginDependency</string>
@@ -241,8 +281,9 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>DepartureDetailCell</string>
-					<string>{{373, 509}, {300, 57}}</string>
+					<string>{{373, 505}, {300, 51}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -269,7 +310,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">17</int>
+			<int key="maxID">19</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -284,9 +325,11 @@
 							<string>departureCost</string>
 							<string>departureTime</string>
 							<string>timeRemaining</string>
+							<string>type</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>
 							<string>UILabel</string>

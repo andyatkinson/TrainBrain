@@ -13,10 +13,12 @@
 	IBOutlet UILabel *departureTime;
 	IBOutlet UILabel *departureCost;
 	IBOutlet UILabel *timeRemaining;
+	IBOutlet UILabel *type;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *departureTime;
 @property (nonatomic, retain) IBOutlet UILabel *departureCost;
 @property (nonatomic, retain) IBOutlet UILabel *timeRemaining;
+@property (nonatomic, retain) IBOutlet UILabel *type;
 
 @end
