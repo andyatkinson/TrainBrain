@@ -258,6 +258,7 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	static NSString *cellId = @"DepartureDetailCell";
+	int minutes = 0;
 	DepartureDetailCell *cell = (DepartureDetailCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
 	if (cell == NULL) {  
 		NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"DepartureDetailCell" owner:nil options:nil];
@@ -272,22 +273,16 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 			[[cell departureTime] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"departureTime"]];
 			[[cell departureCost] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"cost"]];
 			[[cell type] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"type"]];
+			[cell setBackgroundColor:[UIColor whiteColor]];
 	
-			int minutes = [[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"minutesRemaining"] intValue];
+			minutes = [[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"minutesRemaining"] intValue];
 			NSLog(@"minutes %d", minutes);
 			if(minutes < 60) {
 				if(minutes < 6) {
 					[cell setBackgroundColor:[UIColor redColor]];
-					[cell setTextColor:[UIColor whiteColor]];
-				} else {
-					[cell setBackgroundColor:[UIColor whiteColor]];
-					[cell setTextColor:[UIColor blackColor]];
 				}
-		
 				[[cell timeRemaining] setText:[[NSString alloc] initWithFormat:@"%d min", minutes]];
 			} else {
-				[[cell timeRemaining] setTextColor:[UIColor blackColor]];
-				[cell setBackgroundColor:[UIColor whiteColor]];
 				[[cell timeRemaining] setText:@""];
 			}
 		}
