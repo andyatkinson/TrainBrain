@@ -61,6 +61,7 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:stationTimeEntries]];
 	
+	timeEntryRows = nil;
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 	// kick off the request, the view is reloaded from the request handler
 }
@@ -300,6 +301,7 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+	NSLog(@"View did unload!");
 }
 
 
