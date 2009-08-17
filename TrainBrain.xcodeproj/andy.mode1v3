@@ -275,7 +275,7 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>10</integer>
+									<integer>18</integer>
 									<integer>1</integer>
 									<integer>0</integer>
 								</array>
@@ -300,7 +300,7 @@
 							<real>218</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>113 204 1392 693 0 0 1680 1028 </string>
+						<string>170 221 1392 693 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -318,7 +318,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TimeEntryController.m</string>
+								<string>RootViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -326,19 +326,17 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>TimeEntryController.m</string>
+										<string>RootViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>A16A8C2D10390908001DF0EF</string>
+										<string>A16A8C6010391487001DF0EF</string>
 										<key>history</key>
 										<array>
-											<string>A169E4E2102F946100A65E05</string>
 											<string>A115175B102F979C007CFBF6</string>
 											<string>A115175C102F979C007CFBF6</string>
 											<string>A18B04EB102F985A0025671A</string>
 											<string>A18B04EC102F985A0025671A</string>
-											<string>A1EB8E70102F99B200347E7F</string>
 											<string>A1EB8E71102F99B200347E7F</string>
 											<string>A129169310312F9300C0E094</string>
 											<string>A14FDCC3103132E3002B9E32</string>
@@ -350,10 +348,13 @@
 											<string>A16A8BE61038FE2B001DF0EF</string>
 											<string>A16A8C0A1038FF3C001DF0EF</string>
 											<string>A16A8C0B1038FF3C001DF0EF</string>
-											<string>A16A8C0C1038FF3C001DF0EF</string>
-											<string>A16A8C1D103905FC001DF0EF</string>
-											<string>A16A8C1E103905FC001DF0EF</string>
-											<string>A16A8C091038FF3C001DF0EF</string>
+											<string>A16A8C451039131E001DF0EF</string>
+											<string>A16A8C461039131E001DF0EF</string>
+											<string>A16A8C5110391422001DF0EF</string>
+											<string>A16A8C5210391422001DF0EF</string>
+											<string>A16A8C5A10391487001DF0EF</string>
+											<string>A16A8C5B10391487001DF0EF</string>
+											<string>A16A8C5C10391487001DF0EF</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -410,6 +411,18 @@
 											<string>A16A8C121038FF3C001DF0EF</string>
 											<string>A16A8C1F103905FC001DF0EF</string>
 											<string>A16A8C20103905FC001DF0EF</string>
+											<string>A16A8C481039131E001DF0EF</string>
+											<string>A16A8C491039131E001DF0EF</string>
+											<string>A16A8C4A1039131E001DF0EF</string>
+											<string>A16A8C4B1039131E001DF0EF</string>
+											<string>A16A8C4C1039131E001DF0EF</string>
+											<string>A16A8C4D1039131E001DF0EF</string>
+											<string>A16A8C5410391422001DF0EF</string>
+											<string>A16A8C5510391422001DF0EF</string>
+											<string>A16A8C5610391422001DF0EF</string>
+											<string>A16A8C5D10391487001DF0EF</string>
+											<string>A16A8C5E10391487001DF0EF</string>
+											<string>A16A8C5F10391487001DF0EF</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -423,7 +436,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1152, 458}}</string>
 								<key>RubberWindowFrame</key>
-								<string>113 204 1392 693 0 0 1680 1028 </string>
+								<string>170 221 1392 693 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -443,7 +456,7 @@
 								<key>Frame</key>
 								<string>{{0, 463}, {1152, 189}}</string>
 								<key>RubberWindowFrame</key>
-								<string>113 204 1392 693 0 0 1680 1028 </string>
+								<string>170 221 1392 693 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -611,7 +624,7 @@
 		<string>/Users/andy/Projects/objectivec/TrainBrain/TrainBrain.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>113 204 1392 693 0 0 1680 1028 </string>
+	<string>170 221 1392 693 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

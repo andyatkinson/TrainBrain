@@ -284,6 +284,10 @@
 	[locationManager release];
 	[startingPoint release];
 	[progressViewController release];
+	[stationsTableView release];
+	[railStations release];
+	[responseData release];
+	[southbound release];
 	[super dealloc];
 }
 

@@ -171,7 +171,6 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 			nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
 		}
 		
-		
 		NSLog(@"nowHour %d nowMinute %d", nowHour, nowMinute);
 		NSLog(@"nextDepartureHour %d nextDepartureMinute %d", nextDepartureHour, nextDepartureMinute);
 		
@@ -292,6 +291,16 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	[timeEntryRows release];
 	[responseData release];
 	[railStationId release];
+	[timeEntriesTableView release];
+	[responseData release];
+	[railStationId release];
+	[railStationName release];
+	[timeEntryRows release];
+	[progressViewController release];
+	[southbound release];
+	[bigTimeHeaderText release];
+	[bigTime release];
+	[upcomingDeparturesLabel release];
 	[super dealloc];
 }
 
