@@ -19,7 +19,7 @@
 @implementation TimeEntryController
 
 @synthesize responseData, railStationId, railStationName, timeEntryRows, progressViewController, southbound, timeEntriesTableView, 
-bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
+bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 
 - (void)updateSouthbound:(NSInteger)newVal {
 	self.southbound = newVal;
@@ -98,28 +98,6 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	NSLog(@"Connection failed: %@", [error description]);  // remove me, consider adding label to UI
 }
 
-// TODO is this called immediately when it is created, or does one INTERVAL pass before it is called?
-// NOTE: decrementing before updating value now, need to change FIXME can change this?
-- (void) onTimer:(NSTimer*)theTimer {
-	NSLog(@"MINUTES remaining (nextTime): %d", [self nextTime]);
-	if([self nextTime] <= 0) {
-		bigTimeHeaderText.text = @"";
-		bigTime.text = @"";
-		NSLog(@"Invalidating timer and reloading time entries.");
-		[theTimer invalidate];
-		[self loadTimeEntries];
-	} else {
-		if([self nextTime] <= 5) {
-			bigTime.textColor = [UIColor redColor];
-		} else {
-			bigTime.textColor = [UIColor whiteColor];
-		}
-		bigTimeHeaderText.text = @"Minutes Until Next Departure";
-		[self setNextTime:([self nextTime] -1)];
-		bigTime.text = [[NSString alloc] initWithFormat:@"%d", [self nextTime]];
-	}
-}
-
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	[connection release];
 	
@@ -161,7 +139,6 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 		NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
 		NSLog(@"formattedDateStringTime: %@", formattedDateStringTime);
 		
-		// minute should never be less than nowMinute, server shouldn't send anything back that is older
 		int minutesRemaining = 61;
 		if([hour intValue] == (int)nowHour) {
 			minutesRemaining = [minute intValue] - (int)nowMinute;
@@ -190,24 +167,22 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 		NSLog(@"nowHour %d nowMinute %d", nowHour, nowMinute);
 		NSLog(@"nextDepartureHour %d nextDepartureMinute %d", nextDepartureHour, nextDepartureMinute);
 		
-		// e.g. currentTime 11:10 nextDeparture 11:21 => "11..10..9...1..NOW"
 		// more than hour out, set label, else show minutes countdown
 		if(nextDepartureHour == nowHour && nextDepartureMinute > nowMinute) {
 			int minutesRemaining = nextDepartureMinute - nowMinute;
-			if(minutesRemaining <= 5) {
-				bigTime.textColor = [UIColor redColor];
-			} else {
-				bigTime.textColor = [UIColor whiteColor];
-			}
-			
-			
+				
 			if(0 < minutesRemaining < 60) {
-				[self setNextTime:minutesRemaining];
+				if(minutesRemaining <= 5) {
+					bigTime.textColor = [UIColor redColor];
+				} else {
+					bigTime.textColor = [UIColor whiteColor];
+				}
+				
 				bigTimeHeaderText.text = @"Minutes Until Next Departure";
-				bigTime.text = [[NSString alloc] initWithFormat:@"%d", [self nextTime]];
-				[NSTimer scheduledTimerWithTimeInterval:60.0 target:self selector:@selector(onTimer:) userInfo:nil repeats:YES];
+				bigTime.text = [[NSString alloc] initWithFormat:@"%d", minutesRemaining];
+
 			}
-		} else {
+		} else { // more than 60 minutes out hour
 			NSLog(@"-- No upcoming departures in next hour.");
 			bigTimeHeaderText.text = @"Next Train Departs At";
 			
@@ -222,7 +197,7 @@ bigTime, nextTime, bigTimeHeaderText, upcomingDeparturesLabel;
 			bigTime.font = [UIFont systemFontOfSize:60];
 			bigTime.text = formattedDateStringTime;
 		}
-	} else {
+	} else { // ERROR handling
 		bigTime.text = @"";
 		bigTimeHeaderText.text = @"";
 		upcomingDeparturesLabel.text = @"";
