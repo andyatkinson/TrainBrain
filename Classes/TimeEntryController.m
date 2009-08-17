@@ -160,19 +160,25 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	[progressViewController.view	removeFromSuperview];
 	
 	if([entries count] > 0) {
-		NSMutableDictionary *nextDeparture = [entries objectAtIndex:0];
-		int nextDepartureHour = nil;
-		int nextDepartureMinute = nil;
-		nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
-		nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
-		if(nextDepartureHour == nowHour && nextDepartureMinute <= nowMinute && [entries count] >= 2) {
-			NSMutableDictionary *nextDeparture = [entries objectAtIndex:1];  // HACK HACK HACK, handle weird 10PM/11PM case
+		NSMutableDictionary *nextDeparture = nil; //[entries objectAtIndex:0];
+		int nextDepartureHour = 0;
+		int nextDepartureMinute = 0;
+		
+		if(nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute) { // normal case
+			nextDeparture = [entries objectAtIndex:0];
 			nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
 			nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
+		} else if(nextDepartureHour == nowHour && nextDepartureMinute <= nowMinute && [entries count] >= 2) {
+			nextDeparture = [entries objectAtIndex:1]; // minutes in array index 0 hour are less than now, try index 1
+			nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
+			nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
+		} else {
+			if([entries count] >= 3) { // still less than current minutes (late night), try next one!
+				nextDeparture = [entries objectAtIndex:2];
+				nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
+				nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
+			} // TODO refactor, should handle all late night cases though			
 		}
-		
-		NSLog(@"nowHour %d nowMinute %d", nowHour, nowMinute);
-		NSLog(@"nextDepartureHour %d nextDepartureMinute %d", nextDepartureHour, nextDepartureMinute);
 		
 		// more than hour out, set label, else show minutes countdown
 		if(nextDepartureHour == nowHour && nextDepartureMinute > nowMinute) {
@@ -190,13 +196,17 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 
 			}
 		} else { // more than 60 minutes out hour
-			NSLog(@"-- No upcoming departures in next hour.");
+			NSLog(@"DEBUG: No upcoming departures in next hour.");
 			bigTimeHeaderText.text = @"Next Train Departs At";
 			
 			NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
 			[timeFormatter setDateStyle:NSDateFormatterNoStyle];
 			[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
-			NSString *departureTime = [NSString stringWithFormat:@"%d:%d", nextDepartureHour, nextDepartureMinute];
+			
+			NSString *departureTime = @"";
+			NSLog(@"nextDepartureHour %d and nextDepartureMinute %d nowHour %d and nowMinute %d", nextDepartureHour, nextDepartureMinute, nowHour, nowMinute);
+			departureTime = [NSString stringWithFormat:@"%d:%d", nextDepartureHour, nextDepartureMinute];
+			
 			NSDate *stringTime = [NSDate dateWithNaturalLanguageString:departureTime];
 			NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
 			NSLog(@"formattedDateStringTime: %@", formattedDateStringTime);
@@ -259,7 +269,6 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 			[cell setBackgroundColor:[UIColor whiteColor]];
 	
 			minutes = [[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"minutesRemaining"] intValue];
-			NSLog(@"minutes %d", minutes);
 			if(minutes < 60) {
 				if(minutes < 6) {
 					[cell setBackgroundColor:[UIColor redColor]];
@@ -283,7 +292,6 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
-	NSLog(@"View did unload!");
 }
 
 

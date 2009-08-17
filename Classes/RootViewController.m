@@ -87,7 +87,6 @@
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	NSLog(@"Got response string %@", responseString);
-	//[responseData release];
 	
 	SBJSON *parser = [[SBJSON alloc] init];
 	// parse the JSON response into an object
@@ -140,7 +139,6 @@
 
 // Location delegaate code TODO: should this be in another view controller?
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-	NSLog(@"Logging location");
 	if(startingPoint == nil)
 		self.startingPoint = newLocation;
 	
@@ -223,7 +221,6 @@
 	// Navigation logic may go here -- for example, create and push another view controller.	
 	UIViewController *targetViewController = [[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
 	
-	NSLog(@"!!!!! target view controller railStationName %@ and southbound: %d", [targetViewController railStationName], [self southbound]);
 	if([self southbound] == 0 && [[targetViewController railStationName] isEqualToString:@"Warehouse District/Hennepin Avenue Station"]) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This station does not have Northbound departures.\n\nPlease select Southbound or another station." 
 																										message:nil 
