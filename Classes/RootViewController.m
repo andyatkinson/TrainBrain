@@ -155,7 +155,7 @@
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	NSString *errorType = (error.code == kCLErrorDenied) ? @"Access Denied" : @"Unknown Error";
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"TrainBrain requires your location to show you train stations sorted by distance." 
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"TrainBrain requires location data to display train stations sorted by distance." 
 																									message:errorType 
 																								 delegate:nil 
 																				cancelButtonTitle:@"Okay" 
@@ -223,24 +223,47 @@
 	// Navigation logic may go here -- for example, create and push another view controller.	
 	UIViewController *targetViewController = [[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
 	
-	// trying a crazy hack to read the value of RootViewControll.southbound and set it on TimeEntryController.southbound
-	// maybe need a Singleton pattern here but couldn't figure it out TODO FIXME
-	[targetViewController setSouthbound:[self southbound]];
-	
-	// add Map button, need to have ll coordinates set in parent view controller
-	CustomUIBarButtonItem *temporaryBarButtonItem = [[CustomUIBarButtonItem alloc] 
-																						 initWithTitle:@"Map" 
-																						 style:UIBarButtonItemStylePlain 
-																						 target:self 
-																						 action:@selector(mapLocationAndStation:)];
-	temporaryBarButtonItem.locationLat = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.latitude];
-	temporaryBarButtonItem.locationLng = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.longitude];
-	temporaryBarButtonItem.stationLat = [[views objectAtIndex: indexPath.row] objectForKey:@"lat"];
-	temporaryBarButtonItem.stationLng = [[views objectAtIndex: indexPath.row] objectForKey:@"lng"];
-	targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
-	[temporaryBarButtonItem release];
-	
-	[[self navigationController] pushViewController:targetViewController animated:YES];
+	NSLog(@"!!!!! target view controller railStationName %@ and southbound: %d", [targetViewController railStationName], [self southbound]);
+	if([self southbound] == 0 && [[targetViewController railStationName] isEqualToString:@"Warehouse District/Hennepin Avenue Station"]) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This station does not have Northbound departures.\n\nPlease select Southbound or another station." 
+																										message:nil 
+																									 delegate:nil 
+																					cancelButtonTitle:@"Okay" 
+																					otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		[self viewWillAppear:TRUE];
+	} else if([self southbound] == 1 && [[targetViewController railStationName] isEqualToString:@"Mall of America Station"]) {
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This station does not have Southbound departures.\n\nPlease select Northbound or another station." 
+																										message:nil 
+																									 delegate:nil 
+																					cancelButtonTitle:@"Okay" 
+																					otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+		[self viewWillAppear:TRUE];
+  } else {
+		
+		// trying a crazy hack to read the value of RootViewControll.southbound and set it on TimeEntryController.southbound
+		// maybe need a Singleton pattern here but couldn't figure it out TODO FIXME
+		[targetViewController setSouthbound:[self southbound]];
+		
+		// add Map button, need to have ll coordinates set in parent view controller
+		CustomUIBarButtonItem *temporaryBarButtonItem = [[CustomUIBarButtonItem alloc] 
+																										 initWithTitle:@"Map" 
+																										 style:UIBarButtonItemStylePlain 
+																										 target:self 
+																										 action:@selector(mapLocationAndStation:)];
+		temporaryBarButtonItem.locationLat = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.latitude];
+		temporaryBarButtonItem.locationLng = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.longitude];
+		temporaryBarButtonItem.stationLat = [[views objectAtIndex: indexPath.row] objectForKey:@"lat"];
+		temporaryBarButtonItem.stationLng = [[views objectAtIndex: indexPath.row] objectForKey:@"lng"];
+		targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
+		[temporaryBarButtonItem release];
+		
+		[[self navigationController] pushViewController:targetViewController animated:YES];
+
+	}
 }
 
 - (void)mapLocationAndStation:(id)sender { 

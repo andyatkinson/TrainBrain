@@ -236,7 +236,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	static NSString *cellId = @"DepartureDetailCell";
 	int minutes = 0;
 	DepartureDetailCell *cell = (DepartureDetailCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
-	if (cell == NULL) {  
+
 		NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"DepartureDetailCell" owner:nil options:nil];
 		
 		for(id currrentObject in nibObjects) {
@@ -263,7 +263,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 			}
 		}
 		return cell;
-	}
+
 }
 
 - (void)didReceiveMemoryWarning {

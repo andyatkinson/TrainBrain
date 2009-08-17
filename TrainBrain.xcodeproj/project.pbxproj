@@ -33,6 +33,7 @@
 		A169E4B5102F928E00A65E05 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4AF102F928E00A65E05 /* SBJsonWriter.m */; };
 		A169E4BC102F931800A65E05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169E4BB102F931800A65E05 /* CoreLocation.framework */; };
 		A169E4DD102F934300A65E05 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A169E4DC102F934300A65E05 /* Default.png */; };
+		A16A8BCB1038F93C001DF0EF /* trainbrain_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A16A8BCA1038F93C001DF0EF /* trainbrain_icon.png */; };
 		A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 		A169E4AF102F928E00A65E05 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		A169E4BB102F931800A65E05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A169E4DC102F934300A65E05 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		A16A8BCA1038F93C001DF0EF /* trainbrain_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainbrain_icon.png; sourceTree = "<group>"; };
 		A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureDetailCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -158,6 +160,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A16A8BCA1038F93C001DF0EF /* trainbrain_icon.png */,
 				A14FDCBA1031316B002B9E32 /* exclamation.png */,
 				A14FDCB810313164002B9E32 /* clock.png */,
 				A129168910312E7000C0E094 /* GrayBackground.png */,
@@ -259,6 +262,7 @@
 				A129168A10312E7000C0E094 /* GrayBackground.png in Resources */,
 				A14FDCB910313164002B9E32 /* clock.png in Resources */,
 				A14FDCBB1031316B002B9E32 /* exclamation.png in Resources */,
+				A16A8BCB1038F93C001DF0EF /* trainbrain_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
