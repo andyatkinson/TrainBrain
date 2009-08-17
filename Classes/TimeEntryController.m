@@ -140,7 +140,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 		NSLog(@"formattedDateStringTime: %@", formattedDateStringTime);
 		
 		int minutesRemaining = 61;
-		if([hour intValue] == (int)nowHour) {
+		if([hour intValue] == (int)nowHour && [minute intValue] > nowMinute) {
 			minutesRemaining = [minute intValue] - (int)nowMinute;
 			NSLog(@"Logging minutes remaining %d", minutesRemaining);
 		}
@@ -159,11 +159,19 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	
 	[progressViewController.view	removeFromSuperview];
 	
-	// get the first item from the array
 	if([entries count] > 0) {
 		NSMutableDictionary *nextDeparture = [entries objectAtIndex:0];
-		int nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
-		int nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
+		int nextDepartureHour = nil;
+		int nextDepartureMinute = nil;
+		nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
+		nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
+		if(nextDepartureHour == nowHour && nextDepartureMinute <= nowMinute && [entries count] >= 2) {
+			NSMutableDictionary *nextDeparture = [entries objectAtIndex:1];  // HACK HACK HACK, handle weird 10PM/11PM case
+			nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
+			nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
+		}
+		
+		
 		NSLog(@"nowHour %d nowMinute %d", nowHour, nowMinute);
 		NSLog(@"nextDepartureHour %d nextDepartureMinute %d", nextDepartureHour, nextDepartureMinute);
 		

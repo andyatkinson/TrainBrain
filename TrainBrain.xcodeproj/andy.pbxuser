@@ -39,7 +39,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1091, 4310}}";
 			sepNavSelRange = "{8697, 0}";
-			sepNavVisRange = "{7792, 1303}";
+			sepNavVisRange = "{7792, 1193}";
 			sepNavWindowFrame = "{{31, 307}, {977, 671}}";
 		};
 	};
@@ -194,6 +194,13 @@
 			A16A8C121038FF3C001DF0EF /* PBXTextBookmark */ = A16A8C121038FF3C001DF0EF /* PBXTextBookmark */;
 			A16A8C131038FF3C001DF0EF /* PBXTextBookmark */ = A16A8C131038FF3C001DF0EF /* PBXTextBookmark */;
 			A16A8C17103900D3001DF0EF /* PBXTextBookmark */ = A16A8C17103900D3001DF0EF /* PBXTextBookmark */;
+			A16A8C1D103905FC001DF0EF /* PBXTextBookmark */ = A16A8C1D103905FC001DF0EF /* PBXTextBookmark */;
+			A16A8C1E103905FC001DF0EF /* PBXTextBookmark */ = A16A8C1E103905FC001DF0EF /* PBXTextBookmark */;
+			A16A8C1F103905FC001DF0EF /* PBXTextBookmark */ = A16A8C1F103905FC001DF0EF /* PBXTextBookmark */;
+			A16A8C20103905FC001DF0EF /* PBXTextBookmark */ = A16A8C20103905FC001DF0EF /* PBXTextBookmark */;
+			A16A8C21103905FC001DF0EF /* PBXTextBookmark */ = A16A8C21103905FC001DF0EF /* PBXTextBookmark */;
+			A16A8C29103908BD001DF0EF /* PBXTextBookmark */ = A16A8C29103908BD001DF0EF /* PBXTextBookmark */;
+			A16A8C2D10390908001DF0EF /* PBXTextBookmark */ = A16A8C2D10390908001DF0EF /* PBXTextBookmark */;
 			A174B31810351E920084E659 = A174B31810351E920084E659 /* PBXTextBookmark */;
 			A174B31910351E920084E659 = A174B31910351E920084E659 /* PBXTextBookmark */;
 			A18B04EB102F985A0025671A = A18B04EB102F985A0025671A /* PBXTextBookmark */;
@@ -230,9 +237,9 @@
 	};
 	A115173A102F962E007CFBF6 /* TimeEntryController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1091, 4158}}";
-			sepNavSelRange = "{8871, 0}";
-			sepNavVisRange = "{3932, 1268}";
+			sepNavIntBoundsRect = "{{0, 0}, {1091, 4354}}";
+			sepNavSelRange = "{6158, 0}";
+			sepNavVisRange = "{5657, 1177}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
 		};
 	};
@@ -491,7 +498,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 172";
 		rLen = 0;
-		rLoc = 5574;
+		rLoc = 5607;
 		rType = 0;
 		vrLen = 1323;
 		vrLoc = 5347;
@@ -551,7 +558,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 173";
 		rLen = 0;
-		rLoc = 5552;
+		rLoc = 5585;
 		rType = 0;
 		vrLen = 1009;
 		vrLoc = 9001;
@@ -619,7 +626,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 180";
 		rLen = 79;
-		rLoc = 5580;
+		rLoc = 5613;
 		rType = 0;
 		vrLen = 444;
 		vrLoc = 11026;
@@ -757,7 +764,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 199";
 		rLen = 0;
-		rLoc = 6366;
+		rLoc = 6797;
 		rType = 0;
 		vrLen = 1296;
 		vrLoc = 6398;
@@ -767,7 +774,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 182";
 		rLen = 0;
-		rLoc = 6690;
+		rLoc = 7121;
 		rType = 0;
 		vrLen = 1373;
 		vrLoc = 6011;
@@ -787,7 +794,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 182";
 		rLen = 0;
-		rLoc = 6690;
+		rLoc = 7121;
 		rType = 0;
 		vrLen = 1373;
 		vrLoc = 6011;
@@ -817,7 +824,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 182";
 		rLen = 0;
-		rLoc = 6690;
+		rLoc = 7121;
 		rType = 0;
 		vrLen = 1373;
 		vrLoc = 6011;
@@ -837,7 +844,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 235";
 		rLen = 0;
-		rLoc = 8693;
+		rLoc = 9124;
 		rType = 0;
 		vrLen = 1364;
 		vrLoc = 8386;
@@ -847,7 +854,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 239";
 		rLen = 0;
-		rLoc = 8870;
+		rLoc = 9301;
 		rType = 0;
 		vrLen = 1415;
 		vrLoc = 8419;
@@ -857,7 +864,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 236";
 		rLen = 0;
-		rLoc = 8746;
+		rLoc = 9177;
 		rType = 0;
 		vrLen = 1425;
 		vrLoc = 8295;
@@ -867,7 +874,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 236";
 		rLen = 0;
-		rLoc = 8746;
+		rLoc = 9177;
 		rType = 0;
 		vrLen = 1498;
 		vrLoc = 8295;
@@ -877,7 +884,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 249";
 		rLen = 0;
-		rLoc = 9154;
+		rLoc = 9585;
 		rType = 0;
 		vrLen = 1513;
 		vrLoc = 8421;
@@ -887,7 +894,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 263";
 		rLen = 0;
-		rLoc = 9933;
+		rLoc = 10364;
 		rType = 0;
 		vrLen = 959;
 		vrLoc = 8997;
@@ -897,7 +904,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 240";
 		rLen = 0;
-		rLoc = 8871;
+		rLoc = 9302;
 		rType = 0;
 		vrLen = 1350;
 		vrLoc = 8589;
@@ -907,7 +914,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 267";
 		rLen = 0;
-		rLoc = 9949;
+		rLoc = 10380;
 		rType = 0;
 		vrLen = 1062;
 		vrLoc = 9011;
@@ -991,7 +998,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 267";
 		rLen = 0;
-		rLoc = 9949;
+		rLoc = 10380;
 		rType = 0;
 		vrLen = 1101;
 		vrLoc = 9011;
@@ -1015,7 +1022,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 267";
 		rLen = 0;
-		rLoc = 9949;
+		rLoc = 10380;
 		rType = 0;
 		vrLen = 1098;
 		vrLoc = 9014;
@@ -1225,7 +1232,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 239";
 		rLen = 0;
-		rLoc = 8871;
+		rLoc = 9302;
 		rType = 0;
 		vrLen = 1240;
 		vrLoc = 8694;
@@ -1235,7 +1242,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 239";
 		rLen = 0;
-		rLoc = 8871;
+		rLoc = 9302;
 		rType = 0;
 		vrLen = 1272;
 		vrLoc = 3932;
@@ -1285,7 +1292,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
 		name = "TimeEntryController.m: 239";
 		rLen = 0;
-		rLoc = 8871;
+		rLoc = 9302;
 		rType = 0;
 		vrLen = 1272;
 		vrLoc = 3932;
@@ -1349,6 +1356,76 @@
 		rType = 0;
 		vrLen = 1303;
 		vrLoc = 7792;
+	};
+	A16A8C1D103905FC001DF0EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 236";
+		rLen = 0;
+		rLoc = 8697;
+		rType = 0;
+		vrLen = 1317;
+		vrLoc = 7792;
+	};
+	A16A8C1E103905FC001DF0EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1151739102F962E007CFBF6 /* TimeEntryController.h */;
+		name = "TimeEntryController.h: 23";
+		rLen = 0;
+		rLoc = 691;
+		rType = 0;
+		vrLen = 1243;
+		vrLoc = 175;
+	};
+	A16A8C1F103905FC001DF0EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 236";
+		rLen = 0;
+		rLoc = 8697;
+		rType = 0;
+		vrLen = 1317;
+		vrLoc = 7792;
+	};
+	A16A8C20103905FC001DF0EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1151739102F962E007CFBF6 /* TimeEntryController.h */;
+		name = "TimeEntryController.h: 23";
+		rLen = 0;
+		rLoc = 691;
+		rType = 0;
+		vrLen = 1243;
+		vrLoc = 175;
+	};
+	A16A8C21103905FC001DF0EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
+		name = "TimeEntryController.m: 143";
+		rLen = 0;
+		rLoc = 5113;
+		rType = 0;
+		vrLen = 1238;
+		vrLoc = 4375;
+	};
+	A16A8C29103908BD001DF0EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
+		name = "TimeEntryController.m: 163";
+		rLen = 0;
+		rLoc = 5841;
+		rType = 0;
+		vrLen = 1125;
+		vrLoc = 5608;
+	};
+	A16A8C2D10390908001DF0EF /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
+		name = "TimeEntryController.m: 168";
+		rLen = 0;
+		rLoc = 6158;
+		rType = 0;
+		vrLen = 1177;
+		vrLoc = 5657;
 	};
 	A174B31810351E920084E659 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
