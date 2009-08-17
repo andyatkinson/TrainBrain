@@ -142,7 +142,7 @@
 	if(startingPoint == nil)
 		self.startingPoint = newLocation;
 	
-	NSString *locationString = [[NSString alloc] initWithFormat:@"http://localhost:3000/rail_stations.json?ll=%g,%g", 
+	NSString *locationString = [[NSString alloc] initWithFormat:@"http://api.trainbrainapp.com/rail_stations.json?ll=%g,%g", 
 															newLocation.coordinate.latitude, 
 															newLocation.coordinate.longitude];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:locationString]];

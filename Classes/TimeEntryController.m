@@ -52,7 +52,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	// Setting it from one view controller to another which is not a good solution	
 	NSLog(@"got southbound true or false from parent: %d", [self southbound]);
 	
-	NSString *stationTimeEntries = [NSString stringWithFormat:@"http://localhost:3000/rail_stations/%@/time_entries.json?t=%d:%d&s=%d", 
+	NSString *stationTimeEntries = [NSString stringWithFormat:@"http://api.trainbrainapp.com/rail_stations/%@/time_entries.json?t=%d:%d&s=%d", 
 																	[self railStationId],
 																	hour,
 																	minute,
