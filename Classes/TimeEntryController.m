@@ -160,24 +160,19 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	[progressViewController.view	removeFromSuperview];
 	
 	if([entries count] > 0) {
-		NSMutableDictionary *nextDeparture = nil; //[entries objectAtIndex:0];
+		
+		int count = [entries count];
+		NSMutableDictionary *nextDeparture = nil;		
 		int nextDepartureHour = 0;
 		int nextDepartureMinute = 0;
-		
-		if(nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute) { // normal case
-			nextDeparture = [entries objectAtIndex:0];
+		for(int i=0; i < count; i++) {
+			nextDeparture = [entries objectAtIndex:i];
 			nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
 			nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
-		} else if(nextDepartureHour == nowHour && nextDepartureMinute <= nowMinute && [entries count] >= 2) {
-			nextDeparture = [entries objectAtIndex:1]; // minutes in array index 0 hour are less than now, try index 1
-			nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
-			nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
-		} else {
-			if([entries count] >= 3) { // still less than current minutes (late night), try next one!
-				nextDeparture = [entries objectAtIndex:2];
-				nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
-				nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
-			} // TODO refactor, should handle all late night cases though			
+			NSLog(@"nextDepartureHour %d and nextDepartureMinute %d nowHour %d and nowMinute %d", nextDepartureHour, nextDepartureMinute, nowHour, nowMinute);
+			if(nextDepartureHour > nowHour || (nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute)) {
+				break; // break out of loop when right time is fetched
+			}
 		}
 		
 		// more than hour out, set label, else show minutes countdown
@@ -204,7 +199,6 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 			[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
 			
 			NSString *departureTime = @"";
-			NSLog(@"nextDepartureHour %d and nextDepartureMinute %d nowHour %d and nowMinute %d", nextDepartureHour, nextDepartureMinute, nowHour, nowMinute);
 			departureTime = [NSString stringWithFormat:@"%d:%d", nextDepartureHour, nextDepartureMinute];
 			
 			NSDate *stringTime = [NSDate dateWithNaturalLanguageString:departureTime];

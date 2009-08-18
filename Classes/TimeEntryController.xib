@@ -170,6 +170,7 @@
 					</object>
 				</object>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+				<int key="IBUIContentMode">4</int>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
@@ -271,8 +272,8 @@
 							<reference ref="216143853"/>
 							<reference ref="294621556"/>
 							<reference ref="117373473"/>
-							<reference ref="105192271"/>
 							<reference ref="151534093"/>
+							<reference ref="105192271"/>
 						</object>
 						<reference key="parent" ref="317526666"/>
 					</object>
