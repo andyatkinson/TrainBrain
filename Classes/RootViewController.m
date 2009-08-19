@@ -27,7 +27,7 @@
 
 - (void) loadRailStations {
 	ProgressViewController *pvc = [[ProgressViewController alloc] init];
-	pvc.message = @"Train stations by location...";
+	pvc.message = @"Train Stations";
 	self.progressViewController = pvc;
 	[self.view addSubview:pvc.view];
 	

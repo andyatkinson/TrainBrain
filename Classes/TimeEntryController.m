@@ -30,7 +30,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 - (void) loadTimeEntries {
 	
 	ProgressViewController *pvc = [[ProgressViewController alloc] init];
-	pvc.message = [NSString stringWithFormat:@"Departure times for %@", self.railStationName];
+	pvc.message = [NSString stringWithFormat:@"Upcoming Departures"];
 	self.progressViewController = pvc;
 	[self.view addSubview:pvc.view];
 
