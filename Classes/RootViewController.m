@@ -74,10 +74,10 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	NSLog(@"Connection failed: %@", [error description]);
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error fetching stations." 
-																									message:[error description] 
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error fetching stations.\n\n Try tapping the refresh button." 
+																									message:nil 
 																								 delegate:nil 
-																				cancelButtonTitle:@"Okay" 
+																				cancelButtonTitle:@"OK" 
 																				otherButtonTitles:nil];
 	[alert show];
 	[alert release];
@@ -123,7 +123,7 @@
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Stations Found.\n\nPlease try tapping the refresh button." 
 																										message:nil 
 																									 delegate:nil 
-																					cancelButtonTitle:@"Okay" 
+																					cancelButtonTitle:@"OK" 
 																					otherButtonTitles:nil];
 		[alert show];
 		[alert release];
@@ -157,7 +157,7 @@
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"train brain requires location data to display train stations sorted by distance." 
 																									message:errorType 
 																								 delegate:nil 
-																				cancelButtonTitle:@"Okay" 
+																				cancelButtonTitle:@"OK" 
 																				otherButtonTitles:nil];
 	[alert show];
 	[alert release];
@@ -223,19 +223,19 @@
 	UIViewController *targetViewController = [[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
 	
 	if([self southbound] == 0 && [[targetViewController railStationName] isEqualToString:@"Warehouse District/Hennepin Avenue Station"]) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This station does not have Northbound departures.\n\nPlease select Southbound or another station." 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This station does not have Northbound departures.\n\nPlease select a different train station or select Southbound departures." 
 																										message:nil 
 																									 delegate:nil 
-																					cancelButtonTitle:@"Okay" 
+																					cancelButtonTitle:@"OK" 
 																					otherButtonTitles:nil];
 		[alert show];
 		[alert release];
 		[self viewWillAppear:TRUE];
 	} else if([self southbound] == 1 && [[targetViewController railStationName] isEqualToString:@"Mall of America Station"]) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This station does not have Southbound departures.\n\nPlease select Northbound or another station." 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This station does not have Southbound departures.\n\nPlease select a different train station or select Northbound departures." 
 																										message:nil 
 																									 delegate:nil 
-																					cancelButtonTitle:@"Okay" 
+																					cancelButtonTitle:@"OK" 
 																					otherButtonTitles:nil];
 		[alert show];
 		[alert release];

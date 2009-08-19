@@ -21,7 +21,6 @@
 		A1151747102F9650007CFBF6 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1151741102F9650007CFBF6 /* ProgressViewController.xib */; };
 		A1151750102F96BF007CFBF6 /* CustomUIBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174D102F96BF007CFBF6 /* CustomUIBarButtonItem.m */; };
 		A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */; };
-		A129168A10312E7000C0E094 /* GrayBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = A129168910312E7000C0E094 /* GrayBackground.png */; };
 		A14FDCB910313164002B9E32 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = A14FDCB810313164002B9E32 /* clock.png */; };
 		A14FDCBB1031316B002B9E32 /* exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = A14FDCBA1031316B002B9E32 /* exclamation.png */; };
 		A169E495102F91E500A65E05 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E494102F91E500A65E05 /* CustomCell.m */; };
@@ -34,13 +33,9 @@
 		A169E4BC102F931800A65E05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169E4BB102F931800A65E05 /* CoreLocation.framework */; };
 		A169E4DD102F934300A65E05 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A169E4DC102F934300A65E05 /* Default.png */; };
 		A16A8BCB1038F93C001DF0EF /* trainbrain_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A16A8BCA1038F93C001DF0EF /* trainbrain_icon.png */; };
-		A1D9AA38103BDBED006B3744 /* bg_shorter.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D9AA37103BDBED006B3744 /* bg_shorter.png */; };
-		A1D9AA8A103C4D92006B3744 /* bg-departure-times.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D9AA89103C4D92006B3744 /* bg-departure-times.png */; };
 		A1D9AA8E103C50CC006B3744 /* departures_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D9AA8D103C50CC006B3744 /* departures_bg.png */; };
 		A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */; };
 		A1F9E79E103B6F31004BD52D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F9E79D103B6F31004BD52D /* Default.png */; };
-		A1F9E7A0103B6F45004BD52D /* tb_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F9E79F103B6F45004BD52D /* tb_bg.png */; };
-		A1F9E7ED103B956F004BD52D /* bg_header.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F9E7EC103B956F004BD52D /* bg_header.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,7 +62,6 @@
 		A115174D102F96BF007CFBF6 /* CustomUIBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUIBarButtonItem.m; sourceTree = "<group>"; };
 		A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureDetailCell.h; sourceTree = "<group>"; };
 		A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureDetailCell.m; sourceTree = "<group>"; };
-		A129168910312E7000C0E094 /* GrayBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GrayBackground.png; sourceTree = "<group>"; };
 		A14FDCB810313164002B9E32 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		A14FDCBA1031316B002B9E32 /* exclamation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exclamation.png; sourceTree = "<group>"; };
 		A169E493102F91C600A65E05 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
@@ -88,13 +82,9 @@
 		A169E4BB102F931800A65E05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A169E4DC102F934300A65E05 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A16A8BCA1038F93C001DF0EF /* trainbrain_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainbrain_icon.png; sourceTree = "<group>"; };
-		A1D9AA37103BDBED006B3744 /* bg_shorter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_shorter.png; sourceTree = "<group>"; };
-		A1D9AA89103C4D92006B3744 /* bg-departure-times.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg-departure-times.png"; sourceTree = "<group>"; };
 		A1D9AA8D103C50CC006B3744 /* departures_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = departures_bg.png; sourceTree = "<group>"; };
 		A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureDetailCell.xib; sourceTree = "<group>"; };
 		A1F9E79D103B6F31004BD52D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		A1F9E79F103B6F45004BD52D /* tb_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tb_bg.png; sourceTree = "<group>"; };
-		A1F9E7EC103B956F004BD52D /* bg_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_header.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,15 +159,10 @@
 			isa = PBXGroup;
 			children = (
 				A1D9AA8D103C50CC006B3744 /* departures_bg.png */,
-				A1D9AA89103C4D92006B3744 /* bg-departure-times.png */,
-				A1D9AA37103BDBED006B3744 /* bg_shorter.png */,
-				A1F9E7EC103B956F004BD52D /* bg_header.png */,
-				A1F9E79F103B6F45004BD52D /* tb_bg.png */,
 				A1F9E79D103B6F31004BD52D /* Default.png */,
 				A16A8BCA1038F93C001DF0EF /* trainbrain_icon.png */,
 				A14FDCBA1031316B002B9E32 /* exclamation.png */,
 				A14FDCB810313164002B9E32 /* clock.png */,
-				A129168910312E7000C0E094 /* GrayBackground.png */,
 				A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */,
 				A169E4DC102F934300A65E05 /* Default.png */,
 				2899E55F0DE3E45000AC0155 /* RootViewController.xib */,
@@ -273,15 +258,10 @@
 				A115173D102F962E007CFBF6 /* TimeEntryController.xib in Resources */,
 				A1151747102F9650007CFBF6 /* ProgressViewController.xib in Resources */,
 				A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */,
-				A129168A10312E7000C0E094 /* GrayBackground.png in Resources */,
 				A14FDCB910313164002B9E32 /* clock.png in Resources */,
 				A14FDCBB1031316B002B9E32 /* exclamation.png in Resources */,
 				A16A8BCB1038F93C001DF0EF /* trainbrain_icon.png in Resources */,
 				A1F9E79E103B6F31004BD52D /* Default.png in Resources */,
-				A1F9E7A0103B6F45004BD52D /* tb_bg.png in Resources */,
-				A1F9E7ED103B956F004BD52D /* bg_header.png in Resources */,
-				A1D9AA38103BDBED006B3744 /* bg_shorter.png in Resources */,
-				A1D9AA8A103C4D92006B3744 /* bg-departure-times.png in Resources */,
 				A1D9AA8E103C50CC006B3744 /* departures_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

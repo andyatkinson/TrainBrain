@@ -216,7 +216,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No departure times found.\n\nTry changing the direction or tapping the refresh button." 
 																										message:nil 
 																									 delegate:nil 
-																					cancelButtonTitle:@"Okay" 
+																					cancelButtonTitle:@"OK" 
 																					otherButtonTitles:nil];
 		[alert show];
 		[alert release];
