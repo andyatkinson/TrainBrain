@@ -37,9 +37,9 @@
 	};
 	28C286E00D94DF7D0034E888 /* RootViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {979, 4284}}";
+			sepNavIntBoundsRect = "{{0, 0}, {979, 4354}}";
 			sepNavSelRange = "{4681, 0}";
-			sepNavVisRange = "{4181, 1248}";
+			sepNavVisRange = "{4181, 1316}";
 			sepNavWindowFrame = "{{31, 307}, {977, 671}}";
 		};
 	};
@@ -411,6 +411,11 @@
 		name = CustomCell.h;
 		path = /Users/andy/Projects/objectivec/TrainBrain/Classes/CustomCell.h;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {979, 416}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 517}";
+		};
 	};
 	A169E4E7102F946100A65E05 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
