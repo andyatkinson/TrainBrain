@@ -39,15 +39,15 @@
 					<object class="IBUIImageView" id="216143853">
 						<reference key="NSNextResponder" ref="175278009"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, -63}, {320, 487}}</string>
+						<string key="NSFrameSize">{320, 433}</string>
 						<reference key="NSSuperview" ref="175278009"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
-						<int key="IBUIContentMode">4</int>
+						<int key="IBUIContentMode">5</int>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">bg_header.png</string>
+							<string key="NSResourceName">bg_shorter.png</string>
 						</object>
 					</object>
 					<object class="IBUILabel" id="151534093">
@@ -117,7 +117,7 @@
 					<object class="IBUILabel" id="105192271">
 						<reference key="NSNextResponder" ref="175278009"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 20}, {320, 128}}</string>
+						<string key="NSFrame">{{0, 32}, {320, 128}}</string>
 						<reference key="NSSuperview" ref="175278009"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -341,7 +341,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>TimeEntryController</string>
 					<string>UIResponder</string>
-					<string>{{192, 208}, {320, 460}}</string>
+					<string>{{385, 200}, {320, 460}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
