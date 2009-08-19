@@ -11,8 +11,12 @@
 
 @interface ProgressViewController : UIViewController {
 	IBOutlet UIActivityIndicatorView *activityIndicator;
+	NSString *message;
+	IBOutlet UILabel *loadingLabel;
 }
 
 @property (nonatomic, retain) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (nonatomic, retain) IBOutlet UILabel *loadingLabel;
+@property (nonatomic, retain) IBOutlet NSString *message;
 
 @end

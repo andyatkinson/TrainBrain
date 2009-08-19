@@ -26,9 +26,10 @@
 }
 
 - (void) loadRailStations {
-	self.progressViewController = [[ProgressViewController alloc] init];
-	[self.view addSubview:progressViewController.view];
-
+	ProgressViewController *pvc = [[ProgressViewController alloc] init];
+	pvc.message = @"Train stations by location...";
+	self.progressViewController = pvc;
+	[self.view addSubview:pvc.view];
 	
 	self.locationManager = [[CLLocationManager alloc] init];
 	locationManager.delegate = self;
@@ -60,7 +61,7 @@
 	[temporaryBarButtonItem release];
 	
 	// set the title of the main navigation
-	self.title = @"Stations";
+	self.title = @"train brain";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -207,7 +208,7 @@
 		
 	// Set up the cell...
 	cell.titleLabel.text = [[views objectAtIndex:indexPath.row] objectForKey:@"title"];
-	NSString *distanceString = [NSString stringWithFormat:@"%@ miles", [[views objectAtIndex:indexPath.row] objectForKey:@"distance"]];
+	NSString *distanceString = [NSString stringWithFormat:@"%@", [[views objectAtIndex:indexPath.row] objectForKey:@"distance"]];
 	cell.distanceLabel.text = distanceString;
 
 	return cell;

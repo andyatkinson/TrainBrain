@@ -39,7 +39,7 @@
 					<object class="IBUIImageView" id="216143853">
 						<reference key="NSNextResponder" ref="175278009"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, -60}, {320, 487}}</string>
+						<string key="NSFrame">{{0, -63}, {320, 487}}</string>
 						<reference key="NSSuperview" ref="175278009"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -47,7 +47,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">tb_bg.png</string>
+							<string key="NSResourceName">bg_header.png</string>
 						</object>
 					</object>
 					<object class="IBUILabel" id="151534093">
@@ -341,7 +341,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>TimeEntryController</string>
 					<string>UIResponder</string>
-					<string>{{194, 207}, {320, 460}}</string>
+					<string>{{192, 208}, {320, 460}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>

@@ -18,12 +18,12 @@
 			self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			
 			UIView *myContentView = self.contentView;
-			self.titleLabel = [self newLabelWithPrimaryColor:[UIColor blackColor] selectedColor:[UIColor whiteColor] fontSize:16.0 bold:YES];
+			self.titleLabel = [self newLabelWithPrimaryColor:[UIColor blackColor] selectedColor:[UIColor blackColor] fontSize:20.0 bold:YES];
 			self.titleLabel.textAlignment = UITextAlignmentLeft;
 			[myContentView addSubview:self.titleLabel];
 			[self.titleLabel release];
 			
-			self.distanceLabel = [self newLabelWithPrimaryColor:[UIColor blackColor] selectedColor:[UIColor lightGrayColor] fontSize:10.0 bold:NO];
+			self.distanceLabel = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor grayColor] fontSize:10.0 bold:NO];
 			self.distanceLabel.textAlignment = UITextAlignmentLeft;
 			[myContentView addSubview:self.distanceLabel];
 			[self.distanceLabel release];

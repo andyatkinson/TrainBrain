@@ -29,8 +29,10 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 
 - (void) loadTimeEntries {
 	
-	self.progressViewController = [[ProgressViewController alloc] init];
-	[self.view addSubview:progressViewController.view];
+	ProgressViewController *pvc = [[ProgressViewController alloc] init];
+	pvc.message = [NSString stringWithFormat:@"Departure times for %@", self.railStationName];
+	self.progressViewController = pvc;
+	[self.view addSubview:pvc.view];
 
 	// TODO probably could instantiate/use a time entry object
 	responseData = [[NSMutableData data] retain];
