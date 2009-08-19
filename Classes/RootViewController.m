@@ -1,9 +1,9 @@
 //
 //  RootViewController.m
-//  TrainBrain
+//  train brain
 //
 //  Created by Andy Atkinson on 6/22/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Copyright Andy Atkinson http://webandy.com 2009. All rights reserved.
 //
 
 #import "RootViewController.h"
@@ -60,7 +60,7 @@
 	[temporaryBarButtonItem release];
 	
 	// set the title of the main navigation
-	self.title = @"TrainBrain";
+	self.title = @"Stations";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -131,7 +131,7 @@
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
 	[stationsTableView reloadData];
 	
-	self.title = @"Select Station";
+	self.title = @"Stations";
 	// remove the modal view, now that the location has been calculated
 	[progressViewController.view	removeFromSuperview];
 }
@@ -153,7 +153,7 @@
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	NSString *errorType = (error.code == kCLErrorDenied) ? @"Access Denied" : @"Unknown Error";
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"TrainBrain requires location data to display train stations sorted by distance." 
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"train brain requires location data to display train stations sorted by distance." 
 																									message:errorType 
 																								 delegate:nil 
 																				cancelButtonTitle:@"Okay" 

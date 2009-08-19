@@ -1,6 +1,6 @@
 //
 //  TimeEntryController.m
-//  TrainBrain
+//  train brain
 //
 //  Created by Andy Atkinson on 6/22/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
@@ -9,8 +9,6 @@
 #import "TimeEntryController.h"
 #import "JSON/JSON.h"
 #import "TrainBrainAppDelegate.h"
-
-// http://warm-sky-96.heroku.com/
 
 @interface TimeEntryController (Private)
 - (void) loadTimeEntries;
@@ -156,7 +154,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	
 	// IMPORTANT: reloads table view cell data
 	[timeEntriesTableView reloadData];
-	
+	upcomingDeparturesLabel.text = @"Upcoming Departures";
 	[progressViewController.view	removeFromSuperview];
 	
 	if([entries count] > 0) {

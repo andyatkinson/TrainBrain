@@ -1,9 +1,9 @@
 //
 //  TimeEntryController.h
-//  TrainBrain
+//  train brain
 //
 //  Created by Andy Atkinson on 6/22/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Andy Atkinson http://webandy.com 2009. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

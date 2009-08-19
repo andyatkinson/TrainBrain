@@ -39,7 +39,7 @@
 					<object class="IBUIImageView" id="216143853">
 						<reference key="NSNextResponder" ref="175278009"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, -4}, {320, 487}}</string>
+						<string key="NSFrame">{{0, -60}, {320, 487}}</string>
 						<reference key="NSSuperview" ref="175278009"/>
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -47,7 +47,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">GrayBackground.png</string>
+							<string key="NSResourceName">tb_bg.png</string>
 						</object>
 					</object>
 					<object class="IBUILabel" id="151534093">
@@ -58,7 +58,7 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="IBUIText">Upcoming Departures</string>
+						<string key="IBUIText"/>
 						<object class="NSFont" key="IBUIFont" id="654110970">
 							<string key="NSName">Helvetica-Bold</string>
 							<double key="NSSize">1.700000e+01</double>
@@ -151,7 +151,7 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
-						<string key="IBUIText">Minutes Until Next Departure</string>
+						<string key="IBUIText"/>
 						<reference key="IBUIFont" ref="654110970"/>
 						<reference key="IBUITextColor" ref="908690257"/>
 						<nil key="IBUIHighlightedColor"/>
@@ -341,7 +341,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>TimeEntryController</string>
 					<string>UIResponder</string>
-					<string>{{448, 185}, {320, 460}}</string>
+					<string>{{194, 207}, {320, 460}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
