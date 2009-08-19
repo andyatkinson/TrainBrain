@@ -132,7 +132,7 @@
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
 	[stationsTableView reloadData];
 	
-	self.title = @"Stations";
+	self.title = @"Train Stations";
 	// remove the modal view, now that the location has been calculated
 	[progressViewController.view	removeFromSuperview];
 }

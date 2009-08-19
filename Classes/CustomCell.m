@@ -47,10 +47,10 @@
 	if(!self.editing) {
 		CGFloat boundsX = contentRect.origin.x;
 		CGRect frame;
-		frame = CGRectMake(boundsX + 10, 4, 240, 20);
+		frame = CGRectMake(boundsX + 10, 4, 280, 24);
 		self.titleLabel.frame = frame;
 		
-		frame = CGRectMake(boundsX + 10, 25, 240, 14);
+		frame = CGRectMake(boundsX + 10, 28, 280, 14);
 		self.distanceLabel.frame = frame;
 	}
 }
