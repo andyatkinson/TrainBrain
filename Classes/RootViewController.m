@@ -19,7 +19,7 @@
 @implementation RootViewController
 
 @synthesize railStations, views, responseData, locationManager, startingPoint, progressViewController, 
-				stationsTableView, southbound;
+				stationsTableView, southbound, directionControl;
 
 - (void)awakeFromNib {
 	//moved the viewcontroller creation stuff from here to viewDidLoad, not sure if that is good or bad, TODO: understand difference
@@ -45,6 +45,9 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	directionControl.segmentedControlStyle = UISegmentedControlStyleBar;
+	directionControl.tintColor = [UIColor grayColor];
 	
 	// TODO why doesn't this work from IB? Have to set it here explicityly otherwise default background is displayed.
 	stationsTableView.backgroundColor = [UIColor clearColor];

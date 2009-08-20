@@ -21,6 +21,7 @@
 	CLLocation *startingPoint;
 	ProgressViewController *progressViewController;
 	NSInteger southbound;
+	IBOutlet UISegmentedControl *directionControl;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *stationsTableView;
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) CLLocation *startingPoint;
 @property (nonatomic, retain)	ProgressViewController *progressViewController;
 @property (nonatomic) NSInteger southbound;
+@property (nonatomic, retain) IBOutlet UISegmentedControl *directionControl;
 
 -(void)updateSouthbound:(NSInteger) newValue;
 
