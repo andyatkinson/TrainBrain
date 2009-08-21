@@ -19,7 +19,7 @@
 @implementation RootViewController
 
 @synthesize railStations, views, responseData, locationManager, startingPoint, progressViewController, 
-				stationsTableView, southbound, directionControl;
+				stationsTableView, southbound, directionControl, mapURL;
 
 - (void)awakeFromNib {
 	//moved the viewcontroller creation stuff from here to viewDidLoad, not sure if that is good or bad, TODO: understand difference
@@ -263,7 +263,7 @@
 																										 initWithTitle:@"Map" 
 																										 style:UIBarButtonItemStylePlain 
 																										 target:self 
-																										 action:@selector(mapLocationAndStation:)];
+																										 action:@selector(mapButtonClicked:)];
 		temporaryBarButtonItem.locationLat = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.latitude];
 		temporaryBarButtonItem.locationLng = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.longitude];
 		temporaryBarButtonItem.stationLat = [[views objectAtIndex: indexPath.row] objectForKey:@"lat"];
@@ -276,12 +276,32 @@
 	}
 }
 
-- (void)mapLocationAndStation:(id)sender { 
+- (void) mapButtonClicked:(id)sender {  
+	
 	CustomUIBarButtonItem *button = (CustomUIBarButtonItem *)sender;
 	NSLog(@"sender locationLat %@ locationLng %@ stationLat %@ stationLng %@", button.locationLat, button.locationLat, button.stationLat, button.stationLng);
-	NSString *url = [[NSString alloc] initWithFormat:@"http://maps.google.com/maps?saddr=%@,%@&daddr=%@,%@", button.locationLat, button.locationLng, button.stationLat, button.stationLng]; 
-	[[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+	mapURL = [[NSString alloc] initWithFormat:@"http://maps.google.com/maps?saddr=%@,%@&daddr=%@,%@", button.locationLat, button.locationLng, button.stationLat, button.stationLng]; 
+								
+	// open the Maps application with a specific link
+	UIAlertView *alert = [[UIAlertView alloc]  
+												initWithTitle:@"Leave train brain and launch Maps application?"  
+												message:nil  
+												delegate:self  
+												cancelButtonTitle:@"Cancel"  
+												otherButtonTitles:@"OK", nil];  
+	[alert show];  
+	[alert release];  
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex  
+{  
+	if (buttonIndex == 1) {  
+		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:mapURL]];
+	}  
+	else {  
+		// Don't launch  
+	}  
+} 
 
 - (IBAction)toggleDirection:(id)sender {
 	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;

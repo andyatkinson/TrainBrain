@@ -22,6 +22,7 @@
 	ProgressViewController *progressViewController;
 	NSInteger southbound;
 	IBOutlet UISegmentedControl *directionControl;
+	NSString *mapURL;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *stationsTableView;
@@ -33,10 +34,14 @@
 @property (nonatomic, retain)	ProgressViewController *progressViewController;
 @property (nonatomic) NSInteger southbound;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *directionControl;
+@property (nonatomic, retain) NSString *mapURL;
 
 -(void)updateSouthbound:(NSInteger) newValue;
 
 -(IBAction)toggleDirection:(id)sender;
 -(IBAction)refreshStations:(id)sender;
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+- (void)mapButtonClicked:(id)sender; 
 
 @end
