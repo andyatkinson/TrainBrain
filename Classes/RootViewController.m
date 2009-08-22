@@ -10,7 +10,7 @@
 #import "TimeEntryController.h"
 #import "JSON/JSON.h"
 #import "TrainBrainAppDelegate.h"
-#import "CustomUIBarButtonItem.h"
+#import "MapBarButtonItem.h"
 
 @interface RootViewController (Private)
 - (void)loadRailStations;
@@ -261,7 +261,7 @@
 		[targetViewController setSouthbound:[self southbound]];
 		
 		// add Map button, need to have ll coordinates set in parent view controller
-		CustomUIBarButtonItem *temporaryBarButtonItem = [[CustomUIBarButtonItem alloc] 
+		MapBarButtonItem *temporaryBarButtonItem = [[MapBarButtonItem alloc] 
 																										 initWithTitle:@"Map" 
 																										 style:UIBarButtonItemStylePlain 
 																										 target:self 
@@ -280,7 +280,7 @@
 
 - (void) mapButtonClicked:(id)sender {  
 	
-	CustomUIBarButtonItem *button = (CustomUIBarButtonItem *)sender;
+	MapBarButtonItem *button = (MapBarButtonItem *)sender;
 	NSLog(@"sender locationLat %@ locationLng %@ stationLat %@ stationLng %@", button.locationLat, button.locationLat, button.stationLat, button.stationLng);
 	mapURL = [[NSString alloc] initWithFormat:@"http://maps.google.com/maps?saddr=%@,%@&daddr=%@,%@", button.locationLat, button.locationLng, button.stationLat, button.stationLng]; 
 								

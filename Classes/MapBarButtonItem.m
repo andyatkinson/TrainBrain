@@ -1,15 +1,15 @@
 //
-//  CustomUIBarButtonItem.m
+//  MapBarButtonItem.m
 //  TrainBrain
 //
 //  Created by Andy Atkinson on 7/19/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "CustomUIBarButtonItem.h"
+#import "MapBarButtonItem.h"
 
 
-@implementation CustomUIBarButtonItem
+@implementation MapBarButtonItem
 
 @synthesize locationLat, locationLng, stationLat, stationLng;
 

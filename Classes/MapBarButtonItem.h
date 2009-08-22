@@ -1,5 +1,5 @@
 //
-//  CustomUIBarButtonItem.h
+//  MapBarButtonItem.h
 //  TrainBrain
 //
 //  Created by Andy Atkinson on 7/19/09.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 
-@interface CustomUIBarButtonItem : UIBarButtonItem {
+@interface MapBarButtonItem : UIBarButtonItem {
 	NSString *locationLat;
 	NSString *locationLng;
 	NSString *stationLat;

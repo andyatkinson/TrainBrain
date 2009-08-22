@@ -19,10 +19,9 @@
 		A115173D102F962E007CFBF6 /* TimeEntryController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A115173B102F962E007CFBF6 /* TimeEntryController.xib */; };
 		A1151746102F9650007CFBF6 /* ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1151740102F9650007CFBF6 /* ProgressViewController.m */; };
 		A1151747102F9650007CFBF6 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1151741102F9650007CFBF6 /* ProgressViewController.xib */; };
-		A1151750102F96BF007CFBF6 /* CustomUIBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174D102F96BF007CFBF6 /* CustomUIBarButtonItem.m */; };
+		A1151750102F96BF007CFBF6 /* MapBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174D102F96BF007CFBF6 /* MapBarButtonItem.m */; };
 		A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */; };
 		A14FDCB910313164002B9E32 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = A14FDCB810313164002B9E32 /* clock.png */; };
-		A14FDCBB1031316B002B9E32 /* exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = A14FDCBA1031316B002B9E32 /* exclamation.png */; };
 		A169E495102F91E500A65E05 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E494102F91E500A65E05 /* CustomCell.m */; };
 		A169E4B0102F928E00A65E05 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4A5102F928E00A65E05 /* NSObject+SBJSON.m */; };
 		A169E4B1102F928E00A65E05 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4A7102F928E00A65E05 /* NSString+SBJSON.m */; };
@@ -35,7 +34,6 @@
 		A16A8BCB1038F93C001DF0EF /* trainbrain_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A16A8BCA1038F93C001DF0EF /* trainbrain_icon.png */; };
 		A1D9AA8E103C50CC006B3744 /* departures_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D9AA8D103C50CC006B3744 /* departures_bg.png */; };
 		A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */; };
-		A1F9E79E103B6F31004BD52D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A1F9E79D103B6F31004BD52D /* Default.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,12 +56,11 @@
 		A115173F102F9650007CFBF6 /* ProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressViewController.h; sourceTree = "<group>"; };
 		A1151740102F9650007CFBF6 /* ProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressViewController.m; sourceTree = "<group>"; };
 		A1151741102F9650007CFBF6 /* ProgressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
-		A115174C102F96BF007CFBF6 /* CustomUIBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomUIBarButtonItem.h; sourceTree = "<group>"; };
-		A115174D102F96BF007CFBF6 /* CustomUIBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomUIBarButtonItem.m; sourceTree = "<group>"; };
+		A115174C102F96BF007CFBF6 /* MapBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapBarButtonItem.h; sourceTree = "<group>"; };
+		A115174D102F96BF007CFBF6 /* MapBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapBarButtonItem.m; sourceTree = "<group>"; };
 		A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureDetailCell.h; sourceTree = "<group>"; };
 		A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureDetailCell.m; sourceTree = "<group>"; };
 		A14FDCB810313164002B9E32 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
-		A14FDCBA1031316B002B9E32 /* exclamation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exclamation.png; sourceTree = "<group>"; };
 		A169E493102F91C600A65E05 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		A169E494102F91E500A65E05 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		A169E4A3102F928E00A65E05 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
@@ -84,7 +81,6 @@
 		A16A8BCA1038F93C001DF0EF /* trainbrain_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = trainbrain_icon.png; sourceTree = "<group>"; };
 		A1D9AA8D103C50CC006B3744 /* departures_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = departures_bg.png; sourceTree = "<group>"; };
 		A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureDetailCell.xib; sourceTree = "<group>"; };
-		A1F9E79D103B6F31004BD52D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,8 +101,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				A115174C102F96BF007CFBF6 /* CustomUIBarButtonItem.h */,
-				A115174D102F96BF007CFBF6 /* CustomUIBarButtonItem.m */,
+				A115174C102F96BF007CFBF6 /* MapBarButtonItem.h */,
+				A115174D102F96BF007CFBF6 /* MapBarButtonItem.m */,
 				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
 				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
 				A115173F102F9650007CFBF6 /* ProgressViewController.h */,
@@ -159,9 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				A1D9AA8D103C50CC006B3744 /* departures_bg.png */,
-				A1F9E79D103B6F31004BD52D /* Default.png */,
 				A16A8BCA1038F93C001DF0EF /* trainbrain_icon.png */,
-				A14FDCBA1031316B002B9E32 /* exclamation.png */,
 				A14FDCB810313164002B9E32 /* clock.png */,
 				A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */,
 				A169E4DC102F934300A65E05 /* Default.png */,
@@ -259,9 +253,7 @@
 				A1151747102F9650007CFBF6 /* ProgressViewController.xib in Resources */,
 				A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */,
 				A14FDCB910313164002B9E32 /* clock.png in Resources */,
-				A14FDCBB1031316B002B9E32 /* exclamation.png in Resources */,
 				A16A8BCB1038F93C001DF0EF /* trainbrain_icon.png in Resources */,
-				A1F9E79E103B6F31004BD52D /* Default.png in Resources */,
 				A1D9AA8E103C50CC006B3744 /* departures_bg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,7 +277,7 @@
 				A169E4B5102F928E00A65E05 /* SBJsonWriter.m in Sources */,
 				A115173C102F962E007CFBF6 /* TimeEntryController.m in Sources */,
 				A1151746102F9650007CFBF6 /* ProgressViewController.m in Sources */,
-				A1151750102F96BF007CFBF6 /* CustomUIBarButtonItem.m in Sources */,
+				A1151750102F96BF007CFBF6 /* MapBarButtonItem.m in Sources */,
 				A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
