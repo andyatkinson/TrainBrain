@@ -48,7 +48,9 @@
 						<bool key="IBUIOpaque">NO</bool>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
+						<bool key="IBUIBounces">NO</bool>
 						<bool key="IBUIShowsHorizontalScrollIndicator">NO</bool>
+						<int key="IBUIIndicatorStyle">1</int>
 						<bool key="IBUIBouncesZoom">NO</bool>
 						<int key="IBUISeparatorStyle">1</int>
 						<int key="IBUISectionIndexMinimumDisplayRowCount">0</int>

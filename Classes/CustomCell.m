@@ -23,7 +23,7 @@
 			[myContentView addSubview:self.titleLabel];
 			[self.titleLabel release];
 			
-			self.distanceLabel = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor grayColor] fontSize:12.0 bold:NO];
+			self.distanceLabel = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor grayColor] fontSize:14.0 bold:NO];
 			self.distanceLabel.textAlignment = UITextAlignmentLeft;
 			[myContentView addSubview:self.distanceLabel];
 			[self.distanceLabel release];
@@ -50,7 +50,7 @@
 		frame = CGRectMake(boundsX + 10, 4, 280, 24);
 		self.titleLabel.frame = frame;
 		
-		frame = CGRectMake(boundsX + 10, 28, 280, 14);
+		frame = CGRectMake(boundsX + 10, 20, 280, 24);
 		self.distanceLabel.frame = frame;
 	}
 }
@@ -64,7 +64,7 @@
 	}
 	
 	UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-	newLabel.backgroundColor = [UIColor whiteColor];
+	newLabel.backgroundColor = [UIColor clearColor];
 	newLabel.opaque = YES;
 	newLabel.textColor = primaryColor;
 	newLabel.highlightedTextColor = selectedColor;
