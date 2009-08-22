@@ -23,7 +23,7 @@
 			[myContentView addSubview:self.titleLabel];
 			[self.titleLabel release];
 			
-			self.distanceLabel = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor grayColor] fontSize:10.0 bold:NO];
+			self.distanceLabel = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor grayColor] fontSize:12.0 bold:NO];
 			self.distanceLabel.textAlignment = UITextAlignmentLeft;
 			[myContentView addSubview:self.distanceLabel];
 			[self.distanceLabel release];
@@ -75,7 +75,7 @@
 
 
 - (void)dealloc {
-    [super dealloc];
+	[super dealloc];
 	[titleLabel dealloc];
 	[distanceLabel dealloc];
 }

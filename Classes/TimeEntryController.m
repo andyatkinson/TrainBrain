@@ -156,7 +156,8 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	
 	// IMPORTANT: reloads table view cell data
 	[timeEntriesTableView reloadData];
-	upcomingDeparturesLabel.text = @"Upcoming Departures";
+	NSString *direction = (southbound == 1 ? @"Southbound" : @"Northbound");
+	upcomingDeparturesLabel.text = [[NSString alloc] initWithFormat:@"Upcoming %@ Departures", direction];
 	[progressViewController.view	removeFromSuperview];
 	
 	if([entries count] > 0) {
