@@ -37,9 +37,9 @@
 	};
 	28C286E00D94DF7D0034E888 /* RootViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1086, 4618}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1086, 4326}}";
 			sepNavSelRange = "{10824, 0}";
-			sepNavVisRange = "{10070, 1503}";
+			sepNavVisRange = "{10464, 955}";
 			sepNavWindowFrame = "{{31, 307}, {977, 671}}";
 		};
 	};
@@ -367,7 +367,7 @@
 	};
 	A1151740102F9650007CFBF6 /* ProgressViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {979, 672}}";
+			sepNavIntBoundsRect = "{{0, 0}, {979, 630}}";
 			sepNavSelRange = "{188, 0}";
 			sepNavVisRange = "{0, 695}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
@@ -382,14 +382,14 @@
 	};
 	A115174D102F96BF007CFBF6 /* MapBarButtonItem.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {979, 490}}";
+			sepNavIntBoundsRect = "{{0, 0}, {979, 544}}";
 			sepNavSelRange = "{211, 0}";
-			sepNavVisRange = "{0, 491}";
+			sepNavVisRange = "{0, 417}";
 		};
 	};
 	A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1091, 426}}";
+			sepNavIntBoundsRect = "{{0, 0}, {979, 416}}";
 			sepNavSelRange = "{600, 0}";
 			sepNavVisRange = "{0, 607}";
 		};
@@ -1009,6 +1009,13 @@
 			sepNavSelRange = "{0, 0}";
 			sepNavVisRange = "{0, 517}";
 		};
+	};
+	A169E4DC102F934300A65E05 /* Default.png */ = {
+		isa = PBXFileReference;
+		lastKnownFileType = image.png;
+		name = Default.png;
+		path = /Users/andy/Projects/objectivec/TrainBrain/Default.png;
+		sourceTree = "<absolute>";
 	};
 	A169E4E7102F946100A65E05 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
