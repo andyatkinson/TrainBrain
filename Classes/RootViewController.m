@@ -76,8 +76,9 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+	[progressViewController.view	removeFromSuperview];
 	NSLog(@"Connection failed: %@", [error description]);
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error fetching train stations.\n\n Try tapping the refresh button." 
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
 																									message:nil 
 																								 delegate:nil 
 																				cancelButtonTitle:@"OK" 
