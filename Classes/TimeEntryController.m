@@ -128,9 +128,11 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 		NSDate *stringTime = [NSDate dateWithNaturalLanguageString:entryTime];
 		NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
 		
-		int minutesRemaining = 61;
+		int minutesRemaining = 0;
 		if([hour intValue] == (int)nowHour && [minute intValue] > nowMinute) {
 			minutesRemaining = [minute intValue] - (int)nowMinute;
+		} else if([hour intValue] > (int)nowHour) {
+			minutesRemaining = (60 - (int)nowMinute) + [minute intValue];
 		}
 		NSString *minutesRemainingString = [NSString stringWithFormat:@"%d", minutesRemaining];
 		
@@ -143,8 +145,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	}
 	
 	[timeEntriesTableView reloadData];
-	NSString *direction = (southbound == 1 ? @"Southbound" : @"Northbound");
-	upcomingDeparturesLabel.text = [[NSString alloc] initWithFormat:@"Upcoming %@ Departures", direction];
+	upcomingDeparturesLabel.text = @"Upcoming Departures";
 	[progressViewController.view	removeFromSuperview];
 	
 	if([entries count] > 0) {
@@ -163,37 +164,19 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 			}
 		}
 		
-		// more than hour out, set label, else show minutes countdown
-		if(nextDepartureHour == nowHour && nextDepartureMinute > nowMinute) {
+		// more than hour out, set label, else show minutes countdown, get the departure direction
+		NSString *direction = (southbound == 1 ? @"Southbound" : @"Northbound");
+		if(nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute) {
 			int minutesRemaining = nextDepartureMinute - nowMinute;
-				
-			if(0 < minutesRemaining < 60) {
-				if(minutesRemaining <= 5) {
-					bigTime.textColor = [UIColor redColor];
-				} else {
-					bigTime.textColor = [UIColor whiteColor];
-				}
-				
-				bigTimeHeaderText.text = @"Minutes Until Next Departure";
-				bigTime.text = [[NSString alloc] initWithFormat:@"%d", minutesRemaining];
-
-			}
-		} else { // more than 60 minutes out hour
-			bigTimeHeaderText.text = @"Next Train Departs At";
-			
-			NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
-			[timeFormatter setDateStyle:NSDateFormatterNoStyle];
-			[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
-			
-			NSString *departureTime = @"";
-			departureTime = [NSString stringWithFormat:@"%d:%d", nextDepartureHour, nextDepartureMinute];
-			
-			NSDate *stringTime = [NSDate dateWithNaturalLanguageString:departureTime];
-			
-			NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
 			bigTime.textColor = [UIColor whiteColor];
-			bigTime.font = [UIFont systemFontOfSize:60];
-			bigTime.text = formattedDateStringTime;
+			bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next %@ Departure In", direction];
+			bigTime.text = [[NSString alloc] initWithFormat:@"%d min", minutesRemaining];
+			
+		} else if(nextDepartureHour > nowHour) { // departure in the next hour
+			int minutesRemaining = (60 - nowMinute) + nextDepartureMinute;
+			bigTime.textColor = [UIColor whiteColor];
+			bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next %@ Departure In", direction];
+			bigTime.text = [[NSString alloc] initWithFormat:@"%d min", minutesRemaining];
 		}
 		
 		
@@ -250,14 +233,10 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 			[cell setBackgroundColor:[UIColor whiteColor]];
 	
 			minutes = [[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"minutesRemaining"] intValue];
-			if(minutes < 60) {
-				if(minutes < 6) {
-					[cell setBackgroundColor:[UIColor redColor]];
-				}
-				[[cell timeRemaining] setText:[[NSString alloc] initWithFormat:@"%d min", minutes]];
-			} else {
-				[[cell timeRemaining] setText:@""];
+			if(minutes < 6) {
+				[cell setBackgroundColor:[UIColor orangeColor]];
 			}
+			[[cell timeRemaining] setText:[[NSString alloc] initWithFormat:@"%d min", minutes]];
 		}
 		return cell;
 
