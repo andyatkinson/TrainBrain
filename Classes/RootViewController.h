@@ -2,7 +2,7 @@
 //  RootViewController.h
 //  train brain
 //
-//  Created by Andy Atkinson on 6/22/09.
+//  Created by Andy Atkinson on 8/22/09.
 //  Copyright Andy Atkinson http://webandy.com 2009. All rights reserved.
 //
 

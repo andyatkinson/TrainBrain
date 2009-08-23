@@ -2,7 +2,7 @@
 //  RootViewController.m
 //  train brain
 //
-//  Created by Andy Atkinson on 6/22/09.
+//  Created by Andy Atkinson on 8/22/09.
 //  Copyright Andy Atkinson http://webandy.com 2009. All rights reserved.
 //
 
@@ -20,10 +20,6 @@
 
 @synthesize railStations, views, responseData, locationManager, startingPoint, progressViewController, 
 				stationsTableView, southbound, directionControl, mapURL;
-
-- (void)awakeFromNib {
-	//moved the viewcontroller creation stuff from here to viewDidLoad, not sure if that is good or bad, TODO: understand difference
-}
 
 - (void) loadRailStations {
 	ProgressViewController *pvc = [[ProgressViewController alloc] init];
@@ -47,10 +43,8 @@
 	[super viewDidLoad];
 	
 	directionControl.segmentedControlStyle = UISegmentedControlStyleBar;
-	directionControl.tintColor = [UIColor grayColor];
-	
-	// TODO why doesn't this work from IB? Have to set it here explicityly otherwise default background is displayed.
-	stationsTableView.backgroundColor = [UIColor clearColor];
+	directionControl.tintColor = [UIColor darkGrayColor];
+	directionControl.backgroundColor = [UIColor clearColor];
 	
 	[self loadRailStations];
 	
@@ -77,7 +71,6 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[progressViewController.view	removeFromSuperview];
-	NSLog(@"Connection failed: %@", [error description]);
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
 																									message:nil 
 																								 delegate:nil 
@@ -91,18 +84,12 @@
 	[connection release];
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	NSLog(@"Got response string %@", responseString);
-	
 	SBJSON *parser = [[SBJSON alloc] init];
 	// parse the JSON response into an object
-	// Here we're using NSArray since we're parsing an array of JSON status objects
 	NSArray *stations = [parser objectWithString:responseString error:nil];			
 	[parser release];
 	[responseString release];
-	
-	// keep track of views in this array
 	views = [[NSMutableArray alloc] init];
-	
 	int count = [stations count];
 	if(count > 0) {
 		for(int i=0; i < count; i++) {
@@ -167,8 +154,6 @@
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	[progressViewController.view	removeFromSuperview];
-	NSString *errorType = (error.code == kCLErrorDenied) ? @"Access Denied" : @"Unknown Error";
-	NSLog(@"error %@", errorType);
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"train brain requires location data to display train stations sorted by distance." 
 																									message:nil 
 																								 delegate:nil 
@@ -235,7 +220,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	// Navigation logic may go here -- for example, create and push another view controller.	
-	UIViewController *targetViewController = [[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
+	TimeEntryController *targetViewController = (TimeEntryController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
 	
 	if([self southbound] == 0 && [[targetViewController railStationName] isEqualToString:@"Warehouse District/Hennepin Avenue Station"]) {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This station does not have Northbound departures.\n\nSelect Southbound or choose another station." 
@@ -257,7 +242,7 @@
 		[self viewWillAppear:TRUE];
   } else {
 		
-		// trying a crazy hack to read the value of RootViewControll.southbound and set it on TimeEntryController.southbound
+		// trying a crazy hack to read the value of RootViewController.southbound and set it on TimeEntryController.southbound
 		// maybe need a Singleton pattern here but couldn't figure it out TODO FIXME
 		[targetViewController setSouthbound:[self southbound]];
 		
@@ -279,10 +264,9 @@
 	}
 }
 
-- (void) mapButtonClicked:(id)sender {  
-	
+- (void) mapButtonClicked:(id)sender {	
 	MapBarButtonItem *button = (MapBarButtonItem *)sender;
-	NSLog(@"sender locationLat %@ locationLng %@ stationLat %@ stationLng %@", button.locationLat, button.locationLat, button.stationLat, button.stationLng);
+	//NSLog(@"sender locationLat %@ locationLng %@ stationLat %@ stationLng %@", button.locationLat, button.locationLat, button.stationLat, button.stationLng);
 	mapURL = [[NSString alloc] initWithFormat:@"http://maps.google.com/maps?saddr=%@,%@&daddr=%@,%@", button.locationLat, button.locationLng, button.stationLat, button.stationLng]; 
 								
 	// open the Maps application with a specific link
@@ -302,7 +286,7 @@
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:mapURL]];
 	}  
 	else {  
-		// Don't launch  
+		// no-op Don't launch Maps app, stay within train brain
 	}  
 } 
 
@@ -320,7 +304,6 @@
 	[stationsTableView release];
 	[railStations release];
 	[responseData release];
-	[southbound release];
 	[super dealloc];
 }
 

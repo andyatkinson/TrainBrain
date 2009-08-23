@@ -8,7 +8,6 @@
 
 #import "ProgressViewController.h"
 
-
 @implementation ProgressViewController
 
 @synthesize activityIndicator, loadingLabel, message;

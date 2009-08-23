@@ -2,8 +2,8 @@
 //  TimeEntryController.m
 //  train brain
 //
-//  Created by Andy Atkinson on 6/22/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Created by Andy Atkinson on 8/22/09.
+//  Copyright 2009 Andy Atkinson http://webandy.com. All rights reserved.
 //
 
 #import "TimeEntryController.h"
@@ -42,35 +42,22 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	NSCalendar *calendar = [NSCalendar currentCalendar];
 	NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
 	int *hour = (int *)[components hour];
-	NSLog(@"hour is %d", hour);
-	
 	components = [calendar components:NSMinuteCalendarUnit fromDate:now];
 	int *minute = (int *)[components minute];
-	NSLog(@"minute is %d", minute);
 	
 	// TODO get the UISegmentedControl value for setting north/south
 	// Setting it from one view controller to another which is not a good solution	
-	NSLog(@"got southbound true or false from parent: %d", [self southbound]);
-	
 	NSString *stationTimeEntries = [NSString stringWithFormat:@"http://api.trainbrainapp.com/rail_stations/%@/time_entries.json?t=%d:%d&s=%d", 
 																	[self railStationId],
 																	hour,
 																	minute,
 																	[self southbound]];
-	NSLog(@"making a request to URL: %@", stationTimeEntries);
 	
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:stationTimeEntries]];
 	
 	timeEntryRows = nil;
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 	// kick off the request, the view is reloaded from the request handler
-}
-
-// create a grouped style
-- (id)initWithStyle:(UITableViewStyle)style {
-	if (self = [super initWithStyle:UITableViewStyleGrouped]) {
-	}
-	return self;
+	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -95,17 +82,22 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	NSLog(@"Connection failed: %@", [error description]);  // remove me, consider adding label to UI
+	[progressViewController.view	removeFromSuperview];
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
+																									message:nil 
+																								 delegate:nil 
+																				cancelButtonTitle:@"OK" 
+																				otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	[connection release];
 	
-	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	//[responseData release];  TODO should release here? don't think so
-	
-	SBJSON *parser = [[SBJSON alloc] init];
+	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];	
 	// parse the JSON response into an object
+	SBJSON *parser = [[SBJSON alloc] init];
 	NSArray *entries = [parser objectWithString:responseString error:nil];
 	[parser release];
 	[responseString release];
@@ -117,10 +109,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	int nowHour = (int)[components hour];
 	components = [calendar components:NSMinuteCalendarUnit fromDate:now];
 	int nowMinute = (int)[components minute];
-	NSLog(@"nowHour %d nowMinute %d", nowHour, nowMinute);
-
 	timeEntryRows = [[NSMutableArray alloc] init];
-	
 	int count = [entries count];
 	for(int i=0; i < count; i++) {
 		NSMutableDictionary *entry = [entries objectAtIndex:i];
@@ -134,15 +123,12 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 		[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
 		
 		NSString *entryTime = [NSString stringWithFormat:@"%@:%@", hour, minute];
-		NSLog(@"Entry time %@", entryTime);		
 		NSDate *stringTime = [NSDate dateWithNaturalLanguageString:entryTime];
 		NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
-		NSLog(@"formattedDateStringTime: %@", formattedDateStringTime);
 		
 		int minutesRemaining = 61;
 		if([hour intValue] == (int)nowHour && [minute intValue] > nowMinute) {
 			minutesRemaining = [minute intValue] - (int)nowMinute;
-			NSLog(@"Logging minutes remaining %d", minutesRemaining);
 		}
 		NSString *minutesRemainingString = [NSString stringWithFormat:@"%d", minutesRemaining];
 		
@@ -170,7 +156,6 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 			nextDeparture = [entries objectAtIndex:i];
 			nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
 			nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
-			NSLog(@"nextDepartureHour %d and nextDepartureMinute %d nowHour %d and nowMinute %d", nextDepartureHour, nextDepartureMinute, nowHour, nowMinute);
 			if(nextDepartureHour > nowHour || (nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute)) {
 				break; // break out of loop when right time is fetched
 			}
@@ -192,7 +177,6 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 
 			}
 		} else { // more than 60 minutes out hour
-			NSLog(@"DEBUG: No upcoming departures in next hour.");
 			bigTimeHeaderText.text = @"Next Train Departs At";
 			
 			NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
@@ -204,7 +188,6 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 			
 			NSDate *stringTime = [NSDate dateWithNaturalLanguageString:departureTime];
 			NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
-			NSLog(@"formattedDateStringTime: %@", formattedDateStringTime);
 			bigTime.textColor = [UIColor whiteColor];
 			bigTime.font = [UIFont systemFontOfSize:60];
 			bigTime.text = formattedDateStringTime;
@@ -231,10 +214,8 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	// return nil since label is static
 	return nil;
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return [timeEntryRows count];
