@@ -1,9 +1,9 @@
 //
 //  main.m
-//  TrainBrain
+//  train brain
 //
 //  Created by Andy Atkinson on 8/9/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Copyright 2009 Andy Atkinson http://webandy.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

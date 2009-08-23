@@ -123,6 +123,8 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 		[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
 		
 		NSString *entryTime = [NSString stringWithFormat:@"%@:%@", hour, minute];
+		
+		// method not officially part of iPhone SDK NSDate class, ignore warning
 		NSDate *stringTime = [NSDate dateWithNaturalLanguageString:entryTime];
 		NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
 		
@@ -140,7 +142,6 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 															nil]];
 	}
 	
-	// IMPORTANT: reloads table view cell data
 	[timeEntriesTableView reloadData];
 	NSString *direction = (southbound == 1 ? @"Southbound" : @"Northbound");
 	upcomingDeparturesLabel.text = [[NSString alloc] initWithFormat:@"Upcoming %@ Departures", direction];
@@ -156,7 +157,8 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 			nextDeparture = [entries objectAtIndex:i];
 			nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
 			nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
-			if(nextDepartureHour > nowHour || (nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute)) {
+			//NSLog(@"nextDepartureHour %d and nextDepartureMinute %d nowHour %d nowMinute %d", nextDepartureHour, nextDepartureMinute, nowHour, nowMinute);
+			if(nextDepartureHour > nowHour || (nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute) || (nowHour == 23 && nextDepartureHour == 0)) {
 				break; // break out of loop when right time is fetched
 			}
 		}
@@ -187,12 +189,15 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 			departureTime = [NSString stringWithFormat:@"%d:%d", nextDepartureHour, nextDepartureMinute];
 			
 			NSDate *stringTime = [NSDate dateWithNaturalLanguageString:departureTime];
+			
 			NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
 			bigTime.textColor = [UIColor whiteColor];
 			bigTime.font = [UIFont systemFontOfSize:60];
 			bigTime.text = formattedDateStringTime;
 		}
-	} else { // ERROR handling
+		
+		
+	} else { // ERROR handling, for some reason there were 0 or less departure times returned from the server
 		bigTime.text = @"";
 		bigTimeHeaderText.text = @"";
 		upcomingDeparturesLabel.text = @"";
@@ -276,12 +281,9 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	[responseData release];
 	[railStationId release];
 	[timeEntriesTableView release];
-	[responseData release];
 	[railStationId release];
 	[railStationName release];
-	[timeEntryRows release];
 	[progressViewController release];
-	[southbound release];
 	[bigTimeHeaderText release];
 	[bigTime release];
 	[upcomingDeparturesLabel release];

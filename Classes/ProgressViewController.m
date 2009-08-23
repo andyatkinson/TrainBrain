@@ -1,9 +1,9 @@
 //
 //  ProgressViewController.m
-//  TrainBrain
+//  train brain
 //
 //  Created by Andy Atkinson on 7/1/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright 2009 Andy Atkinson http://webandy.com. All rights reserved.
 //
 
 #import "ProgressViewController.h"
@@ -12,8 +12,6 @@
 
 @synthesize activityIndicator, loadingLabel, message;
 
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {	
   [super viewDidLoad];
 	[self.loadingLabel setText:message];

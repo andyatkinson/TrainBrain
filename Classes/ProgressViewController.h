@@ -1,9 +1,9 @@
 //
 //  ProgressViewController.h
-//  TrainBrain
+//  train brain
 //
 //  Created by Andy Atkinson on 7/1/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright 2009 Andy Atkinson http://webandy.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

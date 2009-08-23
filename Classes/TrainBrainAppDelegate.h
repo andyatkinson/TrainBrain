@@ -1,13 +1,12 @@
 //
 //  TrainBrainAppDelegate.h
-//  TrainBrain
+//  train brain
 //
 //  Created by Andy Atkinson on 6/22/09.
-//  Copyright __MyCompanyName__ 2009. All rights reserved.
+//  Copyright 2009 Andy Atkinson http://webandy.com. All rights reserved.
 //
 
 @interface TrainBrainAppDelegate : NSObject <UIApplicationDelegate> {
-
     UIWindow *window;
     UINavigationController *navigationController;
 }

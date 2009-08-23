@@ -1,13 +1,12 @@
 //
 //  CustomCell.h
-//  TrainBrain
+//  train brain
 //
 //  Created by Andy Atkinson on 6/30/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright 2009 Andy Atkinson http://webandy.com. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
-
 
 @interface CustomCell : UITableViewCell {
 	UILabel *titleLabel;

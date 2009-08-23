@@ -3,7 +3,7 @@
 //  TrainBrain
 //
 //  Created by Andy Atkinson on 7/12/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright 2009 Andy Atkinson http://webandy.com. All rights reserved.
 //
 
 #import "DepartureDetailCell.h"
@@ -20,20 +20,13 @@
     return self;
 }
 
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
 
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
-
 - (void)dealloc {
-    [super dealloc];
-	[departureTime dealloc];
-	[departureCost dealloc];
-	[timeRemaining dealloc];
+	[super dealloc];
 }
 
 
