@@ -17,7 +17,7 @@
 @implementation TimeEntryController
 
 @synthesize responseData, railStationId, railStationName, timeEntryRows, progressViewController, southbound, timeEntriesTableView, 
-bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
+bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 
 - (void)updateSouthbound:(NSInteger)newVal {
 	self.southbound = newVal;
@@ -28,7 +28,6 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 }
 
 - (void) loadTimeEntries {
-	
 	ProgressViewController *pvc = [[ProgressViewController alloc] init];
 	pvc.message = [NSString stringWithFormat:@"Loading Upcoming Departures..."];
 	self.progressViewController = pvc;
@@ -68,7 +67,8 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	timeEntriesTableView.backgroundColor = [UIColor clearColor];	
+	timeEntriesTableView.backgroundColor = [UIColor clearColor];
+	
 	// set the title of the main navigation
 	self.title = [self railStationName];
 }
@@ -145,7 +145,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	}
 	
 	[timeEntriesTableView reloadData];
-	upcomingDeparturesLabel.text = @"Upcoming Departures";
+	upcomingDeparturesLabel.text = @"Other Departures";
 	[progressViewController.view	removeFromSuperview];
 	
 	if([entries count] > 0) {
@@ -163,22 +163,22 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 				break; // break out of loop when right time is fetched
 			}
 		}
-		
-		// more than hour out, set label, else show minutes countdown, get the departure direction
+
 		NSString *direction = (southbound == 1 ? @"Southbound" : @"Northbound");
+		int minutesRemaining = 0;
+		// more than hour out, set label, else show minutes countdown
 		if(nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute) {
-			int minutesRemaining = nextDepartureMinute - nowMinute;
+			minutesRemaining = nextDepartureMinute - nowMinute;
 			bigTime.textColor = [UIColor whiteColor];
-			bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next %@ Departure In", direction];
+			bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next %@ Departure", direction];
 			bigTime.text = [[NSString alloc] initWithFormat:@"%d min", minutesRemaining];
 			
 		} else if(nextDepartureHour > nowHour) { // departure in the next hour
-			int minutesRemaining = (60 - nowMinute) + nextDepartureMinute;
+			minutesRemaining = (60 - nowMinute) + nextDepartureMinute;
 			bigTime.textColor = [UIColor whiteColor];
-			bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next %@ Departure In", direction];
+			bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next %@ Departure", direction];
 			bigTime.text = [[NSString alloc] initWithFormat:@"%d min", minutesRemaining];
 		}
-		
 		
 	} else { // ERROR handling, for some reason there were 0 or less departure times returned from the server
 		bigTime.text = @"";
@@ -234,7 +234,10 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel;
 	
 			minutes = [[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"minutesRemaining"] intValue];
 			if(minutes < 6) {
-				[cell setBackgroundColor:[UIColor orangeColor]];
+				[cell	departureIcon].image = [UIImage imageNamed:@"exclamation.png"];
+				[cell setBackgroundColor:[UIColor yellowColor]];
+			} else {
+				[cell	departureIcon].image = [UIImage imageNamed:@"clock.png"];
 			}
 			[[cell timeRemaining] setText:[[NSString alloc] initWithFormat:@"%d min", minutes]];
 		}

@@ -21,6 +21,7 @@
 	IBOutlet UILabel *bigTimeHeaderText;
 	IBOutlet UILabel *bigTime;
 	IBOutlet UILabel *upcomingDeparturesLabel;
+	IBOutlet UIImageView *nextDepartureImage;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *timeEntriesTableView;
@@ -33,6 +34,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *bigTime;
 @property (nonatomic, retain) IBOutlet UILabel *bigTimeHeaderText;
 @property (nonatomic, retain)	IBOutlet UILabel *upcomingDeparturesLabel;
+@property (nonatomic, retain) IBOutlet UIImageView *nextDepartureImage;
 
 -(void)updateSouthbound:(NSInteger) newValue;
 -(IBAction)refreshTimes:(id)sender;

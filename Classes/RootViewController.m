@@ -175,7 +175,6 @@
 	if (selection) {
 		[stationsTableView deselectRowAtIndexPath:selection animated:YES];
 	}
-	[stationsTableView reloadData];
 }
 
 - (void)viewDidUnload {

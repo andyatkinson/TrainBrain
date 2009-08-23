@@ -10,6 +10,7 @@
 
 
 @interface DepartureDetailCell : UITableViewCell {
+	IBOutlet UIImageView *departureIcon;
 	IBOutlet UILabel *departureTime;
 	IBOutlet UILabel *departureCost;
 	IBOutlet UILabel *timeRemaining;
@@ -20,5 +21,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *departureCost;
 @property (nonatomic, retain) IBOutlet UILabel *timeRemaining;
 @property (nonatomic, retain) IBOutlet UILabel *type;
+@property (nonatomic, retain) IBOutlet UIImageView *departureIcon;
 
 @end
