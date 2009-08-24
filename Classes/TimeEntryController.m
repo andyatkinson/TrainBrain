@@ -46,7 +46,8 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 	
 	// TODO get the UISegmentedControl value for setting north/south
 	// Setting it from one view controller to another which is not a good solution	
-	NSString *stationTimeEntries = [NSString stringWithFormat:@"http://api.trainbrainapp.com/rail_stations/%@/time_entries.json?t=%d:%d&s=%d", 
+	// http://api.trainbrainapp.com
+	NSString *stationTimeEntries = [NSString stringWithFormat:@"http://localhost:3000/rail_stations/%@/time_entries.json?t=%d:%d&s=%d", 
 																	[self railStationId],
 																	hour,
 																	minute,
@@ -136,7 +137,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 			minutesRemaining = (120 - (int)nowMinute) + [minute intValue];
 		} else if([hour intValue] == (int)nowHour && [minute intValue] > nowMinute) { // happy case, current hour minute is greater
 			minutesRemaining = [minute intValue] - (int)nowMinute;
-		} else if([hour intValue] > (int)nowHour) { // in the next hour, this works except falls down for hour 23 and hour 0 case
+		} else if([hour intValue] == ((int)nowHour + 1)) { // in the next hour, this works except falls down for hour 23 and hour 0 case
 			minutesRemaining = (60 - (int)nowMinute) + [minute intValue];
 		}
 		NSString *minutesRemainingString = [NSString stringWithFormat:@"%d", minutesRemaining];
@@ -185,12 +186,18 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 			// more than hour out, set label, else show minutes countdown
 			minutesRemaining = nextDepartureMinute - nowMinute;
 			
-		} else if(nextDepartureHour > nowHour) { // departure in the next hour
+		} else if(nextDepartureHour > (nowHour+1)) { // departure in the next hour
 			minutesRemaining = (60 - nowMinute) + nextDepartureMinute;
 		}
+		
 		bigTime.textColor = [UIColor whiteColor];
 		bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next %@ Departure", direction];
-		bigTime.text = [[NSString alloc] initWithFormat:@"%d min", minutesRemaining];
+		if(minutesRemaining == 0) {
+			// ERROR case!
+			bigTime.text = @"";
+		} else {
+			bigTime.text = [[NSString alloc] initWithFormat:@"%d min", minutesRemaining];
+		}
 		
 	} else { // ERROR handling, for some reason there were 0 or less departure times returned from the server
 		bigTime.text = @"";
