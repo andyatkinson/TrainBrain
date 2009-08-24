@@ -23,7 +23,7 @@
 
 - (void) loadRailStations {
 	ProgressViewController *pvc = [[ProgressViewController alloc] init];
-	pvc.message = @"Determining Location...";
+	pvc.message = @"Loading Train Stations...";
 	self.progressViewController = pvc;
 	[self.view addSubview:pvc.view];
 	
@@ -133,15 +133,6 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 	if(startingPoint == nil)
 		self.startingPoint = newLocation;
-	
-	// update the progress view message
-	[progressViewController.view	removeFromSuperview];	
-	ProgressViewController *pvc = [[ProgressViewController alloc] init];
-	pvc.message = @"Loading Train Stations...";
-	self.progressViewController = pvc;
-	[self.view addSubview:pvc.view];
-
-
 	
 	NSString *locationString = [[NSString alloc] initWithFormat:@"http://api.trainbrainapp.com/rail_stations.json?ll=%g,%g", 
 															newLocation.coordinate.latitude, 
