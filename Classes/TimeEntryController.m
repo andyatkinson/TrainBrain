@@ -129,9 +129,14 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 		NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
 		
 		int minutesRemaining = 0;
-		if([hour intValue] == (int)nowHour && [minute intValue] > nowMinute) {
+		// return early if the hour is 23, and the next hour is zero, can't do a simple next check on that
+		if((int)nowHour == 23 && [hour intValue] == 0) {
+			minutesRemaining = (60 - (int)nowMinute) + [minute intValue];
+		} else if((int)nowHour == 23 && [hour intValue] == 1) { // 2 hours out!
+			minutesRemaining = (120 - (int)nowMinute) + [minute intValue];
+		} else if([hour intValue] == (int)nowHour && [minute intValue] > nowMinute) { // happy case, current hour minute is greater
 			minutesRemaining = [minute intValue] - (int)nowMinute;
-		} else if([hour intValue] > (int)nowHour) {
+		} else if([hour intValue] > (int)nowHour) { // in the next hour, this works except falls down for hour 23 and hour 0 case
 			minutesRemaining = (60 - (int)nowMinute) + [minute intValue];
 		}
 		NSString *minutesRemainingString = [NSString stringWithFormat:@"%d", minutesRemaining];
@@ -166,19 +171,26 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 
 		NSString *direction = (southbound == 1 ? @"Southbound" : @"Northbound");
 		int minutesRemaining = 0;
-		// more than hour out, set label, else show minutes countdown
-		if(nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute) {
+		//bomb out early for 11PM case
+		if(nowHour == 23 && nextDepartureHour == 0) {
+			minutesRemaining = (60 - nowMinute) + nextDepartureMinute;
+
+		} else if(nowHour == 23 && nextDepartureHour == 1) { // try to be user friendly and show remaining minutes for 2 hours out
+			minutesRemaining = (120 - nowMinute) + nextDepartureMinute;
+			
+		} else if(nowHour == 23 && nextDepartureHour == 2) { // 3 hours out!
+			minutesRemaining = (180 - nowMinute) + nextDepartureMinute;
+			
+		} else if(nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute) {
+			// more than hour out, set label, else show minutes countdown
 			minutesRemaining = nextDepartureMinute - nowMinute;
-			bigTime.textColor = [UIColor whiteColor];
-			bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next %@ Departure", direction];
-			bigTime.text = [[NSString alloc] initWithFormat:@"%d min", minutesRemaining];
 			
 		} else if(nextDepartureHour > nowHour) { // departure in the next hour
 			minutesRemaining = (60 - nowMinute) + nextDepartureMinute;
-			bigTime.textColor = [UIColor whiteColor];
-			bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next %@ Departure", direction];
-			bigTime.text = [[NSString alloc] initWithFormat:@"%d min", minutesRemaining];
 		}
+		bigTime.textColor = [UIColor whiteColor];
+		bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next %@ Departure", direction];
+		bigTime.text = [[NSString alloc] initWithFormat:@"%d min", minutesRemaining];
 		
 	} else { // ERROR handling, for some reason there were 0 or less departure times returned from the server
 		bigTime.text = @"";
@@ -230,16 +242,21 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 			[[cell departureTime] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"departureTime"]];
 			[[cell departureCost] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"cost"]];
 			[[cell type] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"type"]];
+			[cell	departureIcon].image = [UIImage imageNamed:@"clock.png"];
 			[cell setBackgroundColor:[UIColor whiteColor]];
-	
-			minutes = [[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"minutesRemaining"] intValue];
-			if(minutes < 6) {
+			
+			minutes = [[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"minutesRemaining"] intValue];			
+			if(minutes > 0 && minutes < 6) { // ensure only set for between 1 and 5 minutes
 				[cell	departureIcon].image = [UIImage imageNamed:@"exclamation.png"];
 				[cell setBackgroundColor:[UIColor yellowColor]];
-			} else {
-				[cell	departureIcon].image = [UIImage imageNamed:@"clock.png"];
 			}
-			[[cell timeRemaining] setText:[[NSString alloc] initWithFormat:@"%d min", minutes]];
+			
+			if(minutes == 0) {
+				// don't show zero in the table cell could be in the past, or calculation could have failed
+				[[cell timeRemaining] setText:@""];
+			} else {
+				[[cell timeRemaining] setText:[[NSString alloc] initWithFormat:@"%d min", minutes]];
+			}
 		}
 		return cell;
 
