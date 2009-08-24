@@ -186,7 +186,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 			// more than hour out, set label, else show minutes countdown
 			minutesRemaining = nextDepartureMinute - nowMinute;
 			
-		} else if(nextDepartureHour > (nowHour+1)) { // departure in the next hour
+		} else if(nextDepartureHour == (nowHour+1)) { // departure in the next hour
 			minutesRemaining = (60 - nowMinute) + nextDepartureMinute;
 		}
 		
