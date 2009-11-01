@@ -19,7 +19,7 @@
 @implementation RootViewController
 
 @synthesize railStations, views, responseData, locationManager, startingPoint, progressViewController, 
-				stationsTableView, southbound, directionControl, mapURL;
+linesTableView, southbound, directionControl, mapURL;
 
 - (void) loadRailStations {
 	ProgressViewController *pvc = [[ProgressViewController alloc] init];
@@ -86,29 +86,30 @@
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	SBJSON *parser = [[SBJSON alloc] init];
 	// parse the JSON response into an object
-	NSArray *stations = [parser objectWithString:responseString error:nil];			
+	NSArray *lines = [parser objectWithString:responseString error:nil];			
 	[parser release];
 	[responseString release];
 	views = [[NSMutableArray alloc] init];
-	int count = [stations count];
+	int count = [lines count];
 	if(count > 0) {
 		for(int i=0; i < count; i++) {
-			NSMutableDictionary *station = [stations objectAtIndex:i];
-			NSString *stationName = [station objectForKey:@"name"];
-			NSString *distance = [station objectForKey:@"distance"];
-			NSString *lat = [station objectForKey:@"lat"];
-			NSString *lng = [station objectForKey:@"lng"];
-			TimeEntryController *timeEntryController = [[TimeEntryController alloc] init];
-			[timeEntryController setRailStationId:[station objectForKey:@"id"]]; // TODO should probably extract an object here
-			[timeEntryController setRailStationName:stationName];
+			NSMutableDictionary *line = [lines objectAtIndex:i];
+			
 			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-												stationName, @"title",
-												timeEntryController, @"controller",
-												distance, @"distance",
-												lat, @"lat",
-												lng, @"lng",
+												line, @"lineName",
 												nil]];
-			[timeEntryController release];
+			
+//			TimeEntryController *timeEntryController = [[TimeEntryController alloc] init];
+//			[timeEntryController setRailStationId:[station objectForKey:@"id"]]; // TODO should probably extract an object here
+//			[timeEntryController setRailStationName:stationName];
+//			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+//												stationName, @"title",
+//												timeEntryController, @"controller",
+//												distance, @"distance",
+//												lat, @"lat",
+//												lng, @"lng",
+//												nil]];
+//			[timeEntryController release];
 		}
 	} else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Stations Found.\n\nPlease try tapping the refresh button." 
@@ -121,9 +122,9 @@
 	}
 	
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
-	[stationsTableView reloadData];
+	[linesTableView reloadData];
 	
-	self.title = @"Train Stations";
+	self.title = @"Choose Line";
 	// remove the modal view, now that the location has been calculated
 	[progressViewController.view	removeFromSuperview];
 }
@@ -134,9 +135,12 @@
 	if(startingPoint == nil)
 		self.startingPoint = newLocation;
 	
-	NSString *locationString = [[NSString alloc] initWithFormat:@"http://api.trainbrainapp.com/rail_stations.json?ll=%g,%g", 
-															newLocation.coordinate.latitude, 
-															newLocation.coordinate.longitude];
+	NSString *newURL = @"http://localhost:3000/lines.json";
+//	NSString *locationString = [[NSString alloc] initWithFormat:@"http://api.trainbrainapp.com/rail_stations.json?ll=%g,%g", 
+//															newLocation.coordinate.latitude, 
+//															newLocation.coordinate.longitude];
+	
+	NSString *locationString = [[NSString alloc] initWithFormat:@"http://localhost:3000/lines.json"];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:locationString]];
 	[locationString release];
 	
@@ -145,7 +149,7 @@
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	[progressViewController.view	removeFromSuperview];
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"train brain requires location data to display train stations sorted by distance." 
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Train Brain requires location data to display train stations sorted by distance." 
 																									message:nil 
 																								 delegate:nil 
 																				cancelButtonTitle:@"OK" 
@@ -162,9 +166,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	// Unselect the selected row if any
-	NSIndexPath*	selection = [stationsTableView indexPathForSelectedRow];
+	NSIndexPath*	selection = [linesTableView indexPathForSelectedRow];
 	if (selection) {
-		[stationsTableView deselectRowAtIndexPath:selection animated:YES];
+		[linesTableView deselectRowAtIndexPath:selection animated:YES];
 	}
 }
 
@@ -190,68 +194,49 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
-    
-	CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];  
-	if (cell == nil) {  
-		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];  
-	}  
-		
-	// Set up the cell...
-	cell.titleLabel.text = [[views objectAtIndex:indexPath.row] objectForKey:@"title"];
-	NSString *distanceString = [NSString stringWithFormat:@"%@", [[views objectAtIndex:indexPath.row] objectForKey:@"distance"]];
-	cell.distanceLabel.text = distanceString;
+   
+	UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+	if (cell == nil) {
+		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+	}
+
+	cell.textLabel.text = [[views objectAtIndex:indexPath.row] objectForKey:@"lineName"];
+	
+//	CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];  
+//	if (cell == nil) {  
+//		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];  
+//	}  
+//		
+//	// Set up the cell...
+//	cell.titleLabel.text = [[views objectAtIndex:indexPath.row] objectForKey:@"lineName"];
+//	NSString *distanceString = [NSString stringWithFormat:@"%@", [[views objectAtIndex:indexPath.row] objectForKey:@"distance"]];
+//	cell.distanceLabel.text = distanceString;
 
 	return cell;
 }
 
-- (void)updateSouthbound:(NSInteger)newVal {
-	self.southbound = newVal;
-} 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	// Navigation logic may go here -- for example, create and push another view controller.	
 	TimeEntryController *targetViewController = (TimeEntryController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
+	// trying a crazy hack to read the value of RootViewController.southbound and set it on TimeEntryController.southbound
+	// maybe need a Singleton pattern here but couldn't figure it out TODO FIXME
+	[targetViewController setSouthbound:[self southbound]];
 	
-	if([self southbound] == 0 && [[targetViewController railStationName] isEqualToString:@"Warehouse District/Hennepin Avenue Station"]) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This station does not have Northbound departures.\n\nSelect Southbound or choose another station." 
-																										message:nil 
-																									 delegate:nil 
-																					cancelButtonTitle:@"OK" 
-																					otherButtonTitles:nil];
-		[alert show];
-		[alert release];
-		[self viewWillAppear:TRUE];
-	} else if([self southbound] == 1 && [[targetViewController railStationName] isEqualToString:@"Mall of America Station"]) {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"This station does not have Southbound departures.\n\nSelect Northbound or choose another station.." 
-																										message:nil 
-																									 delegate:nil 
-																					cancelButtonTitle:@"OK" 
-																					otherButtonTitles:nil];
-		[alert show];
-		[alert release];
-		[self viewWillAppear:TRUE];
-  } else {
-		
-		// trying a crazy hack to read the value of RootViewController.southbound and set it on TimeEntryController.southbound
-		// maybe need a Singleton pattern here but couldn't figure it out TODO FIXME
-		[targetViewController setSouthbound:[self southbound]];
-		
-		// add Map button, need to have ll coordinates set in parent view controller
-		MapBarButtonItem *temporaryBarButtonItem = [[MapBarButtonItem alloc] 
-																										 initWithTitle:@"Map" 
-																										 style:UIBarButtonItemStylePlain 
-																										 target:self 
-																										 action:@selector(mapButtonClicked:)];
-		temporaryBarButtonItem.locationLat = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.latitude];
-		temporaryBarButtonItem.locationLng = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.longitude];
-		temporaryBarButtonItem.stationLat = [[views objectAtIndex: indexPath.row] objectForKey:@"lat"];
-		temporaryBarButtonItem.stationLng = [[views objectAtIndex: indexPath.row] objectForKey:@"lng"];
-		targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
-		[temporaryBarButtonItem release];
-		
-		[[self navigationController] pushViewController:targetViewController animated:YES];
-
-	}
+	// add Map button, need to have ll coordinates set in parent view controller
+	MapBarButtonItem *temporaryBarButtonItem = [[MapBarButtonItem alloc] 
+																							initWithTitle:@"Map" 
+																							style:UIBarButtonItemStylePlain 
+																							target:self 
+																							action:@selector(mapButtonClicked:)];
+	temporaryBarButtonItem.locationLat = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.latitude];
+	temporaryBarButtonItem.locationLng = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.longitude];
+	temporaryBarButtonItem.stationLat = [[views objectAtIndex: indexPath.row] objectForKey:@"lat"];
+	temporaryBarButtonItem.stationLng = [[views objectAtIndex: indexPath.row] objectForKey:@"lng"];
+	targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
+	[temporaryBarButtonItem release];
+	
+	[[self navigationController] pushViewController:targetViewController animated:YES];
+	
 }
 
 - (void) mapButtonClicked:(id)sender {	
@@ -280,18 +265,12 @@
 	}  
 } 
 
-- (IBAction)toggleDirection:(id)sender {
-	UISegmentedControl *segmentedControl = (UISegmentedControl *)sender;
-	NSInteger segment = segmentedControl.selectedSegmentIndex;
-	[self updateSouthbound:segment];
-}
-
 - (void)dealloc {
 	[views release];
 	[locationManager release];
 	[startingPoint release];
 	[progressViewController release];
-	[stationsTableView release];
+	[linesTableView release];
 	[railStations release];
 	[responseData release];
 	[super dealloc];

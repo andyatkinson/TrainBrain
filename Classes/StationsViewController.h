@@ -1,5 +1,5 @@
 //
-//  RootViewController.h
+//  StationsViewController.h
 //  train brain
 //
 //  Created by Andy Atkinson on 8/22/09.
@@ -10,10 +10,10 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CustomCell.h"
 #import "ProgressViewController.h"
+#import "MapViewController.h"
 
-
-@interface RootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate> {
-	IBOutlet UITableView *linesTableView;
+@interface StationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate> {
+	IBOutlet UITableView *stationsTableView;
 	IBOutlet NSMutableArray *views;
 	NSMutableArray *railStations;
 	NSMutableData *responseData;
@@ -25,7 +25,7 @@
 	NSString *mapURL;
 }
 
-@property (nonatomic, retain) IBOutlet UITableView *linesTableView;
+@property (nonatomic, retain) IBOutlet UITableView *stationsTableView;
 @property (nonatomic, retain) NSMutableData	*responseData;
 @property (nonatomic, retain) NSMutableArray *railStations;
 @property (nonatomic, retain) IBOutlet NSMutableArray *views;
@@ -36,6 +36,9 @@
 @property (nonatomic, retain) IBOutlet UISegmentedControl *directionControl;
 @property (nonatomic, retain) NSString *mapURL;
 
+-(void)updateSouthbound:(NSInteger) newValue;
+
+-(IBAction)toggleDirection:(id)sender;
 -(IBAction)refreshStations:(id)sender;
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
