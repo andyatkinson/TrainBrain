@@ -35,6 +35,8 @@
 		A16A8BCB1038F93C001DF0EF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A16A8BCA1038F93C001DF0EF /* Icon.png */; };
 		A1BE49F71041F8C2005CFAD0 /* exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BE49F61041F8C2005CFAD0 /* exclamation.png */; };
 		A1D9AA8E103C50CC006B3744 /* departures_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D9AA8D103C50CC006B3744 /* departures_bg.png */; };
+		A1DF9D05109D3BB100328466 /* LineHeadsignsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */; };
+		A1DF9D06109D3BB100328466 /* LineHeadsignsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DF9D04109D3BB100328466 /* LineHeadsignsViewController.xib */; };
 		A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -53,10 +55,10 @@
 		8D1107310486CEB800E47090 /* TrainBrain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TrainBrain-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A1151739102F962E007CFBF6 /* TimeEntryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeEntryController.h; sourceTree = "<group>"; };
 		A115173A102F962E007CFBF6 /* TimeEntryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeEntryController.m; sourceTree = "<group>"; };
-		A115173B102F962E007CFBF6 /* TimeEntryController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimeEntryController.xib; sourceTree = "<group>"; };
+		A115173B102F962E007CFBF6 /* TimeEntryController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TimeEntryController.xib; path = Classes/TimeEntryController.xib; sourceTree = "<group>"; };
 		A115173F102F9650007CFBF6 /* ProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressViewController.h; sourceTree = "<group>"; };
 		A1151740102F9650007CFBF6 /* ProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressViewController.m; sourceTree = "<group>"; };
-		A1151741102F9650007CFBF6 /* ProgressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProgressViewController.xib; sourceTree = "<group>"; };
+		A1151741102F9650007CFBF6 /* ProgressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProgressViewController.xib; path = Classes/ProgressViewController.xib; sourceTree = "<group>"; };
 		A115174C102F96BF007CFBF6 /* MapBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapBarButtonItem.h; sourceTree = "<group>"; };
 		A115174D102F96BF007CFBF6 /* MapBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapBarButtonItem.m; sourceTree = "<group>"; };
 		A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureDetailCell.h; sourceTree = "<group>"; };
@@ -84,6 +86,9 @@
 		A16A8BCA1038F93C001DF0EF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A1BE49F61041F8C2005CFAD0 /* exclamation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exclamation.png; sourceTree = "<group>"; };
 		A1D9AA8D103C50CC006B3744 /* departures_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = departures_bg.png; sourceTree = "<group>"; };
+		A1DF9D02109D3BB100328466 /* LineHeadsignsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineHeadsignsViewController.h; sourceTree = "<group>"; };
+		A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineHeadsignsViewController.m; sourceTree = "<group>"; };
+		A1DF9D04109D3BB100328466 /* LineHeadsignsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = LineHeadsignsViewController.xib; path = Classes/LineHeadsignsViewController.xib; sourceTree = "<group>"; };
 		A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureDetailCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -105,23 +110,23 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A169E49D102F927100A65E05 /* JSON */,
 				A115174C102F96BF007CFBF6 /* MapBarButtonItem.h */,
 				A115174D102F96BF007CFBF6 /* MapBarButtonItem.m */,
 				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
 				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
 				A115173F102F9650007CFBF6 /* ProgressViewController.h */,
 				A1151740102F9650007CFBF6 /* ProgressViewController.m */,
-				A1151741102F9650007CFBF6 /* ProgressViewController.xib */,
 				A1151739102F962E007CFBF6 /* TimeEntryController.h */,
 				A115173A102F962E007CFBF6 /* TimeEntryController.m */,
-				A115173B102F962E007CFBF6 /* TimeEntryController.xib */,
-				A169E49D102F927100A65E05 /* JSON */,
 				A169E494102F91E500A65E05 /* CustomCell.m */,
 				A169E493102F91C600A65E05 /* CustomCell.h */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */,
 				1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */,
+				A1DF9D02109D3BB100328466 /* LineHeadsignsViewController.h */,
+				A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -159,6 +164,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1DF9D04109D3BB100328466 /* LineHeadsignsViewController.xib */,
+				A1151741102F9650007CFBF6 /* ProgressViewController.xib */,
+				A115173B102F962E007CFBF6 /* TimeEntryController.xib */,
 				A1BE49F61041F8C2005CFAD0 /* exclamation.png */,
 				A168AF8F10407DE300E01E38 /* Default.png */,
 				A1D9AA8D103C50CC006B3744 /* departures_bg.png */,
@@ -263,6 +271,7 @@
 				A168AF9010407DE300E01E38 /* Default.png in Resources */,
 				A1690D521040D31000EB0E62 /* Entitlements.plist in Resources */,
 				A1BE49F71041F8C2005CFAD0 /* exclamation.png in Resources */,
+				A1DF9D06109D3BB100328466 /* LineHeadsignsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +296,7 @@
 				A1151746102F9650007CFBF6 /* ProgressViewController.m in Sources */,
 				A1151750102F96BF007CFBF6 /* MapBarButtonItem.m in Sources */,
 				A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */,
+				A1DF9D05109D3BB100328466 /* LineHeadsignsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,6 @@
 #import "CustomCell.h"
 #import "ProgressViewController.h"
 
-
 @interface RootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate> {
 	IBOutlet UITableView *linesTableView;
 	IBOutlet NSMutableArray *views;

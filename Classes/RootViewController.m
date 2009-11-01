@@ -11,6 +11,7 @@
 #import "JSON/JSON.h"
 #import "TrainBrainAppDelegate.h"
 #import "MapBarButtonItem.h"
+#import "LineHeadsignsViewController.h"
 
 @interface RootViewController (Private)
 - (void)loadRailStations;
@@ -23,7 +24,7 @@ linesTableView, southbound, directionControl, mapURL;
 
 - (void) loadRailStations {
 	ProgressViewController *pvc = [[ProgressViewController alloc] init];
-	pvc.message = @"Loading Train Stations...";
+	pvc.message = @"Loading Train Lines...";
 	self.progressViewController = pvc;
 	[self.view addSubview:pvc.view];
 	
@@ -51,11 +52,10 @@ linesTableView, southbound, directionControl, mapURL;
 	// TODO is this used?
 	responseData = [[NSMutableData data] retain];
 	
-	// create a custom navigation bar and set it to always say Back
-	UIBarButtonItem *temporaryBarButtonItem = [[UIBarButtonItem alloc] init];
-	temporaryBarButtonItem.title = @"Stations";
-	self.navigationItem.backBarButtonItem = temporaryBarButtonItem;
-	[temporaryBarButtonItem release];
+	//UIBarButtonItem *temporaryBarButtonItem = [[UIBarButtonItem alloc] init];
+//	temporaryBarButtonItem.title = @"Stations";
+//	self.navigationItem.backBarButtonItem = temporaryBarButtonItem;
+//	[temporaryBarButtonItem release];
 	
 	// set the title of the main navigation
 	self.title = @"train brain";
@@ -94,9 +94,11 @@ linesTableView, southbound, directionControl, mapURL;
 	if(count > 0) {
 		for(int i=0; i < count; i++) {
 			NSMutableDictionary *line = [lines objectAtIndex:i];
+			LineHeadsignsViewController *lineHeadsignsViewController = [[LineHeadsignsViewController alloc] init];
 			
 			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 												line, @"lineName",
+												lineHeadsignsViewController, @"controller",
 												nil]];
 			
 //			TimeEntryController *timeEntryController = [[TimeEntryController alloc] init];
@@ -124,7 +126,7 @@ linesTableView, southbound, directionControl, mapURL;
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
 	[linesTableView reloadData];
 	
-	self.title = @"Choose Line";
+	self.title = @"Lines";
 	// remove the modal view, now that the location has been calculated
 	[progressViewController.view	removeFromSuperview];
 }
@@ -217,23 +219,23 @@ linesTableView, southbound, directionControl, mapURL;
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	TimeEntryController *targetViewController = (TimeEntryController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
-	// trying a crazy hack to read the value of RootViewController.southbound and set it on TimeEntryController.southbound
-	// maybe need a Singleton pattern here but couldn't figure it out TODO FIXME
-	[targetViewController setSouthbound:[self southbound]];
+	//TimeEntryController *targetViewController = (TimeEntryController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
+	LineHeadsignsViewController *targetViewController = (LineHeadsignsViewController *)[[views objectAtIndex:indexPath.row] objectForKey:@"controller"];
 	
+
+	// Move this to Map view
 	// add Map button, need to have ll coordinates set in parent view controller
-	MapBarButtonItem *temporaryBarButtonItem = [[MapBarButtonItem alloc] 
-																							initWithTitle:@"Map" 
-																							style:UIBarButtonItemStylePlain 
-																							target:self 
-																							action:@selector(mapButtonClicked:)];
-	temporaryBarButtonItem.locationLat = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.latitude];
-	temporaryBarButtonItem.locationLng = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.longitude];
-	temporaryBarButtonItem.stationLat = [[views objectAtIndex: indexPath.row] objectForKey:@"lat"];
-	temporaryBarButtonItem.stationLng = [[views objectAtIndex: indexPath.row] objectForKey:@"lng"];
-	targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
-	[temporaryBarButtonItem release];
+//	MapBarButtonItem *temporaryBarButtonItem = [[MapBarButtonItem alloc] 
+//																							initWithTitle:@"Map" 
+//																							style:UIBarButtonItemStylePlain 
+//																							target:self 
+//																							action:@selector(mapButtonClicked:)];
+//	temporaryBarButtonItem.locationLat = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.latitude];
+//	temporaryBarButtonItem.locationLng = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.longitude];
+//	temporaryBarButtonItem.stationLat = [[views objectAtIndex: indexPath.row] objectForKey:@"lat"];
+//	temporaryBarButtonItem.stationLng = [[views objectAtIndex: indexPath.row] objectForKey:@"lng"];
+//	targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
+//	[temporaryBarButtonItem release];	
 	
 	[[self navigationController] pushViewController:targetViewController animated:YES];
 	
