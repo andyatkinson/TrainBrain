@@ -9,12 +9,17 @@
 @interface TrainBrainAppDelegate : NSObject <UIApplicationDelegate> {
     UIWindow *window;
     UINavigationController *navigationController;
+		
+	NSString *headsign;
 }
 
 - (IBAction)saveAction:sender;
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
+
+- (void) setHeadsign:(NSString *)selectedHeadsign;
+- (NSString *) getHeadsign;
 
 @end
 

@@ -8,6 +8,8 @@
 
 #import "LineHeadsignsViewController.h"
 #import "JSON/JSON.h"
+#import "TimeEntryController.h"
+#import "TrainBrainAppDelegate.h"
 
 @implementation LineHeadsignsViewController
 
@@ -78,10 +80,17 @@
 	if(count > 0) {
 		for(int i=0; i < count; i++) {
 			NSMutableDictionary *headsign = [headsigns objectAtIndex:i];
+			TimeEntryController *timeEntryController = [[TimeEntryController alloc] init];
+
+			//[timeEntryController setRailStationId:[station objectForKey:@"id"]]; // TODO should probably extract an object here
+//			[timeEntryController setRailStationName:stationName];
+
 			
 			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 												headsign, @"headsignName",
-												nil]];			
+												timeEntryController, @"controller",
+												nil]];
+			[timeEntryController release];
 			
 		}
 	} else {
@@ -151,6 +160,28 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	TimeEntryController *targetViewController = (TimeEntryController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
+	
+	// Move this to Map view
+	// add Map button, need to have ll coordinates set in parent view controller
+	//	MapBarButtonItem *temporaryBarButtonItem = [[MapBarButtonItem alloc] 
+	//																							initWithTitle:@"Map" 
+	//																							style:UIBarButtonItemStylePlain 
+	//																							target:self 
+	//																							action:@selector(mapButtonClicked:)];
+	//	temporaryBarButtonItem.locationLat = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.latitude];
+	//	temporaryBarButtonItem.locationLng = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.longitude];
+	//	temporaryBarButtonItem.stationLat = [[views objectAtIndex: indexPath.row] objectForKey:@"lat"];
+	//	temporaryBarButtonItem.stationLng = [[views objectAtIndex: indexPath.row] objectForKey:@"lng"];
+	//	targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
+	//	[temporaryBarButtonItem release];	
+	
+	TrainBrainAppDelegate *appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	[appDelegate setHeadsign:[[views objectAtIndex: indexPath.row] objectForKey:@"headsignName"]];
+	
+	[[self navigationController] pushViewController:targetViewController animated:YES];
+	
+	
 }
 
 - (void)dealloc {

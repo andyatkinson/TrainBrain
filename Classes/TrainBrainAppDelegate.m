@@ -18,6 +18,15 @@
 	[window makeKeyAndVisible];
 }
 
+
+- (void) setHeadsign:(NSString *)selectedHeadsign {
+	headsign = selectedHeadsign;
+	//[[NSNotificationCenter defaultCenter] postNotificationName:@"dataChangeEvent" object:self];
+}
+- (NSString *) getHeadsign {
+	return headsign;
+}
+
 - (void)dealloc {
 
 	[navigationController release];

@@ -47,13 +47,31 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 	// TODO get the UISegmentedControl value for setting north/south
 	// Setting it from one view controller to another which is not a good solution	
 	// http://api.trainbrainapp.com
-	NSString *stationTimeEntries = [NSString stringWithFormat:@"http://localhost:3000/rail_stations/%@/time_entries.json?t=%d:%d&s=%d", 
-																	[self railStationId],
-																	hour,
-																	minute,
-																	[self southbound]];
+
+	TrainBrainAppDelegate *appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	NSLog(@"got the test string? %@", [appDelegate getHeadsign]);
+
 	
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:stationTimeEntries]];
+	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/stop_times.json?headsign=%@&stop_ids=%@&time=%@",
+													[appDelegate getHeadsign],
+													@"51413,51428",
+													@"16:48"];
+	requestURL = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+	//NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/rail_stations/%@/time_entries.json?t=%d:%d&s=%d", 
+//																	[self railStationId],
+//																	hour,
+//																	minute,
+//																	[self southbound]];
+
+	
+//	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/stop_times.json?headsign=%@&stop_ids=%@&time=%@",
+//														@"North 55  Hiawatha Line / Downtown Minneapolis",
+//														@"51438,51428",
+//														@"16:48"];
+	
+	
+	NSLog(@"request URL %@", requestURL);
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10];
 	
 	timeEntryRows = nil;
 	// kick off the request, the view is reloaded from the request handler
@@ -102,6 +120,8 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 	NSArray *entries = [parser objectWithString:responseString error:nil];
 	[parser release];
 	[responseString release];
+	
+	
 	
 	// now is used for time remaining for each route and for big label
 	NSDate *now = [NSDate date];

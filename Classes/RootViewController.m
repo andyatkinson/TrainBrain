@@ -182,7 +182,6 @@ linesTableView, southbound, directionControl, mapURL;
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    //return [[fetchedResultsController sections] count];
 	return 1;
 }
 
