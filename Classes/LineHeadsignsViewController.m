@@ -76,20 +76,32 @@
 	[parser release];
 	[responseString release];
 	views = [[NSMutableArray alloc] init];
+	
+	TrainBrainAppDelegate *appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	
 	int count = [headsigns count];
 	if(count > 0) {
 		for(int i=0; i < count; i++) {
-			NSMutableDictionary *headsign = [headsigns objectAtIndex:i];
+			NSMutableDictionary *item = [headsigns objectAtIndex:i];
 			TimeEntryController *timeEntryController = [[TimeEntryController alloc] init];
+			
+			NSString *headsign = [item objectForKey:@"headsign"];
+			if(headsign != NULL) {
+				NSLog(@"headsign %@", headsign);
+				[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+													headsign, @"headsignName",
+													timeEntryController, @"controller",
+													nil]];
+			}
+			
+			NSMutableDictionary *stop = [item objectForKey:@"stop"];
+			if(stop != NULL) {
+				[appDelegate addStopId:[stop objectForKey:@"id"]];
+			}
 
 			//[timeEntryController setRailStationId:[station objectForKey:@"id"]]; // TODO should probably extract an object here
-//			[timeEntryController setRailStationName:stationName];
+//			[timeEntryController setRailStationName:stationName];			
 
-			
-			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-												headsign, @"headsignName",
-												timeEntryController, @"controller",
-												nil]];
 			[timeEntryController release];
 			
 		}

@@ -18,13 +18,22 @@
 	[window makeKeyAndVisible];
 }
 
-
 - (void) setHeadsign:(NSString *)selectedHeadsign {
 	headsign = selectedHeadsign;
-	//[[NSNotificationCenter defaultCenter] postNotificationName:@"dataChangeEvent" object:self];
 }
 - (NSString *) getHeadsign {
 	return headsign;
+}
+
+- (void) addStopId:(NSString *)newStopId {
+	if(stopIds == nil) {
+		stopIds = [[NSMutableArray alloc] init];
+	}
+	[stopIds addObject:newStopId];
+}
+
+- (NSArray *) getStopIds {
+	return stopIds;
 }
 
 - (void)dealloc {
@@ -36,4 +45,3 @@
 
 
 @end
-

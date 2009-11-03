@@ -7,19 +7,21 @@
 //
 
 @interface TrainBrainAppDelegate : NSObject <UIApplicationDelegate> {
-    UIWindow *window;
-    UINavigationController *navigationController;
-		
-	NSString *headsign;
-}
+  UIWindow *window;
+  UINavigationController *navigationController;
 
-- (IBAction)saveAction:sender;
+	NSString *headsign;
+	NSMutableArray *stopIds;
+}
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
 - (void) setHeadsign:(NSString *)selectedHeadsign;
 - (NSString *) getHeadsign;
+
+- (void) addStopId:(NSString *)newStopId;
+- (NSArray *) getStopIds;
 
 @end
 

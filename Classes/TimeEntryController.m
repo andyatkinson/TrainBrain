@@ -49,13 +49,12 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 	// http://api.trainbrainapp.com
 
 	TrainBrainAppDelegate *appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	NSLog(@"got the test string? %@", [appDelegate getHeadsign]);
-
 	
-	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/stop_times.json?headsign=%@&stop_ids=%@&time=%@",
+	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/stop_times.json?headsign=%@&stop_ids=%@&time=%d:%d",
 													[appDelegate getHeadsign],
-													@"51413,51428",
-													@"16:48"];
+													[[appDelegate getStopIds] componentsJoinedByString:@","],
+													hour,
+													minute];
 	requestURL = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	//NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/rail_stations/%@/time_entries.json?t=%d:%d&s=%d", 
 //																	[self railStationId],
