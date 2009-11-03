@@ -18,6 +18,13 @@
 	[window makeKeyAndVisible];
 }
 
+- (void) setLine:(NSString *)selectedLine {
+	line = selectedLine;
+}
+- (NSString *) getLine {
+	return line;
+}
+
 - (void) setHeadsign:(NSString *)selectedHeadsign {
 	headsign = selectedHeadsign;
 }

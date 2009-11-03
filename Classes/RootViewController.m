@@ -236,6 +236,9 @@ linesTableView, southbound, directionControl, mapURL;
 //	targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
 //	[temporaryBarButtonItem release];	
 	
+	TrainBrainAppDelegate *appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	[appDelegate setLine:[[views objectAtIndex:indexPath.row] objectForKey:@"lineName"]];
+	
 	[[self navigationController] pushViewController:targetViewController animated:YES];
 	
 }

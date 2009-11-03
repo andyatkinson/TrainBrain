@@ -24,6 +24,9 @@
 	// TODO probably could instantiate/use a time entry object
 	responseData = [[NSMutableData data] retain];
 	
+	// TODO put this as property?
+	TrainBrainAppDelegate *appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	
 
 //	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/rail_stations/%@/time_entries.json?t=%d:%d&s=%d", 
 //																	[self railStationId],
@@ -31,7 +34,8 @@
 //																	minute,
 //																	[self southbound]];
 	
-	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/headsigns.json?lat=44.948364&lng=-93.239143&route_id=55-45"];
+	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/headsigns.json?lat=44.948364&lng=-93.239143&route_id=%@",
+													[appDelegate getLine]];
 	
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
 	

@@ -2,17 +2,17 @@
 {
 	1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {945, 637}}";
-			sepNavSelRange = "{499, 0}";
-			sepNavVisRange = "{0, 656}";
+			sepNavIntBoundsRect = "{{0, 0}, {945, 472}}";
+			sepNavSelRange = "{560, 0}";
+			sepNavVisRange = "{0, 741}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
 		};
 	};
 	1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {945, 658}}";
-			sepNavSelRange = "{715, 0}";
-			sepNavVisRange = "{0, 859}";
+			sepNavIntBoundsRect = "{{0, 0}, {945, 756}}";
+			sepNavSelRange = "{545, 0}";
+			sepNavVisRange = "{0, 683}";
 		};
 	};
 	1D6058900D05DD3D006BFB54 /* TrainBrain */ = {
@@ -38,9 +38,9 @@
 	};
 	28C286E00D94DF7D0034E888 /* RootViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1020, 3892}}";
-			sepNavSelRange = "{3244, 0}";
-			sepNavVisRange = "{2803, 891}";
+			sepNavIntBoundsRect = "{{0, 0}, {1086, 3906}}";
+			sepNavSelRange = "{9236, 0}";
+			sepNavVisRange = "{7700, 2061}";
 			sepNavWindowFrame = "{{31, 307}, {977, 671}}";
 		};
 	};
@@ -53,7 +53,7 @@
 			1D6058900D05DD3D006BFB54 /* TrainBrain */,
 		);
 		breakpoints = (
-			A1DF9F1D109FB7C800328466 /* LineHeadsignsViewController.m:88 */,
+			A1DF9F1D109FB7C800328466 /* LineHeadsignsViewController.m:92 */,
 		);
 		codeSenseManager = A1B59EE1102F8FED00939A3B /* Code sense */;
 		executables = (
@@ -114,6 +114,18 @@
 			A1151766102F979C007CFBF6 = A1151766102F979C007CFBF6 /* PBXTextBookmark */;
 			A1151767102F979C007CFBF6 = A1151767102F979C007CFBF6 /* PBXTextBookmark */;
 			A1220B1010A0018F007AAD58 /* PBXTextBookmark */ = A1220B1010A0018F007AAD58 /* PBXTextBookmark */;
+			A1220B2110A0041F007AAD58 /* PBXTextBookmark */ = A1220B2110A0041F007AAD58 /* PBXTextBookmark */;
+			A1220B2210A0041F007AAD58 /* PBXTextBookmark */ = A1220B2210A0041F007AAD58 /* PBXTextBookmark */;
+			A1220B2310A0041F007AAD58 /* PBXTextBookmark */ = A1220B2310A0041F007AAD58 /* PBXTextBookmark */;
+			A1220B2410A0041F007AAD58 /* PBXTextBookmark */ = A1220B2410A0041F007AAD58 /* PBXTextBookmark */;
+			A1220B2510A0041F007AAD58 /* PBXTextBookmark */ = A1220B2510A0041F007AAD58 /* PBXTextBookmark */;
+			A1220B2610A0041F007AAD58 /* PBXTextBookmark */ = A1220B2610A0041F007AAD58 /* PBXTextBookmark */;
+			A1220B2710A0041F007AAD58 /* PBXTextBookmark */ = A1220B2710A0041F007AAD58 /* PBXTextBookmark */;
+			A1220B2810A0041F007AAD58 /* PBXTextBookmark */ = A1220B2810A0041F007AAD58 /* PBXTextBookmark */;
+			A1220B2910A0041F007AAD58 /* PBXTextBookmark */ = A1220B2910A0041F007AAD58 /* PBXTextBookmark */;
+			A1220B2A10A0041F007AAD58 /* PBXTextBookmark */ = A1220B2A10A0041F007AAD58 /* PBXTextBookmark */;
+			A1220B2B10A0041F007AAD58 /* PBXTextBookmark */ = A1220B2B10A0041F007AAD58 /* PBXTextBookmark */;
+			A1220B2C10A0041F007AAD58 /* PBXTextBookmark */ = A1220B2C10A0041F007AAD58 /* PBXTextBookmark */;
 			A129169D10312F9300C0E094 = A129169D10312F9300C0E094 /* PBXTextBookmark */;
 			A129169E10312F9300C0E094 = A129169E10312F9300C0E094 /* PBXTextBookmark */;
 			A129AEB8102F9AB20097A3BF = A129AEB8102F9AB20097A3BF /* PBXTextBookmark */;
@@ -419,7 +431,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {948, 4508}}";
 			sepNavSelRange = "{1858, 0}";
-			sepNavVisRange = "{1018, 1600}";
+			sepNavVisRange = "{1018, 1602}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
 		};
 	};
@@ -526,6 +538,126 @@
 		vrLen = 1600;
 		vrLoc = 1018;
 	};
+	A1220B2110A0041F007AAD58 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
+		name = "TimeEntryController.m: 53";
+		rLen = 0;
+		rLoc = 1858;
+		rType = 0;
+		vrLen = 1602;
+		vrLoc = 1018;
+	};
+	A1220B2210A0041F007AAD58 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
+		name = "TrainBrainAppDelegate.h: 21";
+		rLen = 0;
+		rLoc = 560;
+		rType = 0;
+		vrLen = 741;
+		vrLoc = 0;
+	};
+	A1220B2310A0041F007AAD58 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
+		name = "TrainBrainAppDelegate.m: 25";
+		rLen = 0;
+		rLoc = 545;
+		rType = 0;
+		vrLen = 683;
+		vrLoc = 0;
+	};
+	A1220B2410A0041F007AAD58 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 240";
+		rLen = 0;
+		rLoc = 9236;
+		rType = 0;
+		vrLen = 2061;
+		vrLoc = 7700;
+	};
+	A1220B2510A0041F007AAD58 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
+		name = "LineHeadsignsViewController.m: 80";
+		rLen = 107;
+		rLoc = 2831;
+		rType = 0;
+		vrLen = 1190;
+		vrLoc = 2493;
+	};
+	A1220B2610A0041F007AAD58 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
+		name = "TimeEntryController.m: 53";
+		rLen = 0;
+		rLoc = 1858;
+		rType = 0;
+		vrLen = 1602;
+		vrLoc = 1018;
+	};
+	A1220B2710A0041F007AAD58 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
+		name = "TrainBrainAppDelegate.h: 21";
+		rLen = 0;
+		rLoc = 560;
+		rType = 0;
+		vrLen = 741;
+		vrLoc = 0;
+	};
+	A1220B2810A0041F007AAD58 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
+		name = "TrainBrainAppDelegate.m: 25";
+		rLen = 0;
+		rLoc = 545;
+		rType = 0;
+		vrLen = 683;
+		vrLoc = 0;
+	};
+	A1220B2910A0041F007AAD58 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 12";
+		rLen = 0;
+		rLoc = 251;
+		rType = 0;
+		vrLen = 1028;
+		vrLoc = 0;
+	};
+	A1220B2A10A0041F007AAD58 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
+		name = "LineHeadsignsViewController.m: 80";
+		rLen = 107;
+		rLoc = 2831;
+		rType = 0;
+		vrLen = 1314;
+		vrLoc = 2493;
+	};
+	A1220B2B10A0041F007AAD58 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
+		name = "RootViewController.m: 240";
+		rLen = 0;
+		rLoc = 9236;
+		rType = 0;
+		vrLen = 2061;
+		vrLoc = 7700;
+	};
+	A1220B2C10A0041F007AAD58 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
+		name = "LineHeadsignsViewController.m: 38";
+		rLen = 0;
+		rLoc = 1343;
+		rType = 0;
+		vrLen = 1213;
+		vrLoc = 411;
+	};
 	A129169D10312F9300C0E094 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryController.m */;
@@ -561,7 +693,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 52";
 		rLen = 0;
-		rLoc = 764;
+		rLoc = 874;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 0;
@@ -894,7 +1026,7 @@
 		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
 		name = "RootViewController.m: 259";
 		rLen = 0;
-		rLoc = 10203;
+		rLoc = 10401;
 		rType = 0;
 		vrLen = 2089;
 		vrLoc = 7980;
@@ -1008,9 +1140,9 @@
 	};
 	A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1020, 2912}}";
-			sepNavSelRange = "{3113, 0}";
-			sepNavVisRange = "{2256, 1756}";
+			sepNavIntBoundsRect = "{{0, 0}, {1020, 2996}}";
+			sepNavSelRange = "{1343, 0}";
+			sepNavVisRange = "{411, 1213}";
 		};
 	};
 	A1DF9D09109D3C1400328466 /* PBXTextBookmark */ = {
@@ -1298,7 +1430,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 34";
 		rLen = 0;
-		rLoc = 7184;
+		rLoc = 7359;
 		rType = 0;
 		vrLen = 687;
 		vrLoc = 0;
@@ -1358,7 +1490,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 34";
 		rLen = 0;
-		rLoc = 7184;
+		rLoc = 7359;
 		rType = 0;
 		vrLen = 687;
 		vrLoc = 0;
@@ -1498,7 +1630,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 34";
 		rLen = 0;
-		rLoc = 7184;
+		rLoc = 7359;
 		rType = 0;
 		vrLen = 687;
 		vrLoc = 0;
@@ -1528,7 +1660,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 43";
 		rLen = 9;
-		rLoc = 1126;
+		rLoc = 1268;
 		rType = 0;
 		vrLen = 1509;
 		vrLoc = 676;
@@ -1558,7 +1690,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 48";
 		rLen = 0;
-		rLoc = 1333;
+		rLoc = 1508;
 		rType = 0;
 		vrLen = 1596;
 		vrLoc = 497;
@@ -1578,7 +1710,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 43";
 		rLen = 0;
-		rLoc = 1168;
+		rLoc = 1343;
 		rType = 0;
 		vrLen = 1464;
 		vrLoc = 629;
@@ -1598,7 +1730,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 83";
 		rLen = 18;
-		rLoc = 4107;
+		rLoc = 4282;
 		rType = 0;
 		vrLen = 1583;
 		vrLoc = 1791;
@@ -1638,7 +1770,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 85";
 		rLen = 0;
-		rLoc = 4168;
+		rLoc = 4343;
 		rType = 0;
 		vrLen = 1281;
 		vrLoc = 1629;
@@ -1848,7 +1980,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 66";
 		rLen = 0;
-		rLoc = 3629;
+		rLoc = 3804;
 		rType = 0;
 		vrLen = 1562;
 		vrLoc = 1796;
@@ -1868,7 +2000,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 65";
 		rLen = 0;
-		rLoc = 2907;
+		rLoc = 3082;
 		rType = 0;
 		vrLen = 1389;
 		vrLoc = 1796;
@@ -1898,7 +2030,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 58";
 		rLen = 0;
-		rLoc = 2566;
+		rLoc = 2741;
 		rType = 0;
 		vrLen = 1638;
 		vrLoc = 156;
@@ -1928,7 +2060,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 44";
 		rLen = 0;
-		rLoc = 1170;
+		rLoc = 1345;
 		rType = 0;
 		vrLen = 1278;
 		vrLoc = 1726;
@@ -1948,7 +2080,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 95";
 		rLen = 0;
-		rLoc = 3630;
+		rLoc = 3805;
 		rType = 0;
 		vrLen = 1348;
 		vrLoc = 2525;
@@ -1988,7 +2120,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 93";
 		rLen = 0;
-		rLoc = 2907;
+		rLoc = 3082;
 		rType = 0;
 		vrLen = 1462;
 		vrLoc = 2647;
@@ -2008,7 +2140,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 93";
 		rLen = 0;
-		rLoc = 2907;
+		rLoc = 3082;
 		rType = 0;
 		vrLen = 1462;
 		vrLoc = 2647;
@@ -2038,7 +2170,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 93";
 		rLen = 0;
-		rLoc = 2907;
+		rLoc = 3082;
 		rType = 0;
 		vrLen = 1549;
 		vrLoc = 445;
@@ -2058,7 +2190,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 58";
 		rLen = 0;
-		rLoc = 1448;
+		rLoc = 1623;
 		rType = 0;
 		vrLen = 1671;
 		vrLoc = 1943;
@@ -2078,7 +2210,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 169";
 		rLen = 0;
-		rLoc = 7184;
+		rLoc = 7359;
 		rType = 0;
 		vrLen = 1030;
 		vrLoc = 4319;
@@ -2108,7 +2240,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 139";
 		rLen = 0;
-		rLoc = 4860;
+		rLoc = 5035;
 		rType = 0;
 		vrLen = 1246;
 		vrLoc = 4159;
@@ -2120,7 +2252,7 @@
 		rLen = 1679;
 		rLoc = 6037;
 		rType = 0;
-		vrLen = 1709;
+		vrLen = 1655;
 		vrLoc = 8777;
 	};
 	A1DF9E12109D652200328466 /* PBXTextBookmark */ = {
@@ -2128,7 +2260,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 80";
 		rLen = 0;
-		rLoc = 2907;
+		rLoc = 3082;
 		rType = 0;
 		vrLen = 1507;
 		vrLoc = 2190;
@@ -2158,7 +2290,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 84";
 		rLen = 0;
-		rLoc = 3664;
+		rLoc = 3839;
 		rType = 0;
 		vrLen = 1500;
 		vrLoc = 2168;
@@ -2198,7 +2330,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 135";
 		rLen = 0;
-		rLoc = 5278;
+		rLoc = 5453;
 		rType = 0;
 		vrLen = 1370;
 		vrLoc = 3468;
@@ -2218,7 +2350,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 142";
 		rLen = 10;
-		rLoc = 5434;
+		rLoc = 5609;
 		rType = 0;
 		vrLen = 1214;
 		vrLoc = 3704;
@@ -2238,7 +2370,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 138";
 		rLen = 0;
-		rLoc = 5332;
+		rLoc = 5507;
 		rType = 0;
 		vrLen = 1147;
 		vrLoc = 3772;
@@ -2258,7 +2390,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 138";
 		rLen = 0;
-		rLoc = 5332;
+		rLoc = 5507;
 		rType = 0;
 		vrLen = 1147;
 		vrLoc = 3772;
@@ -2270,7 +2402,7 @@
 		rLen = 93;
 		rLoc = 7719;
 		rType = 0;
-		vrLen = 1614;
+		vrLen = 1556;
 		vrLoc = 8876;
 	};
 	A1DF9E31109E337600328466 /* PBXTextBookmark */ = {
@@ -2278,7 +2410,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 154";
 		rLen = 0;
-		rLoc = 7111;
+		rLoc = 7286;
 		rType = 0;
 		vrLen = 1176;
 		vrLoc = 3841;
@@ -2307,7 +2439,7 @@
 		isa = PBXTextBookmark;
 		fRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */;
 		name = "RootViewController.m: 221";
-		rLen = 1313;
+		rLen = 1511;
 		rLoc = 7813;
 		rType = 0;
 		vrLen = 2602;
@@ -2318,7 +2450,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 164";
 		rLen = 0;
-		rLoc = 5892;
+		rLoc = 6067;
 		rType = 0;
 		vrLen = 1670;
 		vrLoc = 4896;
@@ -2348,7 +2480,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 20";
 		rLen = 0;
-		rLoc = 648;
+		rLoc = 733;
 		rType = 0;
 		vrLen = 577;
 		vrLoc = 0;
@@ -2357,7 +2489,7 @@
 		isa = PBXTextBookmark;
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 1";
-		rLen = 858;
+		rLen = 968;
 		rLoc = 0;
 		rType = 0;
 		vrLen = 548;
@@ -2368,7 +2500,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 20";
 		rLen = 0;
-		rLoc = 648;
+		rLoc = 733;
 		rType = 0;
 		vrLen = 577;
 		vrLoc = 0;
@@ -2377,7 +2509,7 @@
 		isa = PBXTextBookmark;
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 1";
-		rLen = 858;
+		rLen = 968;
 		rLoc = 0;
 		rType = 0;
 		vrLen = 548;
@@ -2388,7 +2520,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 22";
 		rLen = 0;
-		rLoc = 648;
+		rLoc = 733;
 		rType = 0;
 		vrLen = 591;
 		vrLoc = 0;
@@ -2408,7 +2540,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 21";
 		rLen = 78;
-		rLoc = 501;
+		rLoc = 586;
 		rType = 0;
 		vrLen = 591;
 		vrLoc = 0;
@@ -2418,9 +2550,9 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 45";
 		rLen = 0;
-		rLoc = 488;
+		rLoc = 598;
 		rType = 0;
-		vrLen = 667;
+		vrLen = 578;
 		vrLoc = 285;
 	};
 	A1DF9E82109E88AF00328466 /* PBXTextBookmark */ = {
@@ -2428,7 +2560,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 21";
 		rLen = 0;
-		rLoc = 551;
+		rLoc = 636;
 		rType = 0;
 		vrLen = 599;
 		vrLoc = 0;
@@ -2438,7 +2570,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 19";
 		rLen = 0;
-		rLoc = 437;
+		rLoc = 547;
 		rType = 0;
 		vrLen = 766;
 		vrLoc = 0;
@@ -2448,7 +2580,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 21";
 		rLen = 0;
-		rLoc = 551;
+		rLoc = 636;
 		rType = 0;
 		vrLen = 599;
 		vrLoc = 0;
@@ -2458,7 +2590,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 24";
 		rLen = 0;
-		rLoc = 520;
+		rLoc = 630;
 		rType = 0;
 		vrLen = 768;
 		vrLoc = 0;
@@ -2468,7 +2600,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 180";
 		rLen = 0;
-		rLoc = 7020;
+		rLoc = 7195;
 		rType = 0;
 		vrLen = 1810;
 		vrLoc = 4947;
@@ -2528,7 +2660,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 180";
 		rLen = 0;
-		rLoc = 7020;
+		rLoc = 7195;
 		rType = 0;
 		vrLen = 1860;
 		vrLoc = 4947;
@@ -2568,7 +2700,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 180";
 		rLen = 0;
-		rLoc = 7020;
+		rLoc = 7195;
 		rType = 0;
 		vrLen = 1861;
 		vrLoc = 4946;
@@ -2608,7 +2740,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 180";
 		rLen = 0;
-		rLoc = 7020;
+		rLoc = 7195;
 		rType = 0;
 		vrLen = 1607;
 		vrLoc = 2175;
@@ -2638,7 +2770,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 74";
 		rLen = 1;
-		rLoc = 2492;
+		rLoc = 2667;
 		rType = 0;
 		vrLen = 1878;
 		vrLoc = 1712;
@@ -2718,7 +2850,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 100";
 		rLen = 0;
-		rLoc = 3630;
+		rLoc = 3805;
 		rType = 0;
 		vrLen = 1554;
 		vrLoc = 2219;
@@ -2738,7 +2870,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 91";
 		rLen = 0;
-		rLoc = 3364;
+		rLoc = 3539;
 		rType = 0;
 		vrLen = 1544;
 		vrLoc = 2452;
@@ -2748,7 +2880,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 24";
 		rLen = 0;
-		rLoc = 520;
+		rLoc = 630;
 		rType = 0;
 		vrLen = 768;
 		vrLoc = 0;
@@ -2758,9 +2890,9 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 25";
 		rLen = 67;
-		rLoc = 581;
+		rLoc = 666;
 		rType = 0;
-		vrLen = 688;
+		vrLen = 656;
 		vrLoc = 0;
 	};
 	A1DF9F19109FB77600328466 /* PBXTextBookmark */ = {
@@ -2768,12 +2900,12 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 35";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 872;
 		rType = 0;
-		vrLen = 882;
+		vrLen = 863;
 		vrLoc = 0;
 	};
-	A1DF9F1D109FB7C800328466 /* LineHeadsignsViewController.m:88 */ = {
+	A1DF9F1D109FB7C800328466 /* LineHeadsignsViewController.m:92 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -2785,7 +2917,7 @@
 		functionName = "-connectionDidFinishLoading:";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 88;
+		lineNumber = 92;
 		location = TrainBrain;
 		modificationTime = 278905640.842557;
 		state = 2;
@@ -2795,7 +2927,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 91";
 		rLen = 0;
-		rLoc = 3118;
+		rLoc = 3293;
 		rType = 0;
 		vrLen = 1577;
 		vrLoc = 2452;
@@ -2805,9 +2937,9 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 35";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 872;
 		rType = 0;
-		vrLen = 882;
+		vrLen = 863;
 		vrLoc = 0;
 	};
 	A1DF9F2C109FB8DB00328466 /* PBXTextBookmark */ = {
@@ -2815,7 +2947,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 106";
 		rLen = 0;
-		rLoc = 3664;
+		rLoc = 3839;
 		rType = 0;
 		vrLen = 1567;
 		vrLoc = 2653;
@@ -2835,9 +2967,9 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 26";
 		rLen = 0;
-		rLoc = 648;
+		rLoc = 733;
 		rType = 0;
-		vrLen = 691;
+		vrLen = 656;
 		vrLoc = 0;
 	};
 	A1DF9F2F109FB8DB00328466 /* PBXTextBookmark */ = {
@@ -2845,9 +2977,9 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 34";
 		rLen = 0;
-		rLoc = 745;
+		rLoc = 855;
 		rType = 0;
-		vrLen = 891;
+		vrLen = 863;
 		vrLoc = 0;
 	};
 	A1DF9F30109FB8DB00328466 /* PBXTextBookmark */ = {
@@ -2855,7 +2987,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 106";
 		rLen = 0;
-		rLoc = 3664;
+		rLoc = 3839;
 		rType = 0;
 		vrLen = 1675;
 		vrLoc = 2254;
@@ -2875,9 +3007,9 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 26";
 		rLen = 0;
-		rLoc = 648;
+		rLoc = 733;
 		rType = 0;
-		vrLen = 684;
+		vrLen = 656;
 		vrLoc = 0;
 	};
 	A1DF9F42109FBAD800328466 /* PBXTextBookmark */ = {
@@ -2885,9 +3017,9 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 48";
 		rLen = 0;
-		rLoc = 863;
+		rLoc = 973;
 		rType = 0;
-		vrLen = 794;
+		vrLen = 772;
 		vrLoc = 91;
 	};
 	A1DF9F43109FBAD800328466 /* PBXTextBookmark */ = {
@@ -2895,7 +3027,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 15";
 		rLen = 0;
-		rLoc = 356;
+		rLoc = 373;
 		rType = 0;
 		vrLen = 652;
 		vrLoc = 0;
@@ -2905,7 +3037,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 44";
 		rLen = 0;
-		rLoc = 863;
+		rLoc = 973;
 		rType = 0;
 		vrLen = 787;
 		vrLoc = 0;
@@ -2915,7 +3047,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 99";
 		rLen = 0;
-		rLoc = 3385;
+		rLoc = 3560;
 		rType = 0;
 		vrLen = 1674;
 		vrLoc = 2348;
@@ -2925,7 +3057,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 24";
 		rLen = 0;
-		rLoc = 648;
+		rLoc = 733;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 0;
@@ -2935,7 +3067,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 33";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 872;
 		rType = 0;
 		vrLen = 799;
 		vrLoc = 0;
@@ -2945,7 +3077,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 101";
 		rLen = 0;
-		rLoc = 3440;
+		rLoc = 3615;
 		rType = 0;
 		vrLen = 1663;
 		vrLoc = 2348;
@@ -2955,9 +3087,9 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 23";
 		rLen = 0;
-		rLoc = 622;
+		rLoc = 707;
 		rType = 0;
-		vrLen = 658;
+		vrLen = 656;
 		vrLoc = 0;
 	};
 	A1DF9F5E109FBCC500328466 /* PBXTextBookmark */ = {
@@ -2965,7 +3097,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 24";
 		rLen = 0;
-		rLoc = 551;
+		rLoc = 661;
 		rType = 0;
 		vrLen = 799;
 		vrLoc = 0;
@@ -2975,7 +3107,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 100";
 		rLen = 0;
-		rLoc = 3385;
+		rLoc = 3560;
 		rType = 0;
 		vrLen = 1691;
 		vrLoc = 2053;
@@ -2995,7 +3127,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 33";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 872;
 		rType = 0;
 		vrLen = 796;
 		vrLoc = 0;
@@ -3005,9 +3137,9 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 23";
 		rLen = 67;
-		rLoc = 581;
+		rLoc = 666;
 		rType = 0;
-		vrLen = 657;
+		vrLen = 656;
 		vrLoc = 0;
 	};
 	A1DF9F70109FBDCF00328466 /* PBXTextBookmark */ = {
@@ -3015,7 +3147,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 28";
 		rLen = 0;
-		rLoc = 573;
+		rLoc = 683;
 		rType = 0;
 		vrLen = 796;
 		vrLoc = 0;
@@ -3025,7 +3157,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 100";
 		rLen = 0;
-		rLoc = 3385;
+		rLoc = 3560;
 		rType = 0;
 		vrLen = 1754;
 		vrLoc = 2256;
@@ -3045,7 +3177,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 99";
 		rLen = 0;
-		rLoc = 3385;
+		rLoc = 3560;
 		rType = 0;
 		vrLen = 1667;
 		vrLoc = 2053;
@@ -3075,7 +3207,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 100";
 		rLen = 0;
-		rLoc = 3385;
+		rLoc = 3560;
 		rType = 0;
 		vrLen = 1631;
 		vrLoc = 2655;
@@ -3105,7 +3237,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 102";
 		rLen = 0;
-		rLoc = 3385;
+		rLoc = 3560;
 		rType = 0;
 		vrLen = 1594;
 		vrLoc = 2848;
@@ -3115,7 +3247,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 24";
 		rLen = 0;
-		rLoc = 648;
+		rLoc = 733;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 0;
@@ -3125,7 +3257,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 33";
 		rLen = 0;
-		rLoc = 762;
+		rLoc = 872;
 		rType = 0;
 		vrLen = 795;
 		vrLoc = 0;
@@ -3135,7 +3267,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 104";
 		rLen = 0;
-		rLoc = 3630;
+		rLoc = 3805;
 		rType = 0;
 		vrLen = 1473;
 		vrLoc = 2990;
@@ -3165,7 +3297,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 90";
 		rLen = 0;
-		rLoc = 3113;
+		rLoc = 3288;
 		rType = 0;
 		vrLen = 1725;
 		vrLoc = 2252;
@@ -3185,7 +3317,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 90";
 		rLen = 0;
-		rLoc = 3113;
+		rLoc = 3288;
 		rType = 0;
 		vrLen = 1756;
 		vrLoc = 2256;
@@ -3195,7 +3327,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 24";
 		rLen = 0;
-		rLoc = 648;
+		rLoc = 733;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 0;
@@ -3205,7 +3337,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 30";
 		rLen = 0;
-		rLoc = 715;
+		rLoc = 825;
 		rType = 0;
 		vrLen = 839;
 		vrLoc = 0;
@@ -3215,7 +3347,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 24";
 		rLen = 0;
-		rLoc = 648;
+		rLoc = 733;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 0;
@@ -3225,7 +3357,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 24";
 		rLen = 0;
-		rLoc = 551;
+		rLoc = 661;
 		rType = 0;
 		vrLen = 839;
 		vrLoc = 0;
@@ -3235,7 +3367,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 24";
 		rLen = 0;
-		rLoc = 648;
+		rLoc = 733;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 0;
@@ -3255,7 +3387,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 18";
 		rLen = 0;
-		rLoc = 499;
+		rLoc = 516;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 0;
@@ -3265,7 +3397,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 18";
 		rLen = 0;
-		rLoc = 499;
+		rLoc = 516;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 0;
@@ -3275,9 +3407,9 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 30";
 		rLen = 0;
-		rLoc = 680;
+		rLoc = 790;
 		rType = 0;
-		vrLen = 902;
+		vrLen = 863;
 		vrLoc = 0;
 	};
 	A1DF9FBE109FC2F200328466 /* PBXTextBookmark */ = {
@@ -3285,7 +3417,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 18";
 		rLen = 0;
-		rLoc = 499;
+		rLoc = 516;
 		rType = 0;
 		vrLen = 656;
 		vrLoc = 0;
@@ -3295,7 +3427,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 32";
 		rLen = 0;
-		rLoc = 715;
+		rLoc = 825;
 		rType = 0;
 		vrLen = 859;
 		vrLoc = 0;
@@ -3305,7 +3437,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 90";
 		rLen = 0;
-		rLoc = 3113;
+		rLoc = 3288;
 		rType = 0;
 		vrLen = 1756;
 		vrLoc = 2256;
@@ -3315,7 +3447,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 32";
 		rLen = 0;
-		rLoc = 715;
+		rLoc = 825;
 		rType = 0;
 		vrLen = 859;
 		vrLoc = 0;
@@ -3325,7 +3457,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */;
 		name = "LineHeadsignsViewController.m: 90";
 		rLen = 0;
-		rLoc = 3113;
+		rLoc = 3288;
 		rType = 0;
 		vrLen = 1756;
 		vrLoc = 2256;
