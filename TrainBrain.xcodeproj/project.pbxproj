@@ -33,6 +33,12 @@
 		A169E4B5102F928E00A65E05 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4AF102F928E00A65E05 /* SBJsonWriter.m */; };
 		A169E4BC102F931800A65E05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169E4BB102F931800A65E05 /* CoreLocation.framework */; };
 		A16A8BCB1038F93C001DF0EF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A16A8BCA1038F93C001DF0EF /* Icon.png */; };
+		A1B5C4EA10A120F500CD3045 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B5C4E910A120F500CD3045 /* MapKit.framework */; };
+		A1B5C50210A1218C00CD3045 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C50110A1218C00CD3045 /* MapViewController.m */; };
+		A1B5C50510A1220F00CD3045 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C50410A1220F00CD3045 /* StopAnnotation.m */; };
+		A1B5C54A10A26FBE00CD3045 /* MapStopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */; };
+		A1B5C54B10A26FBE00CD3045 /* MapStopsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */; };
+		A1B5C58710A27E5B00CD3045 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C58610A27E5B00CD3045 /* Stop.m */; };
 		A1BE49F71041F8C2005CFAD0 /* exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BE49F61041F8C2005CFAD0 /* exclamation.png */; };
 		A1D9AA8E103C50CC006B3744 /* departures_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D9AA8D103C50CC006B3744 /* departures_bg.png */; };
 		A1DF9D05109D3BB100328466 /* LineHeadsignsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */; };
@@ -84,6 +90,16 @@
 		A169E4AF102F928E00A65E05 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		A169E4BB102F931800A65E05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A16A8BCA1038F93C001DF0EF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A1B5C4E910A120F500CD3045 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		A1B5C50010A1218C00CD3045 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		A1B5C50110A1218C00CD3045 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A1B5C50310A1220F00CD3045 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
+		A1B5C50410A1220F00CD3045 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
+		A1B5C54710A26FBE00CD3045 /* MapStopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapStopsViewController.h; sourceTree = "<group>"; };
+		A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapStopsViewController.m; sourceTree = "<group>"; };
+		A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MapStopsViewController.xib; path = Classes/MapStopsViewController.xib; sourceTree = "<group>"; };
+		A1B5C58510A27E5B00CD3045 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
+		A1B5C58610A27E5B00CD3045 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
 		A1BE49F61041F8C2005CFAD0 /* exclamation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exclamation.png; sourceTree = "<group>"; };
 		A1D9AA8D103C50CC006B3744 /* departures_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = departures_bg.png; sourceTree = "<group>"; };
 		A1DF9D02109D3BB100328466 /* LineHeadsignsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineHeadsignsViewController.h; sourceTree = "<group>"; };
@@ -101,6 +117,7 @@
 				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				A169E4BC102F931800A65E05 /* CoreLocation.framework in Frameworks */,
+				A1B5C4EA10A120F500CD3045 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,9 +127,13 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A1B5C50310A1220F00CD3045 /* StopAnnotation.h */,
+				A1B5C50410A1220F00CD3045 /* StopAnnotation.m */,
 				A169E49D102F927100A65E05 /* JSON */,
 				A115174C102F96BF007CFBF6 /* MapBarButtonItem.h */,
 				A115174D102F96BF007CFBF6 /* MapBarButtonItem.m */,
+				A1B5C50010A1218C00CD3045 /* MapViewController.h */,
+				A1B5C50110A1218C00CD3045 /* MapViewController.m */,
 				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
 				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
 				A115173F102F9650007CFBF6 /* ProgressViewController.h */,
@@ -127,6 +148,10 @@
 				1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */,
 				A1DF9D02109D3BB100328466 /* LineHeadsignsViewController.h */,
 				A1DF9D03109D3BB100328466 /* LineHeadsignsViewController.m */,
+				A1B5C54710A26FBE00CD3045 /* MapStopsViewController.h */,
+				A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */,
+				A1B5C58510A27E5B00CD3045 /* Stop.h */,
+				A1B5C58610A27E5B00CD3045 /* Stop.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -164,18 +189,19 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A1DF9D04109D3BB100328466 /* LineHeadsignsViewController.xib */,
-				A1151741102F9650007CFBF6 /* ProgressViewController.xib */,
-				A115173B102F962E007CFBF6 /* TimeEntryController.xib */,
 				A1BE49F61041F8C2005CFAD0 /* exclamation.png */,
 				A168AF8F10407DE300E01E38 /* Default.png */,
 				A1D9AA8D103C50CC006B3744 /* departures_bg.png */,
 				A16A8BCA1038F93C001DF0EF /* Icon.png */,
 				A14FDCB810313164002B9E32 /* clock.png */,
+				8D1107310486CEB800E47090 /* TrainBrain-Info.plist */,
+				A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */,
+				A115173B102F962E007CFBF6 /* TimeEntryController.xib */,
+				A1151741102F9650007CFBF6 /* ProgressViewController.xib */,
+				A1DF9D04109D3BB100328466 /* LineHeadsignsViewController.xib */,
 				A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */,
 				2899E55F0DE3E45000AC0155 /* RootViewController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
-				8D1107310486CEB800E47090 /* TrainBrain-Info.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -183,6 +209,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1B5C4E910A120F500CD3045 /* MapKit.framework */,
 				A169E4BB102F931800A65E05 /* CoreLocation.framework */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
@@ -272,6 +299,7 @@
 				A1690D521040D31000EB0E62 /* Entitlements.plist in Resources */,
 				A1BE49F71041F8C2005CFAD0 /* exclamation.png in Resources */,
 				A1DF9D06109D3BB100328466 /* LineHeadsignsViewController.xib in Resources */,
+				A1B5C54B10A26FBE00CD3045 /* MapStopsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,6 +325,10 @@
 				A1151750102F96BF007CFBF6 /* MapBarButtonItem.m in Sources */,
 				A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */,
 				A1DF9D05109D3BB100328466 /* LineHeadsignsViewController.m in Sources */,
+				A1B5C50210A1218C00CD3045 /* MapViewController.m in Sources */,
+				A1B5C50510A1220F00CD3045 /* StopAnnotation.m in Sources */,
+				A1B5C54A10A26FBE00CD3045 /* MapStopsViewController.m in Sources */,
+				A1B5C58710A27E5B00CD3045 /* Stop.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

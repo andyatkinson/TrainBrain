@@ -10,6 +10,9 @@
 #import "JSON/JSON.h"
 #import "TimeEntryController.h"
 #import "TrainBrainAppDelegate.h"
+#import "MapBarButtonItem.h"
+#import "MapViewController.h"	
+#import "MapStopsViewController.h"
 
 @implementation LineHeadsignsViewController
 
@@ -178,19 +181,18 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	TimeEntryController *targetViewController = (TimeEntryController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
 	
-	// Move this to Map view
-	// add Map button, need to have ll coordinates set in parent view controller
-	//	MapBarButtonItem *temporaryBarButtonItem = [[MapBarButtonItem alloc] 
-	//																							initWithTitle:@"Map" 
-	//																							style:UIBarButtonItemStylePlain 
-	//																							target:self 
-	//																							action:@selector(mapButtonClicked:)];
-	//	temporaryBarButtonItem.locationLat = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.latitude];
-	//	temporaryBarButtonItem.locationLng = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.longitude];
-	//	temporaryBarButtonItem.stationLat = [[views objectAtIndex: indexPath.row] objectForKey:@"lat"];
-	//	temporaryBarButtonItem.stationLng = [[views objectAtIndex: indexPath.row] objectForKey:@"lng"];
-	//	targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
-	//	[temporaryBarButtonItem release];	
+	
+	MapBarButtonItem *temporaryBarButtonItem = [[MapBarButtonItem alloc] 
+																							initWithTitle:@"Map" 
+																							style:UIBarButtonItemStylePlain 
+																							target:self 
+																							action:@selector(mapButtonClicked:)];
+	temporaryBarButtonItem.locationLat = [[NSString alloc] initWithFormat:@"%g", 47.2334];
+	temporaryBarButtonItem.locationLng = [[NSString alloc] initWithFormat:@"%g", -37.234];
+	temporaryBarButtonItem.stationLat = [[views objectAtIndex: indexPath.row] objectForKey:@"lat"];
+	temporaryBarButtonItem.stationLng = [[views objectAtIndex: indexPath.row] objectForKey:@"lng"];
+	targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
+	[temporaryBarButtonItem release];	
 	
 	TrainBrainAppDelegate *appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[appDelegate setHeadsign:[[views objectAtIndex: indexPath.row] objectForKey:@"headsignName"]];
@@ -198,6 +200,14 @@
 	[[self navigationController] pushViewController:targetViewController animated:YES];
 	
 	
+}
+
+- (void)mapButtonClicked:(id)sender {
+	NSLog(@"you clicked the map button!");
+	MapViewController *targetViewController = [[MapViewController alloc] init];	
+	//[[self navigationController] pushViewController:targetViewController animated:YES];
+	MapStopsViewController *mapStops = [[MapStopsViewController alloc] init];
+	[[self navigationController] pushViewController:mapStops animated:YES];
 }
 
 - (void)dealloc {

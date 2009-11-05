@@ -10,8 +10,7 @@
 
 @implementation MapViewController
 
-@synthesize stationLatitude, stationLongitude;
-
+@synthesize currentStopLat, currentStopLng;
 
  // The designated initializer.  Override if you create the controller programmatically and want to perform customization that is not appropriate for viewDidLoad.
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
@@ -26,7 +25,6 @@
     [super viewDidLoad];
 	mapView = [[MKMapView alloc] initWithFrame:self.view.bounds];
 	[mapView setShowsUserLocation:YES];
-
 	
 	mapView.delegate = self;
 	
@@ -38,8 +36,8 @@
 	
 	CLLocationCoordinate2D location = mapView.userLocation.coordinate;
 	
-	location.latitude = [stationLatitude floatValue];
-	location.longitude = [stationLongitude floatValue];
+	location.latitude = [currentStopLat floatValue];
+	location.longitude = [currentStopLng floatValue];
 	region.span = span;
 	region.center = location;
 	

@@ -9,17 +9,16 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <MapKit/MKAnnotation.h>
-#import "StationAnnotation.h"
 
 @interface MapViewController : UIViewController <MKMapViewDelegate, MKReverseGeocoderDelegate> {
 		MKMapView *mapView;
 		MKPlacemark *placeMark;
 		MKReverseGeocoder *geoCoder;
-	NSString *stationLatitude;
-	NSString *stationLongitude;
+	NSString *currentStopLat;
+	NSString *currentStopLng;
 }
 
-@property (nonatomic, retain) NSString *stationLatitude;
-@property (nonatomic, retain) NSString *stationLongitude;
+@property (nonatomic, retain) NSString *currentStopLat;
+@property (nonatomic, retain) NSString *currentStopLng;
 
 @end

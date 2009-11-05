@@ -21,4 +21,6 @@
 @property (nonatomic, retain) IBOutlet NSMutableArray *views;
 @property (nonatomic, retain)	ProgressViewController *progressViewController;
 
+- (void)mapButtonClicked:(id)sender;
+
 @end
