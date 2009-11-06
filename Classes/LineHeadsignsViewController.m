@@ -11,7 +11,6 @@
 #import "TimeEntryController.h"
 #import "TrainBrainAppDelegate.h"
 #import "MapBarButtonItem.h"
-#import "MapViewController.h"	
 #import "MapStopsViewController.h"
 
 @implementation LineHeadsignsViewController
@@ -204,10 +203,7 @@
 
 - (void)mapButtonClicked:(id)sender {
 	NSLog(@"you clicked the map button!");
-	MapViewController *targetViewController = [[MapViewController alloc] init];	
-	//[[self navigationController] pushViewController:targetViewController animated:YES];
-	MapStopsViewController *mapStops = [[MapStopsViewController alloc] init];
-	[[self navigationController] pushViewController:mapStops animated:YES];
+
 }
 
 - (void)dealloc {

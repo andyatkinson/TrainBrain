@@ -34,7 +34,6 @@
 		A169E4BC102F931800A65E05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169E4BB102F931800A65E05 /* CoreLocation.framework */; };
 		A16A8BCB1038F93C001DF0EF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A16A8BCA1038F93C001DF0EF /* Icon.png */; };
 		A1B5C4EA10A120F500CD3045 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B5C4E910A120F500CD3045 /* MapKit.framework */; };
-		A1B5C50210A1218C00CD3045 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C50110A1218C00CD3045 /* MapViewController.m */; };
 		A1B5C50510A1220F00CD3045 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C50410A1220F00CD3045 /* StopAnnotation.m */; };
 		A1B5C54A10A26FBE00CD3045 /* MapStopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */; };
 		A1B5C54B10A26FBE00CD3045 /* MapStopsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */; };
@@ -91,8 +90,6 @@
 		A169E4BB102F931800A65E05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A16A8BCA1038F93C001DF0EF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A1B5C4E910A120F500CD3045 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
-		A1B5C50010A1218C00CD3045 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
-		A1B5C50110A1218C00CD3045 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		A1B5C50310A1220F00CD3045 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
 		A1B5C50410A1220F00CD3045 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
 		A1B5C54710A26FBE00CD3045 /* MapStopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapStopsViewController.h; sourceTree = "<group>"; };
@@ -132,8 +129,6 @@
 				A169E49D102F927100A65E05 /* JSON */,
 				A115174C102F96BF007CFBF6 /* MapBarButtonItem.h */,
 				A115174D102F96BF007CFBF6 /* MapBarButtonItem.m */,
-				A1B5C50010A1218C00CD3045 /* MapViewController.h */,
-				A1B5C50110A1218C00CD3045 /* MapViewController.m */,
 				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
 				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
 				A115173F102F9650007CFBF6 /* ProgressViewController.h */,
@@ -325,7 +320,6 @@
 				A1151750102F96BF007CFBF6 /* MapBarButtonItem.m in Sources */,
 				A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */,
 				A1DF9D05109D3BB100328466 /* LineHeadsignsViewController.m in Sources */,
-				A1B5C50210A1218C00CD3045 /* MapViewController.m in Sources */,
 				A1B5C50510A1220F00CD3045 /* StopAnnotation.m in Sources */,
 				A1B5C54A10A26FBE00CD3045 /* MapStopsViewController.m in Sources */,
 				A1B5C58710A27E5B00CD3045 /* Stop.m in Sources */,

@@ -89,6 +89,7 @@
 			[newStop setLocation:stopLocation];
 			[stopLocation release];
 
+			
 			StopAnnotation *stopAnnotation = [StopAnnotation annotationWithStop:newStop];
 			[self.mapView addAnnotation:stopAnnotation];
 			
