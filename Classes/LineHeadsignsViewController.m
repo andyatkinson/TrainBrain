@@ -204,6 +204,8 @@
 - (void)mapButtonClicked:(id)sender {
 	NSLog(@"you clicked the map button!");
 
+	MapStopsViewController *mapStops = [[MapStopsViewController alloc] init];
+	[[self navigationController] pushViewController:mapStops animated:YES];
 }
 
 - (void)dealloc {
