@@ -37,7 +37,4 @@
 
 -(IBAction)refreshStations:(id)sender;
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
-- (void)mapButtonClicked:(id)sender; 
-
 @end

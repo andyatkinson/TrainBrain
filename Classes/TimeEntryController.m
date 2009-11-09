@@ -8,7 +8,6 @@
 
 #import "TimeEntryController.h"
 #import "JSON/JSON.h"
-#import "TrainBrainAppDelegate.h"
 
 @interface TimeEntryController (Private)
 - (void) loadTimeEntries;
@@ -17,7 +16,7 @@
 @implementation TimeEntryController
 
 @synthesize responseData, railStationId, railStationName, timeEntryRows, progressViewController, southbound, timeEntriesTableView, 
-bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
+bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDelegate;
 
 - (void)updateSouthbound:(NSInteger)newVal {
 	self.southbound = newVal;
@@ -48,7 +47,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 	// Setting it from one view controller to another which is not a good solution	
 	// http://api.trainbrainapp.com
 
-	TrainBrainAppDelegate *appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	
 	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/stop_times.json?headsign=%@&stop_ids=%@&time=%d:%d",
 													[appDelegate getHeadsign],
@@ -120,7 +119,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 	[parser release];
 	[responseString release];
 	
-	
+	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	
 	// now is used for time remaining for each route and for big label
 	NSDate *now = [NSDate date];
@@ -133,6 +132,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage;
 	int count = [entries count];
 	for(int i=0; i < count; i++) {
 		NSMutableDictionary *entry = [entries objectAtIndex:i];
+		
 		NSString *hour = [entry objectForKey:@"hour"];
 		NSString *minute = [entry objectForKey:@"minute"];
 		NSString *cost = [entry objectForKey:@"cost"];

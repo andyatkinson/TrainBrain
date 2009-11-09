@@ -10,7 +10,7 @@
   UIWindow *window;
   UINavigationController *navigationController;
 
-	NSString *line;
+	NSString *selectedRouteId;
 	NSString *headsign;
 	NSMutableArray *stopIds;
 }
@@ -18,8 +18,8 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 
-- (void) setLine:(NSString *)selectedLine;
-- (NSString *) getLine;
+- (void) setSelectedRouteId:(NSString *)newRouteId;
+- (NSString *) getSelectedRouteId;
 
 - (void) setHeadsign:(NSString *)selectedHeadsign;
 - (NSString *) getHeadsign;

@@ -24,7 +24,7 @@ linesTableView, southbound, directionControl, mapURL;
 
 - (void) loadRailStations {
 	ProgressViewController *pvc = [[ProgressViewController alloc] init];
-	pvc.message = @"Loading Train Lines...";
+	pvc.message = @"Loading Train Routes...";
 	self.progressViewController = pvc;
 	[self.view addSubview:pvc.view];
 	
@@ -51,13 +51,7 @@ linesTableView, southbound, directionControl, mapURL;
 	
 	// TODO is this used?
 	responseData = [[NSMutableData data] retain];
-	
-	//UIBarButtonItem *temporaryBarButtonItem = [[UIBarButtonItem alloc] init];
-//	temporaryBarButtonItem.title = @"Stations";
-//	self.navigationItem.backBarButtonItem = temporaryBarButtonItem;
-//	[temporaryBarButtonItem release];
-	
-	// set the title of the main navigation
+
 	self.title = @"train brain";
 }
 
@@ -93,25 +87,18 @@ linesTableView, southbound, directionControl, mapURL;
 	int count = [lines count];
 	if(count > 0) {
 		for(int i=0; i < count; i++) {
-			NSMutableDictionary *line = [lines objectAtIndex:i];
+			NSMutableDictionary *line = [[lines objectAtIndex:i] objectForKey:@"route"];
+			NSString *routeId = [line objectForKey:@"route_id"];
+			NSString *shortName = [line objectForKey:@"short_name"];
+			NSString *longName = [line objectForKey:@"long_name"];
 			LineHeadsignsViewController *lineHeadsignsViewController = [[LineHeadsignsViewController alloc] init];
 			
 			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-												line, @"lineName",
+												routeId, @"route_id",
+												shortName, @"short_name",
+												longName, @"long_name",
 												lineHeadsignsViewController, @"controller",
 												nil]];
-			
-//			TimeEntryController *timeEntryController = [[TimeEntryController alloc] init];
-//			[timeEntryController setRailStationId:[station objectForKey:@"id"]]; // TODO should probably extract an object here
-//			[timeEntryController setRailStationName:stationName];
-//			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-//												stationName, @"title",
-//												timeEntryController, @"controller",
-//												distance, @"distance",
-//												lat, @"lat",
-//												lng, @"lng",
-//												nil]];
-//			[timeEntryController release];
 		}
 	} else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Stations Found.\n\nPlease try tapping the refresh button." 
@@ -126,23 +113,21 @@ linesTableView, southbound, directionControl, mapURL;
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
 	[linesTableView reloadData];
 	
-	self.title = @"Lines";
+	self.title = @"Train Routes";
 	// remove the modal view, now that the location has been calculated
 	[progressViewController.view	removeFromSuperview];
 }
 
 
-// Location delegaate code TODO: should this be in another view controller?
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-	if(startingPoint == nil)
+	if(startingPoint == nil) {
 		self.startingPoint = newLocation;
+	}
 	
-	NSString *newURL = @"http://localhost:3000/lines.json";
-//	NSString *locationString = [[NSString alloc] initWithFormat:@"http://api.trainbrainapp.com/rail_stations.json?ll=%g,%g", 
-//															newLocation.coordinate.latitude, 
-//															newLocation.coordinate.longitude];
+	//TrainBrainAppDelegate *appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	//[appDelegate setCurrentLocation:newLocation];
 	
-	NSString *locationString = [[NSString alloc] initWithFormat:@"http://localhost:3000/lines.json"];
+	NSString *locationString = [[NSString alloc] initWithFormat:@"http://localhost:3000/train_routes.json"];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:locationString]];
 	[locationString release];
 	
@@ -195,79 +180,30 @@ linesTableView, southbound, directionControl, mapURL;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *CellIdentifier = @"Cell";
-   
-	UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-	}
-
-	cell.textLabel.text = [[views objectAtIndex:indexPath.row] objectForKey:@"lineName"];
 	
-//	CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];  
-//	if (cell == nil) {  
-//		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];  
-//	}  
-//		
-//	// Set up the cell...
-//	cell.titleLabel.text = [[views objectAtIndex:indexPath.row] objectForKey:@"lineName"];
-//	NSString *distanceString = [NSString stringWithFormat:@"%@", [[views objectAtIndex:indexPath.row] objectForKey:@"distance"]];
-//	cell.distanceLabel.text = distanceString;
+	CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];  
+	if (cell == nil) {  
+		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];  
+	}  
+		
+	// Set up the cell...
+	cell.titleLabel.text = [[views objectAtIndex:indexPath.row] objectForKey:@"short_name"];
+	NSString *longName = [NSString stringWithFormat:@"%@", [[views objectAtIndex:indexPath.row] objectForKey:@"long_name"]];
+	cell.distanceLabel.text = longName;
 
 	return cell;
 }
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	//TimeEntryController *targetViewController = (TimeEntryController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
 	LineHeadsignsViewController *targetViewController = (LineHeadsignsViewController *)[[views objectAtIndex:indexPath.row] objectForKey:@"controller"];
 	
-
-	// Move this to Map view
-	// add Map button, need to have ll coordinates set in parent view controller
-//	MapBarButtonItem *temporaryBarButtonItem = [[MapBarButtonItem alloc] 
-//																							initWithTitle:@"Map" 
-//																							style:UIBarButtonItemStylePlain 
-//																							target:self 
-//																							action:@selector(mapButtonClicked:)];
-//	temporaryBarButtonItem.locationLat = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.latitude];
-//	temporaryBarButtonItem.locationLng = [[NSString alloc] initWithFormat:@"%g", startingPoint.coordinate.longitude];
-//	temporaryBarButtonItem.stationLat = [[views objectAtIndex: indexPath.row] objectForKey:@"lat"];
-//	temporaryBarButtonItem.stationLng = [[views objectAtIndex: indexPath.row] objectForKey:@"lng"];
-//	targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
-//	[temporaryBarButtonItem release];	
-	
 	TrainBrainAppDelegate *appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[appDelegate setLine:[[views objectAtIndex:indexPath.row] objectForKey:@"lineName"]];
+	[appDelegate setSelectedRouteId:[[views objectAtIndex:indexPath.row] objectForKey:@"route_id"]];
 	
 	[[self navigationController] pushViewController:targetViewController animated:YES];
 	
 }
-
-- (void) mapButtonClicked:(id)sender {	
-	MapBarButtonItem *button = (MapBarButtonItem *)sender;
-	//NSLog(@"sender locationLat %@ locationLng %@ stationLat %@ stationLng %@", button.locationLat, button.locationLat, button.stationLat, button.stationLng);
-	mapURL = [[NSString alloc] initWithFormat:@"http://maps.google.com/maps?saddr=%@,%@&daddr=%@,%@", button.locationLat, button.locationLng, button.stationLat, button.stationLng]; 
-								
-	// open the Maps application with a specific link
-	UIAlertView *alert = [[UIAlertView alloc]  
-												initWithTitle:@"Leave train brain and launch Maps application?"  
-												message:nil  
-												delegate:self  
-												cancelButtonTitle:@"Cancel"  
-												otherButtonTitles:@"OK", nil];  
-	[alert show];  
-	[alert release];  
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex  
-{  
-	if (buttonIndex == 1) {  
-		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:mapURL]];
-	}  
-	else {  
-		// no-op Don't launch Maps app, stay within train brain
-	}  
-} 
 
 - (void)dealloc {
 	[views release];

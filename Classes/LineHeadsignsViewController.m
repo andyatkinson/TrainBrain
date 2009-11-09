@@ -9,13 +9,12 @@
 #import "LineHeadsignsViewController.h"
 #import "JSON/JSON.h"
 #import "TimeEntryController.h"
-#import "TrainBrainAppDelegate.h"
 #import "MapBarButtonItem.h"
 #import "MapStopsViewController.h"
 
 @implementation LineHeadsignsViewController
 
-@synthesize headsignsTableView, responseData, views, progressViewController;
+@synthesize headsignsTableView, responseData, views, progressViewController, appDelegate;
 
 - (void) loadLineHeadsigns {
 	ProgressViewController *pvc = [[ProgressViewController alloc] init];
@@ -26,18 +25,10 @@
 	// TODO probably could instantiate/use a time entry object
 	responseData = [[NSMutableData data] retain];
 	
-	// TODO put this as property?
-	TrainBrainAppDelegate *appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	
-
-//	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/rail_stations/%@/time_entries.json?t=%d:%d&s=%d", 
-//																	[self railStationId],
-//																	hour,
-//																	minute,
-//																	[self southbound]];
-	
-	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/headsigns.json?lat=44.948364&lng=-93.239143&route_id=%@",
-													[appDelegate getLine]];
+	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/train_routes/%@/headsigns.json?lat=44.948364&lng=-93.239143",
+													[appDelegate getSelectedRouteId]];
 	
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
 	
@@ -83,7 +74,7 @@
 	[responseString release];
 	views = [[NSMutableArray alloc] init];
 	
-	TrainBrainAppDelegate *appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	
 	int count = [headsigns count];
 	if(count > 0) {
@@ -193,7 +184,7 @@
 	targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
 	[temporaryBarButtonItem release];	
 	
-	TrainBrainAppDelegate *appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[appDelegate setHeadsign:[[views objectAtIndex: indexPath.row] objectForKey:@"headsignName"]];
 	
 	[[self navigationController] pushViewController:targetViewController animated:YES];

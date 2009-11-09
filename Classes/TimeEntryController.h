@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DepartureDetailCell.h"
 #import "ProgressViewController.h"
+#import "TrainBrainAppDelegate.h"
 
 @interface TimeEntryController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 	IBOutlet UITableView *timeEntriesTableView;
@@ -22,6 +23,7 @@
 	IBOutlet UILabel *bigTime;
 	IBOutlet UILabel *upcomingDeparturesLabel;
 	IBOutlet UIImageView *nextDepartureImage;
+	TrainBrainAppDelegate *appDelegate;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *timeEntriesTableView;
@@ -35,6 +37,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *bigTimeHeaderText;
 @property (nonatomic, retain)	IBOutlet UILabel *upcomingDeparturesLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *nextDepartureImage;
+@property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
 -(void)updateSouthbound:(NSInteger) newValue;
 -(IBAction)refreshTimes:(id)sender;

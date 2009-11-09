@@ -18,11 +18,11 @@
 	[window makeKeyAndVisible];
 }
 
-- (void) setLine:(NSString *)selectedLine {
-	line = selectedLine;
+- (void) setSelectedRouteId:(NSString *)newRouteId {
+	selectedRouteId = newRouteId;
 }
-- (NSString *) getLine {
-	return line;
+- (NSString *) getSelectedRouteId {
+	return selectedRouteId;
 }
 
 - (void) setHeadsign:(NSString *)selectedHeadsign {
@@ -44,7 +44,6 @@
 }
 
 - (void)dealloc {
-
 	[navigationController release];
 	[window release];
 	[super dealloc];

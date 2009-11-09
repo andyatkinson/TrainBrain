@@ -9,18 +9,19 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import "ProgressViewController.h"
+#import "TrainBrainAppDelegate.h"
 
 @interface MapStopsViewController : UIViewController <MKMapViewDelegate> {
 	MKMapView *mapView;
 	ProgressViewController *progressViewController;
 	NSMutableData *responseData;
+	TrainBrainAppDelegate *appDelegate;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain)	ProgressViewController *progressViewController;
 @property (nonatomic, retain) NSMutableData *responseData;
-
--(IBAction)toggleMapStopsView:(id)sender;
+@property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
 
 @end

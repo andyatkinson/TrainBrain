@@ -13,7 +13,7 @@
 
 @implementation MapStopsViewController
 
-@synthesize mapView, progressViewController, responseData;
+@synthesize mapView, progressViewController, responseData, appDelegate;
 
 - (void) loadStops {
 	ProgressViewController *pvc = [[ProgressViewController alloc] init];
@@ -21,13 +21,8 @@
 	self.progressViewController = pvc;
 	[self.view addSubview:pvc.view];
 	
-	responseData = [[NSMutableData data] retain];
-	
-	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/all_stops.json"];
-	
+	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/stops.json"];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
-	
-	// kick off the request, the view is reloaded from the request handler
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
@@ -36,18 +31,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	responseData = [[NSMutableData data] retain];
 	[self loadStops];
-	
-	[self setTitle:@"Stops"];
-	
-	// load the current station
+	[self setTitle:@"Train Stops"];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+	NSLog(@"receiging response");
 	[responseData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+	NSLog(@"receiving data");
 	[responseData appendData:data];
 }
 
@@ -62,10 +58,40 @@
 	[alert release];
 }
 
+- (void)recenterMap {
+	NSArray *coordinates = [self.mapView valueForKeyPath:@"annotations.coordinate"];
+	CLLocationCoordinate2D maxCoord = {-90.0f, -180.0f};
+	CLLocationCoordinate2D minCoord = {90.0f, 180.0f};
+	for(NSValue *value in coordinates) {
+		CLLocationCoordinate2D coord = {0.0f, 0.0f};
+		[value getValue:&coord];
+		if(coord.longitude > maxCoord.longitude) {
+			maxCoord.longitude = coord.longitude;
+		}
+		if(coord.latitude > maxCoord.latitude) {
+			maxCoord.latitude = coord.latitude;
+		}
+		if(coord.longitude < minCoord.longitude) {
+			minCoord.longitude = coord.longitude;
+		}
+		if(coord.latitude < minCoord.latitude) {
+			minCoord.latitude = coord.latitude;
+		}
+	}
+	MKCoordinateRegion region = {{0.0f, 0.0f}, {0.0f, 0.0f}};
+	region.center.longitude = (minCoord.longitude + maxCoord.longitude) / 2.0;
+	region.center.latitude = (minCoord.latitude + maxCoord.latitude) / 2.0;
+	region.span.longitudeDelta = maxCoord.longitude - minCoord.longitude;
+	region.span.latitudeDelta = maxCoord.latitude - minCoord.latitude;
+	[self.mapView setRegion:region animated:YES];  
+}
+
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	[connection release];
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+	NSLog(@"got response %@", responseString);
 	SBJSON *parser = [[SBJSON alloc] init];
 	NSArray *stops = [parser objectWithString:responseString error:nil];
 	[parser release];
@@ -91,10 +117,9 @@
 
 			
 			StopAnnotation *stopAnnotation = [StopAnnotation annotationWithStop:newStop];
-			[self.mapView addAnnotation:stopAnnotation];
-			
+			[self.mapView addAnnotation:stopAnnotation];			
 		}
-		
+	
 	} else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Stops Found." 
 																										message:nil 
@@ -106,6 +131,7 @@
 	}
 	
 	[progressViewController.view	removeFromSuperview];
+	[self recenterMap];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -114,14 +140,6 @@
 	
 	// Release any cached data, images, etc that aren't in use.
 
-}
-
--(IBAction)toggleMapStopsView:(id)sender {
-	NSLog(@"toggle the view");
-	
-	
-	
-	// make the web call and load all the stations
 }
 
 - (void)viewDidUnload {
