@@ -42,8 +42,8 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 	
 	NSString *requestURL = [NSString stringWithFormat:@"%@stop_times.json?headsign=%@&stop_ids=%@&time=%d:%d",
 													[appDelegate getBaseUrl],
-													[appDelegate getHeadsign],
-													[[appDelegate getStopIds] componentsJoinedByString:@","],
+													[appDelegate getSelectedHeadsign],
+													[appDelegate getSelectedStopId],
 													hour,
 													minute];
 	requestURL = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];

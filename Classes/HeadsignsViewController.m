@@ -1,30 +1,26 @@
 //
-//  LineHeadsignsViewController.m
+//  HeadsignsViewController.m
 //  TrainBrain
 //
-//  Created by Andy Atkinson on 10/31/09.
+//  Created by Andy Atkinson on 11/10/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
 
-#import "LineHeadsignsViewController.h"
+#import "HeadsignsViewController.h"
 #import "JSON/JSON.h"
 #import "TimeEntryViewController.h"
-#import "MapBarButtonItem.h"
 #import "MapStopsViewController.h"
 
-@implementation LineHeadsignsViewController
+@implementation HeadsignsViewController
 
-@synthesize headsignsTableView, responseData, views, progressViewController, appDelegate;
+@synthesize tableView, responseData, views, progressViewController, appDelegate;
 
-- (void) loadLineHeadsigns {
-	progressViewController.message = [NSString stringWithFormat:@"Loading Headsigns for Line..."];
+- (void) loadHeadsigns {
+	progressViewController.message = [NSString stringWithFormat:@"Loading Headsigns for Station..."];
 	[self.view addSubview:progressViewController.view];
 	[progressViewController startProgressIndicator];
 	
-	// TODO probably could instantiate/use a time entry object
-	responseData = [[NSMutableData data] retain];
-	
-	NSString *requestURL = [NSString stringWithFormat:@"%@train_routes/%@/headsigns.json?lat=44.948364&lng=-93.239143",
+	NSString *requestURL = [NSString stringWithFormat:@"%@train_routes/%@/headsigns.json",
 													[appDelegate getBaseUrl],
 													[appDelegate getSelectedRouteId]];
 	
@@ -34,14 +30,13 @@
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
-
-
-- (void)viewDidLoad {
+- (void) viewDidLoad {
 	[super viewDidLoad];
+	responseData = [[NSMutableData data] retain];
 	progressViewController = [[ProgressViewController alloc] init];
-	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	[self loadLineHeadsigns];
-	self.title = @"Lines";
+	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];	
+	[self loadHeadsigns];
+	self.title = @"Choose Direction";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -78,28 +73,21 @@
 	int count = [headsigns count];
 	if(count > 0) {
 		for(int i=0; i < count; i++) {
-			NSMutableDictionary *item = [headsigns objectAtIndex:i];
+			NSMutableDictionary *headsignName = [headsigns objectAtIndex:i];
 			TimeEntryViewController *timeEntryViewController = [[TimeEntryViewController alloc] init];
-			
-			NSString *headsign = [item objectForKey:@"headsign"];
-			if(headsign != NULL) {
-				NSLog(@"headsign %@", headsign);
+
+			if(headsignName != NULL) {
 				[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-													headsign, @"headsignName",
+													headsignName, @"headsignName",
 													timeEntryViewController, @"controller",
 													nil]];
-			}
-			
-			NSMutableDictionary *stop = [item objectForKey:@"stop"];
-			if(stop != NULL) {
-				[appDelegate addStopId:[stop objectForKey:@"id"]];
 			}
 			
 			[timeEntryViewController release];
 			
 		}
 	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No headsigns Found.\n\nPlease try tapping the refresh button." 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Headsigns Found." 
 																										message:nil 
 																									 delegate:nil 
 																					cancelButtonTitle:@"OK" 
@@ -109,32 +97,40 @@
 	}
 	
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
-	[headsignsTableView reloadData];
+	[tableView reloadData];
 	
-	self.title = @"Direction";
 	[progressViewController.view	removeFromSuperview];
 	[progressViewController stopProgressIndicator];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-	// Unselect the selected row if any
-	NSIndexPath*	selection = [headsignsTableView indexPathForSelectedRow];
-	if (selection) {
-		[headsignsTableView deselectRowAtIndexPath:selection animated:YES];
-	}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
+- (void)viewDidUnload {
+	// Release any retained subviews of the main view.
+	// e.g. self.myOutlet = nil;
 }
 
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	//return [[fetchedResultsController sections] count];
 	return 1;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return [views count];
+}
+
+
+- (void)viewWillAppear:(BOOL)animated
+{
+	// Unselect the selected row if any
+	NSIndexPath*	selection = [tableView indexPathForSelectedRow];
+	if (selection) {
+		[tableView deselectRowAtIndexPath:selection animated:YES];
+	}
 }
 
 
@@ -148,57 +144,35 @@
 	
 	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
 	NSString *headsignName = [[views objectAtIndex:indexPath.row] objectForKey:@"headsignName"];
-	NSLog(@"making cell %@", headsignName);
+	NSLog(@"headsign text %@", headsignName);
 	cell.textLabel.text = headsignName;	
 	return cell;
-}
-
-
-- (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	TimeEntryViewController *targetViewController = (TimeEntryViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
 	
-	MapBarButtonItem *temporaryBarButtonItem = [[MapBarButtonItem alloc] 
-																							initWithTitle:@"Map" 
-																							style:UIBarButtonItemStylePlain 
-																							target:self 
-																							action:@selector(mapButtonClicked:)];
-	temporaryBarButtonItem.locationLat = [[NSString alloc] initWithFormat:@"%g", 47.2334];
-	temporaryBarButtonItem.locationLng = [[NSString alloc] initWithFormat:@"%g", -37.234];
-	temporaryBarButtonItem.stationLat = [[views objectAtIndex: indexPath.row] objectForKey:@"lat"];
-	temporaryBarButtonItem.stationLng = [[views objectAtIndex: indexPath.row] objectForKey:@"lng"];
-	targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
-	[temporaryBarButtonItem release];	
+	UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapButtonClicked:)];
+	targetViewController.navigationItem.rightBarButtonItem = mapButton;
+	[mapButton release];
 	
-	[appDelegate setHeadsign:[[views objectAtIndex: indexPath.row] objectForKey:@"headsignName"]];
+	[appDelegate setSelectedHeadsign:[[views objectAtIndex:indexPath.row] objectForKey:@"headsignName"]];
 	
-	[[self navigationController] pushViewController:targetViewController animated:YES];
-	
-	
+	[[self navigationController] pushViewController:targetViewController animated:YES];	
 }
 
-- (void)mapButtonClicked:(id)sender {
-	NSLog(@"you clicked the map button!");
 
+- (void)mapButtonClicked:(id)sender {
 	MapStopsViewController *mapStops = [[MapStopsViewController alloc] init];
 	[[self navigationController] pushViewController:mapStops animated:YES];
 }
 
+
 - (void)dealloc {
     [super dealloc];
-	[headsignsTableView dealloc];
+	[tableView release];
 }
 
 
 @end
+

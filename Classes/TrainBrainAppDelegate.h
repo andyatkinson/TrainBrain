@@ -11,8 +11,8 @@
   UINavigationController *navigationController;
 
 	NSString *selectedRouteId;
-	NSString *headsign;
-	NSMutableArray *stopIds;
+	NSString *selectedHeadsign;
+	NSMutableArray *selectedStopId;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -21,11 +21,11 @@
 - (void) setSelectedRouteId:(NSString *)newRouteId;
 - (NSString *) getSelectedRouteId;
 
-- (void) setHeadsign:(NSString *)selectedHeadsign;
-- (NSString *) getHeadsign;
+- (void) setSelectedHeadsign:(NSString *)newHeadsign;
+- (NSString *) getSelectedHeadsign;
 
-- (void) addStopId:(NSString *)newStopId;
-- (NSArray *) getStopIds;
+- (void) setSelectedStopId:(NSString *)newStopId;
+- (NSString *) getSelectedStopId;
 
 - (NSString *) getBaseUrl;
 

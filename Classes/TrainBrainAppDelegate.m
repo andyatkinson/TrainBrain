@@ -25,22 +25,17 @@
 	return selectedRouteId;
 }
 
-- (void) setHeadsign:(NSString *)selectedHeadsign {
-	headsign = selectedHeadsign;
+- (void) setSelectedHeadsign:(NSString *)newHeadsign {
+	selectedHeadsign = newHeadsign;
 }
-- (NSString *) getHeadsign {
-	return headsign;
+- (NSString *) getSelectedHeadsign {
+	return selectedHeadsign;
 }
-
-- (void) addStopId:(NSString *)newStopId {
-	if(stopIds == nil) {
-		stopIds = [[NSMutableArray alloc] init];
-	}
-	[stopIds addObject:newStopId];
+- (void) setSelectedStopId:(NSString *)newStopId {
+	selectedStopId = newStopId;
 }
-
-- (NSArray *) getStopIds {
-	return stopIds;
+- (NSString *) getSelectedStopId {
+	return selectedStopId;
 }
 
 - (NSString *) getBaseUrl {

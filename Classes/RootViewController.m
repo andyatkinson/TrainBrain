@@ -10,7 +10,7 @@
 #import "JSON/JSON.h"
 #import "TrainBrainAppDelegate.h"
 #import "MapBarButtonItem.h"
-#import "LineHeadsignsViewController.h"
+#import "TrainStationsViewController.h"
 
 @interface RootViewController (Private)
 - (void)loadRailStations;
@@ -18,8 +18,8 @@
 
 @implementation RootViewController
 
-@synthesize railStations, views, responseData, locationManager, startingPoint, progressViewController, 
-linesTableView, southbound, directionControl, mapURL, appDelegate;
+@synthesize views, responseData, locationManager, startingPoint, progressViewController, 
+linesTableView, appDelegate;
 
 - (void) loadRailStations {
 	progressViewController.message = @"Loading Train Routes...";
@@ -43,10 +43,6 @@ linesTableView, southbound, directionControl, mapURL, appDelegate;
 	
 	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	progressViewController = [[ProgressViewController alloc] init];
-	
-	directionControl.segmentedControlStyle = UISegmentedControlStyleBar;
-	directionControl.tintColor = [UIColor darkGrayColor];
-	directionControl.backgroundColor = [UIColor clearColor];
 	
 	[self loadRailStations];
 	responseData = [[NSMutableData data] retain];
@@ -90,13 +86,13 @@ linesTableView, southbound, directionControl, mapURL, appDelegate;
 			NSString *routeId = [line objectForKey:@"route_id"];
 			NSString *shortName = [line objectForKey:@"short_name"];
 			NSString *longName = [line objectForKey:@"long_name"];
-			LineHeadsignsViewController *lineHeadsignsViewController = [[LineHeadsignsViewController alloc] init];
+			TrainStationsViewController *trainStationsViewController = [[TrainStationsViewController alloc] init];
 			
 			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 												routeId, @"route_id",
 												shortName, @"short_name",
 												longName, @"long_name",
-												lineHeadsignsViewController, @"controller",
+												trainStationsViewController, @"controller",
 												nil]];
 		}
 	} else {
@@ -197,7 +193,7 @@ linesTableView, southbound, directionControl, mapURL, appDelegate;
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	LineHeadsignsViewController *targetViewController = (LineHeadsignsViewController *)[[views objectAtIndex:indexPath.row] objectForKey:@"controller"];
+	TrainStationsViewController *targetViewController = (TrainStationsViewController *)[[views objectAtIndex:indexPath.row] objectForKey:@"controller"];
 	
 	[appDelegate setSelectedRouteId:[[views objectAtIndex:indexPath.row] objectForKey:@"route_id"]];
 	
@@ -211,7 +207,6 @@ linesTableView, southbound, directionControl, mapURL, appDelegate;
 	[startingPoint release];
 	[progressViewController release];
 	[linesTableView release];
-	[railStations release];
 	[responseData release];
 	[super dealloc];
 }
