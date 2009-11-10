@@ -13,11 +13,19 @@
 
 @implementation MapStopsViewController
 
-@synthesize mapView, progressViewController, responseData, appDelegate;
+@synthesize mapView = _mapView;
+@synthesize responseData;
+@synthesize progressViewController;
+@synthesize appDelegate;
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+}
 
 - (void) loadStops {
 	progressViewController.message = [NSString stringWithFormat:@"Loading Stops..."];
 	[self.view addSubview:progressViewController.view];
+	[progressViewController startProgressIndicator];
 	
 	NSString *requestURL = [NSString stringWithFormat:@"%@stops.json", [appDelegate getBaseUrl]];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
@@ -27,12 +35,12 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	[super viewDidLoad];
 	progressViewController = [[ProgressViewController alloc] init];
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	responseData = [[NSMutableData data] retain];
 	[self loadStops];
 	[self setTitle:@"Train Stops"];
+		[super viewDidLoad];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -83,9 +91,11 @@
 	[self.mapView setRegion:region animated:YES];  
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+
+- (MKAnnotationView *)mapView:(MKMapView *)mapView 
+            viewForAnnotation:(id <MKAnnotation>)annotation {
 	NSLog(@"viewForAnnotation entered");
-	MKAnnotationView *view = nil;
+  MKAnnotationView *view = nil;
 	if(annotation != mapView.userLocation) {
 		StopAnnotation *stopAnn = (StopAnnotation *)annotation;
 		view = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"stopRouteId"];
@@ -102,6 +112,7 @@
 		} 
 		[(MKPinAnnotationView *)view setAnimatesDrop:YES];
 		[view setCanShowCallout:YES];
+		NSLog(@"setting accessory view");
     [view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
   }
 
@@ -109,9 +120,18 @@
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-  //EarthquakeAnnotation *eqAnn = (EarthquakeAnnotation *)[view annotation];
-  NSURL *url = [NSURL URLWithString:@"http://google.com"];
+  NSURL *url = [NSURL URLWithString:@"http://metrotransit.com"];
   [[UIApplication sharedApplication] openURL:url];
+}
+
+- (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Map data is unavailable." 
+																									message:nil 
+																								 delegate:nil 
+																				cancelButtonTitle:@"OK" 
+																				otherButtonTitles:nil];
+	[alert show];
+	[alert release];
 }
 
 
@@ -143,9 +163,8 @@
 			[newStop setLocation:stopLocation];
 			[stopLocation release];
 
-			
 			StopAnnotation *stopAnnotation = [StopAnnotation annotationWithStop:newStop];
-			[self.mapView addAnnotation:stopAnnotation];			
+			[self.mapView addAnnotation:stopAnnotation];
 		}
 	
 	} else {
@@ -178,7 +197,11 @@
 
 
 - (void)dealloc {
-    [super dealloc];
+	[super dealloc];
+	_mapView = nil;
+	[progressViewController dealloc];
+	[responseData dealloc];
+	[appDelegate dealloc];
 }
 
 

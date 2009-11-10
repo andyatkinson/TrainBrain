@@ -15,8 +15,6 @@
 - (void)viewDidLoad {	
   [super viewDidLoad];
 	[self.loadingLabel setText:message];
-	[activityIndicator startAnimating];
-	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 
@@ -25,6 +23,11 @@
     [super didReceiveMemoryWarning];
 	
 	// Release any cached data, images, etc that aren't in use.
+}
+
+- (void) startProgressIndicator {
+	[activityIndicator startAnimating];
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 - (void) stopProgressIndicator {

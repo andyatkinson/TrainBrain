@@ -44,7 +44,8 @@
 }
 
 - (NSString *) getBaseUrl {
-	return @"http://trainbrain-api2.heroku.com/";
+	return @"http://localhost:3000/";
+	//return @"http://trainbrain-api2.heroku.com/";
 }
 
 - (void)dealloc {

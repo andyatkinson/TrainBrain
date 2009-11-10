@@ -24,6 +24,7 @@ linesTableView, southbound, directionControl, mapURL, appDelegate;
 - (void) loadRailStations {
 	progressViewController.message = @"Loading Train Routes...";
 	[self.view addSubview:progressViewController.view];
+	[progressViewController startProgressIndicator];
 	
 	self.locationManager = [[CLLocationManager alloc] init];
 	locationManager.delegate = self;
@@ -48,10 +49,7 @@ linesTableView, southbound, directionControl, mapURL, appDelegate;
 	directionControl.backgroundColor = [UIColor clearColor];
 	
 	[self loadRailStations];
-	
-	// TODO is this used?
 	responseData = [[NSMutableData data] retain];
-
 	self.title = @"train brain";
 }
 

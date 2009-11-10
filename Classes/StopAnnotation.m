@@ -24,7 +24,7 @@
 	self = [super init];
 	if(nil != self) {
 		self.title = stop.stopName;
-		self.subtitle = stop.description;
+		self.subtitle = [NSString stringWithFormat:@"%@ - %@", stop.description, stop.street];
 		self.coordinate = stop.location.coordinate;
 		self.stop = stop;
 	}

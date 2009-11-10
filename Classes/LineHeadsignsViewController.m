@@ -19,6 +19,7 @@
 - (void) loadLineHeadsigns {
 	progressViewController.message = [NSString stringWithFormat:@"Loading Headsigns for Line..."];
 	[self.view addSubview:progressViewController.view];
+	[progressViewController startProgressIndicator];
 	
 	// TODO probably could instantiate/use a time entry object
 	responseData = [[NSMutableData data] retain];

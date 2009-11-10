@@ -26,6 +26,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 - (void) loadTimeEntries {
 	progressViewController.message = [NSString stringWithFormat:@"Loading Upcoming Departures..."];
 	[self.view addSubview:progressViewController.view];
+	[progressViewController startProgressIndicator];
 
 	// TODO probably could instantiate/use a time entry object
 	responseData = [[NSMutableData data] retain];
@@ -193,7 +194,8 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 		}
 		
 		bigTime.textColor = [UIColor whiteColor];
-		bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next %@ Departure", direction];
+		//bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next Departure", direction];
+		bigTimeHeaderText.text = @"Next Departure";
 		if(minutesRemaining == 0) {
 			// ERROR case!
 			bigTime.text = @"";

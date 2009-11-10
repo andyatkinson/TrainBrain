@@ -19,6 +19,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *loadingLabel;
 @property (nonatomic, retain) IBOutlet NSString *message;
 
+- (void) startProgressIndicator;
 - (void)viewDidUnload;
 
 @end

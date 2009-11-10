@@ -12,7 +12,7 @@
 #import "TrainBrainAppDelegate.h"
 
 @interface MapStopsViewController : UIViewController <MKMapViewDelegate> {
-	MKMapView *mapView;
+	MKMapView *_mapView;
 	ProgressViewController *progressViewController;
 	NSMutableData *responseData;
 	TrainBrainAppDelegate *appDelegate;
