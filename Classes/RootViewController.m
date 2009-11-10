@@ -185,10 +185,11 @@ linesTableView, southbound, directionControl, mapURL, appDelegate;
 	
 	CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];  
 	if (cell == nil) {  
-		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];  
+		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 	}  
 		
 	// Set up the cell...
+	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
 	cell.titleLabel.text = [[views objectAtIndex:indexPath.row] objectForKey:@"short_name"];
 	NSString *longName = [NSString stringWithFormat:@"%@", [[views objectAtIndex:indexPath.row] objectForKey:@"long_name"]];
 	cell.distanceLabel.text = longName;

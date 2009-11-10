@@ -145,6 +145,7 @@
 		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 	}
 	
+	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
 	NSString *headsignName = [[views objectAtIndex:indexPath.row] objectForKey:@"headsignName"];
 	NSLog(@"making cell %@", headsignName);
 	cell.textLabel.text = headsignName;	
