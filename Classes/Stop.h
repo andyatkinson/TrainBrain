@@ -15,11 +15,13 @@
 	NSString *_stopName;
 	NSString *_street;
 	NSString *_description;
+	NSString *_routeId;
 }
 
 @property(nonatomic, copy) CLLocation *location;
 @property (nonatomic, retain) NSString *stopName;
 @property (nonatomic, retain) NSString *street;
 @property (nonatomic, retain) NSString *description;
+@property (nonatomic, retain) NSString *routeId;
 
 @end

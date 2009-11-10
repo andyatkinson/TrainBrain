@@ -16,6 +16,7 @@
   [super viewDidLoad];
 	[self.loadingLabel setText:message];
 	[activityIndicator startAnimating];
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
 }
 
 
@@ -26,11 +27,18 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
+- (void) stopProgressIndicator {
+	[activityIndicator stopAnimating];
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+}
+
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 	
+	// this doesn't really happen unless a low memory situation?
 	[activityIndicator stopAnimating];
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 }
 
 

@@ -10,6 +10,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import "CustomCell.h"
 #import "ProgressViewController.h"
+#import "TrainBrainAppDelegate.h"
 
 @interface RootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate> {
 	IBOutlet UITableView *linesTableView;
@@ -22,6 +23,7 @@
 	NSInteger southbound;
 	IBOutlet UISegmentedControl *directionControl;
 	NSString *mapURL;
+	TrainBrainAppDelegate *appDelegate;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *linesTableView;
@@ -34,6 +36,7 @@
 @property (nonatomic) NSInteger southbound;
 @property (nonatomic, retain) IBOutlet UISegmentedControl *directionControl;
 @property (nonatomic, retain) NSString *mapURL;
+@property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
 -(IBAction)refreshStations:(id)sender;
 

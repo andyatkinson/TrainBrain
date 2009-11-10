@@ -19,4 +19,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *loadingLabel;
 @property (nonatomic, retain) IBOutlet NSString *message;
 
+- (void)viewDidUnload;
+
 @end

@@ -1,36 +1,31 @@
 //
-//  TimeEntryController.m
+//  TimeEntryViewController.m
 //  train brain
 //
 //  Created by Andy Atkinson on 8/22/09.
 //  Copyright 2009 Andy Atkinson http://webandy.com. All rights reserved.
 //
 
-#import "TimeEntryController.h"
+#import "TimeEntryViewController.h"
 #import "JSON/JSON.h"
 
-@interface TimeEntryController (Private)
+@interface TimeEntryViewController (Private)
 - (void) loadTimeEntries;
 @end
 
-@implementation TimeEntryController
+@implementation TimeEntryViewController
 
-@synthesize responseData, railStationId, railStationName, timeEntryRows, progressViewController, southbound, timeEntriesTableView, 
+@synthesize responseData, timeEntryRows, progressViewController, southbound, timeEntriesTableView, 
 bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDelegate;
 
-- (void)updateSouthbound:(NSInteger)newVal {
-	self.southbound = newVal;
-}
 
 -(IBAction)refreshTimes:(id)sender {
 	[self loadTimeEntries];
 }
 
 - (void) loadTimeEntries {
-	ProgressViewController *pvc = [[ProgressViewController alloc] init];
-	pvc.message = [NSString stringWithFormat:@"Loading Upcoming Departures..."];
-	self.progressViewController = pvc;
-	[self.view addSubview:pvc.view];
+	progressViewController.message = [NSString stringWithFormat:@"Loading Upcoming Departures..."];
+	[self.view addSubview:progressViewController.view];
 
 	// TODO probably could instantiate/use a time entry object
 	responseData = [[NSMutableData data] retain];
@@ -42,30 +37,15 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 	int *hour = (int *)[components hour];
 	components = [calendar components:NSMinuteCalendarUnit fromDate:now];
 	int *minute = (int *)[components minute];
-	
-	// TODO get the UISegmentedControl value for setting north/south
-	// Setting it from one view controller to another which is not a good solution	
-	// http://api.trainbrainapp.com
 
-	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	
-	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/stop_times.json?headsign=%@&stop_ids=%@&time=%d:%d",
+	NSString *requestURL = [NSString stringWithFormat:@"%@stop_times.json?headsign=%@&stop_ids=%@&time=%d:%d",
+													[appDelegate getBaseUrl],
 													[appDelegate getHeadsign],
 													[[appDelegate getStopIds] componentsJoinedByString:@","],
 													hour,
 													minute];
 	requestURL = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-	//NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/rail_stations/%@/time_entries.json?t=%d:%d&s=%d", 
-//																	[self railStationId],
-//																	hour,
-//																	minute,
-//																	[self southbound]];
-
-	
-//	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/stop_times.json?headsign=%@&stop_ids=%@&time=%@",
-//														@"North 55  Hiawatha Line / Downtown Minneapolis",
-//														@"51438,51428",
-//														@"16:48"];
 	
 	
 	NSLog(@"request URL %@", requestURL);
@@ -86,8 +66,11 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 	[super viewDidLoad];
 	timeEntriesTableView.backgroundColor = [UIColor clearColor];
 	
+	progressViewController = [[ProgressViewController alloc] init];
+	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	
 	// set the title of the main navigation
-	self.title = [self railStationName];
+	self.title = @"Departures";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -100,6 +83,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[progressViewController.view	removeFromSuperview];
+	[progressViewController stopProgressIndicator];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
 																									message:nil 
 																								 delegate:nil 
@@ -118,8 +102,6 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 	NSArray *entries = [parser objectWithString:responseString error:nil];
 	[parser release];
 	[responseString release];
-	
-	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	
 	// now is used for time remaining for each route and for big label
 	NSDate *now = [NSDate date];
@@ -172,6 +154,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 	[timeEntriesTableView reloadData];
 	upcomingDeparturesLabel.text = @"Other Departures";
 	[progressViewController.view	removeFromSuperview];
+	[progressViewController stopProgressIndicator];
 	
 	if([entries count] > 0) {
 		
@@ -304,10 +287,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 - (void)dealloc {
 	[timeEntryRows release];
 	[responseData release];
-	[railStationId release];
 	[timeEntriesTableView release];
-	[railStationId release];
-	[railStationName release];
 	[progressViewController release];
 	[bigTimeHeaderText release];
 	[bigTime release];

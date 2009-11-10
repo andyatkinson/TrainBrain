@@ -1,5 +1,5 @@
 //
-//  TimeEntryController.h
+//  TimeEntryViewController.h
 //  train brain
 //
 //  Created by Andy Atkinson on 8/22/09.
@@ -11,11 +11,9 @@
 #import "ProgressViewController.h"
 #import "TrainBrainAppDelegate.h"
 
-@interface TimeEntryController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface TimeEntryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 	IBOutlet UITableView *timeEntriesTableView;
 	NSMutableData *responseData;
-	NSString *railStationId;
-	NSString *railStationName;
 	IBOutlet NSMutableArray *timeEntryRows;
 	ProgressViewController *progressViewController;
 	NSInteger southbound;
@@ -28,8 +26,6 @@
 
 @property (nonatomic, retain) IBOutlet UITableView *timeEntriesTableView;
 @property (nonatomic, retain) NSMutableData	*responseData;
-@property (nonatomic, retain) NSString *railStationId;
-@property (nonatomic, retain) NSString *railStationName;
 @property (nonatomic, retain) IBOutlet NSMutableArray *timeEntryRows;
 @property (nonatomic, retain)	ProgressViewController *progressViewController;
 @property (nonatomic) NSInteger southbound;
@@ -39,7 +35,6 @@
 @property (nonatomic, retain) IBOutlet UIImageView *nextDepartureImage;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
--(void)updateSouthbound:(NSInteger) newValue;
 -(IBAction)refreshTimes:(id)sender;
 
 @end

@@ -8,7 +8,7 @@
 
 #import "LineHeadsignsViewController.h"
 #import "JSON/JSON.h"
-#import "TimeEntryController.h"
+#import "TimeEntryViewController.h"
 #import "MapBarButtonItem.h"
 #import "MapStopsViewController.h"
 
@@ -17,17 +17,14 @@
 @synthesize headsignsTableView, responseData, views, progressViewController, appDelegate;
 
 - (void) loadLineHeadsigns {
-	ProgressViewController *pvc = [[ProgressViewController alloc] init];
-	pvc.message = [NSString stringWithFormat:@"Loading Headsigns for Line..."];
-	self.progressViewController = pvc;
-	[self.view addSubview:pvc.view];
+	progressViewController.message = [NSString stringWithFormat:@"Loading Headsigns for Line..."];
+	[self.view addSubview:progressViewController.view];
 	
 	// TODO probably could instantiate/use a time entry object
 	responseData = [[NSMutableData data] retain];
 	
-	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	
-	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/train_routes/%@/headsigns.json?lat=44.948364&lng=-93.239143",
+	NSString *requestURL = [NSString stringWithFormat:@"%@train_routes/%@/headsigns.json?lat=44.948364&lng=-93.239143",
+													[appDelegate getBaseUrl],
 													[appDelegate getSelectedRouteId]];
 	
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
@@ -40,6 +37,8 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	progressViewController = [[ProgressViewController alloc] init];
+	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[self loadLineHeadsigns];
 	self.title = @"Lines";
 }
@@ -54,6 +53,7 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[progressViewController.view	removeFromSuperview];
+	[progressViewController stopProgressIndicator];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
 																									message:nil 
 																								 delegate:nil 
@@ -74,20 +74,18 @@
 	[responseString release];
 	views = [[NSMutableArray alloc] init];
 	
-	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	
 	int count = [headsigns count];
 	if(count > 0) {
 		for(int i=0; i < count; i++) {
 			NSMutableDictionary *item = [headsigns objectAtIndex:i];
-			TimeEntryController *timeEntryController = [[TimeEntryController alloc] init];
+			TimeEntryViewController *timeEntryViewController = [[TimeEntryViewController alloc] init];
 			
 			NSString *headsign = [item objectForKey:@"headsign"];
 			if(headsign != NULL) {
 				NSLog(@"headsign %@", headsign);
 				[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 													headsign, @"headsignName",
-													timeEntryController, @"controller",
+													timeEntryViewController, @"controller",
 													nil]];
 			}
 			
@@ -95,11 +93,8 @@
 			if(stop != NULL) {
 				[appDelegate addStopId:[stop objectForKey:@"id"]];
 			}
-
-			//[timeEntryController setRailStationId:[station objectForKey:@"id"]]; // TODO should probably extract an object here
-//			[timeEntryController setRailStationName:stationName];			
-
-			[timeEntryController release];
+			
+			[timeEntryViewController release];
 			
 		}
 	} else {
@@ -115,8 +110,9 @@
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
 	[headsignsTableView reloadData];
 	
-	self.title = @"Headsigns";
+	self.title = @"Direction";
 	[progressViewController.view	removeFromSuperview];
+	[progressViewController stopProgressIndicator];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -169,8 +165,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	TimeEntryController *targetViewController = (TimeEntryController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
-	
+	TimeEntryViewController *targetViewController = (TimeEntryViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
 	
 	MapBarButtonItem *temporaryBarButtonItem = [[MapBarButtonItem alloc] 
 																							initWithTitle:@"Map" 
@@ -184,7 +179,6 @@
 	targetViewController.navigationItem.rightBarButtonItem = temporaryBarButtonItem;
 	[temporaryBarButtonItem release];	
 	
-	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[appDelegate setHeadsign:[[views objectAtIndex: indexPath.row] objectForKey:@"headsignName"]];
 	
 	[[self navigationController] pushViewController:targetViewController animated:YES];

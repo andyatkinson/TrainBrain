@@ -16,12 +16,10 @@
 @synthesize mapView, progressViewController, responseData, appDelegate;
 
 - (void) loadStops {
-	ProgressViewController *pvc = [[ProgressViewController alloc] init];
-	pvc.message = [NSString stringWithFormat:@"Loading Stops..."];
-	self.progressViewController = pvc;
-	[self.view addSubview:pvc.view];
+	progressViewController.message = [NSString stringWithFormat:@"Loading Stops..."];
+	[self.view addSubview:progressViewController.view];
 	
-	NSString *requestURL = [NSString stringWithFormat:@"http://localhost:3000/stops.json"];
+	NSString *requestURL = [NSString stringWithFormat:@"%@stops.json", [appDelegate getBaseUrl]];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
@@ -29,8 +27,8 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-    [super viewDidLoad];
-	
+	[super viewDidLoad];
+	progressViewController = [[ProgressViewController alloc] init];
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	responseData = [[NSMutableData data] retain];
 	[self loadStops];
@@ -38,17 +36,16 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	NSLog(@"receiging response");
 	[responseData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	NSLog(@"receiving data");
 	[responseData appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[progressViewController.view	removeFromSuperview];
+	[progressViewController stopProgressIndicator];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
 																									message:nil 
 																								 delegate:nil 
@@ -86,12 +83,42 @@
 	[self.mapView setRegion:region animated:YES];  
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
+	NSLog(@"viewForAnnotation entered");
+	MKAnnotationView *view = nil;
+	if(annotation != mapView.userLocation) {
+		StopAnnotation *stopAnn = (StopAnnotation *)annotation;
+		view = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"stopRouteId"];
+		if(nil == view) {
+			view = [[[MKPinAnnotationView alloc] initWithAnnotation:stopAnn
+                                              reuseIdentifier:@"stopRouteId"] autorelease];
+		}
+		NSString *routeId = stopAnn.stop.routeId;
+		NSLog(@"got route id %@", routeId);
+		if(routeId == @"888-45") {
+			[(MKPinAnnotationView *)view setPinColor:MKPinAnnotationColorRed];
+		} else if(routeId == @"55-45") {
+			[(MKPinAnnotationView *)view setPinColor:MKPinAnnotationColorPurple];
+		} 
+		[(MKPinAnnotationView *)view setAnimatesDrop:YES];
+		[view setCanShowCallout:YES];
+    [view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
+  }
+
+	return view;
+}
+
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+  //EarthquakeAnnotation *eqAnn = (EarthquakeAnnotation *)[view annotation];
+  NSURL *url = [NSURL URLWithString:@"http://google.com"];
+  [[UIApplication sharedApplication] openURL:url];
+}
+
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	[connection release];
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	NSLog(@"got response %@", responseString);
 	SBJSON *parser = [[SBJSON alloc] init];
 	NSArray *stops = [parser objectWithString:responseString error:nil];
 	[parser release];
@@ -107,6 +134,7 @@
 			[newStop setStopName:[stop objectForKey:@"name"]];
 			[newStop setStreet:[stop objectForKey:@"street"]];
 			[newStop setDescription:[stop objectForKey:@"description"]];
+			[newStop setRouteId:[stop objectForKey:@"55-45"]];
 			
 			NSNumber *stopLat = [stop objectForKey:@"stop_lat"];
 			NSNumber *stopLon = [stop objectForKey:@"stop_lon"];
@@ -131,6 +159,7 @@
 	}
 	
 	[progressViewController.view	removeFromSuperview];
+	[progressViewController stopProgressIndicator];
 	[self recenterMap];
 }
 

@@ -7,7 +7,6 @@
 //
 
 #import "RootViewController.h"
-#import "TimeEntryController.h"
 #import "JSON/JSON.h"
 #import "TrainBrainAppDelegate.h"
 #import "MapBarButtonItem.h"
@@ -20,13 +19,11 @@
 @implementation RootViewController
 
 @synthesize railStations, views, responseData, locationManager, startingPoint, progressViewController, 
-linesTableView, southbound, directionControl, mapURL;
+linesTableView, southbound, directionControl, mapURL, appDelegate;
 
 - (void) loadRailStations {
-	ProgressViewController *pvc = [[ProgressViewController alloc] init];
-	pvc.message = @"Loading Train Routes...";
-	self.progressViewController = pvc;
-	[self.view addSubview:pvc.view];
+	progressViewController.message = @"Loading Train Routes...";
+	[self.view addSubview:progressViewController.view];
 	
 	self.locationManager = [[CLLocationManager alloc] init];
 	locationManager.delegate = self;
@@ -42,6 +39,9 @@ linesTableView, southbound, directionControl, mapURL;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	progressViewController = [[ProgressViewController alloc] init];
 	
 	directionControl.segmentedControlStyle = UISegmentedControlStyleBar;
 	directionControl.tintColor = [UIColor darkGrayColor];
@@ -65,6 +65,7 @@ linesTableView, southbound, directionControl, mapURL;
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[progressViewController.view	removeFromSuperview];
+	[progressViewController stopProgressIndicator];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
 																									message:nil 
 																								 delegate:nil 
@@ -115,7 +116,8 @@ linesTableView, southbound, directionControl, mapURL;
 	
 	self.title = @"Train Routes";
 	// remove the modal view, now that the location has been calculated
-	[progressViewController.view	removeFromSuperview];
+	[progressViewController.view	removeFromSuperview];	
+	[progressViewController stopProgressIndicator];
 }
 
 
@@ -124,10 +126,9 @@ linesTableView, southbound, directionControl, mapURL;
 		self.startingPoint = newLocation;
 	}
 	
-	//TrainBrainAppDelegate *appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	//[appDelegate setCurrentLocation:newLocation];
 	
-	NSString *locationString = [[NSString alloc] initWithFormat:@"http://localhost:3000/train_routes.json"];
+	NSString *locationString = [[NSString alloc] initWithFormat:@"%@train_routes.json", [appDelegate getBaseUrl]];
+	NSLog(@"got location string %@", locationString);
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:locationString]];
 	[locationString release];
 	
@@ -136,6 +137,7 @@ linesTableView, southbound, directionControl, mapURL;
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	[progressViewController.view	removeFromSuperview];
+	[progressViewController stopProgressIndicator];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Train Brain requires location data to display train stations sorted by distance." 
 																									message:nil 
 																								 delegate:nil 
@@ -198,7 +200,6 @@ linesTableView, southbound, directionControl, mapURL;
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	LineHeadsignsViewController *targetViewController = (LineHeadsignsViewController *)[[views objectAtIndex:indexPath.row] objectForKey:@"controller"];
 	
-	TrainBrainAppDelegate *appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	[appDelegate setSelectedRouteId:[[views objectAtIndex:indexPath.row] objectForKey:@"route_id"]];
 	
 	[[self navigationController] pushViewController:targetViewController animated:YES];

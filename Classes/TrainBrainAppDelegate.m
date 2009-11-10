@@ -43,6 +43,10 @@
 	return stopIds;
 }
 
+- (NSString *) getBaseUrl {
+	return @"http://trainbrain-api2.heroku.com/";
+}
+
 - (void)dealloc {
 	[navigationController release];
 	[window release];

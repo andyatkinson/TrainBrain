@@ -27,5 +27,7 @@
 - (void) addStopId:(NSString *)newStopId;
 - (NSArray *) getStopIds;
 
+- (NSString *) getBaseUrl;
+
 @end
 

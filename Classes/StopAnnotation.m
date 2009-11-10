@@ -23,7 +23,6 @@
 -(id)initWithStop:(Stop *)stop {
 	self = [super init];
 	if(nil != self) {
-		NSLog(@"got stop %@", stop);
 		self.title = stop.stopName;
 		self.subtitle = stop.description;
 		self.coordinate = stop.location.coordinate;
