@@ -12,7 +12,8 @@
 
 	NSString *selectedRouteId;
 	NSString *selectedHeadsign;
-	NSMutableArray *selectedStopId;
+	NSString *selectedStopId;
+	NSString *selectedStopName; 
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -26,6 +27,9 @@
 
 - (void) setSelectedStopId:(NSString *)newStopId;
 - (NSString *) getSelectedStopId;
+
+- (void) setSelectedStopName:(NSString *)newStopName;
+- (NSString *) getSelectedStopName;
 
 - (NSString *) getBaseUrl;
 

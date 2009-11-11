@@ -20,9 +20,10 @@
 	[self.view addSubview:progressViewController.view];
 	[progressViewController startProgressIndicator];
 	
-	NSString *requestURL = [NSString stringWithFormat:@"%@train_routes/%@/headsigns.json",
+	NSString *requestURL = [NSString stringWithFormat:@"%@train_routes/%@/headsigns/%@.json",
 													[appDelegate getBaseUrl],
-													[appDelegate getSelectedRouteId]];
+													[appDelegate getSelectedRouteId],
+													[appDelegate getSelectedStopId]];
 	
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
 	

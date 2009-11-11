@@ -39,8 +39,8 @@
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	responseData = [[NSMutableData data] retain];
 	[self loadStops];
-	[self setTitle:@"Train Stops"];
-		[super viewDidLoad];
+	[self setTitle:@"Train Stations"];
+	[super viewDidLoad];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

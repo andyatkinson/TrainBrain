@@ -79,12 +79,12 @@
 			NSMutableDictionary *item = [trainStations objectAtIndex:i];
 			HeadsignsViewController *headsignsViewController = [[HeadsignsViewController alloc] init];
 			
-			NSString *trainStationName = [[item objectForKey:@"train_station"] objectForKey:@"name"];
+			NSString *stationName = [[item objectForKey:@"train_station"] objectForKey:@"name"];
 			NSString *stopId = [[item objectForKey:@"train_station"] objectForKey:@"stop_id"];
 			if(stopId != NULL) {
 				[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 													stopId, @"stopId",
-													trainStationName, @"trainStationName",
+													stationName, @"stationName",
 													headsignsViewController, @"controller",
 													nil]];
 			}
@@ -137,8 +137,8 @@
 	}
 	
 	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-	NSString *trainStationName = [[views objectAtIndex:indexPath.row] objectForKey:@"trainStationName"];
-	cell.textLabel.text = trainStationName;	
+	NSString *stationName = [[views objectAtIndex:indexPath.row] objectForKey:@"stationName"];
+	cell.textLabel.text = stationName;	
 	return cell;
 }
 
@@ -159,6 +159,7 @@
 	HeadsignsViewController *targetViewController = (HeadsignsViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
 				
 	[appDelegate setSelectedStopId:[[views objectAtIndex:indexPath.row] objectForKey:@"stopId"]];
+	[appDelegate setSelectedStopName:[[views objectAtIndex:indexPath.row] objectForKey:@"stationName"]];
 	
 	[[self navigationController] pushViewController:targetViewController animated:YES];
 	

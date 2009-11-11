@@ -38,6 +38,13 @@
 	return selectedStopId;
 }
 
+- (void) setSelectedStopName:(NSString *)newStopName {
+	selectedStopName = newStopName;
+}
+- (NSString *) getSelectedStopName {
+	return selectedStopName;
+}
+
 - (NSString *) getBaseUrl {
 	return @"http://localhost:3000/";
 	//return @"http://trainbrain-api2.heroku.com/";

@@ -40,7 +40,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 	int *minute = (int *)[components minute];
 
 	
-	NSString *requestURL = [NSString stringWithFormat:@"%@stop_times.json?headsign=%@&stop_ids=%@&time=%d:%d",
+	NSString *requestURL = [NSString stringWithFormat:@"%@stop_times.json?headsign=%@&stop_id=%@&time=%d:%d",
 													[appDelegate getBaseUrl],
 													[appDelegate getSelectedHeadsign],
 													[appDelegate getSelectedStopId],
@@ -69,9 +69,8 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 	
 	progressViewController = [[ProgressViewController alloc] init];
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	
-	// set the title of the main navigation
-	self.title = @"Departures";
+
+	self.title = [appDelegate getSelectedStopName];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
