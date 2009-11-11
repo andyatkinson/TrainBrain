@@ -9,8 +9,6 @@
 #import "TrainStationsViewController.h"
 #import "JSON/JSON.h"
 #import "TimeEntryViewController.h"
-#import "MapBarButtonItem.h"
-#import "MapStopsViewController.h"
 
 @implementation TrainStationsViewController
 
@@ -39,7 +37,7 @@
 	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	responseData = [[NSMutableData data] retain];
 	[self loadTrainStations];
-	self.title = @"Train Stations";
+	self.title = @"Stops";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -97,7 +95,7 @@
 			
 		}
 	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Train Stations Found." 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Stops Found." 
 																										message:nil 
 																									 delegate:nil 
 																					cancelButtonTitle:@"OK" 
@@ -165,15 +163,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	//HeadsignsViewController *targetViewController = (HeadsignsViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
 	TimeEntryViewController *targetViewController = (TimeEntryViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
 				
 	[appDelegate setSelectedStopId:[[views objectAtIndex:indexPath.row] objectForKey:@"stopId"]];
 	[appDelegate setSelectedStopName:[[views objectAtIndex:indexPath.row] objectForKey:@"stationName"]];
 	
-	[[self navigationController] pushViewController:targetViewController animated:YES];
-	
-	
+	[[self navigationController] pushViewController:targetViewController animated:YES];	
 }
 
 - (void)dealloc {

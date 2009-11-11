@@ -16,10 +16,7 @@
 	NSMutableData *responseData;
 	IBOutlet NSMutableArray *timeEntryRows;
 	ProgressViewController *progressViewController;
-	NSInteger southbound;
 	IBOutlet UILabel *bigTimeHeaderText;
-	IBOutlet UILabel *bigTime;
-	IBOutlet UILabel *upcomingDeparturesLabel;
 	IBOutlet UIImageView *nextDepartureImage;
 	TrainBrainAppDelegate *appDelegate;
 }
@@ -28,10 +25,7 @@
 @property (nonatomic, retain) NSMutableData	*responseData;
 @property (nonatomic, retain) IBOutlet NSMutableArray *timeEntryRows;
 @property (nonatomic, retain)	ProgressViewController *progressViewController;
-@property (nonatomic) NSInteger southbound;
-@property (nonatomic, retain) IBOutlet UILabel *bigTime;
 @property (nonatomic, retain) IBOutlet UILabel *bigTimeHeaderText;
-@property (nonatomic, retain)	IBOutlet UILabel *upcomingDeparturesLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *nextDepartureImage;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 

@@ -15,6 +15,7 @@
 	IBOutlet UILabel *departureCost;
 	IBOutlet UILabel *timeRemaining;
 	IBOutlet UILabel *type;
+	IBOutlet UILabel *headsign;
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *departureTime;
@@ -22,5 +23,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *timeRemaining;
 @property (nonatomic, retain) IBOutlet UILabel *type;
 @property (nonatomic, retain) IBOutlet UIImageView *departureIcon;
+@property (nonatomic, retain) IBOutlet UILabel *headsign;
 
 @end

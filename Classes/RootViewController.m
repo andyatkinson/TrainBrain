@@ -11,6 +11,7 @@
 #import "TrainBrainAppDelegate.h"
 #import "MapBarButtonItem.h"
 #import "TrainStationsViewController.h"
+#import "MapStopsViewController.h"
 
 @interface RootViewController (Private)
 - (void)loadRailStations;
@@ -18,11 +19,10 @@
 
 @implementation RootViewController
 
-@synthesize views, responseData, locationManager, startingPoint, progressViewController, 
-linesTableView, appDelegate;
+@synthesize views, responseData, locationManager, startingPoint, progressViewController, linesTableView, appDelegate;
 
 - (void) loadRailStations {
-	progressViewController.message = @"Loading Train Routes...";
+	progressViewController.message = @"Loading Routes...";
 	[self.view addSubview:progressViewController.view];
 	[progressViewController startProgressIndicator];
 	
@@ -30,8 +30,6 @@ linesTableView, appDelegate;
 	locationManager.delegate = self;
 	locationManager.desiredAccuracy = kCLLocationAccuracyBest;
 	[locationManager startUpdatingLocation];
-	
-	// kick off the request, the view is reloaded from the location update code
 }
 
 -(IBAction)refreshStations:(id)sender {
@@ -40,9 +38,12 @@ linesTableView, appDelegate;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
 	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	progressViewController = [[ProgressViewController alloc] init];
+	
+	UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapButtonClicked:)];
+	self.navigationItem.rightBarButtonItem = mapButton;
+	[mapButton release];
 	
 	[self loadRailStations];
 	responseData = [[NSMutableData data] retain];
@@ -96,7 +97,7 @@ linesTableView, appDelegate;
 												nil]];
 		}
 	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Stations Found.\n\nPlease try tapping the refresh button." 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Routes Found.\n\nPlease try tapping the refresh button." 
 																										message:nil 
 																									 delegate:nil 
 																					cancelButtonTitle:@"OK" 
@@ -108,8 +109,7 @@ linesTableView, appDelegate;
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
 	[linesTableView reloadData];
 	
-	self.title = @"Train Routes";
-	// remove the modal view, now that the location has been calculated
+	self.title = @"Routes";
 	[progressViewController.view	removeFromSuperview];	
 	[progressViewController stopProgressIndicator];
 }
@@ -120,9 +120,7 @@ linesTableView, appDelegate;
 		self.startingPoint = newLocation;
 	}
 	
-	
 	NSString *locationString = [[NSString alloc] initWithFormat:@"%@train_routes.json", [appDelegate getBaseUrl]];
-	NSLog(@"got location string %@", locationString);
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:locationString]];
 	[locationString release];
 	
@@ -132,7 +130,7 @@ linesTableView, appDelegate;
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	[progressViewController.view	removeFromSuperview];
 	[progressViewController stopProgressIndicator];
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Train Brain requires location data to display train stations sorted by distance." 
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Train Brain failed to access your location." 
 																									message:nil 
 																								 delegate:nil 
 																				cancelButtonTitle:@"OK" 
@@ -153,11 +151,6 @@ linesTableView, appDelegate;
 	if (selection) {
 		[linesTableView deselectRowAtIndexPath:selection animated:YES];
 	}
-}
-
-- (void)viewDidUnload {
-	// Release anything that can be recreated in viewDidLoad or on demand.
-	// e.g. self.myOutlet = nil;
 }
 
 #pragma mark Table view methods
@@ -194,11 +187,14 @@ linesTableView, appDelegate;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	TrainStationsViewController *targetViewController = (TrainStationsViewController *)[[views objectAtIndex:indexPath.row] objectForKey:@"controller"];
-	
-	[appDelegate setSelectedRouteId:[[views objectAtIndex:indexPath.row] objectForKey:@"route_id"]];
-	
+	[appDelegate setSelectedRouteId:[[views objectAtIndex:indexPath.row] objectForKey:@"route_id"]];	
 	[[self navigationController] pushViewController:targetViewController animated:YES];
 	
+}
+
+- (void)mapButtonClicked:(id)sender {
+	MapStopsViewController *mapStops = [[MapStopsViewController alloc] init];
+	[[self navigationController] pushViewController:mapStops animated:YES];
 }
 
 - (void)dealloc {

@@ -39,7 +39,7 @@
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	responseData = [[NSMutableData data] retain];
 	[self loadStops];
-	[self setTitle:@"Train Stations"];
+	[self setTitle:@"Stops"];
 	[super viewDidLoad];
 }
 

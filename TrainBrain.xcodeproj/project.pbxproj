@@ -41,8 +41,6 @@
 		A1D9AA8E103C50CC006B3744 /* departures_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D9AA8D103C50CC006B3744 /* departures_bg.png */; };
 		A1DF9D05109D3BB100328466 /* TrainStationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */; };
 		A1DF9D06109D3BB100328466 /* TrainStationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */; };
-		A1E2FA5910A93E2D004E2641 /* HeadsignsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E2FA5710A93E2D004E2641 /* HeadsignsViewController.m */; };
-		A1E2FA5A10A93E2D004E2641 /* HeadsignsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E2FA5810A93E2D004E2641 /* HeadsignsViewController.xib */; };
 		A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -101,9 +99,6 @@
 		A1DF9D02109D3BB100328466 /* TrainStationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainStationsViewController.h; sourceTree = "<group>"; };
 		A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainStationsViewController.m; sourceTree = "<group>"; };
 		A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TrainStationsViewController.xib; path = Classes/TrainStationsViewController.xib; sourceTree = "<group>"; };
-		A1E2FA5610A93E2D004E2641 /* HeadsignsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadsignsViewController.h; sourceTree = "<group>"; };
-		A1E2FA5710A93E2D004E2641 /* HeadsignsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadsignsViewController.m; sourceTree = "<group>"; };
-		A1E2FA5810A93E2D004E2641 /* HeadsignsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = HeadsignsViewController.xib; path = Classes/HeadsignsViewController.xib; sourceTree = "<group>"; };
 		A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureDetailCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,8 +138,6 @@
 				A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */,
 				A1B5C54710A26FBE00CD3045 /* MapStopsViewController.h */,
 				A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */,
-				A1E2FA5610A93E2D004E2641 /* HeadsignsViewController.h */,
-				A1E2FA5710A93E2D004E2641 /* HeadsignsViewController.m */,
 				A1B5C58510A27E5B00CD3045 /* Stop.h */,
 				A1B5C58610A27E5B00CD3045 /* Stop.m */,
 				A1B5C50310A1220F00CD3045 /* StopAnnotation.h */,
@@ -192,7 +185,6 @@
 				A1D9AA8D103C50CC006B3744 /* departures_bg.png */,
 				A16A8BCA1038F93C001DF0EF /* Icon.png */,
 				A14FDCB810313164002B9E32 /* clock.png */,
-				A1E2FA5810A93E2D004E2641 /* HeadsignsViewController.xib */,
 				A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */,
 				A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */,
 				A1151741102F9650007CFBF6 /* ProgressViewController.xib */,
@@ -298,7 +290,6 @@
 				A1BE49F71041F8C2005CFAD0 /* exclamation.png in Resources */,
 				A1DF9D06109D3BB100328466 /* TrainStationsViewController.xib in Resources */,
 				A1B5C54B10A26FBE00CD3045 /* MapStopsViewController.xib in Resources */,
-				A1E2FA5A10A93E2D004E2641 /* HeadsignsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,7 +317,6 @@
 				A1B5C50510A1220F00CD3045 /* StopAnnotation.m in Sources */,
 				A1B5C54A10A26FBE00CD3045 /* MapStopsViewController.m in Sources */,
 				A1B5C58710A27E5B00CD3045 /* Stop.m in Sources */,
-				A1E2FA5910A93E2D004E2641 /* HeadsignsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

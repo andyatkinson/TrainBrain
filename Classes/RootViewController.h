@@ -11,6 +11,7 @@
 #import "CustomCell.h"
 #import "ProgressViewController.h"
 #import "TrainBrainAppDelegate.h"
+#import "MapStopsViewController.h"
 
 @interface RootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate> {
 	IBOutlet UITableView *linesTableView;
@@ -19,7 +20,6 @@
 	CLLocationManager *locationManager;
 	CLLocation *startingPoint;
 	ProgressViewController *progressViewController;
-	NSInteger southbound;
 	TrainBrainAppDelegate *appDelegate;
 }
 
@@ -32,5 +32,6 @@
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
 -(IBAction)refreshStations:(id)sender;
+- (void)mapButtonClicked:(id)sender;
 
 @end

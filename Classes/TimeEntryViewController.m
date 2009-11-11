@@ -15,21 +15,16 @@
 
 @implementation TimeEntryViewController
 
-@synthesize responseData, timeEntryRows, progressViewController, southbound, timeEntriesTableView, 
-bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDelegate;
-
+@synthesize responseData, timeEntryRows, progressViewController, timeEntriesTableView, bigTimeHeaderText, nextDepartureImage, appDelegate;
 
 -(IBAction)refreshTimes:(id)sender {
 	[self loadTimeEntries];
 }
 
 - (void) loadTimeEntries {
-	progressViewController.message = [NSString stringWithFormat:@"Loading Upcoming Departures..."];
+	progressViewController.message = [NSString stringWithFormat:@"Loading Departures..."];
 	[self.view addSubview:progressViewController.view];
 	[progressViewController startProgressIndicator];
-
-	// TODO probably could instantiate/use a time entry object
-	responseData = [[NSMutableData data] retain];
 	
 	// get the hour and minute to send to server
 	NSDate *now = [NSDate date];
@@ -48,12 +43,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 													minute];
 	requestURL = [requestURL stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 	
-	
-	NSLog(@"request URL %@", requestURL);
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL] cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10];
-	
-	timeEntryRows = nil;
-	// kick off the request, the view is reloaded from the request handler
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
@@ -66,11 +56,11 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	timeEntriesTableView.backgroundColor = [UIColor clearColor];
-	
+	responseData = [[NSMutableData data] retain];
 	progressViewController = [[ProgressViewController alloc] init];
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-
-	self.title = [appDelegate getSelectedStopName];
+	bigTimeHeaderText.text = [appDelegate getSelectedStopName];
+	self.title = @"Departures";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -120,7 +110,6 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 		NSString *cost = [entry objectForKey:@"cost"];
 		NSString *type = [entry objectForKey:@"type"];
 		NSString *headsign = [entry objectForKey:@"headsign"];
-		NSLog(@"headsign %@", headsign);
 		
 		NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
 		[timeFormatter setDateStyle:NSDateFormatterNoStyle];
@@ -150,11 +139,11 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 															cost, @"cost",
 															minutesRemainingString, @"minutesRemaining",
 															type, @"type",
+															headsign, @"headsign",
 															nil]];
 	}
 	
 	[timeEntriesTableView reloadData];
-	upcomingDeparturesLabel.text = @"Other Departures";
 	[progressViewController.view	removeFromSuperview];
 	[progressViewController stopProgressIndicator];
 	
@@ -174,7 +163,6 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 			}
 		}
 
-		NSString *direction = (southbound == 1 ? @"Southbound" : @"Northbound");
 		int minutesRemaining = 0;
 		//bomb out early for 11PM case
 		if(nowHour == 23 && nextDepartureHour == 0) {
@@ -194,22 +182,12 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 			minutesRemaining = (60 - nowMinute) + nextDepartureMinute;
 		}
 		
-		bigTime.textColor = [UIColor whiteColor];
-		//bigTimeHeaderText.text = [[NSString alloc] initWithFormat:@"Next Departure", direction];
-		bigTimeHeaderText.text = @"Next Departure";
-		if(minutesRemaining == 0) {
-			// ERROR case!
-			bigTime.text = @"";
-		} else {
-			bigTime.text = [[NSString alloc] initWithFormat:@"%d min", minutesRemaining];
-		}
 		
 	} else { // ERROR handling, for some reason there were 0 or less departure times returned from the server
-		bigTime.text = @"";
-		bigTimeHeaderText.text = @"";
-		upcomingDeparturesLabel.text = @"";
+
+		
 		[timeEntriesTableView reloadData];
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No departure times found.\n\nTry changing the direction or tapping the refresh button." 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Departures Found." 
 																										message:nil 
 																									 delegate:nil 
 																					cancelButtonTitle:@"OK" 
@@ -233,6 +211,11 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 	return [timeEntryRows count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return 66.0f;
+}
+
 
 // Customize the appearance of table view cells.
 // custom cells with interface builder http://icodeblog.com/2009/05/24/custom-uitableviewcell-using-interface-builder/
@@ -253,6 +236,7 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 		if([timeEntryRows count] > 0) {
 			[[cell departureTime] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"departureTime"]];
 			[[cell departureCost] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"cost"]];
+			[[cell headsign] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"headsign"]];
 			[[cell type] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"type"]];
 			[cell	departureIcon].image = [UIImage imageNamed:@"clock.png"];
 			[cell setBackgroundColor:[UIColor whiteColor]];
@@ -281,20 +265,12 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 	// Release any cached data, images, etc that aren't in use.
 }
 
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
-}
-
-
 - (void)dealloc {
 	[timeEntryRows release];
 	[responseData release];
 	[timeEntriesTableView release];
 	[progressViewController release];
 	[bigTimeHeaderText release];
-	[bigTime release];
-	[upcomingDeparturesLabel release];
 	[super dealloc];
 }
 
