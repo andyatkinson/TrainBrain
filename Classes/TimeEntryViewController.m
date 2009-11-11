@@ -40,9 +40,9 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 	int *minute = (int *)[components minute];
 
 	
-	NSString *requestURL = [NSString stringWithFormat:@"%@stop_times.json?headsign=%@&stop_id=%@&time=%d:%d",
+	NSString *requestURL = [NSString stringWithFormat:@"%@routes/%@/stops/%@/stop_times.json?time=%d:%d",
 													[appDelegate getBaseUrl],
-													[appDelegate getSelectedHeadsign],
+													[appDelegate getSelectedRouteId],
 													[appDelegate getSelectedStopId],
 													hour,
 													minute];
@@ -119,6 +119,8 @@ bigTime, bigTimeHeaderText, upcomingDeparturesLabel, nextDepartureImage, appDele
 		NSString *minute = [entry objectForKey:@"minute"];
 		NSString *cost = [entry objectForKey:@"cost"];
 		NSString *type = [entry objectForKey:@"type"];
+		NSString *headsign = [entry objectForKey:@"headsign"];
+		NSLog(@"headsign %@", headsign);
 		
 		NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
 		[timeFormatter setDateStyle:NSDateFormatterNoStyle];

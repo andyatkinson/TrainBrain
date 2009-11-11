@@ -8,7 +8,7 @@
 
 #import "TrainStationsViewController.h"
 #import "JSON/JSON.h"
-#import "HeadsignsViewController.h"
+#import "TimeEntryViewController.h"
 #import "MapBarButtonItem.h"
 #import "MapStopsViewController.h"
 
@@ -77,19 +77,23 @@
 	if(count > 0) {
 		for(int i=0; i < count; i++) {
 			NSMutableDictionary *item = [trainStations objectAtIndex:i];
-			HeadsignsViewController *headsignsViewController = [[HeadsignsViewController alloc] init];
+			TimeEntryViewController *targetViewController = [[TimeEntryViewController alloc] init];
 			
 			NSString *stationName = [[item objectForKey:@"train_station"] objectForKey:@"name"];
+			NSString *stationDescription = [[item objectForKey:@"train_station"] objectForKey:@"description"];
+			NSString *stationStreet = [[item objectForKey:@"train_station"] objectForKey:@"street"];
 			NSString *stopId = [[item objectForKey:@"train_station"] objectForKey:@"stop_id"];
 			if(stopId != NULL) {
 				[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 													stopId, @"stopId",
 													stationName, @"stationName",
-													headsignsViewController, @"controller",
+													stationDescription, @"stationDescription",
+													stationStreet, @"stationStreet",
+													targetViewController, @"controller",
 													nil]];
 			}
 			
-			[headsignsViewController release];
+			[targetViewController release];
 			
 		}
 	} else {
@@ -131,14 +135,19 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static NSString *CellIdentifier = @"Cell";
 	
-	UITableViewCell *cell = (UITableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-	if (cell == nil) {
-		cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-	}
+	CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];  
+	if (cell == nil) {  
+		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+	}  
 	
+	// Set up the cell...
 	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-	NSString *stationName = [[views objectAtIndex:indexPath.row] objectForKey:@"stationName"];
-	cell.textLabel.text = stationName;	
+	cell.titleLabel.text = [[views objectAtIndex:indexPath.row] objectForKey:@"stationName"];
+	NSString *description = [NSString stringWithFormat:@"%@ at %@", 
+													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationDescription"],
+													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationStreet"]];
+	cell.distanceLabel.text = description;
+	
 	return cell;
 }
 
@@ -156,7 +165,8 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	HeadsignsViewController *targetViewController = (HeadsignsViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
+	//HeadsignsViewController *targetViewController = (HeadsignsViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
+	TimeEntryViewController *targetViewController = (TimeEntryViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
 				
 	[appDelegate setSelectedStopId:[[views objectAtIndex:indexPath.row] objectForKey:@"stopId"]];
 	[appDelegate setSelectedStopName:[[views objectAtIndex:indexPath.row] objectForKey:@"stationName"]];

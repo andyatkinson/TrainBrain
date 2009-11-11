@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ProgressViewController.h"
 #import "TrainBrainAppDelegate.h"
+#import "CustomCell.h"
 
 @interface TrainStationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
 	IBOutlet UITableView *tableView;
