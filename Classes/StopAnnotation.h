@@ -3,7 +3,7 @@
 //  TrainBrain
 //
 //  Created by Andy Atkinson on 9/20/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Andy Atkinson http://webandy.com 2009. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

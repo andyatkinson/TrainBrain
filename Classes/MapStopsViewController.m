@@ -3,7 +3,7 @@
 //  TrainBrain
 //
 //  Created by Andy Atkinson on 11/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Andy Atkinson http://webandy.com 2009. All rights reserved.
 //
 
 #import "MapStopsViewController.h"
@@ -27,7 +27,7 @@
 	[self.view addSubview:progressViewController.view];
 	[progressViewController startProgressIndicator];
 	
-	NSString *requestURL = [NSString stringWithFormat:@"%@stops.json", [appDelegate getBaseUrl]];
+	NSString *requestURL = [NSString stringWithFormat:@"%@train_stations.json", [appDelegate getBaseUrl]];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
@@ -91,10 +91,8 @@
 	[self.mapView setRegion:region animated:YES];  
 }
 
-
 - (MKAnnotationView *)mapView:(MKMapView *)mapView 
             viewForAnnotation:(id <MKAnnotation>)annotation {
-	NSLog(@"viewForAnnotation entered");
   MKAnnotationView *view = nil;
 	if(annotation != mapView.userLocation) {
 		StopAnnotation *stopAnn = (StopAnnotation *)annotation;
@@ -104,24 +102,24 @@
                                               reuseIdentifier:@"stopRouteId"] autorelease];
 		}
 		NSString *routeId = stopAnn.stop.routeId;
-		NSLog(@"got route id %@", routeId);
-		if(routeId == @"888-45") {
-			[(MKPinAnnotationView *)view setPinColor:MKPinAnnotationColorRed];
-		} else if(routeId == @"55-45") {
+		if([routeId isEqualToString:@"888-46"]) {
+			[(MKPinAnnotationView *)view setPinColor:MKPinAnnotationColorGreen];
+		} else if([routeId isEqualToString:@"55-46"]) {
 			[(MKPinAnnotationView *)view setPinColor:MKPinAnnotationColorPurple];
 		} 
 		[(MKPinAnnotationView *)view setAnimatesDrop:YES];
 		[view setCanShowCallout:YES];
-		NSLog(@"setting accessory view");
-    [view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
+		[view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
   }
 
 	return view;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-  NSURL *url = [NSURL URLWithString:@"http://metrotransit.com"];
-  [[UIApplication sharedApplication] openURL:url];
+	StopAnnotation *stopAnn = (StopAnnotation *)[view annotation];
+
+	NSURL *webUrl = [NSURL URLWithString:stopAnn.stop.webUrl];
+  [[UIApplication sharedApplication] openURL:webUrl];
 }
 
 - (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error {
@@ -140,24 +138,25 @@
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	SBJSON *parser = [[SBJSON alloc] init];
-	NSArray *stops = [parser objectWithString:responseString error:nil];
+	NSArray *train_stations = [parser objectWithString:responseString error:nil];
 	[parser release];
 	[responseString release];
 	
-	int count = [stops count];
+	int count = [train_stations count];
 	if(count > 0) {
 		for(int i=0; i < count; i++) {
-			NSDictionary *stop = [[stops objectAtIndex:i] objectForKey:@"stop"];
+			NSDictionary *trainStation = [[train_stations objectAtIndex:i] objectForKey:@"train_station"];
 			
 			Stop *newStop = [[Stop alloc] init];
+			[newStop setStopName:[trainStation objectForKey:@"name"]];
+			[newStop setStreet:[trainStation objectForKey:@"street"]];
+			[newStop setDescription:[trainStation objectForKey:@"description"]];
+			[newStop setRouteId:[trainStation objectForKey:@"route_id"]];
+			[newStop setRouteShortName:[trainStation objectForKey:@"route_short_name"]];
+			[newStop setWebUrl:[trainStation objectForKey:@"web_url"]];
 			
-			[newStop setStopName:[stop objectForKey:@"name"]];
-			[newStop setStreet:[stop objectForKey:@"street"]];
-			[newStop setDescription:[stop objectForKey:@"description"]];
-			[newStop setRouteId:[stop objectForKey:@"55-45"]];
-			
-			NSNumber *stopLat = [stop objectForKey:@"stop_lat"];
-			NSNumber *stopLon = [stop objectForKey:@"stop_lon"];
+			NSNumber *stopLat = [trainStation objectForKey:@"stop_lat"];
+			NSNumber *stopLon = [trainStation objectForKey:@"stop_lon"];
 			CLLocation *stopLocation = [[CLLocation alloc] initWithLatitude:stopLat.floatValue longitude:stopLon.floatValue];
 	
 			[newStop setLocation:stopLocation];
@@ -184,10 +183,7 @@
 
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-
+	[super didReceiveMemoryWarning];
 }
 
 - (void)viewDidUnload {

@@ -3,7 +3,7 @@
 //  TrainBrain
 //
 //  Created by Andy Atkinson on 9/20/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Andy Atkinson http://webandy.com 2009. All rights reserved.
 //
 
 #import "StopAnnotation.h"
@@ -24,7 +24,7 @@
 	self = [super init];
 	if(nil != self) {
 		self.title = stop.stopName;
-		self.subtitle = [NSString stringWithFormat:@"%@ - %@", stop.description, stop.street];
+		self.subtitle = [NSString stringWithFormat:@"%@ - Route %@", stop.description, stop.routeShortName];
 		self.coordinate = stop.location.coordinate;
 		self.stop = stop;
 	}

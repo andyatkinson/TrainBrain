@@ -12,14 +12,15 @@
 
 @implementation TrainStationsViewController
 
-@synthesize tableView, responseData, views, progressViewController, appDelegate;
+@synthesize stationsTableView, responseData, views, progressViewController, appDelegate;
 
 - (void) loadTrainStations {
-	progressViewController.message = [NSString stringWithFormat:@"Loading Stations for Route..."];
+	progressViewController.message = [NSString stringWithFormat:@"Loading Stops for Route..."];
 	[self.view addSubview:progressViewController.view];
 	[progressViewController startProgressIndicator];
 	
-	NSString *requestURL = [NSString stringWithFormat:@"%@train_stations/%@.json?lat=44.948364&lng=-93.239143",
+	// was passing lat/lng here lat=44.948364&lng=-93.239143
+	NSString *requestURL = [NSString stringWithFormat:@"%@routes/%@/stops.json",
 													[appDelegate getBaseUrl],
 													[appDelegate getSelectedRouteId]];
 	
@@ -105,7 +106,7 @@
 	}
 	
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
-	[tableView reloadData];
+	[stationsTableView reloadData];
 			
 	[progressViewController.view	removeFromSuperview];
 	[progressViewController stopProgressIndicator];
@@ -114,9 +115,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	// Unselect the selected row if any
-	NSIndexPath*	selection = [tableView indexPathForSelectedRow];
+	NSIndexPath*	selection = [stationsTableView indexPathForSelectedRow];
 	if (selection) {
-		[tableView deselectRowAtIndexPath:selection animated:YES];
+		[stationsTableView deselectRowAtIndexPath:selection animated:YES];
 	}
 }
 
@@ -133,7 +134,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	static NSString *CellIdentifier = @"Cell";
 	
-	CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];  
+	CustomCell *cell = (CustomCell *)[stationsTableView dequeueReusableCellWithIdentifier:CellIdentifier];  
 	if (cell == nil) {  
 		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 	}  
@@ -153,13 +154,6 @@
 - (void)didReceiveMemoryWarning {
 	// Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-	
-	// Release any cached data, images, etc that aren't in use.
-}
-
-- (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -173,7 +167,11 @@
 
 - (void)dealloc {
     [super dealloc];
-		[tableView dealloc];
+		[stationsTableView dealloc];
+		[responseData dealloc];
+		[views dealloc];
+		[progressViewController dealloc];
+		[appDelegate dealloc];
 }
 
 

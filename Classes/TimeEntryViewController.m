@@ -5,7 +5,6 @@
 //  Created by Andy Atkinson on 8/22/09.
 //  Copyright 2009 Andy Atkinson http://webandy.com. All rights reserved.
 //
-
 #import "TimeEntryViewController.h"
 #import "JSON/JSON.h"
 
@@ -52,7 +51,6 @@
 	[self loadTimeEntries];
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	timeEntriesTableView.backgroundColor = [UIColor clearColor];
@@ -157,7 +155,6 @@
 			nextDeparture = [entries objectAtIndex:i];
 			nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
 			nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
-			//NSLog(@"nextDepartureHour %d and nextDepartureMinute %d nowHour %d nowMinute %d", nextDepartureHour, nextDepartureMinute, nowHour, nowMinute);
 			if(nextDepartureHour > nowHour || (nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute) || (nowHour == 23 && nextDepartureHour == 0)) {
 				break; // break out of loop when right time is fetched
 			}
@@ -216,11 +213,7 @@
 	return 66.0f;
 }
 
-
-// Customize the appearance of table view cells.
-// custom cells with interface builder http://icodeblog.com/2009/05/24/custom-uitableviewcell-using-interface-builder/
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {	
 	static NSString *cellId = @"DepartureDetailCell";
 	int minutes = 0;
 	DepartureDetailCell *cell = (DepartureDetailCell *)[tableView dequeueReusableCellWithIdentifier:cellId];

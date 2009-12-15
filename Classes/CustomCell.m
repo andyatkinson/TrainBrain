@@ -5,9 +5,7 @@
 //  Created by Andy Atkinson on 6/30/09.
 //  Copyright 2009 Andy Atkinson http://webandy.com. All rights reserved.
 //
-
 #import "CustomCell.h"
-
 
 @implementation CustomCell
 
@@ -31,15 +29,10 @@
     return self;
 }
 
-
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-
     [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
 }
 
-// assembling the custom cell http://iphone.zcentric.com/2008/08/05/custom-uitableviewcell/
 - (void)layoutSubviews {
 	[super layoutSubviews];
 	
@@ -62,14 +55,12 @@
 	} else {
 		font = [UIFont systemFontOfSize:fontSize];
 	}
-	
 	UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectZero];
 	newLabel.backgroundColor = [UIColor clearColor];
 	newLabel.opaque = YES;
 	newLabel.textColor = primaryColor;
 	newLabel.highlightedTextColor = selectedColor;
 	newLabel.font = font;
-	
 	return newLabel;
 }
 

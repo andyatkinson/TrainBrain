@@ -5,7 +5,6 @@
 //  Created by Andy Atkinson on 6/30/09.
 //  Copyright 2009 Andy Atkinson http://webandy.com. All rights reserved.
 //
-
 #import <UIKit/UIKit.h>
 
 @interface CustomCell : UITableViewCell {

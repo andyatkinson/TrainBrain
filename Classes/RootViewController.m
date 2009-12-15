@@ -19,7 +19,7 @@
 
 @implementation RootViewController
 
-@synthesize views, responseData, locationManager, startingPoint, progressViewController, linesTableView, appDelegate;
+@synthesize views, responseData, locationManager, startingPoint, progressViewController, routesTableView, appDelegate;
 
 - (void) loadRailStations {
 	progressViewController.message = @"Loading Routes...";
@@ -107,7 +107,7 @@
 	}
 	
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
-	[linesTableView reloadData];
+	[routesTableView reloadData];
 	
 	self.title = @"Routes";
 	[progressViewController.view	removeFromSuperview];	
@@ -120,7 +120,7 @@
 		self.startingPoint = newLocation;
 	}
 	
-	NSString *locationString = [[NSString alloc] initWithFormat:@"%@train_routes.json", [appDelegate getBaseUrl]];
+	NSString *locationString = [[NSString alloc] initWithFormat:@"%@routes.json", [appDelegate getBaseUrl]];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:locationString]];
 	[locationString release];
 	
@@ -147,9 +147,9 @@
 - (void)viewWillAppear:(BOOL)animated
 {
 	// Unselect the selected row if any
-	NSIndexPath*	selection = [linesTableView indexPathForSelectedRow];
+	NSIndexPath*	selection = [routesTableView indexPathForSelectedRow];
 	if (selection) {
-		[linesTableView deselectRowAtIndexPath:selection animated:YES];
+		[routesTableView deselectRowAtIndexPath:selection animated:YES];
 	}
 }
 
@@ -175,12 +175,11 @@
 		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
 	}  
 		
-	// Set up the cell...
 	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-	cell.titleLabel.text = [[views objectAtIndex:indexPath.row] objectForKey:@"short_name"];
 	NSString *longName = [NSString stringWithFormat:@"%@", [[views objectAtIndex:indexPath.row] objectForKey:@"long_name"]];
-	cell.distanceLabel.text = longName;
-
+	NSString *shortName = [[views objectAtIndex:indexPath.row] objectForKey:@"short_name"];
+	cell.titleLabel.text = longName;
+	cell.distanceLabel.text = [NSString stringWithFormat:@"Route %@", shortName];
 	return cell;
 }
 
@@ -202,7 +201,7 @@
 	[locationManager release];
 	[startingPoint release];
 	[progressViewController release];
-	[linesTableView release];
+	[routesTableView release];
 	[responseData release];
 	[super dealloc];
 }

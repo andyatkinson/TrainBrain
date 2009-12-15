@@ -12,14 +12,14 @@
 #import "CustomCell.h"
 
 @interface TrainStationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
-	IBOutlet UITableView *tableView;
+	IBOutlet UITableView *stationsTableView;
 	NSMutableData *responseData;
 	IBOutlet NSMutableArray *views;
 	ProgressViewController *progressViewController;
 	TrainBrainAppDelegate *appDelegate;
 }
 
-@property (nonatomic, retain) IBOutlet UITableView *tableView;
+@property (nonatomic, retain) IBOutlet UITableView *stationsTableView;
 @property (nonatomic, retain) NSMutableData	*responseData;
 @property (nonatomic, retain) IBOutlet NSMutableArray *views;
 @property (nonatomic, retain)	ProgressViewController *progressViewController;

@@ -3,7 +3,7 @@
 //  TrainBrain
 //
 //  Created by Andy Atkinson on 11/4/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Copyright Andy Atkinson http://webandy.com 2009. All rights reserved.
 //
 
 #import "Stop.h"
@@ -15,6 +15,8 @@
 @synthesize street = _street;
 @synthesize description = _description;
 @synthesize routeId = _routeId;
+@synthesize webUrl = _webUrl;
+@synthesize routeShortName = _routeShortName;
 
 -(void) dealloc {
 	self.location = nil;
@@ -22,6 +24,8 @@
 	self.street = nil;
 	self.description = nil;
 	self.routeId = nil;
+	self.webUrl = nil;
+	self.routeShortName = nil;
 	[super dealloc];
 }
 
