@@ -14,16 +14,16 @@
 
 @implementation TimeEntryViewController
 
-@synthesize responseData, timeEntryRows, progressViewController, timeEntriesTableView, bigTimeHeaderText, nextDepartureImage, appDelegate;
+@synthesize responseData, timeEntryRows, timeEntriesTableView, bigTimeHeaderText, nextDepartureImage, appDelegate;
 
 -(IBAction)refreshTimes:(id)sender {
 	[self loadTimeEntries];
 }
 
 - (void) loadTimeEntries {
-	progressViewController.message = [NSString stringWithFormat:@"Loading Departures..."];
-	[self.view addSubview:progressViewController.view];
-	[progressViewController startProgressIndicator];
+	HUD.labelText = @"Loading";
+	HUD.detailsLabelText = @"Departures";
+	[HUD show:YES];
 	
 	// get the hour and minute to send to server
 	NSDate *now = [NSDate date];
@@ -55,7 +55,12 @@
 	[super viewDidLoad];
 	timeEntriesTableView.backgroundColor = [UIColor clearColor];
 	responseData = [[NSMutableData data] retain];
-	progressViewController = [[ProgressViewController alloc] init];
+	
+	UIWindow *window = [UIApplication sharedApplication].keyWindow;
+	HUD = [[MBProgressHUD alloc] initWithWindow:window];
+	[window addSubview:HUD];
+	HUD.delegate = self;
+	
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	bigTimeHeaderText.text = [appDelegate getSelectedStopName];
 	self.title = @"Departures";
@@ -70,8 +75,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	[progressViewController.view	removeFromSuperview];
-	[progressViewController stopProgressIndicator];
+	[HUD hide:YES];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
 																									message:nil 
 																								 delegate:nil 
@@ -142,8 +146,7 @@
 	}
 	
 	[timeEntriesTableView reloadData];
-	[progressViewController.view	removeFromSuperview];
-	[progressViewController stopProgressIndicator];
+	[HUD hide:YES];
 	
 	if([entries count] > 0) {
 		
@@ -262,7 +265,6 @@
 	[timeEntryRows release];
 	[responseData release];
 	[timeEntriesTableView release];
-	[progressViewController release];
 	[bigTimeHeaderText release];
 	[super dealloc];
 }

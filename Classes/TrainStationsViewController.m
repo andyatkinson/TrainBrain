@@ -12,12 +12,11 @@
 
 @implementation TrainStationsViewController
 
-@synthesize stationsTableView, responseData, views, progressViewController, appDelegate;
+@synthesize stationsTableView, responseData, views, appDelegate;
 
 - (void) loadTrainStations {
-	progressViewController.message = [NSString stringWithFormat:@"Loading Stops for Route..."];
-	[self.view addSubview:progressViewController.view];
-	[progressViewController startProgressIndicator];
+	HUD.labelText = @"Loading";
+	HUD.detailsLabelText = @"Stops";
 	
 	// was passing lat/lng here lat=44.948364&lng=-93.239143
 	NSString *requestURL = [NSString stringWithFormat:@"%@routes/%@/stops.json",
@@ -25,8 +24,6 @@
 													[appDelegate getSelectedRouteId]];
 	
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
-	
-	// kick off the request, the view is reloaded from the request handler
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
@@ -34,7 +31,11 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	progressViewController = [[ProgressViewController alloc] init];
+	UIWindow *window = [UIApplication sharedApplication].keyWindow;
+	HUD = [[MBProgressHUD alloc] initWithWindow:window];
+	[window addSubview:HUD];
+	HUD.delegate = self;
+	
 	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	responseData = [[NSMutableData data] retain];
 	[self loadTrainStations];
@@ -50,8 +51,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	[progressViewController.view	removeFromSuperview];
-	[progressViewController stopProgressIndicator];
+	[HUD hide:YES];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
 																									message:nil 
 																								 delegate:nil 
@@ -107,9 +107,7 @@
 	
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
 	[stationsTableView reloadData];
-			
-	[progressViewController.view	removeFromSuperview];
-	[progressViewController stopProgressIndicator];
+	[HUD hide:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -170,7 +168,6 @@
 		[stationsTableView dealloc];
 		[responseData dealloc];
 		[views dealloc];
-		[progressViewController dealloc];
 		[appDelegate dealloc];
 }
 

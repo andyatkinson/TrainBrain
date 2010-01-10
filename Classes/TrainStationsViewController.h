@@ -7,22 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProgressViewController.h"
 #import "TrainBrainAppDelegate.h"
 #import "CustomCell.h"
+#import "MBProgressHUD.h"
 
-@interface TrainStationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface TrainStationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
 	IBOutlet UITableView *stationsTableView;
 	NSMutableData *responseData;
 	IBOutlet NSMutableArray *views;
-	ProgressViewController *progressViewController;
 	TrainBrainAppDelegate *appDelegate;
+	MBProgressHUD *HUD;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *stationsTableView;
 @property (nonatomic, retain) NSMutableData	*responseData;
 @property (nonatomic, retain) IBOutlet NSMutableArray *views;
-@property (nonatomic, retain)	ProgressViewController *progressViewController;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
 @end

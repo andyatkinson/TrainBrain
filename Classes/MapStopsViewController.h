@@ -8,18 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-#import "ProgressViewController.h"
 #import "TrainBrainAppDelegate.h"
+#import "MBProgressHUD.h"
 
-@interface MapStopsViewController : UIViewController <MKMapViewDelegate> {
+@interface MapStopsViewController : UIViewController <MKMapViewDelegate, MBProgressHUDDelegate> {
 	MKMapView *_mapView;
-	ProgressViewController *progressViewController;
 	NSMutableData *responseData;
 	TrainBrainAppDelegate *appDelegate;
+	MBProgressHUD	*HUD;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
-@property (nonatomic, retain)	ProgressViewController *progressViewController;
 @property (nonatomic, retain) NSMutableData *responseData;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 

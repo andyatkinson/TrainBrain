@@ -8,23 +8,22 @@
 
 #import <UIKit/UIKit.h>
 #import "DepartureDetailCell.h"
-#import "ProgressViewController.h"
 #import "TrainBrainAppDelegate.h"
+#import "MBProgressHUD.h"
 
-@interface TimeEntryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate> {
+@interface TimeEntryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
 	IBOutlet UITableView *timeEntriesTableView;
 	NSMutableData *responseData;
 	IBOutlet NSMutableArray *timeEntryRows;
-	ProgressViewController *progressViewController;
 	IBOutlet UILabel *bigTimeHeaderText;
 	IBOutlet UIImageView *nextDepartureImage;
 	TrainBrainAppDelegate *appDelegate;
+	MBProgressHUD *HUD;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *timeEntriesTableView;
 @property (nonatomic, retain) NSMutableData	*responseData;
 @property (nonatomic, retain) IBOutlet NSMutableArray *timeEntryRows;
-@property (nonatomic, retain)	ProgressViewController *progressViewController;
 @property (nonatomic, retain) IBOutlet UILabel *bigTimeHeaderText;
 @property (nonatomic, retain) IBOutlet UIImageView *nextDepartureImage;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;

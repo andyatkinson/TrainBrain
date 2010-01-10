@@ -14,18 +14,16 @@
 @implementation MapStopsViewController
 
 @synthesize mapView = _mapView;
-@synthesize responseData;
-@synthesize progressViewController;
-@synthesize appDelegate;
+@synthesize responseData, appDelegate;
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 }
 
 - (void) loadStops {
-	progressViewController.message = [NSString stringWithFormat:@"Loading Stops..."];
-	[self.view addSubview:progressViewController.view];
-	[progressViewController startProgressIndicator];
+	HUD.labelText = @"Loading";
+	HUD.detailsLabelText = @"Stations";
+	[HUD show:YES];
 	
 	NSString *requestURL = [NSString stringWithFormat:@"%@train_stations.json", [appDelegate getBaseUrl]];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
@@ -35,12 +33,17 @@
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
-	progressViewController = [[ProgressViewController alloc] init];
+	[super viewDidLoad];
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	responseData = [[NSMutableData data] retain];
+	
+	UIWindow *window = [UIApplication sharedApplication].keyWindow;
+	HUD = [[MBProgressHUD alloc] initWithWindow:window];
+	[window addSubview:HUD];
+	HUD.delegate = self;
+	
 	[self loadStops];
-	[self setTitle:@"Stops"];
-	[super viewDidLoad];
+	self.title = @"All Stations";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -52,8 +55,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	[progressViewController.view	removeFromSuperview];
-	[progressViewController stopProgressIndicator];
+	[HUD hide:YES];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
 																									message:nil 
 																								 delegate:nil 
@@ -176,9 +178,8 @@
 		[alert release];
 	}
 	
-	[progressViewController.view	removeFromSuperview];
-	[progressViewController stopProgressIndicator];
 	[self recenterMap];
+	[HUD hide:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -195,7 +196,6 @@
 - (void)dealloc {
 	[super dealloc];
 	_mapView = nil;
-	[progressViewController dealloc];
 	[responseData dealloc];
 	[appDelegate dealloc];
 }

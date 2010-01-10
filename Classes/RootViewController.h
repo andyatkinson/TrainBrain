@@ -8,18 +8,18 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "CustomCell.h"
-#import "ProgressViewController.h"
 #import "TrainBrainAppDelegate.h"
 #import "MapStopsViewController.h"
+#import "MBProgressHUD.h"
 
-@interface RootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate> {
+@interface RootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, MBProgressHUDDelegate> {
 	IBOutlet UITableView *routesTableView;
 	IBOutlet NSMutableArray *views;
 	NSMutableData *responseData;
 	CLLocationManager *locationManager;
 	CLLocation *startingPoint;
-	ProgressViewController *progressViewController;
 	TrainBrainAppDelegate *appDelegate;
+	MBProgressHUD *HUD;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *routesTableView;
@@ -27,7 +27,6 @@
 @property (nonatomic, retain) IBOutlet NSMutableArray *views;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, retain) CLLocation *startingPoint;
-@property (nonatomic, retain)	ProgressViewController *progressViewController;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
 -(IBAction)refreshStations:(id)sender;

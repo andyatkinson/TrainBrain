@@ -19,12 +19,12 @@
 
 @implementation RootViewController
 
-@synthesize views, responseData, locationManager, startingPoint, progressViewController, routesTableView, appDelegate;
+@synthesize views, responseData, locationManager, startingPoint, routesTableView, appDelegate;
 
 - (void) loadRailStations {
-	progressViewController.message = @"Loading Routes...";
-	[self.view addSubview:progressViewController.view];
-	[progressViewController startProgressIndicator];
+	HUD.labelText = @"Loading";
+	HUD.detailsLabelText = @"Location";
+	[HUD show:YES];
 	
 	self.locationManager = [[CLLocationManager alloc] init];
 	locationManager.delegate = self;
@@ -39,7 +39,11 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	progressViewController = [[ProgressViewController alloc] init];
+	
+	UIWindow *window = [UIApplication sharedApplication].keyWindow;
+	HUD = [[MBProgressHUD alloc] initWithWindow:window];
+	[window addSubview:HUD];
+	HUD.delegate = self;
 	
 	UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapButtonClicked:)];
 	self.navigationItem.rightBarButtonItem = mapButton;
@@ -59,8 +63,7 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	[progressViewController.view	removeFromSuperview];
-	[progressViewController stopProgressIndicator];
+	[HUD hide:YES];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
 																									message:nil 
 																								 delegate:nil 
@@ -110,8 +113,7 @@
 	[routesTableView reloadData];
 	
 	self.title = @"Routes";
-	[progressViewController.view	removeFromSuperview];	
-	[progressViewController stopProgressIndicator];
+	[HUD hide:YES];
 }
 
 
@@ -119,6 +121,8 @@
 	if(startingPoint == nil) {
 		self.startingPoint = newLocation;
 	}
+	
+	HUD.detailsLabelText = @"Routes";
 	
 	NSString *locationString = [[NSString alloc] initWithFormat:@"%@routes.json", [appDelegate getBaseUrl]];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:locationString]];
@@ -128,8 +132,7 @@
 	
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-	[progressViewController.view	removeFromSuperview];
-	[progressViewController stopProgressIndicator];
+	[HUD hide:YES];
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Train Brain failed to access your location." 
 																									message:nil 
 																								 delegate:nil 
@@ -200,7 +203,6 @@
 	[views release];
 	[locationManager release];
 	[startingPoint release];
-	[progressViewController release];
 	[routesTableView release];
 	[responseData release];
 	[super dealloc];

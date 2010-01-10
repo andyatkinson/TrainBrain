@@ -32,6 +32,7 @@
 		A169E4B5102F928E00A65E05 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4AF102F928E00A65E05 /* SBJsonWriter.m */; };
 		A169E4BC102F931800A65E05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169E4BB102F931800A65E05 /* CoreLocation.framework */; };
 		A16A8BCB1038F93C001DF0EF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A16A8BCA1038F93C001DF0EF /* Icon.png */; };
+		A1B56E2E10F968BF00294BEC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */; };
 		A1B5C4EA10A120F500CD3045 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B5C4E910A120F500CD3045 /* MapKit.framework */; };
 		A1B5C50510A1220F00CD3045 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C50410A1220F00CD3045 /* StopAnnotation.m */; };
 		A1B5C54A10A26FBE00CD3045 /* MapStopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */; };
@@ -86,6 +87,8 @@
 		A169E4AF102F928E00A65E05 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		A169E4BB102F931800A65E05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A16A8BCA1038F93C001DF0EF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A1B5C4E910A120F500CD3045 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A1B5C50310A1220F00CD3045 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
 		A1B5C50410A1220F00CD3045 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
@@ -121,6 +124,8 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */,
+				A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */,
 				A169E49D102F927100A65E05 /* JSON */,
 				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
 				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
@@ -317,6 +322,7 @@
 				A1B5C50510A1220F00CD3045 /* StopAnnotation.m in Sources */,
 				A1B5C54A10A26FBE00CD3045 /* MapStopsViewController.m in Sources */,
 				A1B5C58710A27E5B00CD3045 /* Stop.m in Sources */,
+				A1B56E2E10F968BF00294BEC /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
