@@ -7,14 +7,42 @@
 //
 
 #import "TrainBrainAppDelegate.h"
+#import "RootViewController.h"
+#import "MapStopsViewController.h"
+#import "InfoViewController.h"
 
 @implementation TrainBrainAppDelegate
 
-@synthesize window, navigationController;
+@synthesize window, routesTableViewController, mapStopsViewController, infoViewController, tabBarController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
-	[window addSubview:[navigationController view]];
+	UIColor *navBarColor = UIColorFromRGB(0x643716);
+	
+	tabBarController = [[UITabBarController alloc] init];
+	routesTableViewController = [[RootViewController alloc] init];
+	UINavigationController *routesController = [[[UINavigationController alloc] initWithRootViewController:routesTableViewController] autorelease];
+	routesController.navigationBar.barStyle = UIBarStyleBlack;
+	routesController.navigationBar.tintColor = navBarColor;
+	routesController.title = @"Routes";
+	[routesTableViewController release];
+	
+	mapStopsViewController = [[MapStopsViewController alloc] init];
+	UINavigationController *mapController = [[[UINavigationController alloc] initWithRootViewController:mapStopsViewController] autorelease];
+	mapController.navigationBar.barStyle = UIBarStyleBlack;
+	mapController.navigationBar.tintColor = navBarColor;
+	mapController.title = @"Map";
+	[mapStopsViewController release];
+	
+	infoViewController = [[InfoViewController alloc] init];
+	UINavigationController *infoController = [[[UINavigationController alloc] initWithRootViewController:infoViewController] autorelease];
+	infoController.navigationBar.barStyle = UIBarStyleBlack;
+	infoController.navigationBar.tintColor = navBarColor;
+	infoController.title = @"Info";
+	[infoViewController release];
+	
+	tabBarController.viewControllers = [NSArray arrayWithObjects:routesController, mapController, infoController, nil];
+	[window addSubview:tabBarController.view];
 	[window makeKeyAndVisible];
 }
 
@@ -52,7 +80,8 @@
 }
 
 - (void)dealloc {
-	[navigationController release];
+	//[navigationController release];
+	[tabBarController release];
 	[window release];
 	[super dealloc];
 }

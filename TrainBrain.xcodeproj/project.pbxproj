@@ -17,8 +17,6 @@
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		A115173C102F962E007CFBF6 /* TimeEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */; };
 		A115173D102F962E007CFBF6 /* TimeEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */; };
-		A1151746102F9650007CFBF6 /* ProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1151740102F9650007CFBF6 /* ProgressViewController.m */; };
-		A1151747102F9650007CFBF6 /* ProgressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1151741102F9650007CFBF6 /* ProgressViewController.xib */; };
 		A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */; };
 		A14FDCB910313164002B9E32 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = A14FDCB810313164002B9E32 /* clock.png */; };
 		A168AF9010407DE300E01E38 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A168AF8F10407DE300E01E38 /* Default.png */; };
@@ -33,6 +31,8 @@
 		A169E4BC102F931800A65E05 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169E4BB102F931800A65E05 /* CoreLocation.framework */; };
 		A16A8BCB1038F93C001DF0EF /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = A16A8BCA1038F93C001DF0EF /* Icon.png */; };
 		A1B56E2E10F968BF00294BEC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */; };
+		A1B56FCD10F9B25300294BEC /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B56FCB10F9B25300294BEC /* InfoViewController.m */; };
+		A1B56FCE10F9B25300294BEC /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B56FCC10F9B25300294BEC /* InfoViewController.xib */; };
 		A1B5C4EA10A120F500CD3045 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B5C4E910A120F500CD3045 /* MapKit.framework */; };
 		A1B5C50510A1220F00CD3045 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C50410A1220F00CD3045 /* StopAnnotation.m */; };
 		A1B5C54A10A26FBE00CD3045 /* MapStopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */; };
@@ -61,9 +61,6 @@
 		A1151739102F962E007CFBF6 /* TimeEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeEntryViewController.h; sourceTree = "<group>"; };
 		A115173A102F962E007CFBF6 /* TimeEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeEntryViewController.m; sourceTree = "<group>"; };
 		A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TimeEntryViewController.xib; path = Classes/TimeEntryViewController.xib; sourceTree = "<group>"; };
-		A115173F102F9650007CFBF6 /* ProgressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressViewController.h; sourceTree = "<group>"; };
-		A1151740102F9650007CFBF6 /* ProgressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressViewController.m; sourceTree = "<group>"; };
-		A1151741102F9650007CFBF6 /* ProgressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ProgressViewController.xib; path = Classes/ProgressViewController.xib; sourceTree = "<group>"; };
 		A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureDetailCell.h; sourceTree = "<group>"; };
 		A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureDetailCell.m; sourceTree = "<group>"; };
 		A14FDCB810313164002B9E32 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
@@ -89,6 +86,9 @@
 		A16A8BCA1038F93C001DF0EF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		A1B56FCA10F9B25300294BEC /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		A1B56FCB10F9B25300294BEC /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		A1B56FCC10F9B25300294BEC /* InfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = InfoViewController.xib; path = Classes/InfoViewController.xib; sourceTree = "<group>"; };
 		A1B5C4E910A120F500CD3045 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A1B5C50310A1220F00CD3045 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
 		A1B5C50410A1220F00CD3045 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
@@ -129,8 +129,6 @@
 				A169E49D102F927100A65E05 /* JSON */,
 				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
 				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
-				A115173F102F9650007CFBF6 /* ProgressViewController.h */,
-				A1151740102F9650007CFBF6 /* ProgressViewController.m */,
 				A1151739102F962E007CFBF6 /* TimeEntryViewController.h */,
 				A115173A102F962E007CFBF6 /* TimeEntryViewController.m */,
 				A169E494102F91E500A65E05 /* CustomCell.m */,
@@ -147,6 +145,8 @@
 				A1B5C58610A27E5B00CD3045 /* Stop.m */,
 				A1B5C50310A1220F00CD3045 /* StopAnnotation.h */,
 				A1B5C50410A1220F00CD3045 /* StopAnnotation.m */,
+				A1B56FCA10F9B25300294BEC /* InfoViewController.h */,
+				A1B56FCB10F9B25300294BEC /* InfoViewController.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -190,9 +190,9 @@
 				A1D9AA8D103C50CC006B3744 /* departures_bg.png */,
 				A16A8BCA1038F93C001DF0EF /* Icon.png */,
 				A14FDCB810313164002B9E32 /* clock.png */,
+				A1B56FCC10F9B25300294BEC /* InfoViewController.xib */,
 				A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */,
 				A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */,
-				A1151741102F9650007CFBF6 /* ProgressViewController.xib */,
 				A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */,
 				A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */,
 				2899E55F0DE3E45000AC0155 /* RootViewController.xib */,
@@ -285,7 +285,6 @@
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */,
 				A115173D102F962E007CFBF6 /* TimeEntryViewController.xib in Resources */,
-				A1151747102F9650007CFBF6 /* ProgressViewController.xib in Resources */,
 				A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */,
 				A14FDCB910313164002B9E32 /* clock.png in Resources */,
 				A16A8BCB1038F93C001DF0EF /* Icon.png in Resources */,
@@ -295,6 +294,7 @@
 				A1BE49F71041F8C2005CFAD0 /* exclamation.png in Resources */,
 				A1DF9D06109D3BB100328466 /* TrainStationsViewController.xib in Resources */,
 				A1B5C54B10A26FBE00CD3045 /* MapStopsViewController.xib in Resources */,
+				A1B56FCE10F9B25300294BEC /* InfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,13 +316,13 @@
 				A169E4B4102F928E00A65E05 /* SBJsonParser.m in Sources */,
 				A169E4B5102F928E00A65E05 /* SBJsonWriter.m in Sources */,
 				A115173C102F962E007CFBF6 /* TimeEntryViewController.m in Sources */,
-				A1151746102F9650007CFBF6 /* ProgressViewController.m in Sources */,
 				A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */,
 				A1DF9D05109D3BB100328466 /* TrainStationsViewController.m in Sources */,
 				A1B5C50510A1220F00CD3045 /* StopAnnotation.m in Sources */,
 				A1B5C54A10A26FBE00CD3045 /* MapStopsViewController.m in Sources */,
 				A1B5C58710A27E5B00CD3045 /* Stop.m in Sources */,
 				A1B56E2E10F968BF00294BEC /* MBProgressHUD.m in Sources */,
+				A1B56FCD10F9B25300294BEC /* InfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

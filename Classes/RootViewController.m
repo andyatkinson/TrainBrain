@@ -9,7 +9,6 @@
 #import "RootViewController.h"
 #import "JSON/JSON.h"
 #import "TrainBrainAppDelegate.h"
-#import "MapBarButtonItem.h"
 #import "TrainStationsViewController.h"
 #import "MapStopsViewController.h"
 
@@ -45,13 +44,13 @@
 	[window addSubview:HUD];
 	HUD.delegate = self;
 	
-	UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapButtonClicked:)];
-	self.navigationItem.rightBarButtonItem = mapButton;
-	[mapButton release];
+	//UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapButtonClicked:)];
+	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshStations:)];
+	self.navigationItem.rightBarButtonItem = refreshButton;
+	[refreshButton release];
 	
 	[self loadRailStations];
 	responseData = [[NSMutableData data] retain];
-	self.title = @"train brain";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

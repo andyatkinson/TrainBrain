@@ -30,7 +30,6 @@
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -43,7 +42,7 @@
 	HUD.delegate = self;
 	
 	[self loadStops];
-	self.title = @"All Stations";
+	self.title = @"Map";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
