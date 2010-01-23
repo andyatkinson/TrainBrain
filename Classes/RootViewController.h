@@ -30,6 +30,5 @@
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
 -(IBAction)refreshStations:(id)sender;
-- (void)mapButtonClicked:(id)sender;
 
 @end

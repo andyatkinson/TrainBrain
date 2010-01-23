@@ -44,11 +44,9 @@
 	[window addSubview:HUD];
 	HUD.delegate = self;
 	
-	//UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(mapButtonClicked:)];
 	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshStations:)];
 	self.navigationItem.rightBarButtonItem = refreshButton;
-	[refreshButton release];
-	
+	[refreshButton release];	
 	[self loadRailStations];
 	responseData = [[NSMutableData data] retain];
 }
@@ -111,7 +109,6 @@
 	// IMPORTANT: this call reloads the UITableView cells data after the data is available
 	[routesTableView reloadData];
 	
-	self.title = @"Routes";
 	[HUD hide:YES];
 }
 
@@ -181,7 +178,7 @@
 	NSString *longName = [NSString stringWithFormat:@"%@", [[views objectAtIndex:indexPath.row] objectForKey:@"long_name"]];
 	NSString *shortName = [[views objectAtIndex:indexPath.row] objectForKey:@"short_name"];
 	cell.titleLabel.text = longName;
-	cell.distanceLabel.text = [NSString stringWithFormat:@"Route %@", shortName];
+	cell.distanceLabel.text = [NSString stringWithFormat:@"%@", shortName];
 	return cell;
 }
 
@@ -191,11 +188,6 @@
 	[appDelegate setSelectedRouteId:[[views objectAtIndex:indexPath.row] objectForKey:@"route_id"]];	
 	[[self navigationController] pushViewController:targetViewController animated:YES];
 	
-}
-
-- (void)mapButtonClicked:(id)sender {
-	MapStopsViewController *mapStops = [[MapStopsViewController alloc] init];
-	[[self navigationController] pushViewController:mapStops animated:YES];
 }
 
 - (void)dealloc {

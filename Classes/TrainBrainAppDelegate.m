@@ -24,7 +24,7 @@
 	UINavigationController *routesController = [[[UINavigationController alloc] initWithRootViewController:routesTableViewController] autorelease];
 	routesController.navigationBar.barStyle = UIBarStyleBlack;
 	routesController.navigationBar.tintColor = navBarColor;
-	routesController.title = @"Routes";
+	routesController.title = @"Schedule";
 	[routesTableViewController release];
 	
 	mapStopsViewController = [[MapStopsViewController alloc] init];
@@ -43,6 +43,8 @@
 	
 	tabBarController.viewControllers = [NSArray arrayWithObjects:routesController, mapController, infoController, nil];
 	[window addSubview:tabBarController.view];
+
+	
 	[window makeKeyAndVisible];
 }
 
@@ -76,7 +78,7 @@
 - (NSString *) getBaseUrl {
 	// IMPORTANT: ensure trailing slash is present.
 	//return @"http://api2.trainbrainapp.com/";
-	return @"http://0.0.0.0:3000/";
+	return @"http://localhost:3000/";
 }
 
 - (void)dealloc {

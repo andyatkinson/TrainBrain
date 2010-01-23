@@ -228,6 +228,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -310,8 +312,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -326,10 +326,6 @@
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
 										<string>MapStopsViewController.m</string>
-										<key>_historyCapacity</key>
-										<integer>0</integer>
-										<key>bookmark</key>
-										<string>A11C874C10FADAF600A7FAFF</string>
 										<key>history</key>
 										<array>
 											<string>A1690D591040E88C00EB0E62</string>
@@ -453,9 +449,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>A11C874D10FADAF600A7FAFF</string>
+				<string>A1E8107A110AB10D00BE6502</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>A11C874E10FADAF600A7FAFF</string>
+				<string>A1E8107B110AB10D00BE6502</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -589,9 +585,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>A169E415102F915800A65E05</string>
 		<string>/Users/andy/Projects/objectivec/TrainBrain/TrainBrain.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -792,13 +786,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>A11C875010FADAF600A7FAFF</string>
+				<string>A1E8107C110AB10D00BE6502</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A11C875110FADAF600A7FAFF</string>
-				<string>A11C875210FADAF600A7FAFF</string>
-				<string>A11C875310FADAF600A7FAFF</string>
-				<string>A11C875410FADAF600A7FAFF</string>
-				<string>A11C875510FADAF600A7FAFF</string>
+				<string>A1E8107D110AB10D00BE6502</string>
+				<string>A1E8107E110AB10D00BE6502</string>
+				<string>A1E8107F110AB10D00BE6502</string>
+				<string>A1E81080110AB10D00BE6502</string>
+				<string>A1E81081110AB10D00BE6502</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
