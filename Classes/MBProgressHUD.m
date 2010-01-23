@@ -197,6 +197,7 @@
 		
 		taskInProgress = NO;
     }
+		[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     return self;
 }
 
@@ -339,6 +340,7 @@
 }
 
 - (void)hide:(BOOL)animated {
+	[[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
 	useAnimation = animated;
 	
 	// If the minShow time is set, calculate how long the hud was shown,

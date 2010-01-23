@@ -13,7 +13,7 @@
 
 @synthesize webView, appDelegate;
 
-- (void)viewDidLoad {	
+- (void)viewDidLoad {
 	self.title = @"Info";
 	
 	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(backButtonClicked:)];

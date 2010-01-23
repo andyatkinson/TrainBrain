@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <UIKit/UIWebView.h>
 #import "TrainBrainAppDelegate.h"
+#import "MBProgressHUD.h"
 
 @interface InfoViewController : UIViewController <UIWebViewDelegate> {
 	IBOutlet UIWebView *webView;
 	TrainBrainAppDelegate *appDelegate;
+	MBProgressHUD *HUD;
 }
 
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
