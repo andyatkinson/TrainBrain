@@ -2,17 +2,17 @@
 {
 	1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1082, 672}}";
-			sepNavSelRange = "{905, 0}";
-			sepNavVisRange = "{0, 1461}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 667}}";
+			sepNavSelRange = "{286, 0}";
+			sepNavVisRange = "{0, 1324}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
 		};
 	};
 	1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {943, 1582}}";
-			sepNavSelRange = "{628, 64}";
-			sepNavVisRange = "{339, 558}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 1176}}";
+			sepNavSelRange = "{1899, 0}";
+			sepNavVisRange = "{203, 2124}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
 		};
 	};
@@ -178,7 +178,7 @@
 	};
 	29B97316FDCFA39411CA2CEA /* main.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {945, 472}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 667}}";
 			sepNavSelRange = "{146, 0}";
 			sepNavVisRange = "{0, 380}";
 		};
@@ -190,16 +190,16 @@
 	};
 	A1151739102F962E007CFBF6 /* TimeEntryViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1082, 667}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 644}}";
 			sepNavSelRange = "{666, 0}";
 			sepNavVisRange = "{0, 1121}";
 		};
 	};
 	A115173A102F962E007CFBF6 /* TimeEntryViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1082, 3934}}";
-			sepNavSelRange = "{1865, 165}";
-			sepNavVisRange = "{642, 1815}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 3876}}";
+			sepNavSelRange = "{10170, 5}";
+			sepNavVisRange = "{8433, 1922}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
 		};
 	};
@@ -244,7 +244,7 @@
 		rLen = 0;
 		rLoc = 565;
 		rType = 0;
-		vrLen = 1125;
+		vrLen = 1118;
 		vrLoc = 3;
 	};
 	A129AEB8102F9AB20097A3BF /* PBXTextBookmark */ = {
@@ -262,7 +262,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 52";
 		rLen = 0;
-		rLoc = 2744;
+		rLoc = 2978;
 		rType = 0;
 		vrLen = 538;
 		vrLoc = 0;
@@ -273,6 +273,11 @@
 		name = MapStopsViewController.m;
 		path = /Users/andy/Projects/objectivec/TrainBrain/Classes/MapStopsViewController.m;
 		sourceTree = "<group>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 2786}}";
+			sepNavSelRange = "{922, 0}";
+			sepNavVisRange = "{382, 1649}";
+		};
 	};
 	A13D024910A7AC7B005FD076 /* MapStopsViewController.m:16 */ = {
 		isa = PBXFileBreakpoint;
@@ -287,7 +292,7 @@
 		hitCount = 0;
 		ignoreCount = 0;
 		lineNumber = 16;
-		modificationTime = 284800003.346652;
+		modificationTime = 285971543.163894;
 		state = 2;
 	};
 	A141AD2910AB92F500A0924E /* PBXTextBookmark */ = {
@@ -548,6 +553,20 @@
 		vrLen = 861;
 		vrLoc = 0;
 	};
+	A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 3640}}";
+			sepNavSelRange = "{0, 0}";
+			sepNavVisRange = "{0, 1723}";
+		};
+	};
+	A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */ = {
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 7168}}";
+			sepNavSelRange = "{10265, 0}";
+			sepNavVisRange = "{9792, 1434}";
+		};
+	};
 	A1B56E5710F96F5B00294BEC /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
@@ -564,6 +583,11 @@
 		name = RootViewController.h;
 		path = /Users/andy/Projects/objectivec/TrainBrain/Classes/RootViewController.h;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 667}}";
+			sepNavSelRange = "{698, 19}";
+			sepNavVisRange = "{0, 1146}";
+		};
 	};
 	A1B56F0710F97C7F00294BEC /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -587,16 +611,16 @@
 	};
 	A1B56FCA10F9B25300294BEC /* InfoViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1082, 667}}";
-			sepNavSelRange = "{227, 0}";
-			sepNavVisRange = "{0, 236}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 644}}";
+			sepNavSelRange = "{421, 0}";
+			sepNavVisRange = "{0, 598}";
 		};
 	};
 	A1B56FCB10F9B25300294BEC /* InfoViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1082, 2352}}";
-			sepNavSelRange = "{566, 0}";
-			sepNavVisRange = "{87, 909}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 742}}";
+			sepNavSelRange = "{1139, 0}";
+			sepNavVisRange = "{87, 1253}";
 		};
 	};
 	A1B56FDA10F9B3EE00294BEC /* PBXTextBookmark */ = {
@@ -606,7 +630,7 @@
 		rLen = 0;
 		rLoc = 0;
 		rType = 0;
-		vrLen = 241;
+		vrLen = 236;
 		vrLoc = 0;
 	};
 	A1B56FDB10F9B3EE00294BEC /* PBXTextBookmark */ = {
@@ -644,7 +668,7 @@
 		fRef = A1E2F88510A9029B004E2641 /* RootViewController.m */;
 		name = "RootViewController.m: 114";
 		rLen = 0;
-		rLoc = 4041;
+		rLoc = 3855;
 		rType = 0;
 		vrLen = 1787;
 		vrLoc = 5260;
@@ -664,7 +688,7 @@
 		fRef = A1B56FCA10F9B25300294BEC /* InfoViewController.h */;
 		name = "InfoViewController.h: 13";
 		rLen = 0;
-		rLoc = 227;
+		rLoc = 421;
 		rType = 0;
 		vrLen = 236;
 		vrLoc = 0;
@@ -674,7 +698,7 @@
 		fRef = A1B56FCB10F9B25300294BEC /* InfoViewController.m */;
 		name = "InfoViewController.m: 27";
 		rLen = 0;
-		rLoc = 566;
+		rLoc = 286;
 		rType = 0;
 		vrLen = 909;
 		vrLoc = 87;
@@ -684,7 +708,7 @@
 		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
 		name = "TrainBrainAppDelegate.h: 27";
 		rLen = 0;
-		rLoc = 905;
+		rLoc = 855;
 		rType = 0;
 		vrLen = 1461;
 		vrLoc = 0;
@@ -746,7 +770,7 @@
 	};
 	A1B5C54710A26FBE00CD3045 /* MapStopsViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1082, 667}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 644}}";
 			sepNavSelRange = "{377, 0}";
 			sepNavVisRange = "{0, 682}";
 		};
@@ -820,7 +844,7 @@
 		ignoreCount = 0;
 		lineNumber = 84;
 		location = TrainBrain;
-		modificationTime = 284800003.346619;
+		modificationTime = 285971543.163878;
 		state = 2;
 	};
 	A1E2F88510A9029B004E2641 /* RootViewController.m */ = {
@@ -829,6 +853,11 @@
 		name = RootViewController.m;
 		path = /Users/andy/Projects/objectivec/TrainBrain/Classes/RootViewController.m;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1082, 2856}}";
+			sepNavSelRange = "{1041, 0}";
+			sepNavVisRange = "{400, 1691}";
+		};
 	};
 	A1E2F8DC10A906A3004E2641 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -847,7 +876,7 @@
 		rLen = 0;
 		rLoc = 819;
 		rType = 0;
-		vrLen = 902;
+		vrLen = 826;
 		vrLoc = 0;
 	};
 	A1E2F8ED10A90839004E2641 /* PBXTextBookmark */ = {
@@ -887,7 +916,7 @@
 		rLen = 0;
 		rLoc = 674;
 		rType = 0;
-		vrLen = 758;
+		vrLen = 682;
 		vrLoc = 0;
 	};
 	A1E2F8FC10A90920004E2641 /* PBXTextBookmark */ = {

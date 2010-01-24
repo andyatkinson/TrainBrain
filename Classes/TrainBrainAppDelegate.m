@@ -17,28 +17,31 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
-	UIColor *navBarColor = UIColorFromRGB(0x643716);
+	UIColor *navBarColor = UIColorFromRGB(0x000000);
 	
 	tabBarController = [[UITabBarController alloc] init];
 	routesTableViewController = [[RootViewController alloc] init];
 	UINavigationController *routesController = [[[UINavigationController alloc] initWithRootViewController:routesTableViewController] autorelease];
-	routesController.navigationBar.barStyle = UIBarStyleBlack;
+	routesController.navigationBar.barStyle = UIBarStyleDefault;
 	routesController.navigationBar.tintColor = navBarColor;
 	routesController.title = @"Schedule";
+	routesController.tabBarItem.image = [UIImage imageNamed:@"11-clock.png"];
 	[routesTableViewController release];
 	
 	mapStopsViewController = [[MapStopsViewController alloc] init];
 	UINavigationController *mapController = [[[UINavigationController alloc] initWithRootViewController:mapStopsViewController] autorelease];
-	mapController.navigationBar.barStyle = UIBarStyleBlack;
+	mapController.navigationBar.barStyle = UIBarStyleDefault;
 	mapController.navigationBar.tintColor = navBarColor;
 	mapController.title = @"Map";
+	mapController.tabBarItem.image = [UIImage imageNamed:@"72-pin.png"];
 	[mapStopsViewController release];
 	
 	infoViewController = [[InfoViewController alloc] init];
 	UINavigationController *infoController = [[[UINavigationController alloc] initWithRootViewController:infoViewController] autorelease];
-	infoController.navigationBar.barStyle = UIBarStyleBlack;
+	infoController.navigationBar.barStyle = UIBarStyleDefault;
 	infoController.navigationBar.tintColor = navBarColor;
-	infoController.title = @"Info";
+	infoController.title = @"Help";
+	infoController.tabBarItem.image = [UIImage imageNamed:@"90-lifebuoy.png"];
 	[infoViewController release];
 	
 	tabBarController.viewControllers = [NSArray arrayWithObjects:routesController, mapController, infoController, nil];

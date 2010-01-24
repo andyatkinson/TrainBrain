@@ -42,6 +42,9 @@
 		A1D9AA8E103C50CC006B3744 /* departures_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D9AA8D103C50CC006B3744 /* departures_bg.png */; };
 		A1DF9D05109D3BB100328466 /* TrainStationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */; };
 		A1DF9D06109D3BB100328466 /* TrainStationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */; };
+		A1E810F5110BBD4F00BE6502 /* 11-clock.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E810F4110BBD4F00BE6502 /* 11-clock.png */; };
+		A1E810F7110BBD7D00BE6502 /* 72-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E810F6110BBD7D00BE6502 /* 72-pin.png */; };
+		A1E81105110BC21900BE6502 /* 90-lifebuoy.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E81104110BC21900BE6502 /* 90-lifebuoy.png */; };
 		A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +105,9 @@
 		A1DF9D02109D3BB100328466 /* TrainStationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainStationsViewController.h; sourceTree = "<group>"; };
 		A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainStationsViewController.m; sourceTree = "<group>"; };
 		A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TrainStationsViewController.xib; path = Classes/TrainStationsViewController.xib; sourceTree = "<group>"; };
+		A1E810F4110BBD4F00BE6502 /* 11-clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock.png"; sourceTree = "<group>"; };
+		A1E810F6110BBD7D00BE6502 /* 72-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "72-pin.png"; sourceTree = "<group>"; };
+		A1E81104110BC21900BE6502 /* 90-lifebuoy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy.png"; sourceTree = "<group>"; };
 		A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureDetailCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -184,6 +190,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1E81104110BC21900BE6502 /* 90-lifebuoy.png */,
+				A1E810F6110BBD7D00BE6502 /* 72-pin.png */,
+				A1E810F4110BBD4F00BE6502 /* 11-clock.png */,
 				8D1107310486CEB800E47090 /* TrainBrain-Info.plist */,
 				A1BE49F61041F8C2005CFAD0 /* exclamation.png */,
 				A168AF8F10407DE300E01E38 /* Default.png */,
@@ -295,6 +304,9 @@
 				A1DF9D06109D3BB100328466 /* TrainStationsViewController.xib in Resources */,
 				A1B5C54B10A26FBE00CD3045 /* MapStopsViewController.xib in Resources */,
 				A1B56FCE10F9B25300294BEC /* InfoViewController.xib in Resources */,
+				A1E810F5110BBD4F00BE6502 /* 11-clock.png in Resources */,
+				A1E810F7110BBD7D00BE6502 /* 72-pin.png in Resources */,
+				A1E81105110BC21900BE6502 /* 90-lifebuoy.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

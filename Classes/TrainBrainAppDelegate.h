@@ -8,7 +8,6 @@
 
 @interface TrainBrainAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
   UIWindow *window;
-  //UINavigationController *navigationController;
 	UITableViewController *routesTableViewController;
 	UIViewController *mapStopsViewController;
 	UIViewController *infoViewController;
@@ -25,7 +24,6 @@
 @property (nonatomic, retain) UITableViewController	*routesTableViewController;
 @property (nonatomic, retain) UIViewController *mapStopsViewController;
 @property (nonatomic, retain) UIViewController *infoViewController;
-//@property (nonatomic, retain) IBOutlet UINavigationController *navigationController;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
 - (void) setSelectedRouteId:(NSString *)newRouteId;

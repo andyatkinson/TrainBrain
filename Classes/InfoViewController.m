@@ -14,7 +14,7 @@
 @synthesize webView, appDelegate;
 
 - (void)viewDidLoad {
-	self.title = @"Info";
+	self.title = @"Help";
 	
 	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(backButtonClicked:)];
 	self.navigationItem.rightBarButtonItem = backButton;
@@ -34,7 +34,6 @@
 }
 
 -(IBAction)backButtonClicked:(id)sender {
-	NSLog(@"you clicked it");
 	[webView goBack];
 }
 
