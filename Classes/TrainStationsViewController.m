@@ -163,6 +163,10 @@
 	[[self navigationController] pushViewController:targetViewController animated:YES];	
 }
 
+- (void)hudWasHidden
+{
+}
+
 - (void)dealloc {
     [super dealloc];
 		[stationsTableView dealloc];

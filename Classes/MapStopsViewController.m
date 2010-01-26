@@ -30,11 +30,19 @@
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+-(IBAction)refreshMap:(id)sender {
+	[self loadStops];
+}
+
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	responseData = [[NSMutableData data] retain];
+	
+	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshMap:)];
+	self.navigationItem.rightBarButtonItem = refreshButton;
+	[refreshButton release];	
 	
 	UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
@@ -189,6 +197,10 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+}
+
+- (void)hudWasHidden
+{
 }
 
 

@@ -22,5 +22,6 @@
 @property (nonatomic, retain) NSMutableData *responseData;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
+-(IBAction)refreshMap:(id)sender;
 
 @end

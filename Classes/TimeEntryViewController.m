@@ -261,6 +261,10 @@
 	// Release any cached data, images, etc that aren't in use.
 }
 
+- (void)hudWasHidden
+{
+}
+
 - (void)dealloc {
 	[timeEntryRows release];
 	[responseData release];

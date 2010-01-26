@@ -66,6 +66,7 @@
 																								 delegate:nil 
 																				cancelButtonTitle:@"OK" 
 																				otherButtonTitles:nil];
+	
 	[alert show];
 	[alert release];
 }
@@ -97,7 +98,7 @@
 												nil]];
 		}
 	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Routes Found.\n\nPlease try tapping the refresh button." 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Routes Found." 
 																										message:nil 
 																									 delegate:nil 
 																					cancelButtonTitle:@"OK" 
@@ -129,7 +130,7 @@
 }
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	[HUD hide:YES];
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Train Brain failed to access your location." 
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to acquire location." 
 																									message:nil 
 																								 delegate:nil 
 																				cancelButtonTitle:@"OK" 
@@ -188,6 +189,10 @@
 	[appDelegate setSelectedRouteId:[[views objectAtIndex:indexPath.row] objectForKey:@"route_id"]];	
 	[[self navigationController] pushViewController:targetViewController animated:YES];
 	
+}
+
+- (void)hudWasHidden
+{
 }
 
 - (void)dealloc {

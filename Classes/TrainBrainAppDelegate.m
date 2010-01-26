@@ -17,7 +17,7 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
-	UIColor *navBarColor = UIColorFromRGB(0x000000);
+	UIColor *navBarColor = UIColorFromRGB(0x111111);
 	
 	tabBarController = [[UITabBarController alloc] init];
 	routesTableViewController = [[RootViewController alloc] init];
@@ -80,8 +80,8 @@
 
 - (NSString *) getBaseUrl {
 	// IMPORTANT: ensure trailing slash is present.
-	//return @"http://api2.trainbrainapp.com/";
-	return @"http://localhost:3000/";
+	return @"http://api2.trainbrainapp.com/";
+	//return @"http://localhost:3000/";
 }
 
 - (void)dealloc {

@@ -16,12 +16,13 @@
 - (void)viewDidLoad {
 	self.title = @"Help";
 	
+	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	
 	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(backButtonClicked:)];
 	self.navigationItem.rightBarButtonItem = backButton;
 	[backButton release];
 	
-	//NSString *locationString = [[NSString alloc] initWithFormat:@"%@routes.json", [appDelegate getBaseUrl]];
-	NSString *locationString = [[NSString alloc] initWithFormat:@"http://localhost:3000/info"];
+	NSString *locationString = [[NSString alloc] initWithFormat:@"%@info", [appDelegate getBaseUrl]];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:locationString]];
 	[webView loadRequest:request];
 }
