@@ -18,10 +18,6 @@
 	
 	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	
-	UIBarButtonItem *backButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:self action:@selector(backButtonClicked:)];
-	self.navigationItem.rightBarButtonItem = backButton;
-	[backButton release];
-	
 	NSString *locationString = [[NSString alloc] initWithFormat:@"%@info", [appDelegate getBaseUrl]];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:locationString]];
 	[webView loadRequest:request];
@@ -32,10 +28,6 @@
     [super didReceiveMemoryWarning];
 	
 	// Release any cached data, images, etc that aren't in use.
-}
-
--(IBAction)backButtonClicked:(id)sender {
-	[webView goBack];
 }
 
 - (void)viewDidUnload {

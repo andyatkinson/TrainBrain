@@ -111,9 +111,9 @@
                                               reuseIdentifier:@"stopRouteId"] autorelease];
 		}
 		NSString *routeId = stopAnn.stop.routeId;
-		if([routeId isEqualToString:@"888-46"]) {
+		if([routeId isEqualToString:@"888-48"]) {
 			[(MKPinAnnotationView *)view setPinColor:MKPinAnnotationColorGreen];
-		} else if([routeId isEqualToString:@"55-46"]) {
+		} else if([routeId isEqualToString:@"55-48"]) {
 			[(MKPinAnnotationView *)view setPinColor:MKPinAnnotationColorPurple];
 		} 
 		[(MKPinAnnotationView *)view setAnimatesDrop:YES];

@@ -146,6 +146,9 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+	// Remove the line separating the cells
+	routesTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	
 	// Unselect the selected row if any
 	NSIndexPath*	selection = [routesTableView indexPathForSelectedRow];
 	if (selection) {
@@ -168,21 +171,42 @@
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    static NSString *CellIdentifier = @"Cell";
+	static NSString *cellId = @"TrainLineCell";
 	
-	CustomCell *cell = (CustomCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];  
-	if (cell == nil) {  
-		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-	}  
+	TrainLineCell *cell = (TrainLineCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
+	NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"TrainLineCell" owner:nil options:nil];
+	
+	for(id currentObject in nibObjects) {
+		if([currentObject isKindOfClass:[TrainLineCell class]]) {
+			cell = (TrainLineCell *)currentObject;
+		}
+	}
+	
+	if([views count] > 0) {
+		NSString *lineTitleString = [[views objectAtIndex:indexPath.row] objectForKey:@"long_name"];
+		[[cell lineTitle] setText:lineTitleString];
+		[[cell lineDescription] setText:[[views objectAtIndex:indexPath.row] objectForKey:@"short_name"]];
+		[cell disclosureArrow].image = [UIImage imageNamed:@"icon_arrow.png"];
 		
-	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-	NSString *longName = [NSString stringWithFormat:@"%@", [[views objectAtIndex:indexPath.row] objectForKey:@"long_name"]];
-	NSString *shortName = [[views objectAtIndex:indexPath.row] objectForKey:@"short_name"];
-	cell.titleLabel.text = longName;
-	cell.distanceLabel.text = [NSString stringWithFormat:@"%@", shortName];
+		NSPredicate *hiawathaRegex = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"Hiawatha.+"];
+		
+		if ([hiawathaRegex evaluateWithObject:lineTitleString] == YES) {
+			[cell lineImage].image = [UIImage imageNamed:@"icon_hiawatha.png"];
+		} else {
+			[cell lineImage].image = [UIImage imageNamed:@"icon_northstar.png"];
+		}
+	}
+	
 	return cell;
 }
 
+
+// set the table view cell height
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	// what should it be really?
+	return 80;
+}
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	TrainStationsViewController *targetViewController = (TrainStationsViewController *)[[views objectAtIndex:indexPath.row] objectForKey:@"controller"];

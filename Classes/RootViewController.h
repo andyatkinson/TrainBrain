@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "CustomCell.h"
+#import "TrainLineCell.h"
 #import "TrainBrainAppDelegate.h"
 #import "MapStopsViewController.h"
 #import "MBProgressHUD.h"
