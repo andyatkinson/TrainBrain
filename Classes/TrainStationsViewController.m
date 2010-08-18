@@ -31,6 +31,10 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+	
+	// Hide the borders between table cells
+	stationsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	
 	UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
 	[window addSubview:HUD];
@@ -144,8 +148,19 @@
 													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationDescription"],
 													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationStreet"]];
 	cell.distanceLabel.text = description;
-	
+
+	cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_cell.png"]] autorelease];
+	cell.selectedBackgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_cell_selected.png"]] autorelease];
+		
 	return cell;
+}
+
+
+// set the table view cell height
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	// what should it be really?
+	return 80;
 }
 
 

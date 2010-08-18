@@ -98,7 +98,7 @@
 												nil]];
 		}
 	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Routes Found." 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Train Lines Found." 
 																										message:nil 
 																									 delegate:nil 
 																					cancelButtonTitle:@"OK" 
@@ -119,7 +119,7 @@
 		self.startingPoint = newLocation;
 	}
 	
-	HUD.detailsLabelText = @"Routes";
+	HUD.detailsLabelText = @"Lines";
 	
 	NSString *locationString = [[NSString alloc] initWithFormat:@"%@routes.json", [appDelegate getBaseUrl]];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:locationString]];
