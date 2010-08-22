@@ -213,7 +213,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 66.0f;
+	return 56;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {	
@@ -250,6 +250,10 @@
 				[[cell timeRemaining] setText:[[NSString alloc] initWithFormat:@"%d min", minutes]];
 			}
 		}
+	
+		
+		cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_cell.png"]] autorelease];
+	
 		return cell;
 
 }

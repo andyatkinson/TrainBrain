@@ -229,6 +229,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -274,13 +276,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>15</integer>
-									<integer>2</integer>
+									<integer>53</integer>
+									<integer>31</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 0}, {254, 1013}}</string>
+							<string>{{0, 87}, {254, 1013}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -299,7 +301,7 @@
 							<real>254</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>173 295 1557 1072 0 0 2560 1418 </string>
+						<string>280 240 1557 1072 0 0 2560 1418 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -310,14 +312,12 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>RootViewController.m</string>
+								<string>TrainStationsViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -325,11 +325,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>RootViewController.m</string>
+										<string>TrainStationsViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>A1E5EC531220B23800B15224</string>
+										<string>A1E5ECEA1220C02B00B15224</string>
 										<key>history</key>
 										<array>
 											<string>A141AD7F10AB988400A0924E</string>
@@ -354,26 +354,29 @@
 											<string>A17453AF120CB07E00CAE0D9</string>
 											<string>A16F9F70121B6393004C1257</string>
 											<string>A16F9F75121B6393004C1257</string>
-											<string>A1D68752121B65DD002C6081</string>
-											<string>A1D68753121B65DD002C6081</string>
 											<string>A1D68756121B65DD002C6081</string>
 											<string>A1D687A0121B6AC1002C6081</string>
 											<string>A1D687AA121B6BF4002C6081</string>
 											<string>A1D687AF121B83AB002C6081</string>
-											<string>A1D687B0121B83AB002C6081</string>
-											<string>A1D687BB121B83E4002C6081</string>
 											<string>A1D687F6121B8B0C002C6081</string>
-											<string>A1D687F7121B8B0C002C6081</string>
-											<string>A1D68884121B980B002C6081</string>
-											<string>A1D6889F121B9AD6002C6081</string>
 											<string>A1E5EC411220B22100B15224</string>
 											<string>A1E5EC421220B22100B15224</string>
 											<string>A1E5EC431220B22100B15224</string>
 											<string>A1E5EC441220B22100B15224</string>
-											<string>A1E5EC451220B22100B15224</string>
 											<string>A1E5EC461220B22100B15224</string>
 											<string>A1E5EC471220B22100B15224</string>
-											<string>A1E5EC481220B22100B15224</string>
+											<string>A1E5ECA51220BAF200B15224</string>
+											<string>A1E5ECA61220BAF200B15224</string>
+											<string>A1E5ECA71220BAF200B15224</string>
+											<string>A1E5ECD91220BF9D00B15224</string>
+											<string>A1E5ECDA1220BF9D00B15224</string>
+											<string>A1E5ECDB1220BF9D00B15224</string>
+											<string>A1E5ECDC1220BF9D00B15224</string>
+											<string>A1E5ECDD1220BF9D00B15224</string>
+											<string>A1E5ECDE1220BF9D00B15224</string>
+											<string>A1E5ECDF1220BF9D00B15224</string>
+											<string>A1E5ECE31220BFE200B15224</string>
+											<string>A1E5ECE41220BFE200B15224</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -387,7 +390,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1281, 813}}</string>
 								<key>RubberWindowFrame</key>
-								<string>173 295 1557 1072 0 0 2560 1418 </string>
+								<string>280 240 1557 1072 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -407,7 +410,7 @@
 								<key>Frame</key>
 								<string>{{0, 818}, {1281, 213}}</string>
 								<key>RubberWindowFrame</key>
-								<string>173 295 1557 1072 0 0 2560 1418 </string>
+								<string>280 240 1557 1072 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -575,7 +578,7 @@
 		<string>/Users/andy/Projects/TrainBrain/TrainBrain.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>173 295 1557 1072 0 0 2560 1418 </string>
+	<string>280 240 1557 1072 0 0 2560 1418 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>

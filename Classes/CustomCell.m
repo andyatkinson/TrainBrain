@@ -16,12 +16,12 @@
 			self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 			
 			UIView *myContentView = self.contentView;
-			self.titleLabel = [self newLabelWithPrimaryColor:[UIColor blackColor] selectedColor:[UIColor blackColor] fontSize:20.0 bold:YES];
+			self.titleLabel = [self newLabelWithPrimaryColor:[UIColor blackColor] selectedColor:[UIColor blackColor] fontSize:17.0 bold:YES];
 			self.titleLabel.textAlignment = UITextAlignmentLeft;
 			[myContentView addSubview:self.titleLabel];
 			[self.titleLabel release];
 			
-			self.distanceLabel = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor grayColor] fontSize:14.0 bold:NO];
+			self.distanceLabel = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor grayColor] fontSize:12.0 bold:NO];
 			self.distanceLabel.textAlignment = UITextAlignmentLeft;
 			[myContentView addSubview:self.distanceLabel];
 			[self.distanceLabel release];
@@ -40,10 +40,10 @@
 	if(!self.editing) {
 		CGFloat boundsX = contentRect.origin.x;
 		CGRect frame;
-		frame = CGRectMake(boundsX + 10, 4, 280, 24);
+		frame = CGRectMake(boundsX + 15, 8, 280, 24);
 		self.titleLabel.frame = frame;
 		
-		frame = CGRectMake(boundsX + 10, 20, 280, 24);
+		frame = CGRectMake(boundsX + 15, 26, 280, 24);
 		self.distanceLabel.frame = frame;
 	}
 }

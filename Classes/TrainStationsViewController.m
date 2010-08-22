@@ -150,7 +150,7 @@
 	cell.distanceLabel.text = description;
 
 	cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_cell.png"]] autorelease];
-	cell.selectedBackgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_cell_selected.png"]] autorelease];
+	//cell.selectedBackgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_cell_selected.png"]] autorelease];
 		
 	return cell;
 }
@@ -160,7 +160,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 	// what should it be really?
-	return 80;
+	return 56;
 }
 
 
