@@ -50,7 +50,7 @@
 							<object class="IBUILabel" id="580716633">
 								<reference key="NSNextResponder" ref="1001118862"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{59, 13}, {326, 38}}</string>
+								<string key="NSFrame">{{51, 0}, {241, 40}}</string>
 								<reference key="NSSuperview" ref="1001118862"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -60,7 +60,7 @@
 								<string key="IBUIText">Hiawatha Line Light Rail</string>
 								<object class="NSFont" key="IBUIFont">
 									<string key="NSName">Helvetica-Bold</string>
-									<double key="NSSize">18</double>
+									<double key="NSSize">17</double>
 									<int key="NSfFlags">16</int>
 								</object>
 								<object class="NSColor" key="IBUITextColor">
@@ -69,14 +69,16 @@
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 							<object class="IBUIImageView" id="629099140">
 								<reference key="NSNextResponder" ref="1001118862"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{14, 22}, {31, 38}}</string>
+								<string key="NSFrame">{{12, 14}, {27, 29}}</string>
 								<reference key="NSSuperview" ref="1001118862"/>
-								<int key="IBUIContentMode">1</int>
+								<bool key="IBUIAutoresizesSubviews">NO</bool>
+								<int key="IBUIContentMode">9</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -87,7 +89,7 @@
 							<object class="IBUILabel" id="831988838">
 								<reference key="NSNextResponder" ref="1001118862"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{59, 42}, {206, 24}}</string>
+								<string key="NSFrame">{{51, 29}, {241, 20}}</string>
 								<reference key="NSSuperview" ref="1001118862"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -96,24 +98,26 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<string key="IBUIText">Downtown to Mall of America</string>
 								<object class="NSFont" key="IBUIFont">
-									<string key="NSName">Helvetica-Bold</string>
+									<string key="NSName">Helvetica</string>
 									<double key="NSSize">12</double>
 									<int key="NSfFlags">16</int>
 								</object>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>
-									<bytes key="NSRGB">MC40OTgwMzkyMTU4IDAuNDk4MDM5MjE1OCAwLjQ5ODAzOTIxNTgAA</bytes>
+									<bytes key="NSRGB">MC40IDAuNCAwLjQAA</bytes>
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 							<object class="IBUIImageView" id="978015562">
 								<reference key="NSNextResponder" ref="1001118862"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{287, 25}, {27, 32}}</string>
+								<string key="NSFrame">{{293, 14}, {14, 26}}</string>
 								<reference key="NSSuperview" ref="1001118862"/>
-								<int key="IBUIContentMode">1</int>
+								<bool key="IBUIAutoresizesSubviews">NO</bool>
+								<int key="IBUIContentMode">9</int>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
@@ -122,7 +126,7 @@
 								</object>
 							</object>
 						</object>
-						<string key="NSFrameSize">{327, 80}</string>
+						<string key="NSFrameSize">{320, 56}</string>
 						<reference key="NSSuperview" ref="13456424"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
@@ -135,7 +139,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>
-				<string key="NSFrameSize">{327, 80}</string>
+				<string key="NSFrameSize">{320, 56}</string>
 				<reference key="NSSuperview"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
@@ -147,10 +151,6 @@
 				<object class="NSCustomResource" key="IBUIImage">
 					<string key="NSClassName">NSImage</string>
 					<string key="NSResourceName">bg_cell.png</string>
-				</object>
-				<object class="NSCustomResource" key="IBUISelectedImage">
-					<string key="NSClassName">NSImage</string>
-					<string key="NSResourceName">bg_cell_selected.png</string>
 				</object>
 				<string key="IBUIReuseIdentifier">TrainLineCell</string>
 			</object>
@@ -216,10 +216,10 @@
 						<reference key="object" ref="13456424"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="831988838"/>
-							<reference ref="580716633"/>
 							<reference ref="629099140"/>
+							<reference ref="580716633"/>
 							<reference ref="978015562"/>
+							<reference ref="831988838"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -263,7 +263,7 @@
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>TrainLineCell</string>
-					<string>{{419, 961}, {327, 80}}</string>
+					<string>{{435, 1008}, {320, 56}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -517,16 +517,14 @@
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>bg_cell.png</string>
-				<string>bg_cell_selected.png</string>
 				<string>icon_arrow.png</string>
 				<string>icon_hiawatha.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{640, 112}</string>
-				<string>{640, 112}</string>
-				<string>{27, 51}</string>
-				<string>{53, 57}</string>
+				<string>{320, 56}</string>
+				<string>{14, 26}</string>
+				<string>{27, 29}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">117</string>
