@@ -100,23 +100,24 @@
 	[self.mapView setRegion:region animated:YES];  
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView 
-            viewForAnnotation:(id <MKAnnotation>)annotation {
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
   MKAnnotationView *view = nil;
 	if(annotation != mapView.userLocation) {
 		StopAnnotation *stopAnn = (StopAnnotation *)annotation;
 		view = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"stopRouteId"];
 		if(nil == view) {
-			view = [[[MKPinAnnotationView alloc] initWithAnnotation:stopAnn
-                                              reuseIdentifier:@"stopRouteId"] autorelease];
+
+			NSString *routeId = stopAnn.stop.routeId;
+			if([routeId isEqualToString:@"888-48"]) {
+				view = [[[CustomPinBlue alloc] initWithAnnotation:annotation] autorelease];
+			} else if([routeId isEqualToString:@"55-48"]) {
+				view = [[[CustomPinBlack alloc] initWithAnnotation:annotation] autorelease];
+			} 
+			
 		}
-		NSString *routeId = stopAnn.stop.routeId;
-		if([routeId isEqualToString:@"888-48"]) {
-			[(MKPinAnnotationView *)view setPinColor:MKPinAnnotationColorGreen];
-		} else if([routeId isEqualToString:@"55-48"]) {
-			[(MKPinAnnotationView *)view setPinColor:MKPinAnnotationColorPurple];
-		} 
-		[(MKPinAnnotationView *)view setAnimatesDrop:YES];
+		
+		//[(MKPinAnnotationView *)view setAnimatesDrop:YES];
+		 
 		[view setCanShowCallout:YES];
 		[view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
   }

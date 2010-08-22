@@ -10,6 +10,8 @@
 #import <MapKit/MapKit.h>
 #import "TrainBrainAppDelegate.h"
 #import "MBProgressHUD.h"
+#import "CustomPinBlue.h"
+#import "CustomPinBlack.h"
 
 @interface MapStopsViewController : UIViewController <MKMapViewDelegate, MBProgressHUDDelegate> {
 	MKMapView *_mapView;
