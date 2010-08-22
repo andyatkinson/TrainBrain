@@ -15,7 +15,6 @@
 	IBOutlet UITableView *timeEntriesTableView;
 	NSMutableData *responseData;
 	IBOutlet NSMutableArray *timeEntryRows;
-	IBOutlet UILabel *bigTimeHeaderText;
 	IBOutlet UIImageView *nextDepartureImage;
 	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD *HUD;
@@ -24,7 +23,6 @@
 @property (nonatomic, retain) IBOutlet UITableView *timeEntriesTableView;
 @property (nonatomic, retain) NSMutableData	*responseData;
 @property (nonatomic, retain) IBOutlet NSMutableArray *timeEntryRows;
-@property (nonatomic, retain) IBOutlet UILabel *bigTimeHeaderText;
 @property (nonatomic, retain) IBOutlet UIImageView *nextDepartureImage;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 

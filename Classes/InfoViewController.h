@@ -20,7 +20,5 @@
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
--(IBAction)backButtonClicked:(id)sender;
-
 
 @end

@@ -14,7 +14,7 @@
 
 @implementation TimeEntryViewController
 
-@synthesize responseData, timeEntryRows, timeEntriesTableView, bigTimeHeaderText, nextDepartureImage, appDelegate;
+@synthesize responseData, timeEntryRows, timeEntriesTableView, nextDepartureImage, appDelegate;
 
 -(IBAction)refreshTimes:(id)sender {
 	[self loadTimeEntries];
@@ -62,8 +62,7 @@
 	HUD.delegate = self;
 	
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	bigTimeHeaderText.text = [appDelegate getSelectedStopName];
-	self.title = @"Departures";
+	self.title = [appDelegate getSelectedStopName];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -250,7 +249,6 @@
 				[[cell timeRemaining] setText:[[NSString alloc] initWithFormat:@"%d min", minutes]];
 			}
 		}
-	
 		
 		cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_cell.png"]] autorelease];
 	
@@ -273,7 +271,6 @@
 	[timeEntryRows release];
 	[responseData release];
 	[timeEntriesTableView release];
-	[bigTimeHeaderText release];
 	[super dealloc];
 }
 

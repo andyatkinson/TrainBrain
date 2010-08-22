@@ -49,8 +49,6 @@
 	[refreshButton release];	
 	[self loadRailStations];
 	responseData = [[NSMutableData data] retain];
-	
-	self.title = @"Routes";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -100,7 +98,7 @@
 												nil]];
 		}
 	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Train Lines Found." 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Train Routes Found." 
 																										message:nil 
 																									 delegate:nil 
 																					cancelButtonTitle:@"OK" 
@@ -121,7 +119,7 @@
 		self.startingPoint = newLocation;
 	}
 	
-	HUD.detailsLabelText = @"Lines";
+	HUD.detailsLabelText = @"Routes";
 	
 	NSString *locationString = [[NSString alloc] initWithFormat:@"%@routes.json", [appDelegate getBaseUrl]];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:locationString]];
