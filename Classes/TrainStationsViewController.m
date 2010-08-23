@@ -16,7 +16,7 @@
 
 - (void) loadTrainStations {
 	HUD.labelText = @"Loading";
-	HUD.detailsLabelText = @"Stops";
+	HUD.detailsLabelText = @"Stations";
 	
 	// was passing lat/lng here lat=44.948364&lng=-93.239143
 	NSString *requestURL = [NSString stringWithFormat:@"%@routes/%@/stops.json",
@@ -43,7 +43,7 @@
 	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	responseData = [[NSMutableData data] retain];
 	[self loadTrainStations];
-	self.title = @"Stops";
+	self.title = @"Stations";
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

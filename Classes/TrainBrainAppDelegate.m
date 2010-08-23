@@ -82,7 +82,8 @@
 - (NSString *) getBaseUrl {
 	// IMPORTANT: ensure trailing slash is present.
 	//return @"http://api2.trainbrainapp.com/";
-	return @"http://localhost:3000/";
+	//return @"http://localhost:3000/";
+	return @"http://trainbrain-api3.heroku.com/";
 }
 
 - (void)dealloc {
