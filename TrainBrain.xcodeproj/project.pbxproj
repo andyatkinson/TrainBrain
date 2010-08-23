@@ -40,6 +40,8 @@
 		A1B5C58710A27E5B00CD3045 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C58610A27E5B00CD3045 /* Stop.m */; };
 		A1BC245F12231EBE00C324C9 /* StationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BC245E12231EBE00C324C9 /* StationCell.xib */; };
 		A1BC24691223201E00C324C9 /* StationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BC24681223201E00C324C9 /* StationCell.m */; };
+		A1BC24E2122328D100C324C9 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BC24E1122328D100C324C9 /* GradientView.m */; };
+		A1BC252612232C0E00C324C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BC252512232C0E00C324C9 /* QuartzCore.framework */; };
 		A1BE49F71041F8C2005CFAD0 /* exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BE49F61041F8C2005CFAD0 /* exclamation.png */; };
 		A1D6874B121B64DA002C6081 /* TrainLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D6874A121B64DA002C6081 /* TrainLineCell.m */; };
 		A1D6874F121B65D7002C6081 /* TrainLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D6874E121B65D7002C6081 /* TrainLineCell.xib */; };
@@ -118,6 +120,9 @@
 		A1BC245E12231EBE00C324C9 /* StationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationCell.xib; sourceTree = "<group>"; };
 		A1BC24671223201E00C324C9 /* StationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationCell.h; path = ../StationCell.h; sourceTree = "<group>"; };
 		A1BC24681223201E00C324C9 /* StationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationCell.m; path = ../StationCell.m; sourceTree = "<group>"; };
+		A1BC24E0122328D100C324C9 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
+		A1BC24E1122328D100C324C9 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
+		A1BC252512232C0E00C324C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A1BE49F61041F8C2005CFAD0 /* exclamation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exclamation.png; sourceTree = "<group>"; };
 		A1D68749121B64DA002C6081 /* TrainLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainLineCell.h; sourceTree = "<group>"; };
 		A1D6874A121B64DA002C6081 /* TrainLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainLineCell.m; sourceTree = "<group>"; };
@@ -155,6 +160,7 @@
 				2892E4100DC94CBA00A64D0F /* CoreGraphics.framework in Frameworks */,
 				A169E4BC102F931800A65E05 /* CoreLocation.framework in Frameworks */,
 				A1B5C4EA10A120F500CD3045 /* MapKit.framework in Frameworks */,
+				A1BC252612232C0E00C324C9 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +170,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A1BC24DE122328BB00C324C9 /* Gradient */,
 				A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */,
 				A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */,
 				A169E49D102F927100A65E05 /* JSON */,
@@ -271,6 +278,7 @@
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
+				A1BC252512232C0E00C324C9 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -293,6 +301,15 @@
 				A169E4AF102F928E00A65E05 /* SBJsonWriter.m */,
 			);
 			name = JSON;
+			sourceTree = "<group>";
+		};
+		A1BC24DE122328BB00C324C9 /* Gradient */ = {
+			isa = PBXGroup;
+			children = (
+				A1BC24E0122328D100C324C9 /* GradientView.h */,
+				A1BC24E1122328D100C324C9 /* GradientView.m */,
+			);
+			name = Gradient;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,6 +423,7 @@
 				A1E5ED491220D10000B15224 /* CustomPinBllue.m in Sources */,
 				A1E5ED831220D39000B15224 /* CustomPinBlack.m in Sources */,
 				A1BC24691223201E00C324C9 /* StationCell.m in Sources */,
+				A1BC24E2122328D100C324C9 /* GradientView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

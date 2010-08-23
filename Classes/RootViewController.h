@@ -12,6 +12,7 @@
 #import "TrainBrainAppDelegate.h"
 #import "MapStopsViewController.h"
 #import "MBProgressHUD.h"
+#import "GradientView.h"
 
 @interface RootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, MBProgressHUDDelegate> {
 	IBOutlet UITableView *routesTableView;

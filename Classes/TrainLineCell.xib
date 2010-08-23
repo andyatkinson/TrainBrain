@@ -148,10 +148,6 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 				<int key="IBUISelectionStyle">2</int>
 				<reference key="IBUIContentView" ref="1001118862"/>
-				<object class="NSCustomResource" key="IBUIImage">
-					<string key="NSClassName">NSImage</string>
-					<string key="NSResourceName">bg_cell.png</string>
-				</object>
 				<string key="IBUIReuseIdentifier">TrainLineCell</string>
 			</object>
 		</object>
@@ -263,7 +259,7 @@
 					<string>UIResponder</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>TrainLineCell</string>
-					<string>{{435, 1008}, {320, 56}}</string>
+					<string>{{428, 1008}, {320, 56}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -516,13 +512,11 @@
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<object class="NSArray" key="dict.sortedKeys">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>bg_cell.png</string>
 				<string>icon_arrow.png</string>
 				<string>icon_hiawatha.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>{320, 56}</string>
 				<string>{14, 26}</string>
 				<string>{27, 29}</string>
 			</object>

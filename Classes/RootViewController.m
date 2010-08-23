@@ -195,6 +195,8 @@
 		} else {
 			[cell lineImage].image = [UIImage imageNamed:@"icon_northstar.png"];
 		}
+		
+		cell.backgroundView = [[[GradientView alloc] init] autorelease];
 	}
 	
 	return cell;
@@ -204,7 +206,7 @@
 // set the table view cell height
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	// what should it be really?
+	// do I need to set this if the height is specified in IB?
 	return 56;
 }
 
