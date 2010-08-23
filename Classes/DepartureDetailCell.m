@@ -13,11 +13,11 @@
 
 @synthesize departureTime, departureCost, timeRemaining, type, departureIcon, headsign;
 
-- (id)initWithFrame:(CGRect)frame reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithFrame:frame reuseIdentifier:reuseIdentifier]) {
-        // Initialization code
-    }
-    return self;
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+	if ((self = [super initWithStyle:style reuseIdentifier:reuseIdentifier])) {
+		// Initialization code
+	}
+	return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

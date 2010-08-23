@@ -38,6 +38,8 @@
 		A1B5C54A10A26FBE00CD3045 /* MapStopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */; };
 		A1B5C54B10A26FBE00CD3045 /* MapStopsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */; };
 		A1B5C58710A27E5B00CD3045 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C58610A27E5B00CD3045 /* Stop.m */; };
+		A1BC245F12231EBE00C324C9 /* StationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BC245E12231EBE00C324C9 /* StationCell.xib */; };
+		A1BC24691223201E00C324C9 /* StationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BC24681223201E00C324C9 /* StationCell.m */; };
 		A1BE49F71041F8C2005CFAD0 /* exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BE49F61041F8C2005CFAD0 /* exclamation.png */; };
 		A1D6874B121B64DA002C6081 /* TrainLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D6874A121B64DA002C6081 /* TrainLineCell.m */; };
 		A1D6874F121B65D7002C6081 /* TrainLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D6874E121B65D7002C6081 /* TrainLineCell.xib */; };
@@ -80,7 +82,6 @@
 		A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureDetailCell.h; sourceTree = "<group>"; };
 		A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureDetailCell.m; sourceTree = "<group>"; };
 		A14FDCB810313164002B9E32 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
-		A1690D4F1040D2F100EB0E62 /* TrainBrain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainBrain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1690D511040D31000EB0E62 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		A169E493102F91C600A65E05 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		A169E494102F91E500A65E05 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
@@ -113,6 +114,10 @@
 		A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MapStopsViewController.xib; path = Classes/MapStopsViewController.xib; sourceTree = "<group>"; };
 		A1B5C58510A27E5B00CD3045 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
 		A1B5C58610A27E5B00CD3045 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
+		A1BC243C1222488C00C324C9 /* TrainBrain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainBrain.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1BC245E12231EBE00C324C9 /* StationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationCell.xib; sourceTree = "<group>"; };
+		A1BC24671223201E00C324C9 /* StationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationCell.h; path = ../StationCell.h; sourceTree = "<group>"; };
+		A1BC24681223201E00C324C9 /* StationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationCell.m; path = ../StationCell.m; sourceTree = "<group>"; };
 		A1BE49F61041F8C2005CFAD0 /* exclamation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exclamation.png; sourceTree = "<group>"; };
 		A1D68749121B64DA002C6081 /* TrainLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainLineCell.h; sourceTree = "<group>"; };
 		A1D6874A121B64DA002C6081 /* TrainLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainLineCell.m; sourceTree = "<group>"; };
@@ -164,6 +169,8 @@
 				A169E49D102F927100A65E05 /* JSON */,
 				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
 				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
+				A1BC24671223201E00C324C9 /* StationCell.h */,
+				A1BC24681223201E00C324C9 /* StationCell.m */,
 				A1151739102F962E007CFBF6 /* TimeEntryViewController.h */,
 				A115173A102F962E007CFBF6 /* TimeEntryViewController.m */,
 				A169E494102F91E500A65E05 /* CustomCell.m */,
@@ -195,7 +202,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1690D4F1040D2F100EB0E62 /* TrainBrain.app */,
+				A1BC243C1222488C00C324C9 /* TrainBrain.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -244,13 +251,14 @@
 				A16A8BCA1038F93C001DF0EF /* Icon.png */,
 				A14FDCB810313164002B9E32 /* clock.png */,
 				A1D6874E121B65D7002C6081 /* TrainLineCell.xib */,
-				A1B56FCC10F9B25300294BEC /* InfoViewController.xib */,
-				A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */,
-				A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */,
-				A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */,
+				A1BC245E12231EBE00C324C9 /* StationCell.xib */,
 				A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */,
-				2899E55F0DE3E45000AC0155 /* RootViewController.xib */,
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
+				2899E55F0DE3E45000AC0155 /* RootViewController.xib */,
+				A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */,
+				A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */,
+				A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */,
+				A1B56FCC10F9B25300294BEC /* InfoViewController.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -304,7 +312,7 @@
 			);
 			name = TrainBrain;
 			productName = TrainBrain;
-			productReference = A1690D4F1040D2F100EB0E62 /* TrainBrain.app */;
+			productReference = A1BC243C1222488C00C324C9 /* TrainBrain.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -312,6 +320,9 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				ORGANIZATIONNAME = "Beetle Fight";
+			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TrainBrain" */;
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 1;
@@ -362,6 +373,7 @@
 				A1E5EC651220B52000B15224 /* icon_hiawatha.png in Resources */,
 				A1E5EC661220B52000B15224 /* icon_northstar.png in Resources */,
 				A1E5EC741220B69400B15224 /* icon_arrow.png in Resources */,
+				A1BC245F12231EBE00C324C9 /* StationCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +405,7 @@
 				A1D6874B121B64DA002C6081 /* TrainLineCell.m in Sources */,
 				A1E5ED491220D10000B15224 /* CustomPinBllue.m in Sources */,
 				A1E5ED831220D39000B15224 /* CustomPinBlack.m in Sources */,
+				A1BC24691223201E00C324C9 /* StationCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,13 +443,12 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = dist.plist;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Andy Atkinson";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Andy Atkinson";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-				PROVISIONING_PROFILE = "";
 				SDKROOT = iphonesimulator4.0;
 			};
 			name = Distribution;

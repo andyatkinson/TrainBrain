@@ -134,23 +134,25 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	static NSString *CellIdentifier = @"Cell";
 	
-	CustomCell *cell = (CustomCell *)[stationsTableView dequeueReusableCellWithIdentifier:CellIdentifier];  
-	if (cell == nil) {  
-		cell = [[[CustomCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
-	}  
+	static NSString *cellId = @"StationCell";
+	
+	StationCell *cell = (StationCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
+	NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"StationCell" owner:nil options:nil];
+	
+	for(id currentObject in nibObjects) {
+		if([currentObject isKindOfClass:[StationCell class]]) {
+			cell = (StationCell *)currentObject;
+		}
+	}
 	
 	// Set up the cell...
 	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-	cell.titleLabel.text = [[views objectAtIndex:indexPath.row] objectForKey:@"stationName"];
+	cell.stationName.text = [[views objectAtIndex:indexPath.row] objectForKey:@"stationName"];
 	NSString *description = [NSString stringWithFormat:@"%@ at %@", 
 													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationDescription"],
 													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationStreet"]];
-	cell.distanceLabel.text = description;
-
-	cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_cell.png"]] autorelease];
-	//cell.selectedBackgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_cell_selected.png"]] autorelease];
+	cell.stationDescription.text = description;
 		
 	return cell;
 }

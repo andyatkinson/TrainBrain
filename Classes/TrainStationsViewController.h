@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "TrainBrainAppDelegate.h"
 #import "CustomCell.h"
+#import "StationCell.h"
 #import "MBProgressHUD.h"
 
 @interface TrainStationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
