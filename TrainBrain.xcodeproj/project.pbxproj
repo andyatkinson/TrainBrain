@@ -45,7 +45,6 @@
 		A1BE49F71041F8C2005CFAD0 /* exclamation.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BE49F61041F8C2005CFAD0 /* exclamation.png */; };
 		A1D6874B121B64DA002C6081 /* TrainLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D6874A121B64DA002C6081 /* TrainLineCell.m */; };
 		A1D6874F121B65D7002C6081 /* TrainLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D6874E121B65D7002C6081 /* TrainLineCell.xib */; };
-		A1D688F712209E80002C6081 /* bg_cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D688F312209E80002C6081 /* bg_cell@2x.png */; };
 		A1D688F812209E80002C6081 /* icon_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D688F412209E80002C6081 /* icon_arrow@2x.png */; };
 		A1D688F912209E80002C6081 /* icon_hiawatha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D688F512209E80002C6081 /* icon_hiawatha@2x.png */; };
 		A1D688FA12209E80002C6081 /* icon_northstar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D688F612209E80002C6081 /* icon_northstar@2x.png */; };
@@ -53,7 +52,6 @@
 		A1DF9D06109D3BB100328466 /* TrainStationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */; };
 		A1E5EC371220A0F700B15224 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E5EC361220A0F700B15224 /* Default@2x.png */; };
 		A1E5EC391220B03900B15224 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E5EC381220B03900B15224 /* Default.png */; };
-		A1E5EC3E1220B20800B15224 /* bg_cell.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E5EC3D1220B20800B15224 /* bg_cell.png */; };
 		A1E5EC651220B52000B15224 /* icon_hiawatha.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E5EC631220B52000B15224 /* icon_hiawatha.png */; };
 		A1E5EC661220B52000B15224 /* icon_northstar.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E5EC641220B52000B15224 /* icon_northstar.png */; };
 		A1E5EC741220B69400B15224 /* icon_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E5EC731220B69400B15224 /* icon_arrow.png */; };
@@ -127,7 +125,6 @@
 		A1D68749121B64DA002C6081 /* TrainLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainLineCell.h; sourceTree = "<group>"; };
 		A1D6874A121B64DA002C6081 /* TrainLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainLineCell.m; sourceTree = "<group>"; };
 		A1D6874E121B65D7002C6081 /* TrainLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TrainLineCell.xib; path = Classes/TrainLineCell.xib; sourceTree = "<group>"; };
-		A1D688F312209E80002C6081 /* bg_cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_cell@2x.png"; sourceTree = "<group>"; };
 		A1D688F412209E80002C6081 /* icon_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow@2x.png"; sourceTree = "<group>"; };
 		A1D688F512209E80002C6081 /* icon_hiawatha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_hiawatha@2x.png"; sourceTree = "<group>"; };
 		A1D688F612209E80002C6081 /* icon_northstar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_northstar@2x.png"; sourceTree = "<group>"; };
@@ -136,7 +133,6 @@
 		A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TrainStationsViewController.xib; path = Classes/TrainStationsViewController.xib; sourceTree = "<group>"; };
 		A1E5EC361220A0F700B15224 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A1E5EC381220B03900B15224 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
-		A1E5EC3D1220B20800B15224 /* bg_cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_cell.png; sourceTree = "<group>"; };
 		A1E5EC631220B52000B15224 /* icon_hiawatha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_hiawatha.png; sourceTree = "<group>"; };
 		A1E5EC641220B52000B15224 /* icon_northstar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_northstar.png; sourceTree = "<group>"; };
 		A1E5EC731220B69400B15224 /* icon_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrow.png; sourceTree = "<group>"; };
@@ -170,26 +166,25 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A1BC257E122338B500C324C9 /* HUD */,
 				A1BC24DE122328BB00C324C9 /* Gradient */,
-				A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */,
-				A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */,
 				A169E49D102F927100A65E05 /* JSON */,
-				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
-				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
 				A1BC24671223201E00C324C9 /* StationCell.h */,
 				A1BC24681223201E00C324C9 /* StationCell.m */,
-				A1151739102F962E007CFBF6 /* TimeEntryViewController.h */,
-				A115173A102F962E007CFBF6 /* TimeEntryViewController.m */,
-				A169E494102F91E500A65E05 /* CustomCell.m */,
 				A1D68749121B64DA002C6081 /* TrainLineCell.h */,
 				A1D6874A121B64DA002C6081 /* TrainLineCell.m */,
+				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
+				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
 				A169E493102F91C600A65E05 /* CustomCell.h */,
+				A169E494102F91E500A65E05 /* CustomCell.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
-				1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */,
-				1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */,
 				A1DF9D02109D3BB100328466 /* TrainStationsViewController.h */,
 				A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */,
+				A1151739102F962E007CFBF6 /* TimeEntryViewController.h */,
+				A115173A102F962E007CFBF6 /* TimeEntryViewController.m */,
+				1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */,
+				1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */,
 				A1B5C54710A26FBE00CD3045 /* MapStopsViewController.h */,
 				A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */,
 				A1B5C58510A27E5B00CD3045 /* Stop.h */,
@@ -242,10 +237,8 @@
 				A1E5EC731220B69400B15224 /* icon_arrow.png */,
 				A1E5EC631220B52000B15224 /* icon_hiawatha.png */,
 				A1E5EC641220B52000B15224 /* icon_northstar.png */,
-				A1E5EC3D1220B20800B15224 /* bg_cell.png */,
 				A1E5EC381220B03900B15224 /* Default.png */,
 				A1E5EC361220A0F700B15224 /* Default@2x.png */,
-				A1D688F312209E80002C6081 /* bg_cell@2x.png */,
 				A1D688F412209E80002C6081 /* icon_arrow@2x.png */,
 				A1D688F512209E80002C6081 /* icon_hiawatha@2x.png */,
 				A1D688F612209E80002C6081 /* icon_northstar@2x.png */,
@@ -310,6 +303,15 @@
 				A1BC24E1122328D100C324C9 /* GradientView.m */,
 			);
 			name = Gradient;
+			sourceTree = "<group>";
+		};
+		A1BC257E122338B500C324C9 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */,
+				A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */,
+			);
+			name = HUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -380,13 +382,11 @@
 				A1E81105110BC21900BE6502 /* 90-lifebuoy.png in Resources */,
 				A16F9F48121AF1F7004C1257 /* departures_bg.png in Resources */,
 				A1D6874F121B65D7002C6081 /* TrainLineCell.xib in Resources */,
-				A1D688F712209E80002C6081 /* bg_cell@2x.png in Resources */,
 				A1D688F812209E80002C6081 /* icon_arrow@2x.png in Resources */,
 				A1D688F912209E80002C6081 /* icon_hiawatha@2x.png in Resources */,
 				A1D688FA12209E80002C6081 /* icon_northstar@2x.png in Resources */,
 				A1E5EC371220A0F700B15224 /* Default@2x.png in Resources */,
 				A1E5EC391220B03900B15224 /* Default.png in Resources */,
-				A1E5EC3E1220B20800B15224 /* bg_cell.png in Resources */,
 				A1E5EC651220B52000B15224 /* icon_hiawatha.png in Resources */,
 				A1E5EC661220B52000B15224 /* icon_northstar.png in Resources */,
 				A1E5EC741220B69400B15224 /* icon_arrow.png in Resources */,

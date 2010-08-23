@@ -50,7 +50,7 @@
 							<object class="IBUILabel" id="484271065">
 								<reference key="NSNextResponder" ref="174749363"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{32, 5}, {248, 26}}</string>
+								<string key="NSFrame">{{12, 5}, {248, 26}}</string>
 								<reference key="NSSuperview" ref="174749363"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -75,7 +75,7 @@
 							<object class="IBUILabel" id="309226808">
 								<reference key="NSNextResponder" ref="174749363"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{33, 29}, {247, 21}}</string>
+								<string key="NSFrame">{{12, 29}, {247, 21}}</string>
 								<reference key="NSSuperview" ref="174749363"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -100,7 +100,7 @@
 							<object class="IBUIImageView" id="822174405">
 								<reference key="NSNextResponder" ref="174749363"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{293, 20}, {14, 26}}</string>
+								<string key="NSFrame">{{293, 14}, {14, 26}}</string>
 								<reference key="NSSuperview" ref="174749363"/>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -218,7 +218,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>UIResponder</string>
 					<string>StationCell</string>
-					<string>{{434, 926}, {320, 56}}</string>
+					<string>{{428, 919}, {320, 56}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -371,6 +371,20 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBFrameworkSource</string>
 						<string key="minorKey">Foundation.framework/Headers/NSURLConnection.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">QuartzCore.framework/Headers/CAAnimation.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSObject</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBFrameworkSource</string>
+						<string key="minorKey">QuartzCore.framework/Headers/CALayer.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

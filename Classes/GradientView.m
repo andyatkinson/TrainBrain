@@ -26,8 +26,11 @@
 //
 // Construct the gradient for either construction method
 //
+
+
 - (void)setupGradientLayer
 {
+	// #f8f8f8 to #f3f3f3
 	CAGradientLayer *gradientLayer = (CAGradientLayer *)self.layer;
 	gradientLayer.colors =
 		[NSArray arrayWithObjects:

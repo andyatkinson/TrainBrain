@@ -10,6 +10,7 @@
 #import "DepartureDetailCell.h"
 #import "TrainBrainAppDelegate.h"
 #import "MBProgressHUD.h"
+#import "GradientView.h"
 
 @interface TimeEntryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
 	IBOutlet UITableView *timeEntriesTableView;

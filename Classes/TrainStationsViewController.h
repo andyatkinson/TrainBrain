@@ -11,6 +11,7 @@
 #import "CustomCell.h"
 #import "StationCell.h"
 #import "MBProgressHUD.h"
+#import "GradientView.h"
 
 @interface TrainStationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
 	IBOutlet UITableView *stationsTableView;

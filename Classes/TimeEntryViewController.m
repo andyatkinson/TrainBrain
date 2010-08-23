@@ -250,7 +250,7 @@
 			}
 		}
 		
-		cell.backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_cell.png"]] autorelease];
+		cell.backgroundView = [[[GradientView alloc] init] autorelease];
 	
 		return cell;
 

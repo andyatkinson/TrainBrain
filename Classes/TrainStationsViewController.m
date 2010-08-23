@@ -153,6 +153,8 @@
 													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationDescription"],
 													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationStreet"]];
 	cell.stationDescription.text = description;
+	
+	cell.backgroundView = [[[GradientView alloc] init] autorelease];
 		
 	return cell;
 }
