@@ -234,6 +234,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8D1107310486CEB800E47090 /* TrainBrain-Info.plist */,
 				A1E5EC731220B69400B15224 /* icon_arrow.png */,
 				A1E5EC631220B52000B15224 /* icon_hiawatha.png */,
 				A1E5EC641220B52000B15224 /* icon_northstar.png */,
@@ -246,7 +247,6 @@
 				A1E81104110BC21900BE6502 /* 90-lifebuoy.png */,
 				A1E810F6110BBD7D00BE6502 /* 72-pin.png */,
 				A1E810F4110BBD4F00BE6502 /* 11-clock.png */,
-				8D1107310486CEB800E47090 /* TrainBrain-Info.plist */,
 				A1BE49F61041F8C2005CFAD0 /* exclamation.png */,
 				A16A8BCA1038F93C001DF0EF /* Icon.png */,
 				A14FDCB810313164002B9E32 /* clock.png */,

@@ -12,11 +12,13 @@
 #import "MBProgressHUD.h"
 
 @interface InfoViewController : UIViewController <UIWebViewDelegate> {
+	NSURL *clickedLink;
 	IBOutlet UIWebView *webView;
 	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD *HUD;
 }
 
+@property (nonatomic, retain) NSURL *clickedLink;
 @property (nonatomic, retain) IBOutlet UIWebView *webView;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
