@@ -17,6 +17,8 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
+	[application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+	
 	UIColor *navBarColor = UIColorFromRGB(0x111111);
 	
 	tabBarController = [[UITabBarController alloc] init];

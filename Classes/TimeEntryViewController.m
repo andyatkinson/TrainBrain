@@ -46,8 +46,29 @@
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+//
+// Hack to add 1px header/footer around tableview to prevent separator rows from showing
+// See: http://stackoverflow.com/questions/1369831/eliminate-extra-separators-below-uitableview-in-iphone-sdk
+// 
+- (void) addHeaderAndFooter
+{
+	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+	v.backgroundColor = [UIColor clearColor];
+	[self.timeEntriesTableView setTableHeaderView:v];
+	[self.timeEntriesTableView setTableFooterView:v];
+	[v release];
+}
+
 - (void)viewDidAppear:(BOOL)animated {
+	// 231/231/231
+	timeEntriesTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+	timeEntriesTableView.separatorColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1.0];
+	
 	[super viewDidAppear:animated];
+	
+	// prevent cell separators from showing on empty cells
+	[self addHeaderAndFooter];
+	
 	[self loadTimeEntries];
 }
 

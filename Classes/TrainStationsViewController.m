@@ -30,10 +30,11 @@
 
 
 - (void)viewDidLoad {
-	[super viewDidLoad];
+	// 231/231/231
+	stationsTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+	stationsTableView.separatorColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1.0];
 	
-	// Hide the borders between table cells
-	stationsTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+	[super viewDidLoad];
 	
 	UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
@@ -116,6 +117,7 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
+	
 	// Unselect the selected row if any
 	NSIndexPath*	selection = [stationsTableView indexPathForSelectedRow];
 	if (selection) {

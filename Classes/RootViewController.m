@@ -31,13 +31,34 @@
 	[locationManager startUpdatingLocation];
 }
 
+//
+// Hack to add 1px header/footer around tableview to prevent separator rows from showing
+// See: http://stackoverflow.com/questions/1369831/eliminate-extra-separators-below-uitableview-in-iphone-sdk
+// 
+- (void) addHeaderAndFooter
+{
+	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
+	v.backgroundColor = [UIColor clearColor];
+	[self.routesTableView setTableHeaderView:v];
+	[self.routesTableView setTableFooterView:v];
+	[v release];
+}
+
 -(IBAction)refreshStations:(id)sender {
 	[self loadRailStations];
 }
 
 - (void)viewDidLoad {
+	// 231/231/231
+	routesTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+	routesTableView.separatorColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1.0];
+	
 	[super viewDidLoad];
 	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+	
+	// prevent table view separator from showing on empty cells
+	[self addHeaderAndFooter];
+	
 	
 	UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
@@ -146,8 +167,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-	// Remove the line separating the cells
-	routesTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
 	
 	// Unselect the selected row if any
 	NSIndexPath*	selection = [routesTableView indexPathForSelectedRow];

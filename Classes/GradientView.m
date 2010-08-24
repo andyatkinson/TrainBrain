@@ -27,15 +27,15 @@
 // Construct the gradient for either construction method
 //
 
-
 - (void)setupGradientLayer
 {
-	// #f8f8f8 to #f3f3f3
+	// f8f8f8 / r=248 g=248 b=248
+	// f3f3f3 / r=243 g=243 b=243
 	CAGradientLayer *gradientLayer = (CAGradientLayer *)self.layer;
 	gradientLayer.colors =
 		[NSArray arrayWithObjects:
-			(id)[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0].CGColor,
-			(id)[UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0].CGColor,
+			(id)[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0].CGColor,
+			(id)[UIColor colorWithRed:243/255.0 green:243/255.0 blue:243/255.0 alpha:1.0].CGColor,
 		nil];
 	self.backgroundColor = [UIColor clearColor];
 }
@@ -53,8 +53,8 @@
 		CAGradientLayer *gradientLayer = (CAGradientLayer *)self.layer;
 		gradientLayer.colors =
 			[NSArray arrayWithObjects:
-				(id)[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0].CGColor,
-				(id)[UIColor colorWithRed:0.85 green:0.85 blue:0.85 alpha:1.0].CGColor,
+			 (id)[UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0].CGColor,
+			 (id)[UIColor colorWithRed:243/255.0 green:243/255.0 blue:243/255.0 alpha:1.0].CGColor,
 			nil];
 		self.backgroundColor = [UIColor clearColor];
     }

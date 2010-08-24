@@ -119,7 +119,7 @@
 		//[(MKPinAnnotationView *)view setAnimatesDrop:YES];
 		 
 		[view setCanShowCallout:YES];
-		[view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
+		//[view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
   }
 
 	return view;
@@ -163,7 +163,7 @@
 			[newStop setDescription:[trainStation objectForKey:@"description"]];
 			[newStop setRouteId:[trainStation objectForKey:@"route_id"]];
 			[newStop setRouteShortName:[trainStation objectForKey:@"route_short_name"]];
-			[newStop setWebUrl:[trainStation objectForKey:@"web_url"]];
+			//[newStop setWebUrl:[trainStation objectForKey:@"web_url"]];
 			
 			NSNumber *stopLat = [trainStation objectForKey:@"stop_lat"];
 			NSNumber *stopLon = [trainStation objectForKey:@"stop_lon"];
@@ -199,6 +199,7 @@
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
 }
+
 
 - (void)hudWasHidden
 {
