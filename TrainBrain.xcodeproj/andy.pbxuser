@@ -2,7 +2,7 @@
 {
 	1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1220, 768}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1220, 743}}";
 			sepNavSelRange = "{286, 0}";
 			sepNavVisRange = "{0, 1324}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
@@ -11,8 +11,8 @@
 	1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1220, 1287}}";
-			sepNavSelRange = "{3142, 0}";
-			sepNavVisRange = "{1649, 1620}";
+			sepNavSelRange = "{3095, 0}";
+			sepNavVisRange = "{1686, 1587}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
 		};
 	};
@@ -32,7 +32,7 @@
 	};
 	28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1220, 750}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1220, 743}}";
 			sepNavSelRange = "{395, 0}";
 			sepNavVisRange = "{0, 1197}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
@@ -115,6 +115,15 @@
 			A10FBFF112259D2300C02996 /* PBXTextBookmark */ = A10FBFF112259D2300C02996 /* PBXTextBookmark */;
 			A10FBFF212259D2300C02996 /* PBXTextBookmark */ = A10FBFF212259D2300C02996 /* PBXTextBookmark */;
 			A10FBFF312259D2300C02996 /* PBXTextBookmark */ = A10FBFF312259D2300C02996 /* PBXTextBookmark */;
+			A10FBFFD12259E4000C02996 /* PBXTextBookmark */ = A10FBFFD12259E4000C02996 /* PBXTextBookmark */;
+			A10FC00012259EA100C02996 /* PBXTextBookmark */ = A10FC00012259EA100C02996 /* PBXTextBookmark */;
+			A10FC0281225AADF00C02996 /* PBXTextBookmark */ = A10FC0281225AADF00C02996 /* PBXTextBookmark */;
+			A10FC0291225AADF00C02996 /* PBXTextBookmark */ = A10FC0291225AADF00C02996 /* PBXTextBookmark */;
+			A10FC02A1225AADF00C02996 /* PBXTextBookmark */ = A10FC02A1225AADF00C02996 /* PBXTextBookmark */;
+			A10FC02B1225AADF00C02996 /* PBXTextBookmark */ = A10FC02B1225AADF00C02996 /* PBXTextBookmark */;
+			A10FC02C1225AADF00C02996 /* PBXTextBookmark */ = A10FC02C1225AADF00C02996 /* PBXTextBookmark */;
+			A10FC02D1225AADF00C02996 /* PBXTextBookmark */ = A10FC02D1225AADF00C02996 /* PBXTextBookmark */;
+			A10FC02E1225AB1B00C02996 /* PBXTextBookmark */ = A10FC02E1225AB1B00C02996 /* PBXTextBookmark */;
 			A12044C2110EC3AE00B0466E = A12044C2110EC3AE00B0466E /* PBXTextBookmark */;
 			A12044C3110EC3AE00B0466E = A12044C3110EC3AE00B0466E /* PBXTextBookmark */;
 			A141AD7F10AB988400A0924E = A141AD7F10AB988400A0924E /* PBXTextBookmark */;
@@ -399,6 +408,96 @@
 		rType = 0;
 		vrLen = 1620;
 		vrLoc = 1649;
+	};
+	A10FBFFD12259E4000C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
+		name = "TrainBrainAppDelegate.m: 87";
+		rLen = 0;
+		rLoc = 3095;
+		rType = 0;
+		vrLen = 1624;
+		vrLoc = 1649;
+	};
+	A10FC00012259EA100C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
+		name = "TrainBrainAppDelegate.m: 87";
+		rLen = 0;
+		rLoc = 3095;
+		rType = 0;
+		vrLen = 1620;
+		vrLoc = 1649;
+	};
+	A10FC0281225AADF00C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
+		name = "TrainStationsViewController.m: 37";
+		rLen = 0;
+		rLoc = 1101;
+		rType = 0;
+		vrLen = 1978;
+		vrLoc = 0;
+	};
+	A10FC0291225AADF00C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 28C286DF0D94DF7D0034E888 /* RootViewController.h */;
+		name = "RootViewController.h: 15";
+		rLen = 0;
+		rLoc = 395;
+		rType = 0;
+		vrLen = 1197;
+		vrLoc = 0;
+	};
+	A10FC02A1225AADF00C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1D68791121B68E5002C6081 /* RootViewController.m */;
+		name = "RootViewController.m: 247";
+		rLen = 15;
+		rLoc = 8159;
+		rType = 0;
+		vrLen = 1774;
+		vrLoc = 88;
+	};
+	A10FC02B1225AADF00C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
+		name = "TrainBrainAppDelegate.h: 10";
+		rLen = 0;
+		rLoc = 286;
+		rType = 0;
+		vrLen = 1324;
+		vrLoc = 0;
+	};
+	A10FC02C1225AADF00C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
+		name = "TrainBrainAppDelegate.m: 87";
+		rLen = 0;
+		rLoc = 3095;
+		rType = 0;
+		vrLen = 1624;
+		vrLoc = 1649;
+	};
+	A10FC02D1225AADF00C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
+		name = "TrainBrainAppDelegate.m: 87";
+		rLen = 0;
+		rLoc = 3062;
+		rType = 0;
+		vrLen = 1394;
+		vrLoc = 1879;
+	};
+	A10FC02E1225AB1B00C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
+		name = "TrainBrainAppDelegate.m: 87";
+		rLen = 0;
+		rLoc = 3095;
+		rType = 0;
+		vrLen = 1587;
+		vrLoc = 1686;
 	};
 	A1151739102F962E007CFBF6 /* TimeEntryViewController.h */ = {
 		uiCtxt = {
@@ -2319,7 +2418,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 87";
 		rLen = 0;
-		rLoc = 3060;
+		rLoc = 3062;
 		rType = 0;
 		vrLen = 1620;
 		vrLoc = 1649;
@@ -2329,7 +2428,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 87";
 		rLen = 0;
-		rLoc = 3060;
+		rLoc = 3062;
 		rType = 0;
 		vrLen = 1624;
 		vrLoc = 1649;
@@ -2424,6 +2523,11 @@
 		name = RootViewController.m;
 		path = /Users/andy/Projects/TrainBrain/Classes/RootViewController.m;
 		sourceTree = "<absolute>";
+		uiCtxt = {
+			sepNavIntBoundsRect = "{{0, 0}, {1220, 3380}}";
+			sepNavSelRange = "{8159, 15}";
+			sepNavVisRange = "{88, 1774}";
+		};
 	};
 	A1D687AA121B6BF4002C6081 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -2451,10 +2555,10 @@
 	};
 	A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1220, 2600}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1188, 2600}}";
 			sepNavSelRange = "{1101, 0}";
-			sepNavVisRange = "{0, 1978}";
-			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
+			sepNavVisRange = "{0, 1271}";
+			sepNavWindowFrame = "{{45, 313}, {977, 671}}";
 		};
 	};
 	A1DF9F1D109FB7C800328466 /* TrainStationsViewController.m:89 */ = {

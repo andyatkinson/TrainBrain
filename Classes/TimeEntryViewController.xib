@@ -51,7 +51,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">test_texture.jpg</string>
+							<string key="NSResourceName">background_texture.png</string>
 						</object>
 					</object>
 					<object class="IBUITableView" id="117373473">
@@ -61,7 +61,7 @@
 						<reference key="NSSuperview" ref="175278009"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MQA</bytes>
+							<bytes key="NSWhite">MCAwAA</bytes>
 						</object>
 						<bool key="IBUIClipsSubviews">YES</bool>
 						<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
@@ -184,7 +184,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>TimeEntryViewController</string>
 					<string>UIResponder</string>
-					<string>{{567, 620}, {320, 460}}</string>
+					<string>{{583, 635}, {320, 460}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -557,7 +557,7 @@
 		<string key="IBDocument.LastKnownRelativeProjectPath">../TrainBrain.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">test_texture.jpg</string>
+			<string key="NS.key.0">background_texture.png</string>
 			<string key="NS.object.0">{320, 480}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">117</string>

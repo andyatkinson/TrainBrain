@@ -18,8 +18,8 @@
 		A10FBFE212258C1000C02996 /* 11-clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFDF12258C1000C02996 /* 11-clock@2x.png */; };
 		A10FBFE312258C1000C02996 /* 72-pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE012258C1000C02996 /* 72-pin@2x.png */; };
 		A10FBFE412258C1000C02996 /* 90-lifebuoy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE112258C1000C02996 /* 90-lifebuoy@2x.png */; };
-		A10FBFE9122591F100C02996 /* test_texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE7122591F100C02996 /* test_texture.jpg */; };
-		A10FBFEA122591F100C02996 /* test_texture@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE8122591F100C02996 /* test_texture@2x.jpg */; };
+		A10FC0181225A9D000C02996 /* background_texture.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FC0161225A9D000C02996 /* background_texture.png */; };
+		A10FC0191225A9D000C02996 /* background_texture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FC0171225A9D000C02996 /* background_texture@2x.png */; };
 		A115173C102F962E007CFBF6 /* TimeEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */; };
 		A115173D102F962E007CFBF6 /* TimeEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */; };
 		A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */; };
@@ -84,8 +84,8 @@
 		A10FBFDF12258C1000C02996 /* 11-clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock@2x.png"; sourceTree = "<group>"; };
 		A10FBFE012258C1000C02996 /* 72-pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "72-pin@2x.png"; sourceTree = "<group>"; };
 		A10FBFE112258C1000C02996 /* 90-lifebuoy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy@2x.png"; sourceTree = "<group>"; };
-		A10FBFE7122591F100C02996 /* test_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_texture.jpg; sourceTree = "<group>"; };
-		A10FBFE8122591F100C02996 /* test_texture@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test_texture@2x.jpg"; sourceTree = "<group>"; };
+		A10FC0161225A9D000C02996 /* background_texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_texture.png; sourceTree = "<group>"; };
+		A10FC0171225A9D000C02996 /* background_texture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_texture@2x.png"; sourceTree = "<group>"; };
 		A1151739102F962E007CFBF6 /* TimeEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeEntryViewController.h; sourceTree = "<group>"; };
 		A115173A102F962E007CFBF6 /* TimeEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeEntryViewController.m; sourceTree = "<group>"; };
 		A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TimeEntryViewController.xib; path = Classes/TimeEntryViewController.xib; sourceTree = "<group>"; };
@@ -244,8 +244,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A10FBFE7122591F100C02996 /* test_texture.jpg */,
-				A10FBFE8122591F100C02996 /* test_texture@2x.jpg */,
+				A10FC0161225A9D000C02996 /* background_texture.png */,
+				A10FC0171225A9D000C02996 /* background_texture@2x.png */,
 				A10FBFDF12258C1000C02996 /* 11-clock@2x.png */,
 				A10FBFE012258C1000C02996 /* 72-pin@2x.png */,
 				A10FBFE112258C1000C02996 /* 90-lifebuoy@2x.png */,
@@ -409,8 +409,8 @@
 				A10FBFE212258C1000C02996 /* 11-clock@2x.png in Resources */,
 				A10FBFE312258C1000C02996 /* 72-pin@2x.png in Resources */,
 				A10FBFE412258C1000C02996 /* 90-lifebuoy@2x.png in Resources */,
-				A10FBFE9122591F100C02996 /* test_texture.jpg in Resources */,
-				A10FBFEA122591F100C02996 /* test_texture@2x.jpg in Resources */,
+				A10FC0181225A9D000C02996 /* background_texture.png in Resources */,
+				A10FC0191225A9D000C02996 /* background_texture@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

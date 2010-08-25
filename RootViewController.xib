@@ -42,7 +42,7 @@
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<object class="IBUIImageView" id="402094546">
+					<object class="IBUIImageView" id="789525497">
 						<reference key="NSNextResponder" ref="935538588"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{320, 436}</string>
@@ -51,7 +51,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">test_texture.jpg</string>
+							<string key="NSResourceName">background_texture.png</string>
 						</object>
 					</object>
 					<object class="IBUITableView" id="938747286">
@@ -149,14 +149,14 @@
 						<reference key="object" ref="935538588"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="402094546"/>
+							<reference ref="789525497"/>
 							<reference ref="938747286"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">66</int>
-						<reference key="object" ref="402094546"/>
+						<reference key="object" ref="789525497"/>
 						<reference key="parent" ref="935538588"/>
 					</object>
 					<object class="IBObjectRecord">
@@ -181,7 +181,7 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<string>RootViewController</string>
 					<string>UIResponder</string>
-					<string>{{625, 689}, {320, 436}}</string>
+					<string>{{619, 685}, {320, 436}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -555,7 +555,7 @@
 		<string key="IBDocument.LastKnownRelativeProjectPath">TrainBrain.xcodeproj</string>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">test_texture.jpg</string>
+			<string key="NS.key.0">background_texture.png</string>
 			<string key="NS.object.0">{320, 480}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">117</string>
