@@ -2,7 +2,7 @@
 {
 	1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1220, 750}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1220, 768}}";
 			sepNavSelRange = "{286, 0}";
 			sepNavVisRange = "{0, 1324}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
@@ -12,7 +12,7 @@
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1220, 1287}}";
 			sepNavSelRange = "{3142, 0}";
-			sepNavVisRange = "{1649, 1624}";
+			sepNavVisRange = "{1649, 1620}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
 		};
 	};
@@ -112,6 +112,9 @@
 		};
 		perUserProjectItems = {
 			A10FBFDB12258BE200C02996 /* PBXTextBookmark */ = A10FBFDB12258BE200C02996 /* PBXTextBookmark */;
+			A10FBFF112259D2300C02996 /* PBXTextBookmark */ = A10FBFF112259D2300C02996 /* PBXTextBookmark */;
+			A10FBFF212259D2300C02996 /* PBXTextBookmark */ = A10FBFF212259D2300C02996 /* PBXTextBookmark */;
+			A10FBFF312259D2300C02996 /* PBXTextBookmark */ = A10FBFF312259D2300C02996 /* PBXTextBookmark */;
 			A12044C2110EC3AE00B0466E = A12044C2110EC3AE00B0466E /* PBXTextBookmark */;
 			A12044C3110EC3AE00B0466E = A12044C3110EC3AE00B0466E /* PBXTextBookmark */;
 			A141AD7F10AB988400A0924E = A141AD7F10AB988400A0924E /* PBXTextBookmark */;
@@ -365,6 +368,36 @@
 		rLoc = 3142;
 		rType = 0;
 		vrLen = 1624;
+		vrLoc = 1649;
+	};
+	A10FBFF112259D2300C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */;
+		name = "TrainBrainAppDelegate.h: 10";
+		rLen = 0;
+		rLoc = 286;
+		rType = 0;
+		vrLen = 1324;
+		vrLoc = 0;
+	};
+	A10FBFF212259D2300C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
+		name = "TrainBrainAppDelegate.m: 88";
+		rLen = 0;
+		rLoc = 3142;
+		rType = 0;
+		vrLen = 1624;
+		vrLoc = 1649;
+	};
+	A10FBFF312259D2300C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
+		name = "TrainBrainAppDelegate.m: 88";
+		rLen = 0;
+		rLoc = 3142;
+		rType = 0;
+		vrLen = 1620;
 		vrLoc = 1649;
 	};
 	A1151739102F962E007CFBF6 /* TimeEntryViewController.h */ = {
@@ -2286,7 +2319,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 87";
 		rLen = 0;
-		rLoc = 3062;
+		rLoc = 3060;
 		rType = 0;
 		vrLen = 1620;
 		vrLoc = 1649;
@@ -2296,7 +2329,7 @@
 		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
 		name = "TrainBrainAppDelegate.m: 87";
 		rLen = 0;
-		rLoc = 3062;
+		rLoc = 3060;
 		rType = 0;
 		vrLen = 1624;
 		vrLoc = 1649;
