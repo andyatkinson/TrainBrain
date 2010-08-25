@@ -47,15 +47,15 @@
 		};
 	};
 	29B97313FDCFA39411CA2CEA /* Project object */ = {
-		activeBuildConfigurationName = Debug;
+		activeBuildConfigurationName = Release;
 		activeExecutable = A1BC243D1222488C00C324C9 /* TrainBrain */;
-		activeSDKPreference = iphonesimulator4.0;
+		activeSDKPreference = iphoneos4.0;
 		activeTarget = 1D6058900D05DD3D006BFB54 /* TrainBrain */;
 		addToTargets = (
 			1D6058900D05DD3D006BFB54 /* TrainBrain */,
 		);
 		breakpoints = (
-			A1DF9F1D109FB7C800328466 /* TrainStationsViewController.m:89 */,
+			A1DF9F1D109FB7C800328466 /* TrainStationsViewController.m:104 */,
 			A13D024910A7AC7B005FD076 /* MapStopsViewController.m:16 */,
 		);
 		codeSenseManager = A1B59EE1102F8FED00939A3B /* Code sense */;
@@ -124,6 +124,14 @@
 			A10FC02C1225AADF00C02996 /* PBXTextBookmark */ = A10FC02C1225AADF00C02996 /* PBXTextBookmark */;
 			A10FC02D1225AADF00C02996 /* PBXTextBookmark */ = A10FC02D1225AADF00C02996 /* PBXTextBookmark */;
 			A10FC02E1225AB1B00C02996 /* PBXTextBookmark */ = A10FC02E1225AB1B00C02996 /* PBXTextBookmark */;
+			A10FC0371225AF2400C02996 /* PBXTextBookmark */ = A10FC0371225AF2400C02996 /* PBXTextBookmark */;
+			A10FC0411225B0F100C02996 /* PBXTextBookmark */ = A10FC0411225B0F100C02996 /* PBXTextBookmark */;
+			A10FC0421225B0F100C02996 /* PBXTextBookmark */ = A10FC0421225B0F100C02996 /* PBXTextBookmark */;
+			A10FC0431225B0F100C02996 /* PBXTextBookmark */ = A10FC0431225B0F100C02996 /* PBXTextBookmark */;
+			A10FC0441225B0F100C02996 /* PBXTextBookmark */ = A10FC0441225B0F100C02996 /* PBXTextBookmark */;
+			A10FC0451225B0F100C02996 /* PBXTextBookmark */ = A10FC0451225B0F100C02996 /* PBXTextBookmark */;
+			A10FC0461225B0F100C02996 /* PBXTextBookmark */ = A10FC0461225B0F100C02996 /* PBXTextBookmark */;
+			A10FC0471225B0F100C02996 /* PBXTextBookmark */ = A10FC0471225B0F100C02996 /* PBXTextBookmark */;
 			A12044C2110EC3AE00B0466E = A12044C2110EC3AE00B0466E /* PBXTextBookmark */;
 			A12044C3110EC3AE00B0466E = A12044C3110EC3AE00B0466E /* PBXTextBookmark */;
 			A141AD7F10AB988400A0924E = A141AD7F10AB988400A0924E /* PBXTextBookmark */;
@@ -434,7 +442,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 37";
 		rLen = 0;
-		rLoc = 1101;
+		rLoc = 1653;
 		rType = 0;
 		vrLen = 1978;
 		vrLoc = 0;
@@ -499,6 +507,86 @@
 		vrLen = 1587;
 		vrLoc = 1686;
 	};
+	A10FC0371225AF2400C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
+		name = "TrainBrainAppDelegate.m: 87";
+		rLen = 0;
+		rLoc = 3095;
+		rType = 0;
+		vrLen = 1587;
+		vrLoc = 1686;
+	};
+	A10FC0411225B0F100C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */;
+		name = "TrainBrainAppDelegate.m: 87";
+		rLen = 0;
+		rLoc = 3095;
+		rType = 0;
+		vrLen = 1587;
+		vrLoc = 1686;
+	};
+	A10FC0421225B0F100C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 60";
+		rLen = 0;
+		rLoc = 2056;
+		rType = 0;
+		vrLen = 2166;
+		vrLoc = 996;
+	};
+	A10FC0431225B0F100C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B5C54710A26FBE00CD3045 /* MapStopsViewController.h */;
+		name = "MapStopsViewController.h: 27";
+		rLen = 0;
+		rLoc = 762;
+		rType = 0;
+		vrLen = 769;
+		vrLoc = 0;
+	};
+	A10FC0441225B0F100C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
+		name = "MapStopsViewController.m: 38";
+		rLen = 0;
+		rLoc = 1001;
+		rType = 0;
+		vrLen = 2006;
+		vrLoc = 310;
+	};
+	A10FC0451225B0F100C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1D68791121B68E5002C6081 /* RootViewController.m */;
+		name = "RootViewController.m: 59";
+		rLen = 88;
+		rLoc = 1704;
+		rType = 0;
+		vrLen = 2130;
+		vrLoc = 798;
+	};
+	A10FC0461225B0F100C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
+		name = "TrainStationsViewController.m: 49";
+		rLen = 0;
+		rLoc = 1543;
+		rType = 0;
+		vrLen = 1956;
+		vrLoc = 304;
+	};
+	A10FC0471225B0F100C02996 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
+		name = "TrainStationsViewController.m: 50";
+		rLen = 0;
+		rLoc = 1629;
+		rType = 0;
+		vrLen = 1891;
+		vrLoc = 369;
+	};
 	A1151739102F962E007CFBF6 /* TimeEntryViewController.h */ = {
 		uiCtxt = {
 			sepNavIntBoundsRect = "{{0, 0}, {1220, 773}}";
@@ -508,9 +596,9 @@
 	};
 	A115173A102F962E007CFBF6 /* TimeEntryViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1220, 4017}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1220, 4004}}";
 			sepNavSelRange = "{2056, 0}";
-			sepNavVisRange = "{1363, 2238}";
+			sepNavVisRange = "{996, 2166}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
 		};
 	};
@@ -716,16 +804,16 @@
 	};
 	A1B5C54710A26FBE00CD3045 /* MapStopsViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1220, 773}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1220, 743}}";
 			sepNavSelRange = "{762, 0}";
 			sepNavVisRange = "{0, 769}";
 		};
 	};
 	A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1220, 2704}}";
-			sepNavSelRange = "{4158, 0}";
-			sepNavVisRange = "{2439, 2319}";
+			sepNavIntBoundsRect = "{{0, 0}, {1220, 2873}}";
+			sepNavSelRange = "{1001, 0}";
+			sepNavVisRange = "{310, 2006}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
 		};
 	};
@@ -930,7 +1018,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 147";
 		rLen = 0;
-		rLoc = 4990;
+		rLoc = 5542;
 		rType = 0;
 		vrLen = 2035;
 		vrLoc = 2528;
@@ -940,7 +1028,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 160";
 		rLen = 0;
-		rLoc = 5519;
+		rLoc = 6071;
 		rType = 0;
 		vrLen = 2061;
 		vrLoc = 4293;
@@ -950,7 +1038,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 155";
 		rLen = 0;
-		rLoc = 5519;
+		rLoc = 6071;
 		rType = 0;
 		vrLen = 2043;
 		vrLoc = 4294;
@@ -960,7 +1048,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 155";
 		rLen = 0;
-		rLoc = 5519;
+		rLoc = 6071;
 		rType = 0;
 		vrLen = 2062;
 		vrLoc = 4294;
@@ -1500,7 +1588,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 157";
 		rLen = 0;
-		rLoc = 5519;
+		rLoc = 6071;
 		rType = 0;
 		vrLen = 2085;
 		vrLoc = 4294;
@@ -1740,7 +1828,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 157";
 		rLen = 0;
-		rLoc = 5519;
+		rLoc = 6071;
 		rType = 0;
 		vrLen = 1832;
 		vrLoc = 3792;
@@ -1750,7 +1838,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 122";
 		rLen = 0;
-		rLoc = 4069;
+		rLoc = 4621;
 		rType = 0;
 		vrLen = 1977;
 		vrLoc = 2642;
@@ -1760,7 +1848,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 117";
 		rLen = 241;
-		rLoc = 4030;
+		rLoc = 4582;
 		rType = 0;
 		vrLen = 2084;
 		vrLoc = 2642;
@@ -1898,9 +1986,9 @@
 		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
 		name = "MapStopsViewController.m: 206";
 		rLen = 0;
-		rLoc = 6985;
+		rLoc = 6987;
 		rType = 0;
-		vrLen = 1849;
+		vrLen = 1613;
 		vrLoc = 5512;
 	};
 	A1BC25EA1223616F00C324C9 /* PBXTextBookmark */ = {
@@ -1908,7 +1996,7 @@
 		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
 		name = "MapStopsViewController.m: 202";
 		rLen = 0;
-		rLoc = 6985;
+		rLoc = 6987;
 		rType = 0;
 		vrLen = 1569;
 		vrLoc = 5552;
@@ -2072,7 +2160,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 117";
 		rLen = 241;
-		rLoc = 4030;
+		rLoc = 4582;
 		rType = 0;
 		vrLen = 2084;
 		vrLoc = 2642;
@@ -2082,7 +2170,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 37";
 		rLen = 0;
-		rLoc = 1101;
+		rLoc = 1653;
 		rType = 0;
 		vrLen = 1810;
 		vrLoc = 0;
@@ -2092,7 +2180,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 37";
 		rLen = 0;
-		rLoc = 1101;
+		rLoc = 1653;
 		rType = 0;
 		vrLen = 2016;
 		vrLoc = 0;
@@ -2132,7 +2220,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 37";
 		rLen = 0;
-		rLoc = 1101;
+		rLoc = 1653;
 		rType = 0;
 		vrLen = 1978;
 		vrLoc = 0;
@@ -2172,7 +2260,7 @@
 		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
 		name = "MapStopsViewController.m: 166";
 		rLen = 9;
-		rLoc = 5909;
+		rLoc = 5911;
 		rType = 0;
 		vrLen = 2283;
 		vrLoc = 4587;
@@ -2192,7 +2280,7 @@
 		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
 		name = "MapStopsViewController.m: 166";
 		rLen = 0;
-		rLoc = 5959;
+		rLoc = 5961;
 		rType = 0;
 		vrLen = 2252;
 		vrLoc = 4586;
@@ -2202,7 +2290,7 @@
 		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
 		name = "MapStopsViewController.m: 119";
 		rLen = 0;
-		rLoc = 4254;
+		rLoc = 4256;
 		rType = 0;
 		vrLen = 2208;
 		vrLoc = 2493;
@@ -2212,7 +2300,7 @@
 		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
 		name = "MapStopsViewController.m: 121";
 		rLen = 0;
-		rLoc = 4158;
+		rLoc = 4160;
 		rType = 0;
 		vrLen = 2178;
 		vrLoc = 2493;
@@ -2222,7 +2310,7 @@
 		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
 		name = "MapStopsViewController.m: 121";
 		rLen = 0;
-		rLoc = 4158;
+		rLoc = 4160;
 		rType = 0;
 		vrLen = 2179;
 		vrLoc = 2493;
@@ -2232,7 +2320,7 @@
 		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
 		name = "MapStopsViewController.m: 121";
 		rLen = 0;
-		rLoc = 4158;
+		rLoc = 4160;
 		rType = 0;
 		vrLen = 2303;
 		vrLoc = 2493;
@@ -2242,7 +2330,7 @@
 		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
 		name = "MapStopsViewController.m: 121";
 		rLen = 0;
-		rLoc = 4158;
+		rLoc = 4160;
 		rType = 0;
 		vrLen = 2303;
 		vrLoc = 2493;
@@ -2524,9 +2612,9 @@
 		path = /Users/andy/Projects/TrainBrain/Classes/RootViewController.m;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1220, 3380}}";
-			sepNavSelRange = "{8159, 15}";
-			sepNavVisRange = "{88, 1774}";
+			sepNavIntBoundsRect = "{{0, 0}, {1220, 3250}}";
+			sepNavSelRange = "{1704, 88}";
+			sepNavVisRange = "{798, 2130}";
 		};
 	};
 	A1D687AA121B6BF4002C6081 /* PBXTextBookmark */ = {
@@ -2555,13 +2643,13 @@
 	};
 	A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1188, 2600}}";
-			sepNavSelRange = "{1101, 0}";
-			sepNavVisRange = "{0, 1271}";
+			sepNavIntBoundsRect = "{{0, 0}, {1220, 2847}}";
+			sepNavSelRange = "{1629, 0}";
+			sepNavVisRange = "{369, 1891}";
 			sepNavWindowFrame = "{{45, 313}, {977, 671}}";
 		};
 	};
-	A1DF9F1D109FB7C800328466 /* TrainStationsViewController.m:89 */ = {
+	A1DF9F1D109FB7C800328466 /* TrainStationsViewController.m:104 */ = {
 		isa = PBXFileBreakpoint;
 		actions = (
 		);
@@ -2573,7 +2661,7 @@
 		functionName = "-connectionDidFinishLoading:";
 		hitCount = 0;
 		ignoreCount = 0;
-		lineNumber = 89;
+		lineNumber = 104;
 		location = TrainBrain;
 		modificationTime = 286180171.7821611;
 		originalNumberOfMultipleMatches = 0;
@@ -2929,7 +3017,7 @@
 		fRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */;
 		name = "TrainStationsViewController.m: 35";
 		rLen = 0;
-		rLoc = 1101;
+		rLoc = 1653;
 		rType = 0;
 		vrLen = 1960;
 		vrLoc = 3;
