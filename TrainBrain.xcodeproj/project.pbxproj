@@ -15,6 +15,11 @@
 		2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E55F0DE3E45000AC0155 /* RootViewController.xib */; };
 		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
 		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
+		A10FBFE212258C1000C02996 /* 11-clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFDF12258C1000C02996 /* 11-clock@2x.png */; };
+		A10FBFE312258C1000C02996 /* 72-pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE012258C1000C02996 /* 72-pin@2x.png */; };
+		A10FBFE412258C1000C02996 /* 90-lifebuoy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE112258C1000C02996 /* 90-lifebuoy@2x.png */; };
+		A10FBFE9122591F100C02996 /* test_texture.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE7122591F100C02996 /* test_texture.jpg */; };
+		A10FBFEA122591F100C02996 /* test_texture@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE8122591F100C02996 /* test_texture@2x.jpg */; };
 		A115173C102F962E007CFBF6 /* TimeEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */; };
 		A115173D102F962E007CFBF6 /* TimeEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */; };
 		A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */; };
@@ -76,6 +81,11 @@
 		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TrainBrain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TrainBrain-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A10FBFDF12258C1000C02996 /* 11-clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock@2x.png"; sourceTree = "<group>"; };
+		A10FBFE012258C1000C02996 /* 72-pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "72-pin@2x.png"; sourceTree = "<group>"; };
+		A10FBFE112258C1000C02996 /* 90-lifebuoy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy@2x.png"; sourceTree = "<group>"; };
+		A10FBFE7122591F100C02996 /* test_texture.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test_texture.jpg; sourceTree = "<group>"; };
+		A10FBFE8122591F100C02996 /* test_texture@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test_texture@2x.jpg"; sourceTree = "<group>"; };
 		A1151739102F962E007CFBF6 /* TimeEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeEntryViewController.h; sourceTree = "<group>"; };
 		A115173A102F962E007CFBF6 /* TimeEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeEntryViewController.m; sourceTree = "<group>"; };
 		A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TimeEntryViewController.xib; path = Classes/TimeEntryViewController.xib; sourceTree = "<group>"; };
@@ -177,6 +187,7 @@
 				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
 				A169E493102F91C600A65E05 /* CustomCell.h */,
 				A169E494102F91E500A65E05 /* CustomCell.m */,
+				1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				A1DF9D02109D3BB100328466 /* TrainStationsViewController.h */,
@@ -184,7 +195,6 @@
 				A1151739102F962E007CFBF6 /* TimeEntryViewController.h */,
 				A115173A102F962E007CFBF6 /* TimeEntryViewController.m */,
 				1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */,
-				1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */,
 				A1B5C54710A26FBE00CD3045 /* MapStopsViewController.h */,
 				A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */,
 				A1B5C58510A27E5B00CD3045 /* Stop.h */,
@@ -234,6 +244,11 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A10FBFE7122591F100C02996 /* test_texture.jpg */,
+				A10FBFE8122591F100C02996 /* test_texture@2x.jpg */,
+				A10FBFDF12258C1000C02996 /* 11-clock@2x.png */,
+				A10FBFE012258C1000C02996 /* 72-pin@2x.png */,
+				A10FBFE112258C1000C02996 /* 90-lifebuoy@2x.png */,
 				8D1107310486CEB800E47090 /* TrainBrain-Info.plist */,
 				A1E5EC731220B69400B15224 /* icon_arrow.png */,
 				A1E5EC631220B52000B15224 /* icon_hiawatha.png */,
@@ -391,6 +406,11 @@
 				A1E5EC661220B52000B15224 /* icon_northstar.png in Resources */,
 				A1E5EC741220B69400B15224 /* icon_arrow.png in Resources */,
 				A1BC245F12231EBE00C324C9 /* StationCell.xib in Resources */,
+				A10FBFE212258C1000C02996 /* 11-clock@2x.png in Resources */,
+				A10FBFE312258C1000C02996 /* 72-pin@2x.png in Resources */,
+				A10FBFE412258C1000C02996 /* 90-lifebuoy@2x.png in Resources */,
+				A10FBFE9122591F100C02996 /* test_texture.jpg in Resources */,
+				A10FBFEA122591F100C02996 /* test_texture@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
