@@ -249,6 +249,9 @@
 			}
 		}
 	
+		// set the gradient
+		cell.backgroundView = [[[GradientView alloc] init] autorelease];
+	
 		if([timeEntryRows count] > 0) {
 			[[cell departureTime] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"departureTime"]];
 			[[cell departureCost] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"cost"]];
@@ -270,8 +273,6 @@
 				[[cell timeRemaining] setText:[[NSString alloc] initWithFormat:@"%d min", minutes]];
 			}
 		}
-		
-		cell.backgroundView = [[[GradientView alloc] init] autorelease];
 	
 		return cell;
 

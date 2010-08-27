@@ -27,7 +27,7 @@
 	routesController.navigationBar.barStyle = UIBarStyleDefault;
 	routesController.navigationBar.tintColor = navBarColor;
 	routesTableViewController.title = @"Routes";
-	routesController.tabBarItem.title = @"Schedule";
+	routesController.tabBarItem.title = @"Departures";
 	routesController.tabBarItem.image = [UIImage imageNamed:@"11-clock.png"];
 	[routesTableViewController release];
 	
