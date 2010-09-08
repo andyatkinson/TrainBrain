@@ -17,7 +17,7 @@
 	
 	if (self)        
 	{
-		UIImage *theImage = [UIImage imageNamed:@"icon_hiawatha.png"];
+		UIImage *theImage = [UIImage imageNamed:@"hiaw_map_pin.png"];
 		
 		if (!theImage)
 			return nil;

@@ -16,6 +16,9 @@
 - (void)viewDidLoad {
 	self.title = @"Help";
 	
+	[webView setBackgroundColor:[UIColor clearColor]];
+	[webView setOpaque:NO];
+	
 	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	
 	NSString *locationString = [[NSString alloc] initWithFormat:@"%@info", [appDelegate getBaseUrl]];

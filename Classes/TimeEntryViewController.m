@@ -74,13 +74,19 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	timeEntriesTableView.backgroundColor = [UIColor clearColor];
+	//timeEntriesTableView.backgroundColor = [UIColor clearColor];
 	responseData = [[NSMutableData data] retain];
 	
 	UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
 	[window addSubview:HUD];
 	HUD.delegate = self;
+	
+	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshTimes:)];
+	self.navigationItem.rightBarButtonItem = refreshButton;
+	[refreshButton release];	
+	//[self loadTimeEntries];
+	responseData = [[NSMutableData data] retain];
 	
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	self.title = [appDelegate getSelectedStopName];
@@ -258,12 +264,12 @@
 			[[cell headsign] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"headsign"]];
 			[[cell type] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"type"]];
 			[cell	departureIcon].image = [UIImage imageNamed:@"clock.png"];
-			[cell setBackgroundColor:[UIColor whiteColor]];
+			//[cell setBackgroundColor:[UIColor whiteColor]];
 			
 			minutes = [[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"minutesRemaining"] intValue];			
 			if(minutes > 0 && minutes < 6) { // ensure only set for between 1 and 5 minutes
 				[cell	departureIcon].image = [UIImage imageNamed:@"exclamation.png"];
-				[cell setBackgroundColor:[UIColor yellowColor]];
+				cell.backgroundView = [[[YellowGradientView alloc] init] autorelease];
 			}
 			
 			if(minutes == 0) {

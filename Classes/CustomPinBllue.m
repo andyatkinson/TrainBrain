@@ -17,7 +17,7 @@
 	
 	if (self)        
 	{
-		UIImage *theImage = [UIImage imageNamed:@"icon_northstar.png"];
+		UIImage *theImage = [UIImage imageNamed:@"nstr_map_pin.png"];
 		
 		if (!theImage)
 			return nil;

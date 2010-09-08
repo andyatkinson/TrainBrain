@@ -50,7 +50,7 @@
 							<object class="IBUILabel" id="118177660">
 								<reference key="NSNextResponder" ref="724707572"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{76, 5}, {61, 26}}</string>
+								<string key="NSFrame">{{51, 5}, {61, 26}}</string>
 								<reference key="NSSuperview" ref="724707572"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -79,7 +79,7 @@
 							<object class="IBUILabel" id="247609950">
 								<reference key="NSNextResponder" ref="724707572"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{246, 9}, {54, 21}}</string>
+								<string key="NSFrame">{{246, 7}, {63, 21}}</string>
 								<reference key="NSSuperview" ref="724707572"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -104,7 +104,7 @@
 							<object class="IBUILabel" id="169564">
 								<reference key="NSNextResponder" ref="724707572"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{17, 29}, {58, 21}}</string>
+								<string key="NSFrame">{{163, 7}, {58, 21}}</string>
 								<reference key="NSSuperview" ref="724707572"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -120,7 +120,7 @@
 							<object class="IBUIImageView" id="808032709">
 								<reference key="NSNextResponder" ref="724707572"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{17, 10}, {33, 33}}</string>
+								<string key="NSFrame">{{12, 14}, {33, 33}}</string>
 								<reference key="NSSuperview" ref="724707572"/>
 								<object class="NSColor" key="IBUIBackgroundColor" id="191622656">
 									<int key="NSColorSpace">3</int>
@@ -136,7 +136,7 @@
 							<object class="IBUILabel" id="170594218">
 								<reference key="NSNextResponder" ref="724707572"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{132, 8}, {78, 21}}</string>
+								<string key="NSFrame">{{246, 29}, {63, 21}}</string>
 								<reference key="NSSuperview" ref="724707572"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -158,7 +158,7 @@
 							<object class="IBUILabel" id="245906358">
 								<reference key="NSNextResponder" ref="724707572"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{76, 29}, {224, 21}}</string>
+								<string key="NSFrame">{{53, 29}, {191, 21}}</string>
 								<reference key="NSSuperview" ref="724707572"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
@@ -188,10 +188,7 @@
 				</object>
 				<string key="NSFrameSize">{320, 56}</string>
 				<reference key="NSSuperview"/>
-				<object class="NSColor" key="IBUIBackgroundColor">
-					<int key="NSColorSpace">1</int>
-					<bytes key="NSRGB">MSAxIDEAA</bytes>
-				</object>
+				<reference key="IBUIBackgroundColor" ref="191622656"/>
 				<bool key="IBUIAutoresizesSubviews">NO</bool>
 				<bool key="IBUIClearsContextBeforeDrawing">NO</bool>
 				<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -277,12 +274,12 @@
 						<reference key="object" ref="193997876"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="118177660"/>
 							<reference ref="808032709"/>
 							<reference ref="170594218"/>
 							<reference ref="245906358"/>
-							<reference ref="247609950"/>
 							<reference ref="169564"/>
-							<reference ref="118177660"/>
+							<reference ref="247609950"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -340,7 +337,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>DepartureDetailCell</string>
-					<string>{{536, 713}, {320, 56}}</string>
+					<string>{{777, 783}, {320, 56}}</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
