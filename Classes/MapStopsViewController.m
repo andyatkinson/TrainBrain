@@ -107,16 +107,15 @@
 		StopAnnotation *stopAnn = (StopAnnotation *)annotation;
 		view = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"stopRouteId"];
 		if(nil == view) {
-
 			NSString *routeId = stopAnn.stop.routeId;
-			if([routeId isEqualToString:@"888-48"]) {
-				view = [[[CustomPinBlue alloc] initWithAnnotation:annotation] autorelease];
-			} else if([routeId isEqualToString:@"55-48"]) {
+			NSRange hiawathaRange = [routeId rangeOfString:@"55"];
+			NSRange northstarRange = [routeId rangeOfString:@"888"];
+			if (hiawathaRange.location != NSNotFound) {
 				view = [[[CustomPinBlack alloc] initWithAnnotation:annotation] autorelease];
-			} 
-			
+			} else if(northstarRange.location != NSNotFound) {
+				view = [[[CustomPinBlue alloc] initWithAnnotation:annotation] autorelease];
+			}
 		}
-		
 		//[(MKPinAnnotationView *)view setAnimatesDrop:YES];
 		 
 		[view setCanShowCallout:YES];
