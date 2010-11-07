@@ -22,7 +22,6 @@
 		A115173D102F962E007CFBF6 /* TimeEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */; };
 		A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */; };
 		A1253AF71235D89F003AEF64 /* YellowGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1253AF61235D89F003AEF64 /* YellowGradientView.m */; };
-		A1690D521040D31000EB0E62 /* Entitlements.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1690D511040D31000EB0E62 /* Entitlements.plist */; };
 		A169E495102F91E500A65E05 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E494102F91E500A65E05 /* CustomCell.m */; };
 		A169E4B0102F928E00A65E05 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4A5102F928E00A65E05 /* NSObject+SBJSON.m */; };
 		A169E4B1102F928E00A65E05 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4A7102F928E00A65E05 /* NSString+SBJSON.m */; };
@@ -97,7 +96,7 @@
 		A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureDetailCell.m; sourceTree = "<group>"; };
 		A1253AF51235D89F003AEF64 /* YellowGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YellowGradientView.h; sourceTree = "<group>"; };
 		A1253AF61235D89F003AEF64 /* YellowGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YellowGradientView.m; sourceTree = "<group>"; };
-		A1690D511040D31000EB0E62 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
+		A1436A7F12872EE5004299E0 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		A169E493102F91C600A65E05 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		A169E494102F91E500A65E05 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		A169E4A3102F928E00A65E05 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
@@ -235,12 +234,12 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				A1690D511040D31000EB0E62 /* Entitlements.plist */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
+				A1436A7F12872EE5004299E0 /* Entitlements.plist */,
 			);
 			name = CustomTemplate;
 			sourceTree = "<group>";
@@ -406,7 +405,6 @@
 				A115173D102F962E007CFBF6 /* TimeEntryViewController.xib in Resources */,
 				A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */,
 				A16A8BCB1038F93C001DF0EF /* Icon.png in Resources */,
-				A1690D521040D31000EB0E62 /* Entitlements.plist in Resources */,
 				A1DF9D06109D3BB100328466 /* TrainStationsViewController.xib in Resources */,
 				A1B5C54B10A26FBE00CD3045 /* MapStopsViewController.xib in Resources */,
 				A1B56FCE10F9B25300294BEC /* InfoViewController.xib in Resources */,
@@ -480,6 +478,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Projects/TrainBrain/Entitlements.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -494,6 +493,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CODE_SIGN_ENTITLEMENTS = "~/Projects/TrainBrain/Entitlements.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TrainBrain_Prefix.pch;
@@ -514,6 +514,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
 				SDKROOT = iphonesimulator4.0;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Distribution;
 		};
@@ -521,7 +522,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = Entitlements.plist;
+				CODE_SIGN_ENTITLEMENTS = "~/Projects/TrainBrain/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
