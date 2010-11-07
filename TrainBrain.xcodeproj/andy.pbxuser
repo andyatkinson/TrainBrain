@@ -144,6 +144,9 @@
 			A14369D612860944004299E0 /* PBXTextBookmark */ = A14369D612860944004299E0 /* PBXTextBookmark */;
 			A14369D712860A16004299E0 /* PBXTextBookmark */ = A14369D712860A16004299E0 /* PBXTextBookmark */;
 			A14369DA12860AAD004299E0 /* PBXTextBookmark */ = A14369DA12860AAD004299E0 /* PBXTextBookmark */;
+			A14369F912872110004299E0 /* XCBuildMessageTextBookmark */ = A14369F912872110004299E0 /* XCBuildMessageTextBookmark */;
+			A14369FA12872110004299E0 /* PBXTextBookmark */ = A14369FA12872110004299E0 /* PBXTextBookmark */;
+			A14369FD12872114004299E0 /* PBXTextBookmark */ = A14369FD12872114004299E0 /* PBXTextBookmark */;
 			A1AA5235122789DD007E9746 = A1AA5235122789DD007E9746 /* PBXTextBookmark */;
 			A1AE19B7123743C500AB1691 = A1AE19B7123743C500AB1691 /* PBXTextBookmark */;
 			A1AE19B8123743C500AB1691 = A1AE19B8123743C500AB1691 /* PBXTextBookmark */;
@@ -574,6 +577,35 @@
 		vrLen = 2242;
 		vrLoc = 2835;
 	};
+	A14369F912872110004299E0 /* XCBuildMessageTextBookmark */ = {
+		isa = PBXTextBookmark;
+		comments = "'initWithFrame:reuseIdentifier:' is deprecated (declared at /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator4.0.sdk/System/Library/Frameworks/UIKit.framework/Headers/UITableViewCell.h:189)";
+		fRef = A169E494102F91E500A65E05 /* CustomCell.m */;
+		fallbackIsa = XCBuildMessageTextBookmark;
+		rLen = 1;
+		rLoc = 14;
+		rType = 1;
+	};
+	A14369FA12872110004299E0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A169E494102F91E500A65E05 /* CustomCell.m */;
+		name = "CustomCell.m: 15";
+		rLen = 0;
+		rLoc = 417;
+		rType = 0;
+		vrLen = 1975;
+		vrLoc = 209;
+	};
+	A14369FD12872114004299E0 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
+		name = "MapStopsViewController.m: 118";
+		rLen = 0;
+		rLoc = 4183;
+		rType = 0;
+		vrLen = 2242;
+		vrLoc = 2835;
+	};
 	A146B5E6120B1F9100161E67 /* MapStopsViewController.m */ = {
 		isa = PBXFileReference;
 		lastKnownFileType = sourcecode.c.objc;
@@ -590,9 +622,9 @@
 	};
 	A169E494102F91E500A65E05 /* CustomCell.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1220, 988}}";
-			sepNavSelRange = "{927, 0}";
-			sepNavVisRange = "{249, 1954}";
+			sepNavIntBoundsRect = "{{0, 0}, {1027, 910}}";
+			sepNavSelRange = "{535, 0}";
+			sepNavVisRange = "{209, 1541}";
 			sepNavWindowFrame = "{{15, 352}, {977, 671}}";
 		};
 	};
@@ -1044,7 +1076,7 @@
 		fRef = A169E494102F91E500A65E05 /* CustomCell.m */;
 		name = "CustomCell.m: 24";
 		rLen = 0;
-		rLoc = 927;
+		rLoc = 938;
 		rType = 0;
 		vrLen = 1954;
 		vrLoc = 249;
