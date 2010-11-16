@@ -265,7 +265,6 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
-								<string>29B97315FDCFA39411CA2CEA</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>29B97323FDCFA39411CA2CEA</string>
 								<string>19C28FACFE9D520D11CA2CBB</string>
@@ -274,13 +273,13 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>51</integer>
-									<integer>36</integer>
+									<integer>16</integer>
+									<integer>1</integer>
 									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 371}, {254, 1013}}</string>
+							<string>{{0, 0}, {254, 1013}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -299,7 +298,7 @@
 							<real>254</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>769 335 1557 1072 0 0 2560 1418 </string>
+						<string>774 335 1557 1072 0 0 2560 1418 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -310,12 +309,14 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>TrainBrain-Info.plist</string>
+								<string>TrainStationsViewController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -323,11 +324,11 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>TrainBrain-Info.plist</string>
+										<string>TrainStationsViewController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>A195896A129210C50091B0A0</string>
+										<string>A1958995129215090091B0A0</string>
 										<key>history</key>
 										<array>
 											<string>A141AD7F10AB988400A0924E</string>
@@ -364,7 +365,6 @@
 											<string>A1BC266B12236D6100C324C9</string>
 											<string>A1BC269512237C4C00C324C9</string>
 											<string>A10FC08F1227864A00C02996</string>
-											<string>A1AA5235122789DD007E9746</string>
 											<string>A1253AC21235D068003AEF64</string>
 											<string>A1253AC31235D068003AEF64</string>
 											<string>A1253AC41235D068003AEF64</string>
@@ -382,15 +382,16 @@
 											<string>A14369CA128608CC004299E0</string>
 											<string>A14369CB128608CC004299E0</string>
 											<string>A1436A09128723A3004299E0</string>
-											<string>A1436A0A128723A3004299E0</string>
-											<string>A1436A9C128F160D004299E0</string>
 											<string>A1436AA812920F58004299E0</string>
 											<string>A1436AA912920F58004299E0</string>
 											<string>A1436AC4129210B9004299E0</string>
-											<string>A1436AC5129210B9004299E0</string>
-											<string>A1436AC6129210B9004299E0</string>
-											<string>A1436AC7129210B9004299E0</string>
-											<string>A1436ACA129210B9004299E0</string>
+											<string>A1958978129214680091B0A0</string>
+											<string>A1958979129214680091B0A0</string>
+											<string>A195897A129214680091B0A0</string>
+											<string>A195898C129214A30091B0A0</string>
+											<string>A1958992129215090091B0A0</string>
+											<string>A1958993129215090091B0A0</string>
+											<string>A1958994129215090091B0A0</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -404,7 +405,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1281, 775}}</string>
 								<key>RubberWindowFrame</key>
-								<string>769 335 1557 1072 0 0 2560 1418 </string>
+								<string>774 335 1557 1072 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -424,7 +425,7 @@
 								<key>Frame</key>
 								<string>{{0, 780}, {1281, 251}}</string>
 								<key>RubberWindowFrame</key>
-								<string>769 335 1557 1072 0 0 2560 1418 </string>
+								<string>774 335 1557 1072 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -586,11 +587,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
+		<string>1C78EAAD065D492600B07095</string>
+		<string>1CD10A99069EF8BA00B06720</string>
 		<string>A169E415102F915800A65E05</string>
 		<string>/Users/andy/Projects/TrainBrain/TrainBrain.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>769 335 1557 1072 0 0 2560 1418 </string>
+	<string>774 335 1557 1072 0 0 2560 1418 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -787,13 +790,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>A14369CE128608CC004299E0</string>
+				<string>A1958980129214680091B0A0</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>A14369CF128608CC004299E0</string>
-				<string>A14369D0128608CC004299E0</string>
-				<string>A14369D1128608CC004299E0</string>
-				<string>A14369D2128608CC004299E0</string>
-				<string>A14369D3128608CC004299E0</string>
+				<string>A1958981129214680091B0A0</string>
+				<string>A1958982129214680091B0A0</string>
+				<string>A1958983129214680091B0A0</string>
+				<string>A1958984129214680091B0A0</string>
+				<string>A1958985129214680091B0A0</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
@@ -947,7 +950,7 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1C78EAAD065D492600B07095</string>
-				<string>A14369D4128608CC004299E0</string>
+				<string>A1958986129214680091B0A0</string>
 				<string>1C78EAAC065D492600B07095</string>
 			</array>
 			<key>ToolbarConfiguration</key>

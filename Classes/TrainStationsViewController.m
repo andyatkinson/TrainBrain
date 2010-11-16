@@ -166,9 +166,8 @@
 	// Set up the cell...
 	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
 	cell.stationName.text = [[views objectAtIndex:indexPath.row] objectForKey:@"stationName"];
-	NSString *description = [NSString stringWithFormat:@"%@ at %@", 
-													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationDescription"],
-													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationStreet"]];
+	NSString *description = [NSString stringWithFormat:@"%@", 
+													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationDescription"]];
 	cell.stationDescription.text = description;
 	
 	cell.backgroundView = [[[GradientView alloc] init] autorelease];
