@@ -49,6 +49,9 @@
 }
 
 - (void)viewDidLoad {
+	// track state for Internet connection to avoid displaying alert multiple times
+	HAS_INTERNET_CONNECTION = YES;
+	
 	// 231/231/231
 	routesTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
 	routesTableView.separatorColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1.0];
@@ -82,14 +85,16 @@
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
 	[HUD hide:YES];
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
-																									message:nil 
-																								 delegate:nil 
-																				cancelButtonTitle:@"OK" 
-																				otherButtonTitles:nil];
-	
-	[alert show];
-	[alert release];
+	if (HAS_INTERNET_CONNECTION == YES) {
+		HAS_INTERNET_CONNECTION = NO;
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
+																										message:nil 
+																									 delegate:nil 
+																					cancelButtonTitle:@"OK" 
+																					otherButtonTitles:nil];
+		[alert show];
+		[alert release];
+	}
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {

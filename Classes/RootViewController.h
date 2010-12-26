@@ -22,6 +22,7 @@
 	CLLocation *startingPoint;
 	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD *HUD;
+	BOOL HAS_INTERNET_CONNECTION;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *routesTableView;
