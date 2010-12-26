@@ -74,7 +74,6 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	//timeEntriesTableView.backgroundColor = [UIColor clearColor];
 	responseData = [[NSMutableData data] retain];
 	
 	UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -85,7 +84,6 @@
 	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshTimes:)];
 	self.navigationItem.rightBarButtonItem = refreshButton;
 	[refreshButton release];	
-	//[self loadTimeEntries];
 	responseData = [[NSMutableData data] retain];
 	
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
@@ -299,6 +297,7 @@
 	[timeEntryRows release];
 	[responseData release];
 	[timeEntriesTableView release];
+	[HUD release];
 	[super dealloc];
 }
 

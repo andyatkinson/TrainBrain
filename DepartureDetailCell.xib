@@ -164,7 +164,7 @@
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<bool key="IBUIUserInteractionEnabled">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-								<string key="IBUIText">Northbound (Downtown Minneapolis)</string>
+								<string key="IBUIText">North to Minneapolis</string>
 								<reference key="IBUIFont" ref="489592456"/>
 								<object class="NSColor" key="IBUITextColor">
 									<int key="NSColorSpace">1</int>

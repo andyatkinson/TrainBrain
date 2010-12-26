@@ -10,6 +10,7 @@
   UIWindow *window;
 	UITableViewController *routesTableViewController;
 	UIViewController *mapStopsViewController;
+	UIViewController *newsViewController;
 	UIViewController *infoViewController;
 
 	NSString *selectedRouteId;
@@ -23,6 +24,7 @@
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, retain) UITableViewController	*routesTableViewController;
 @property (nonatomic, retain) UIViewController *mapStopsViewController;
+@property (nonatomic, retain) UIViewController *newsViewController;
 @property (nonatomic, retain) UIViewController *infoViewController;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 

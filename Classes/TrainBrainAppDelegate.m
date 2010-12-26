@@ -10,10 +10,11 @@
 #import "RootViewController.h"
 #import "MapStopsViewController.h"
 #import "InfoViewController.h"
+#import "NewsViewController.h"
 
 @implementation TrainBrainAppDelegate
 
-@synthesize window, routesTableViewController, mapStopsViewController, infoViewController, tabBarController;
+@synthesize window, routesTableViewController, mapStopsViewController, newsViewController, infoViewController, tabBarController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
@@ -39,6 +40,14 @@
 	mapController.tabBarItem.image = [UIImage imageNamed:@"72-pin.png"];
 	[mapStopsViewController release];
 	
+	newsViewController = [[NewsViewController alloc] init];
+	UINavigationController *newsController = [[[UINavigationController alloc] initWithRootViewController:newsViewController] autorelease];
+	newsController.navigationBar.barStyle = UIBarStyleDefault;
+	newsController.navigationBar.tintColor = navBarColor;
+	newsController.title = @"News";
+	newsController.tabBarItem.image = [UIImage imageNamed:@"icon_news.png"];
+	[newsViewController release];
+	
 	infoViewController = [[InfoViewController alloc] init];
 	UINavigationController *infoController = [[[UINavigationController alloc] initWithRootViewController:infoViewController] autorelease];
 	infoController.navigationBar.barStyle = UIBarStyleDefault;
@@ -47,7 +56,7 @@
 	infoController.tabBarItem.image = [UIImage imageNamed:@"90-lifebuoy.png"];
 	[infoViewController release];
 	
-	tabBarController.viewControllers = [NSArray arrayWithObjects:routesController, mapController, infoController, nil];
+	tabBarController.viewControllers = [NSArray arrayWithObjects:routesController, mapController, newsController, infoController, nil];
 	[window addSubview:tabBarController.view];
 
 	
