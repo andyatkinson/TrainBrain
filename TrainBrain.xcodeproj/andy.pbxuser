@@ -315,6 +315,14 @@
 			A1B3C78812C84739002B008B /* PBXTextBookmark */ = A1B3C78812C84739002B008B /* PBXTextBookmark */;
 			A1B3C78D12C84771002B008B /* PBXTextBookmark */ = A1B3C78D12C84771002B008B /* PBXTextBookmark */;
 			A1B3C79A12C84CD5002B008B /* PBXTextBookmark */ = A1B3C79A12C84CD5002B008B /* PBXTextBookmark */;
+			A1B3C7A312C84DED002B008B /* PBXTextBookmark */ = A1B3C7A312C84DED002B008B /* PBXTextBookmark */;
+			A1B3C7A812C84E1A002B008B /* PBXTextBookmark */ = A1B3C7A812C84E1A002B008B /* PBXTextBookmark */;
+			A1B3C7B112C84EAF002B008B /* PBXTextBookmark */ = A1B3C7B112C84EAF002B008B /* PBXTextBookmark */;
+			A1B3C7B512C84FFA002B008B /* PBXTextBookmark */ = A1B3C7B512C84FFA002B008B /* PBXTextBookmark */;
+			A1B3C7B612C8503A002B008B /* PBXTextBookmark */ = A1B3C7B612C8503A002B008B /* PBXTextBookmark */;
+			A1B3C7BB12C85165002B008B /* PBXTextBookmark */ = A1B3C7BB12C85165002B008B /* PBXTextBookmark */;
+			A1B3C7C012C851B3002B008B /* PBXTextBookmark */ = A1B3C7C012C851B3002B008B /* PBXTextBookmark */;
+			A1B3C7C912C8527F002B008B /* PBXTextBookmark */ = A1B3C7C912C8527F002B008B /* PBXTextBookmark */;
 			A1BC246E122320F200C324C9 = A1BC246E122320F200C324C9 /* PBXTextBookmark */;
 			A1BC246F122320F200C324C9 = A1BC246F122320F200C324C9 /* PBXBookmark */;
 			A1BC2470122320F200C324C9 = A1BC2470122320F200C324C9 /* PBXTextBookmark */;
@@ -727,9 +735,9 @@
 	};
 	A1B3C58012C7AA5F002B008B /* NewsViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1220, 2496}}";
-			sepNavSelRange = "{3165, 0}";
-			sepNavVisRange = "{2217, 1751}";
+			sepNavIntBoundsRect = "{{0, 0}, {1220, 2613}}";
+			sepNavSelRange = "{5510, 0}";
+			sepNavVisRange = "{4313, 1815}";
 		};
 	};
 	A1B3C59912C7AC3F002B008B /* PBXTextBookmark */ = {
@@ -1325,7 +1333,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 74";
 		rLen = 0;
-		rLoc = 2338;
+		rLoc = 2372;
 		rType = 0;
 		vrLen = 1696;
 		vrLoc = 943;
@@ -1335,7 +1343,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 117";
 		rLen = 0;
-		rLoc = 3855;
+		rLoc = 3889;
 		rType = 0;
 		vrLen = 1985;
 		vrLoc = 2051;
@@ -1375,7 +1383,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 21";
 		rLen = 0;
-		rLoc = 1129;
+		rLoc = 1163;
 		rType = 0;
 		vrLen = 1863;
 		vrLoc = 1408;
@@ -1385,7 +1393,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 72";
 		rLen = 0;
-		rLoc = 2867;
+		rLoc = 2901;
 		rType = 0;
 		vrLen = 1829;
 		vrLoc = 1452;
@@ -1411,7 +1419,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 149;
+		rLoc = 150;
 		rType = 1;
 	};
 	A1B3C67A12C8019E002B008B /* PBXTextBookmark */ = {
@@ -1419,7 +1427,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 125";
 		rLen = 0;
-		rLoc = 4595;
+		rLoc = 4629;
 		rType = 0;
 		vrLen = 2099;
 		vrLoc = 3244;
@@ -1569,7 +1577,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 150";
 		rLen = 0;
-		rLoc = 5801;
+		rLoc = 6076;
 		rType = 0;
 		vrLen = 1356;
 		vrLoc = 3443;
@@ -1579,7 +1587,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 125";
 		rLen = 0;
-		rLoc = 4595;
+		rLoc = 4629;
 		rType = 0;
 		vrLen = 1586;
 		vrLoc = 3165;
@@ -1618,7 +1626,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 150";
 		rLen = 0;
-		rLoc = 5801;
+		rLoc = 6076;
 		rType = 0;
 		vrLen = 1356;
 		vrLoc = 3443;
@@ -1758,7 +1766,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 150";
 		rLen = 0;
-		rLoc = 5801;
+		rLoc = 6076;
 		rType = 0;
 		vrLen = 1488;
 		vrLoc = 0;
@@ -1768,7 +1776,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 21";
 		rLen = 0;
-		rLoc = 426;
+		rLoc = 460;
 		rType = 0;
 		vrLen = 1871;
 		vrLoc = 235;
@@ -1778,7 +1786,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 22";
 		rLen = 0;
-		rLoc = 426;
+		rLoc = 460;
 		rType = 0;
 		vrLen = 1836;
 		vrLoc = 271;
@@ -1818,7 +1826,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 22";
 		rLen = 0;
-		rLoc = 426;
+		rLoc = 460;
 		rType = 0;
 		vrLen = 1903;
 		vrLoc = 271;
@@ -1828,7 +1836,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 21";
 		rLen = 0;
-		rLoc = 518;
+		rLoc = 552;
 		rType = 0;
 		vrLen = 1917;
 		vrLoc = 272;
@@ -1858,7 +1866,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 21";
 		rLen = 0;
-		rLoc = 518;
+		rLoc = 552;
 		rType = 0;
 		vrLen = 1724;
 		vrLoc = 90;
@@ -1868,7 +1876,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 27";
 		rLen = 0;
-		rLoc = 1153;
+		rLoc = 1187;
 		rType = 0;
 		vrLen = 1690;
 		vrLoc = 147;
@@ -1908,7 +1916,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 27";
 		rLen = 0;
-		rLoc = 1153;
+		rLoc = 1187;
 		rType = 0;
 		vrLen = 1796;
 		vrLoc = 147;
@@ -1918,7 +1926,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 22";
 		rLen = 0;
-		rLoc = 518;
+		rLoc = 552;
 		rType = 0;
 		vrLen = 1787;
 		vrLoc = 90;
@@ -1928,7 +1936,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 22";
 		rLen = 0;
-		rLoc = 518;
+		rLoc = 552;
 		rType = 0;
 		vrLen = 1788;
 		vrLoc = 90;
@@ -1938,7 +1946,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 22";
 		rLen = 0;
-		rLoc = 518;
+		rLoc = 552;
 		rType = 0;
 		vrLen = 1788;
 		vrLoc = 90;
@@ -1948,7 +1956,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 22";
 		rLen = 0;
-		rLoc = 518;
+		rLoc = 552;
 		rType = 0;
 		vrLen = 1788;
 		vrLoc = 90;
@@ -1958,7 +1966,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 22";
 		rLen = 0;
-		rLoc = 518;
+		rLoc = 552;
 		rType = 0;
 		vrLen = 1768;
 		vrLoc = 90;
@@ -1988,7 +1996,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 22";
 		rLen = 0;
-		rLoc = 518;
+		rLoc = 552;
 		rType = 0;
 		vrLen = 1768;
 		vrLoc = 90;
@@ -2028,7 +2036,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 22";
 		rLen = 0;
-		rLoc = 518;
+		rLoc = 552;
 		rType = 0;
 		vrLen = 1788;
 		vrLoc = 3;
@@ -2038,7 +2046,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 38";
 		rLen = 0;
-		rLoc = 1621;
+		rLoc = 1655;
 		rType = 0;
 		vrLen = 1800;
 		vrLoc = 3;
@@ -2048,7 +2056,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 38";
 		rLen = 0;
-		rLoc = 1621;
+		rLoc = 1655;
 		rType = 0;
 		vrLen = 1833;
 		vrLoc = 3;
@@ -2088,7 +2096,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 81";
 		rLen = 0;
-		rLoc = 3385;
+		rLoc = 3419;
 		rType = 0;
 		vrLen = 1781;
 		vrLoc = 1759;
@@ -2098,7 +2106,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 81";
 		rLen = 0;
-		rLoc = 3385;
+		rLoc = 3419;
 		rType = 0;
 		vrLen = 1525;
 		vrLoc = 2834;
@@ -2119,7 +2127,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 85;
+		rLoc = 86;
 		rType = 1;
 	};
 	A1B3C6FF12C80921002B008B /* PBXTextBookmark */ = {
@@ -2127,7 +2135,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 70";
 		rLen = 0;
-		rLoc = 2782;
+		rLoc = 2816;
 		rType = 0;
 		vrLen = 2182;
 		vrLoc = 1122;
@@ -2148,7 +2156,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 1;
-		rLoc = 85;
+		rLoc = 86;
 		rType = 1;
 	};
 	A1B3C70612C80927002B008B /* PBXTextBookmark */ = {
@@ -2156,7 +2164,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 70";
 		rLen = 0;
-		rLoc = 2813;
+		rLoc = 2847;
 		rType = 0;
 		vrLen = 2069;
 		vrLoc = 1218;
@@ -2176,7 +2184,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 142";
 		rLen = 0;
-		rLoc = 5236;
+		rLoc = 5513;
 		rType = 0;
 		vrLen = 1500;
 		vrLoc = 3648;
@@ -2186,7 +2194,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 142";
 		rLen = 0;
-		rLoc = 4981;
+		rLoc = 5015;
 		rType = 0;
 		vrLen = 1619;
 		vrLoc = 3363;
@@ -2196,7 +2204,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 145";
 		rLen = 0;
-		rLoc = 5504;
+		rLoc = 5781;
 		rType = 0;
 		vrLen = 1625;
 		vrLoc = 3363;
@@ -2206,7 +2214,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 143";
 		rLen = 0;
-		rLoc = 4946;
+		rLoc = 4980;
 		rType = 0;
 		vrLen = 1637;
 		vrLoc = 3749;
@@ -2216,7 +2224,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 142";
 		rLen = 0;
-		rLoc = 4946;
+		rLoc = 4980;
 		rType = 0;
 		vrLen = 1574;
 		vrLoc = 3749;
@@ -2226,7 +2234,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 143";
 		rLen = 0;
-		rLoc = 4946;
+		rLoc = 4980;
 		rType = 0;
 		vrLen = 1633;
 		vrLoc = 3749;
@@ -2236,7 +2244,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 144";
 		rLen = 0;
-		rLoc = 4981;
+		rLoc = 5015;
 		rType = 0;
 		vrLen = 1560;
 		vrLoc = 3749;
@@ -2246,7 +2254,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 144";
 		rLen = 0;
-		rLoc = 4981;
+		rLoc = 5015;
 		rType = 0;
 		vrLen = 1605;
 		vrLoc = 3749;
@@ -2256,7 +2264,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 142";
 		rLen = 0;
-		rLoc = 5196;
+		rLoc = 5458;
 		rType = 0;
 		vrLen = 1601;
 		vrLoc = 3749;
@@ -2266,7 +2274,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 144";
 		rLen = 0;
-		rLoc = 5196;
+		rLoc = 5458;
 		rType = 0;
 		vrLen = 1679;
 		vrLoc = 3635;
@@ -2276,7 +2284,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 70";
 		rLen = 0;
-		rLoc = 2782;
+		rLoc = 2816;
 		rType = 0;
 		vrLen = 2206;
 		vrLoc = 1122;
@@ -2326,7 +2334,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 149";
 		rLen = 0;
-		rLoc = 5504;
+		rLoc = 5781;
 		rType = 0;
 		vrLen = 1688;
 		vrLoc = 3784;
@@ -2336,7 +2344,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 150";
 		rLen = 0;
-		rLoc = 5573;
+		rLoc = 5848;
 		rType = 0;
 		vrLen = 1701;
 		vrLoc = 3773;
@@ -2366,7 +2374,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 35";
 		rLen = 0;
-		rLoc = 1113;
+		rLoc = 1147;
 		rType = 0;
 		vrLen = 1903;
 		vrLoc = 144;
@@ -2376,7 +2384,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 43";
 		rLen = 0;
-		rLoc = 1269;
+		rLoc = 1303;
 		rType = 0;
 		vrLen = 1945;
 		vrLoc = 272;
@@ -2386,7 +2394,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 43";
 		rLen = 0;
-		rLoc = 1269;
+		rLoc = 1303;
 		rType = 0;
 		vrLen = 1945;
 		vrLoc = 272;
@@ -2396,7 +2404,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 178";
 		rLen = 0;
-		rLoc = 5799;
+		rLoc = 6074;
 		rType = 0;
 		vrLen = 1623;
 		vrLoc = 4452;
@@ -2406,7 +2414,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 178";
 		rLen = 0;
-		rLoc = 5799;
+		rLoc = 6074;
 		rType = 0;
 		vrLen = 1621;
 		vrLoc = 4452;
@@ -2426,7 +2434,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 178";
 		rLen = 0;
-		rLoc = 5799;
+		rLoc = 6074;
 		rType = 0;
 		vrLen = 1621;
 		vrLoc = 4452;
@@ -2436,7 +2444,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 166";
 		rLen = 0;
-		rLoc = 5504;
+		rLoc = 5781;
 		rType = 0;
 		vrLen = 1621;
 		vrLoc = 4452;
@@ -2446,7 +2454,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 160";
 		rLen = 0;
-		rLoc = 5196;
+		rLoc = 5458;
 		rType = 0;
 		vrLen = 1768;
 		vrLoc = 4331;
@@ -2466,7 +2474,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 165";
 		rLen = 0;
-		rLoc = 5196;
+		rLoc = 5458;
 		rType = 0;
 		vrLen = 1787;
 		vrLoc = 4369;
@@ -2476,7 +2484,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 171";
 		rLen = 0;
-		rLoc = 5231;
+		rLoc = 5508;
 		rType = 0;
 		vrLen = 1797;
 		vrLoc = 4369;
@@ -2486,7 +2494,7 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 99";
 		rLen = 0;
-		rLoc = 3385;
+		rLoc = 3419;
 		rType = 0;
 		vrLen = 2176;
 		vrLoc = 1753;
@@ -2496,10 +2504,90 @@
 		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
 		name = "NewsViewController.m: 94";
 		rLen = 0;
-		rLoc = 3165;
+		rLoc = 3199;
 		rType = 0;
 		vrLen = 1751;
 		vrLoc = 2217;
+	};
+	A1B3C7A312C84DED002B008B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
+		name = "NewsViewController.m: 11";
+		rLen = 0;
+		rLoc = 234;
+		rType = 0;
+		vrLen = 1625;
+		vrLoc = 0;
+	};
+	A1B3C7A812C84E1A002B008B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
+		name = "NewsViewController.m: 12";
+		rLen = 0;
+		rLoc = 268;
+		rType = 0;
+		vrLen = 1633;
+		vrLoc = 0;
+	};
+	A1B3C7B112C84EAF002B008B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
+		name = "NewsViewController.m: 163";
+		rLen = 0;
+		rLoc = 5079;
+		rType = 0;
+		vrLen = 1851;
+		vrLoc = 4229;
+	};
+	A1B3C7B512C84FFA002B008B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
+		name = "NewsViewController.m: 177";
+		rLen = 0;
+		rLoc = 5784;
+		rType = 0;
+		vrLen = 1849;
+		vrLoc = 4230;
+	};
+	A1B3C7B612C8503A002B008B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
+		name = "NewsViewController.m: 172";
+		rLen = 0;
+		rLoc = 5510;
+		rType = 0;
+		vrLen = 1806;
+		vrLoc = 4298;
+	};
+	A1B3C7BB12C85165002B008B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
+		name = "NewsViewController.m: 166";
+		rLen = 0;
+		rLoc = 5455;
+		rType = 0;
+		vrLen = 1791;
+		vrLoc = 4309;
+	};
+	A1B3C7C012C851B3002B008B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
+		name = "NewsViewController.m: 170";
+		rLen = 0;
+		rLoc = 5455;
+		rType = 0;
+		vrLen = 1787;
+		vrLoc = 4312;
+	};
+	A1B3C7C912C8527F002B008B /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */;
+		name = "NewsViewController.m: 171";
+		rLen = 0;
+		rLoc = 5510;
+		rType = 0;
+		vrLen = 1815;
+		vrLoc = 4313;
 	};
 	A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */ = {
 		uiCtxt = {

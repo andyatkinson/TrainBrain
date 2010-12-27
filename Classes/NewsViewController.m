@@ -9,6 +9,7 @@
 #import "NewsViewController.h"
 #import "JSON/JSON.h"
 #import "TrainBrainAppDelegate.h"
+#import "QuartzCore/QuartzCore.h"
 
 @implementation NewsViewController
 
@@ -159,14 +160,20 @@
 	if([views count] > 0) {
 		
 		NSURL *url = [NSURL URLWithString:[[views objectAtIndex:indexPath.row] objectForKey:@"avatarUrl"]];
-		UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]]; 
-		UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-		[[cell avatarUrl] setImage:image];
+		
+		UIImageView *roundedCorners = [[UIImageView alloc] initWithImage:[UIImage imageWithData:[NSData dataWithContentsOfURL:url]]];
+		roundedCorners.center = self.view.center;
+		roundedCorners.layer.cornerRadius = 20.0;
+		roundedCorners.layer.masksToBounds = YES;
+		roundedCorners.layer.borderColor = [UIColor lightGrayColor].CGColor;
+		roundedCorners.layer.borderWidth = 1.0;
+		
+		[[cell avatarUrl] setImage:roundedCorners.image];
 		
 		[[cell title] setText:[[views objectAtIndex:indexPath.row] objectForKey:@"title"]];
 		[[cell published] setText:[[views objectAtIndex:indexPath.row] objectForKey:@"published"]];
 		[[cell author] setText:[[views objectAtIndex:indexPath.row] objectForKey:@"author"]];
-		//cell.backgroundView = [[[GradientView alloc] init] autorelease];
+		cell.backgroundView = [[[GradientView alloc] init] autorelease];
 	}
 	
 	return cell;
