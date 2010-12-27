@@ -45,6 +45,8 @@
 		A1B3C58212C7AA5F002B008B /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */; };
 		A1B3C58312C7AA5F002B008B /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B3C58112C7AA5F002B008B /* NewsViewController.xib */; };
 		A1B3C5A912C7AC5F002B008B /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B3C5A812C7AC5F002B008B /* InfoViewController.xib */; };
+		A1B3C66E12C7FF05002B008B /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B3C66D12C7FF05002B008B /* NewsCell.m */; };
+		A1B3C67012C7FF9E002B008B /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B3C66F12C7FF9E002B008B /* NewsCell.xib */; };
 		A1B56E2E10F968BF00294BEC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */; };
 		A1B56FCD10F9B25300294BEC /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B56FCB10F9B25300294BEC /* InfoViewController.m */; };
 		A1B5C4EA10A120F500CD3045 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B5C4E910A120F500CD3045 /* MapKit.framework */; };
@@ -134,6 +136,9 @@
 		A1B3C58012C7AA5F002B008B /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		A1B3C58112C7AA5F002B008B /* NewsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewsViewController.xib; path = Classes/NewsViewController.xib; sourceTree = "<group>"; };
 		A1B3C5A812C7AC5F002B008B /* InfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = InfoViewController.xib; path = Classes/InfoViewController.xib; sourceTree = "<group>"; };
+		A1B3C66C12C7FF05002B008B /* NewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsCell.h; path = ../NewsCell.h; sourceTree = "<group>"; };
+		A1B3C66D12C7FF05002B008B /* NewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsCell.m; path = ../NewsCell.m; sourceTree = "<group>"; };
+		A1B3C66F12C7FF9E002B008B /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A1B56FCA10F9B25300294BEC /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
@@ -204,6 +209,8 @@
 				A169E49D102F927100A65E05 /* JSON */,
 				A1BC24671223201E00C324C9 /* StationCell.h */,
 				A1BC24681223201E00C324C9 /* StationCell.m */,
+				A1B3C66C12C7FF05002B008B /* NewsCell.h */,
+				A1B3C66D12C7FF05002B008B /* NewsCell.m */,
 				A1D68749121B64DA002C6081 /* TrainLineCell.h */,
 				A1D6874A121B64DA002C6081 /* TrainLineCell.m */,
 				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
@@ -212,6 +219,8 @@
 				A169E494102F91E500A65E05 /* CustomCell.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
+				A1B3C57F12C7AA5F002B008B /* NewsViewController.h */,
+				A1B3C58012C7AA5F002B008B /* NewsViewController.m */,
 				A1DF9D02109D3BB100328466 /* TrainStationsViewController.h */,
 				A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */,
 				A1151739102F962E007CFBF6 /* TimeEntryViewController.h */,
@@ -226,8 +235,6 @@
 				A1B5C50410A1220F00CD3045 /* StopAnnotation.m */,
 				A1B56FCA10F9B25300294BEC /* InfoViewController.h */,
 				A1B56FCB10F9B25300294BEC /* InfoViewController.m */,
-				A1B3C57F12C7AA5F002B008B /* NewsViewController.h */,
-				A1B3C58012C7AA5F002B008B /* NewsViewController.m */,
 				A1E5ED471220D10000B15224 /* CustomPinBlue.h */,
 				A1E5ED481220D10000B15224 /* CustomPinBllue.m */,
 				A1E5ED811220D39000B15224 /* CustomPinBlack.h */,
@@ -308,6 +315,7 @@
 				A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */,
 				A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */,
 				A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */,
+				A1B3C66F12C7FF9E002B008B /* NewsCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -455,6 +463,7 @@
 				A1CD8A7912C79E9700734313 /* icon_news@2x.png in Resources */,
 				A1B3C58312C7AA5F002B008B /* NewsViewController.xib in Resources */,
 				A1B3C5A912C7AC5F002B008B /* InfoViewController.xib in Resources */,
+				A1B3C67012C7FF9E002B008B /* NewsCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +499,7 @@
 				A1BC24E2122328D100C324C9 /* GradientView.m in Sources */,
 				A1253AF71235D89F003AEF64 /* YellowGradientView.m in Sources */,
 				A1B3C58212C7AA5F002B008B /* NewsViewController.m in Sources */,
+				A1B3C66E12C7FF05002B008B /* NewsCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

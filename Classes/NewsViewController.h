@@ -7,10 +7,22 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TrainBrainAppDelegate.h"
+#import "MBProgressHUD.h"
+#import "GradientView.h"
+#import "NewsCell.h"
 
-
-@interface NewsViewController : UIViewController {
-
+@interface NewsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
+	IBOutlet NSMutableArray *views;
+	IBOutlet UITableView *newsTableView;
+	NSMutableData *responseData;
+	TrainBrainAppDelegate *appDelegate;
+	MBProgressHUD *HUD;
 }
+
+@property (nonatomic, retain) IBOutlet UITableView *newsTableView;
+@property (nonatomic, retain) NSMutableData	*responseData;
+@property (nonatomic, retain) IBOutlet NSMutableArray *views;
+@property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
 @end
