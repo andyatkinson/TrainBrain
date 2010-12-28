@@ -50,6 +50,10 @@
 	[window addSubview:HUD];
 	HUD.delegate = self;
 	
+	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshNews:)];
+	self.navigationItem.rightBarButtonItem = refreshButton;
+	[refreshButton release];	
+	
 	[self loadNewsStories];
 	self.title = @"News";
 }
@@ -183,6 +187,10 @@
 
 - (void)hudWasHidden
 {
+}
+
+-(IBAction)refreshNews:(id)sender {
+	[self loadNewsStories];
 }
 
 - (void)viewDidUnload {

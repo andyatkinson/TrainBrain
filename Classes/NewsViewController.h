@@ -25,4 +25,6 @@
 @property (nonatomic, retain) IBOutlet NSMutableArray *views;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 
+-(IBAction)refreshNews:(id)sender;
+
 @end
