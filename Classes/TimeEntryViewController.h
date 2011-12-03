@@ -13,6 +13,7 @@
 #import "GradientView.h"
 #import "YellowGradientView.h"
 #import "Stop.h"
+#import "Route.h"
 
 @interface TimeEntryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
 	IBOutlet UITableView *timeEntriesTableView;
@@ -22,6 +23,7 @@
 	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD *HUD;
 	Stop *selectedStop;
+	Route *selectedRoute;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *timeEntriesTableView;
@@ -30,6 +32,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *nextDepartureImage;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 @property (nonatomic, retain) Stop *selectedStop;
+@property (nonatomic, retain) Route *selectedRoute;
 
 -(IBAction)refreshTimes:(id)sender;
 

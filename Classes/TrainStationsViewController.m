@@ -96,13 +96,14 @@
 	
 	if ([records count] > 0) {
 		for (id _record in records) {
-			TimeEntryViewController *_controller = [[TimeEntryViewController alloc] init];
 			NSDictionary *_stop = [_record objectForKey:@"stop"];
 			Stop *stop = [[Stop alloc] init];
 			stop.stop_name = [_stop objectForKey:@"stop_name"];
 			stop.stop_id = [_stop objectForKey:@"stop_id"];
 			
+			TimeEntryViewController *_controller = [[TimeEntryViewController alloc] init];
 			[_controller setSelectedStop:stop];
+			[_controller setSelectedRoute:selectedRoute];
 			
 			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 												_controller, @"controller",
@@ -186,12 +187,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	//TimeEntryViewController *targetViewController = (TimeEntryViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
-				
-	//[appDelegate setSelectedStopId:[[views objectAtIndex:indexPath.row] objectForKey:@"stopId"]];
-	//[appDelegate setSelectedStopName:[[views objectAtIndex:indexPath.row] objectForKey:@"stationName"]];
+	TimeEntryViewController *controller = (TimeEntryViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
+	[controller setSelectedStop:controller.selectedStop];
+	[controller setSelectedRoute:controller.selectedRoute];
 	
-	//[[self navigationController] pushViewController:targetViewController animated:YES];	
+	[[self navigationController] pushViewController:controller animated:YES];
 }
 
 - (void)hudWasHidden

@@ -11,12 +11,7 @@
 	UITableViewController *routesTableViewController;
 	UIViewController *mapStopsViewController;
 	UIViewController *newsViewController;
-	UIViewController *infoViewController;
-
-	NSString *selectedHeadsign;
-	NSString *selectedStopId;
-	NSString *selectedStopName; 
-	
+	UIViewController *infoViewController;	
 	UITabBarController *tabBarController;
 }
 
@@ -26,15 +21,6 @@
 @property (nonatomic, retain) UIViewController *newsViewController;
 @property (nonatomic, retain) UIViewController *infoViewController;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-
-- (void) setSelectedHeadsign:(NSString *)newHeadsign;
-- (NSString *) getSelectedHeadsign;
-
-- (void) setSelectedStopId:(NSString *)newStopId;
-- (NSString *) getSelectedStopId;
-
-- (void) setSelectedStopName:(NSString *)newStopName;
-- (NSString *) getSelectedStopName;
 
 - (NSString *) getBaseUrl;
 

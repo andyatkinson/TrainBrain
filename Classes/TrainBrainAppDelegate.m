@@ -63,26 +63,6 @@
 	[window makeKeyAndVisible];
 }
 
-- (void) setSelectedHeadsign:(NSString *)newHeadsign {
-	selectedHeadsign = newHeadsign;
-}
-- (NSString *) getSelectedHeadsign {
-	return selectedHeadsign;
-}
-- (void) setSelectedStopId:(NSString *)newStopId {
-	selectedStopId = newStopId;
-}
-- (NSString *) getSelectedStopId {
-	return selectedStopId;
-}
-
-- (void) setSelectedStopName:(NSString *)newStopName {
-	selectedStopName = newStopName;
-}
-- (NSString *) getSelectedStopName {
-	return selectedStopName;
-}
-
 - (NSString *) getBaseUrl {
 	// IMPORTANT: ensure trailing slash is present.
 	//return @"http://api2.trainbrainapp.com/";

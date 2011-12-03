@@ -83,6 +83,7 @@
 		A1E81105110BC21900BE6502 /* 90-lifebuoy.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E81104110BC21900BE6502 /* 90-lifebuoy.png */; };
 		A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */; };
 		A1EDA16A148A937C004C7E61 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EDA169148A937C004C7E61 /* Route.m */; };
+		A1EDA20A148A9F86004C7E61 /* StopTime.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EDA209148A9F86004C7E61 /* StopTime.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -193,6 +194,8 @@
 		A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureDetailCell.xib; sourceTree = "<group>"; };
 		A1EDA168148A937C004C7E61 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
 		A1EDA169148A937C004C7E61 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
+		A1EDA208148A9F86004C7E61 /* StopTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTime.h; sourceTree = "<group>"; };
+		A1EDA209148A9F86004C7E61 /* StopTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTime.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -394,6 +397,8 @@
 				A1B5C58610A27E5B00CD3045 /* Stop.m */,
 				A1EDA168148A937C004C7E61 /* Route.h */,
 				A1EDA169148A937C004C7E61 /* Route.m */,
+				A1EDA208148A9F86004C7E61 /* StopTime.h */,
+				A1EDA209148A9F86004C7E61 /* StopTime.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -531,6 +536,7 @@
 				A1B3C58212C7AA5F002B008B /* NewsViewController.m in Sources */,
 				A1B3C66E12C7FF05002B008B /* NewsCell.m in Sources */,
 				A1EDA16A148A937C004C7E61 /* Route.m in Sources */,
+				A1EDA20A148A9F86004C7E61 /* StopTime.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
