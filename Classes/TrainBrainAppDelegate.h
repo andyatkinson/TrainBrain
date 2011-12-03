@@ -13,7 +13,6 @@
 	UIViewController *newsViewController;
 	UIViewController *infoViewController;
 
-	NSString *selectedRouteId;
 	NSString *selectedHeadsign;
 	NSString *selectedStopId;
 	NSString *selectedStopName; 
@@ -27,9 +26,6 @@
 @property (nonatomic, retain) UIViewController *newsViewController;
 @property (nonatomic, retain) UIViewController *infoViewController;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
-
-- (void) setSelectedRouteId:(NSString *)newRouteId;
-- (NSString *) getSelectedRouteId;
 
 - (void) setSelectedHeadsign:(NSString *)newHeadsign;
 - (NSString *) getSelectedHeadsign;

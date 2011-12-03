@@ -9,20 +9,21 @@
 #import "TrainStationsViewController.h"
 #import "JSON/JSON.h"
 #import "TimeEntryViewController.h"
+#import "Stop.h"
 
 @implementation TrainStationsViewController
 
-@synthesize stationsTableView, responseData, views, appDelegate;
+@synthesize stationsTableView, responseData, views, appDelegate, selectedRoute;
 
 - (void) loadTrainStations {
 	HUD.labelText = @"Loading";
 	HUD.detailsLabelText = @"Stations";
 	
 	// was passing lat/lng here lat=44.948364&lng=-93.239143
-	NSString *requestURL = [NSString stringWithFormat:@"%@routes/%@/stops.json",
+	NSString *requestURL = [NSString stringWithFormat:@"%@train/v1/routes/%@/stops.json",
 													[appDelegate getBaseUrl],
-													[appDelegate getSelectedRouteId]];
-	
+													selectedRoute.route_id];
+	NSLog(@"request URL: %@", requestURL);
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
@@ -87,32 +88,25 @@
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	SBJSON *parser = [[SBJSON alloc] init];
-	NSArray *trainStations = [parser objectWithString:responseString error:nil];
+	NSArray *records = [parser objectWithString:responseString error:nil];
 	[parser release];
 	[responseString release];
+	
 	views = [[NSMutableArray alloc] init];
 	
-	int count = [trainStations count];
-	if(count > 0) {
-		for(int i=0; i < count; i++) {
-			NSMutableDictionary *item = [trainStations objectAtIndex:i];
-			TimeEntryViewController *targetViewController = [[TimeEntryViewController alloc] init];
+	if ([records count] > 0) {
+		for (id _record in records) {
+			TimeEntryViewController *_controller = [[TimeEntryViewController alloc] init];
+			NSDictionary *_stop = [_record objectForKey:@"stop"];
+			Stop *stop = [[Stop alloc] init];
+			stop.stop_name = [_stop objectForKey:@"stop_name"];
+			stop.stop_id = [_stop objectForKey:@"stop_id"];
 			
-			NSString *stationName = [[item objectForKey:@"train_station"] objectForKey:@"name"];
-			NSString *stationDescription = [[item objectForKey:@"train_station"] objectForKey:@"description"];
-			NSString *stationStreet = [[item objectForKey:@"train_station"] objectForKey:@"street"];
-			NSString *stopId = [[item objectForKey:@"train_station"] objectForKey:@"stop_id"];
-			if(stopId != NULL) {
-				[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-													stopId, @"stopId",
-													stationName, @"stationName",
-													stationDescription, @"stationDescription",
-													stationStreet, @"stationStreet",
-													targetViewController, @"controller",
-													nil]];
-			}
+			[_controller setSelectedStop:stop];
 			
-			[targetViewController release];
+			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+												_controller, @"controller",
+												nil]];
 			
 		}
 	} else {
@@ -165,10 +159,12 @@
 	
 	// Set up the cell...
 	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-	cell.stationName.text = [[views objectAtIndex:indexPath.row] objectForKey:@"stationName"];
-	NSString *description = [NSString stringWithFormat:@"%@", 
-													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationDescription"]];
-	cell.stationDescription.text = description;
+	Stop *stop = (Stop *)[[[views objectAtIndex:indexPath.row] objectForKey:@"controller"] selectedStop];
+	cell.stationName.text = stop.stop_name;
+	
+	//NSString *description = [NSString stringWithFormat:@"%@", 
+//													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationDescription"]];
+//	cell.stationDescription.text = description;
 	
 	cell.backgroundView = [[[GradientView alloc] init] autorelease];
 		
@@ -190,12 +186,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	TimeEntryViewController *targetViewController = (TimeEntryViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
+	//TimeEntryViewController *targetViewController = (TimeEntryViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
 				
-	[appDelegate setSelectedStopId:[[views objectAtIndex:indexPath.row] objectForKey:@"stopId"]];
-	[appDelegate setSelectedStopName:[[views objectAtIndex:indexPath.row] objectForKey:@"stationName"]];
+	//[appDelegate setSelectedStopId:[[views objectAtIndex:indexPath.row] objectForKey:@"stopId"]];
+	//[appDelegate setSelectedStopName:[[views objectAtIndex:indexPath.row] objectForKey:@"stationName"]];
 	
-	[[self navigationController] pushViewController:targetViewController animated:YES];	
+	//[[self navigationController] pushViewController:targetViewController animated:YES];	
 }
 
 - (void)hudWasHidden

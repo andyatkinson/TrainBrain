@@ -2,13 +2,15 @@
 //  Route.m
 //  TrainBrain
 //
-//  Created by Andy Atkinson on 11/8/09.
-//  Copyright 2009 __MyCompanyName__. All rights reserved.
+//  Created by Andrew Atkinson on 12/2/11.
+//  Copyright 2011 Beetle Fight. All rights reserved.
 //
 
 #import "Route.h"
 
-
 @implementation Route
 
+@synthesize route_id, long_name, short_name, route_desc, route_type, route_url;
+
 @end
+

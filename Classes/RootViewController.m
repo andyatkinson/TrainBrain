@@ -11,6 +11,7 @@
 #import "TrainBrainAppDelegate.h"
 #import "TrainStationsViewController.h"
 #import "MapStopsViewController.h"
+#import "Route.h"
 
 @interface RootViewController (Private)
 - (void)loadRailStations;
@@ -102,29 +103,33 @@
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	SBJSON *parser = [[SBJSON alloc] init];
-	// parse the JSON response into an object
-	NSArray *lines = [parser objectWithString:responseString error:nil];			
+	NSArray *records = [parser objectWithString:responseString error:nil];			
+	
 	[parser release];
 	[responseString release];
-	views = [[NSMutableArray alloc] init];
-	int count = [lines count];
-	if(count > 0) {
-		for(int i=0; i < count; i++) {
-			NSMutableDictionary *line = [[lines objectAtIndex:i] objectForKey:@"route"];
-			NSString *routeId = [line objectForKey:@"route_id"];
-			NSString *shortName = [line objectForKey:@"short_name"];
-			NSString *longName = [line objectForKey:@"long_name"];
-			TrainStationsViewController *trainStationsViewController = [[TrainStationsViewController alloc] init];
+	
+	views = [[NSMutableArray alloc] init];	
+
+	if ([records count] > 0) {
+		for (id _record in records) {
+			NSDictionary *_route = [_record objectForKey:@"route"];			
+			Route *route = [[Route alloc] init];
+			route.long_name = [_route objectForKey:@"route_long_name"];
+			route.route_id = [_route objectForKey:@"route_id"];
+			route.short_name = [_route objectForKey:@"route_short_name"];
+			route.route_desc = [_route objectForKey:@"route_desc"];
+			route.route_type = [_route objectForKey:@"route_type"];
+			route.route_url = [_route objectForKey:@"route_url"];
+			
+			TrainStationsViewController *_controller = [[TrainStationsViewController alloc] init];
+			[_controller setSelectedRoute:route];
 			
 			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-												routeId, @"route_id",
-												shortName, @"short_name",
-												longName, @"long_name",
-												trainStationsViewController, @"controller",
+												_controller, @"controller",
 												nil]];
 		}
 	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Train Routes Found." 
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Routes Found." 
 																										message:nil 
 																									 delegate:nil 
 																					cancelButtonTitle:@"OK" 
@@ -133,7 +138,6 @@
 		[alert release];
 	}
 	
-	// IMPORTANT: this call reloads the UITableView cells data after the data is available
 	[routesTableView reloadData];
 	
 	[HUD hide:YES];
@@ -147,7 +151,7 @@
 	
 	HUD.detailsLabelText = @"Routes";
 	
-	NSString *locationString = [[NSString alloc] initWithFormat:@"%@routes.json", [appDelegate getBaseUrl]];
+	NSString *locationString = [[NSString alloc] initWithFormat:@"%@train/v1/routes.json", [appDelegate getBaseUrl]];
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:locationString]];
 	[locationString release];
 	
@@ -207,17 +211,16 @@
 	}
 	
 	if([views count] > 0) {
-		NSString *lineTitleString = [[views objectAtIndex:indexPath.row] objectForKey:@"long_name"];
-		[[cell lineTitle] setText:lineTitleString];
-		[[cell lineDescription] setText:[[views objectAtIndex:indexPath.row] objectForKey:@"short_name"]];
+		Route *route = (Route *)[[[views objectAtIndex:indexPath.row] objectForKey:@"controller"] selectedRoute];
+
+		[[cell lineTitle] setText:route.long_name];
+		[[cell lineDescription] setText:route.short_name];
 		[cell disclosureArrow].image = [UIImage imageNamed:@"icon_arrow.png"];
 		
-		NSPredicate *hiawathaRegex = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", @"Hiawatha.+"];
-		
-		if ([hiawathaRegex evaluateWithObject:lineTitleString] == YES) {
-			[cell lineImage].image = [UIImage imageNamed:@"icon_hiawatha.png"];
-		} else {
+		if ([route.long_name rangeOfString:@"Hiawatha"].location == NSNotFound) {
 			[cell lineImage].image = [UIImage imageNamed:@"icon_northstar.png"];
+		} else {
+			[cell lineImage].image = [UIImage imageNamed:@"icon_hiawatha.png"];
 		}
 		
 		cell.backgroundView = [[[GradientView alloc] init] autorelease];
@@ -236,7 +239,6 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	TrainStationsViewController *targetViewController = (TrainStationsViewController *)[[views objectAtIndex:indexPath.row] objectForKey:@"controller"];
-	[appDelegate setSelectedRouteId:[[views objectAtIndex:indexPath.row] objectForKey:@"route_id"]];	
 	[[self navigationController] pushViewController:targetViewController animated:YES];
 	
 }

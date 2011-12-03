@@ -14,7 +14,7 @@
 
 @implementation TimeEntryViewController
 
-@synthesize responseData, timeEntryRows, timeEntriesTableView, nextDepartureImage, appDelegate;
+@synthesize responseData, timeEntryRows, timeEntriesTableView, nextDepartureImage, appDelegate, selectedStop;
 
 -(IBAction)refreshTimes:(id)sender {
 	[self loadTimeEntries];

@@ -107,14 +107,14 @@
 		StopAnnotation *stopAnn = (StopAnnotation *)annotation;
 		view = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"stopRouteId"];
 		if(nil == view) {
-			NSString *routeId = stopAnn.stop.routeId;
-			NSRange hiawathaRange = [routeId rangeOfString:@"55"];
-			NSRange northstarRange = [routeId rangeOfString:@"888"];
-			if (hiawathaRange.location != NSNotFound) {
-				view = [[[CustomPinBlack alloc] initWithAnnotation:annotation] autorelease];
-			} else if(northstarRange.location != NSNotFound) {
-				view = [[[CustomPinBlue alloc] initWithAnnotation:annotation] autorelease];
-			}
+			//NSString *routeId = stopAnn.stop.routeId;
+//			NSRange hiawathaRange = [routeId rangeOfString:@"55"];
+//			NSRange northstarRange = [routeId rangeOfString:@"888"];
+//			if (hiawathaRange.location != NSNotFound) {
+//				view = [[[CustomPinBlack alloc] initWithAnnotation:annotation] autorelease];
+//			} else if(northstarRange.location != NSNotFound) {
+//				view = [[[CustomPinBlue alloc] initWithAnnotation:annotation] autorelease];
+//			}
 		}
 		//[(MKPinAnnotationView *)view setAnimatesDrop:YES];
 		 
@@ -128,8 +128,8 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
 	StopAnnotation *stopAnn = (StopAnnotation *)[view annotation];
 
-	NSURL *webUrl = [NSURL URLWithString:stopAnn.stop.webUrl];
-  [[UIApplication sharedApplication] openURL:webUrl];
+	//NSURL *webUrl = [NSURL URLWithString:stopAnn.stop.webUrl];
+//  [[UIApplication sharedApplication] openURL:webUrl];
 }
 
 - (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error {
@@ -174,6 +174,7 @@
 
 			StopAnnotation *stopAnnotation = [StopAnnotation annotationWithStop:newStop];
 			[self.mapView addAnnotation:stopAnnotation];
+			[newStop release];
 		}
 	
 	} else {

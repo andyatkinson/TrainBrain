@@ -82,6 +82,7 @@
 		A1E810F7110BBD7D00BE6502 /* 72-pin.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E810F6110BBD7D00BE6502 /* 72-pin.png */; };
 		A1E81105110BC21900BE6502 /* 90-lifebuoy.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E81104110BC21900BE6502 /* 90-lifebuoy.png */; };
 		A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */; };
+		A1EDA16A148A937C004C7E61 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EDA169148A937C004C7E61 /* Route.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -130,6 +131,7 @@
 		A169E4AF102F928E00A65E05 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		A169E4BB102F931800A65E05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A16A8BCA1038F93C001DF0EF /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
+		A1789C1C12CA7FB000361D22 /* TrainBrain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainBrain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1AA520A1227869C007E9746 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = clock.png; sourceTree = "<group>"; };
 		A1AA520B1227869C007E9746 /* clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "clock@2x.png"; sourceTree = "<group>"; };
 		A1AA520E122786A5007E9746 /* exclamation.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exclamation.png; sourceTree = "<group>"; };
@@ -159,7 +161,6 @@
 		A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MapStopsViewController.xib; path = Classes/MapStopsViewController.xib; sourceTree = "<group>"; };
 		A1B5C58510A27E5B00CD3045 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
 		A1B5C58610A27E5B00CD3045 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
-		A1BC243C1222488C00C324C9 /* TrainBrain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainBrain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1BC245E12231EBE00C324C9 /* StationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationCell.xib; sourceTree = "<group>"; };
 		A1BC24671223201E00C324C9 /* StationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationCell.h; path = ../StationCell.h; sourceTree = "<group>"; };
 		A1BC24681223201E00C324C9 /* StationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationCell.m; path = ../StationCell.m; sourceTree = "<group>"; };
@@ -190,6 +191,8 @@
 		A1E810F6110BBD7D00BE6502 /* 72-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "72-pin.png"; sourceTree = "<group>"; };
 		A1E81104110BC21900BE6502 /* 90-lifebuoy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy.png"; sourceTree = "<group>"; };
 		A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureDetailCell.xib; sourceTree = "<group>"; };
+		A1EDA168148A937C004C7E61 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
+		A1EDA169148A937C004C7E61 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +215,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A1EDA0831489E2C3004C7E61 /* Models */,
 				A1BC257E122338B500C324C9 /* HUD */,
 				A1BC24DE122328BB00C324C9 /* Gradient */,
 				A169E49D102F927100A65E05 /* JSON */,
@@ -237,8 +241,6 @@
 				1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */,
 				A1B5C54710A26FBE00CD3045 /* MapStopsViewController.h */,
 				A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */,
-				A1B5C58510A27E5B00CD3045 /* Stop.h */,
-				A1B5C58610A27E5B00CD3045 /* Stop.m */,
 				A1B5C50310A1220F00CD3045 /* StopAnnotation.h */,
 				A1B5C50410A1220F00CD3045 /* StopAnnotation.m */,
 				A1B56FCA10F9B25300294BEC /* InfoViewController.h */,
@@ -254,7 +256,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A1BC243C1222488C00C324C9 /* TrainBrain.app */,
+				A1789C1C12CA7FB000361D22 /* TrainBrain.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -385,6 +387,17 @@
 			name = HUD;
 			sourceTree = "<group>";
 		};
+		A1EDA0831489E2C3004C7E61 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A1B5C58510A27E5B00CD3045 /* Stop.h */,
+				A1B5C58610A27E5B00CD3045 /* Stop.m */,
+				A1EDA168148A937C004C7E61 /* Route.h */,
+				A1EDA169148A937C004C7E61 /* Route.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -402,7 +415,7 @@
 			);
 			name = TrainBrain;
 			productName = TrainBrain;
-			productReference = A1BC243C1222488C00C324C9 /* TrainBrain.app */;
+			productReference = A1789C1C12CA7FB000361D22 /* TrainBrain.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -415,6 +428,7 @@
 			};
 			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "TrainBrain" */;
 			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -516,6 +530,7 @@
 				A1253AF71235D89F003AEF64 /* YellowGradientView.m in Sources */,
 				A1B3C58212C7AA5F002B008B /* NewsViewController.m in Sources */,
 				A1B3C66E12C7FF05002B008B /* NewsCell.m in Sources */,
+				A1EDA16A148A937C004C7E61 /* Route.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

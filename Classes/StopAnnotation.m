@@ -22,12 +22,12 @@
 
 -(id)initWithStop:(Stop *)stop {
 	self = [super init];
-	if(nil != self) {
-		self.title = stop.stopName;
-		self.subtitle = [NSString stringWithFormat:@"%@", stop.description];
-		self.coordinate = stop.location.coordinate;
-		self.stop = stop;
-	}
+	//if(nil != self) {
+//		self.title = stop.stopName;
+//		self.subtitle = [NSString stringWithFormat:@"%@", stop.description];
+//		self.coordinate = stop.location.coordinate;
+//		self.stop = stop;
+//	}
 	return self;
 }
 

@@ -2,29 +2,29 @@
 //  Stop.h
 //  TrainBrain
 //
-//  Created by Andy Atkinson on 11/4/09.
-//  Copyright Andy Atkinson http://webandy.com 2009. All rights reserved.
+//  Created by Andrew Atkinson on 12/3/11.
+//  Copyright 2011 Beetle Fight. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import <CoreLocation/CoreLocation.h>
+
 
 @interface Stop : NSObject {
-	CLLocation *_location;
-	NSString *_stopName;
-	NSString *_street;
-	NSString *_description;
-	NSString *_routeId;
-	NSString *_webUrl;
-	NSString *_routeShortName;
+	NSString *stop_id;
+	NSString *stop_name;
+	NSString *stop_street;
+	NSString *stop_lat;
+	NSString *stop_lon;
+	NSString *stop_city;
+	NSString *stop_desc;
 }
 
-@property(nonatomic, copy) CLLocation *location;
-@property (nonatomic, retain) NSString *stopName;
-@property (nonatomic, retain) NSString *street;
-@property (nonatomic, retain) NSString *description;
-@property (nonatomic, retain) NSString *routeId;
-@property (nonatomic, retain) NSString *webUrl;
-@property (nonatomic, retain) NSString *routeShortName;
+@property (nonatomic, retain) NSString *stop_id;
+@property (nonatomic, retain) NSString *stop_name;
+@property (nonatomic, retain) NSString *stop_street;
+@property (nonatomic, retain) NSString *stop_lat;
+@property (nonatomic, retain) NSString *stop_lon;
+@property (nonatomic, retain) NSString *stop_city;
+@property (nonatomic, retain) NSString *stop_desc;
 
 @end

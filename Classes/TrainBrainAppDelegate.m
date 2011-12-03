@@ -63,13 +63,6 @@
 	[window makeKeyAndVisible];
 }
 
-- (void) setSelectedRouteId:(NSString *)newRouteId {
-	selectedRouteId = newRouteId;
-}
-- (NSString *) getSelectedRouteId {
-	return selectedRouteId;
-}
-
 - (void) setSelectedHeadsign:(NSString *)newHeadsign {
 	selectedHeadsign = newHeadsign;
 }
