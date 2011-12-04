@@ -15,6 +15,8 @@
 	NSString *drop_off_type;
 	NSString *pickup_type;
 	NSString *price;
+	NSString *minutes_from_now;
+	NSString *headsign;
 }
 
 @property (nonatomic, retain) NSString *departure_time;
@@ -22,5 +24,7 @@
 @property (nonatomic, retain) NSString *drop_off_type;
 @property (nonatomic, retain) NSString *pickup_type;
 @property (nonatomic, retain) NSString *price;
+@property (nonatomic, retain) NSString *minutes_from_now;
+@property (nonatomic, retain) NSString *headsign;
 
 @end

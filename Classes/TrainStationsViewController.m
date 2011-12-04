@@ -60,7 +60,7 @@
 	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	responseData = [[NSMutableData data] retain];
 	[self loadTrainStations];
-	self.title = @"Stations";
+	self.title = selectedRoute.long_name;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -100,6 +100,7 @@
 			Stop *stop = [[Stop alloc] init];
 			stop.stop_name = [_stop objectForKey:@"stop_name"];
 			stop.stop_id = [_stop objectForKey:@"stop_id"];
+			stop.stop_desc = [_stop objectForKey:@"stop_desc"];
 			
 			TimeEntryViewController *_controller = [[TimeEntryViewController alloc] init];
 			[_controller setSelectedStop:stop];

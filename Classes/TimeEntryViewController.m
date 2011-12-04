@@ -117,31 +117,12 @@
 	
 	timeEntryRows = [[NSMutableArray alloc] init];	
 
-//	NSDate *now = [NSDate date];
-//	NSCalendar *calendar = [NSCalendar currentCalendar];
-//	NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
-//	int hour = (int)[components hour];
-//	components = [calendar components:NSMinuteCalendarUnit fromDate:now];
-//	int minute = (int)[components minute];
-//	timeEntryRows = [[NSMutableArray alloc] init];
-//	int count = [entries count];
-//	for(int i=0; i < count; i++) {
-//		NSMutableDictionary *entry = [entries objectAtIndex:i];
-//		
-//		NSString *hour = [entry objectForKey:@"hour"];
-//		NSString *minute = [entry objectForKey:@"minute"];
-//		NSString *type = [entry objectForKey:@"type"];
-//		NSString *headsign = [entry objectForKey:@"headsign"];
-//		
-//		NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
-//		[timeFormatter setDateStyle:NSDateFormatterNoStyle];
-//		[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
-//		
-//		NSString *entryTime = [NSString stringWithFormat:@"%@:%@", hour, minute];
-//		
-//		// method not officially part of iPhone SDK NSDate class, ignore warning
-//		NSDate *stringTime = [NSDate dateWithNaturalLanguageString:entryTime];
-//		NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
+	NSDate *now = [NSDate date];
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+	NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
+	int hour = (int)[components hour];
+	components = [calendar components:NSMinuteCalendarUnit fromDate:now];
+	int minute = (int)[components minute];
 	
 	if ([records count] > 0) {
 		for (id _record in records) {
@@ -152,6 +133,17 @@
 			stop_time.drop_off_type = [_stop_time objectForKey:@"drop_off_type"];
 			stop_time.pickup_type = [_stop_time objectForKey:@"pickup_type"];
 			stop_time.price = [_stop_time objectForKey:@"price"];
+			stop_time.headsign = [_stop_time objectForKey:@"headsign"];
+			
+			NSArray *parts = [stop_time.departure_time componentsSeparatedByString:@":"];
+			int _hour = (int)[[parts objectAtIndex:0] intValue];
+			int _mins = (int)[[parts objectAtIndex:1] intValue];
+			
+			if (hour == _hour && minute < _mins) {
+				stop_time.minutes_from_now = [[NSString alloc] initWithFormat:@"%d", (_mins - minute)];
+			} else {
+				stop_time.minutes_from_now = @"";
+			}
 
 			[timeEntryRows addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 																stop_time, @"stop_time",
@@ -274,45 +266,41 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {	
 	static NSString *cellId = @"DepartureDetailCell";
-	//int minutes = 0;
+	int minutes = 0;
 	DepartureDetailCell *cell = (DepartureDetailCell *)[tableView dequeueReusableCellWithIdentifier:cellId];
 
-		NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"DepartureDetailCell" owner:nil options:nil];
-		
-		for(id currrentObject in nibObjects) {
-			if([currrentObject isKindOfClass:[DepartureDetailCell class]]) {
-				cell = (DepartureDetailCell *)currrentObject;
-			}
+	NSArray *nibObjects = [[NSBundle mainBundle] loadNibNamed:@"DepartureDetailCell" owner:nil options:nil];
+	
+	for(id currrentObject in nibObjects) {
+		if([currrentObject isKindOfClass:[DepartureDetailCell class]]) {
+			cell = (DepartureDetailCell *)currrentObject;
 		}
-	
-		// set the gradient
-		cell.backgroundView = [[[GradientView alloc] init] autorelease];
-	
-		if([timeEntryRows count] > 0) {
-			StopTime *stop_time = (StopTime *)[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"stop_time"];
-			[[cell departureTime] setText:stop_time.departure_time];
-			[[cell departureCost] setText:stop_time.price];
-			[[cell headsign] setText:@"foo-hiawatha"];
-			
-			[cell	departureIcon].image = [UIImage imageNamed:@"clock.png"];
-			[cell setBackgroundColor:[UIColor whiteColor]];
-			
-			//minutes = [[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"minutesRemaining"] intValue];			
-//			if(minutes > 0 && minutes < 6) { // ensure only set for between 1 and 5 minutes
-//				[cell	departureIcon].image = [UIImage imageNamed:@"exclamation.png"];
-//				cell.backgroundView = [[[YellowGradientView alloc] init] autorelease];
-//			}
-//			
-//			if(minutes == 0) {
-//				// don't show zero in the table cell could be in the past, or calculation could have failed
-//				[[cell timeRemaining] setText:@""];
-//			} else {
-//				[[cell timeRemaining] setText:[[NSString alloc] initWithFormat:@"%d min", minutes]];
-//			}
-		}
-	
-		return cell;
+	}
 
+	// set the gradient
+	cell.backgroundView = [[[GradientView alloc] init] autorelease];
+
+	if([timeEntryRows count] > 0) {
+		StopTime *stop_time = (StopTime *)[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"stop_time"];
+		[[cell departureTime] setText:stop_time.departure_time];
+		[[cell departureCost] setText:stop_time.price];
+		[[cell headsign] setText:stop_time.headsign];
+		
+		[cell	departureIcon].image = [UIImage imageNamed:@"clock.png"];
+		[cell setBackgroundColor:[UIColor whiteColor]];
+		
+		minutes = (int)[stop_time.minutes_from_now intValue];
+		if (0 < minutes && minutes < 6) {
+			[cell	departureIcon].image = [UIImage imageNamed:@"exclamation.png"];
+			cell.backgroundView = [[[YellowGradientView alloc] init] autorelease];
+		} else if (minutes == 0) {
+			// don't show zero in the table cell could be in the past, or calculation could have failed
+			[[cell timeRemaining] setText:@""];
+		} else {
+			[[cell timeRemaining] setText:[[NSString alloc] initWithFormat:@"%d min", minutes]];
+		}
+	}
+	return cell;
 }
 
 - (void)didReceiveMemoryWarning {

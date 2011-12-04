@@ -300,7 +300,7 @@
 							<real>254</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>664 207 1665 1211 0 0 2560 1418 </string>
+						<string>716 207 1665 1211 0 0 2560 1418 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -330,10 +330,9 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>A1EDA2A7148B323B004C7E61</string>
+										<string>A1EDA31B148B453D004C7E61</string>
 										<key>history</key>
 										<array>
-											<string>A141AE1D10ABE82900A0924E</string>
 											<string>A1E5ED061220CB0E00B15224</string>
 											<string>A1E5ED121220CB0E00B15224</string>
 											<string>A1E5ED4D1220D1B300B15224</string>
@@ -385,7 +384,6 @@
 											<string>A1EDA0601489DFC2004C7E61</string>
 											<string>A1EDA153148A9305004C7E61</string>
 											<string>A1EDA1B7148A976B004C7E61</string>
-											<string>A1EDA1B8148A976B004C7E61</string>
 											<string>A1EDA1CD148A97EA004C7E61</string>
 											<string>A1EDA1DA148A982E004C7E61</string>
 											<string>A1EDA1DB148A982E004C7E61</string>
@@ -393,13 +391,15 @@
 											<string>A1EDA217148AA450004C7E61</string>
 											<string>A1EDA21A148AA450004C7E61</string>
 											<string>A1EDA21B148AA450004C7E61</string>
-											<string>A1EDA240148AA79A004C7E61</string>
 											<string>A1EDA241148AA79A004C7E61</string>
-											<string>A1EDA27A148B229D004C7E61</string>
-											<string>A1EDA297148B28CA004C7E61</string>
-											<string>A1EDA298148B28CA004C7E61</string>
-											<string>A1EDA299148B28CA004C7E61</string>
-											<string>A1EDA29A148B28CA004C7E61</string>
+											<string>A1EDA2F3148B425D004C7E61</string>
+											<string>A1EDA2F7148B4298004C7E61</string>
+											<string>A1EDA2F8148B4298004C7E61</string>
+											<string>A1EDA30E148B448D004C7E61</string>
+											<string>A1EDA30F148B448D004C7E61</string>
+											<string>A1EDA310148B448D004C7E61</string>
+											<string>A1EDA311148B448D004C7E61</string>
+											<string>A1EDA2F2148B425D004C7E61</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -413,7 +413,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1389, 1044}}</string>
 								<key>RubberWindowFrame</key>
-								<string>664 207 1665 1211 0 0 2560 1418 </string>
+								<string>716 207 1665 1211 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -433,7 +433,7 @@
 								<key>Frame</key>
 								<string>{{0, 1049}, {1389, 121}}</string>
 								<key>RubberWindowFrame</key>
-								<string>664 207 1665 1211 0 0 2560 1418 </string>
+								<string>716 207 1665 1211 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -595,13 +595,13 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>A169E415102F915800A65E05</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/andy/Projects/TrainBrain/TrainBrain.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>664 207 1665 1211 0 0 2560 1418 </string>
+	<string>716 207 1665 1211 0 0 2560 1418 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -939,7 +939,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1604, 741}}</string>
 								<key>RubberWindowFrame</key>
-								<string>183 125 1604 782 0 0 2560 1418 </string>
+								<string>664 169 1604 782 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -968,11 +968,11 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>183 125 1604 782 0 0 2560 1418 </string>
+			<string>664 169 1604 782 0 0 2560 1418 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>Identifier</key>
