@@ -158,17 +158,11 @@
 		}
 	}
 	
-	// Set up the cell...
 	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
 	Stop *stop = (Stop *)[[[views objectAtIndex:indexPath.row] objectForKey:@"controller"] selectedStop];
 	cell.stationName.text = stop.stop_name;
-	
-	//NSString *description = [NSString stringWithFormat:@"%@", 
-//													 [[views objectAtIndex:indexPath.row] objectForKey:@"stationDescription"]];
-//	cell.stationDescription.text = description;
-	
+	cell.stationDescription.text = stop.stop_desc;
 	cell.backgroundView = [[[GradientView alloc] init] autorelease];
-		
 	return cell;
 }
 

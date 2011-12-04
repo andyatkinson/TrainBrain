@@ -11,6 +11,6 @@
 
 @implementation StopTime
 
-@synthesize departure_time;
+@synthesize departure_time, arrival_time, drop_off_type, pickup_type, price;
 
 @end

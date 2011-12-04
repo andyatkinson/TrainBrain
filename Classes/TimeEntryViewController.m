@@ -84,7 +84,7 @@
 	responseData = [[NSMutableData data] retain];
 	
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	self.title = @"foo";
+	self.title = selectedStop.stop_name;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -130,7 +130,6 @@
 //		
 //		NSString *hour = [entry objectForKey:@"hour"];
 //		NSString *minute = [entry objectForKey:@"minute"];
-//		NSString *cost = [entry objectForKey:@"cost"];
 //		NSString *type = [entry objectForKey:@"type"];
 //		NSString *headsign = [entry objectForKey:@"headsign"];
 //		
@@ -149,7 +148,10 @@
 			NSDictionary *_stop_time = [_record objectForKey:@"stop_time"];
 			StopTime *stop_time = [[StopTime alloc] init];
 			stop_time.departure_time = [_stop_time objectForKey:@"departure_time"];
-
+			stop_time.arrival_time = [_stop_time objectForKey:@"arrival_time"];
+			stop_time.drop_off_type = [_stop_time objectForKey:@"drop_off_type"];
+			stop_time.pickup_type = [_stop_time objectForKey:@"pickup_type"];
+			stop_time.price = [_stop_time objectForKey:@"price"];
 
 			[timeEntryRows addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 																stop_time, @"stop_time",
@@ -180,7 +182,6 @@
 //		
 //		NSString *hour = [entry objectForKey:@"hour"];
 //		NSString *minute = [entry objectForKey:@"minute"];
-//		NSString *cost = [entry objectForKey:@"cost"];
 //		NSString *type = [entry objectForKey:@"type"];
 //		NSString *headsign = [entry objectForKey:@"headsign"];
 //		
@@ -288,13 +289,10 @@
 		cell.backgroundView = [[[GradientView alloc] init] autorelease];
 	
 		if([timeEntryRows count] > 0) {
-			//StopTime *stop_time = (StopTime *)[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"stop_time"];
-			//NSLog(@"got departure time: %@", stop_time.departure_time);
-			[[cell departureTime] setText:@"foo"];
-			
-			//[[cell departureCost] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"cost"]];
-//			[[cell headsign] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"headsign"]];
-//			[[cell type] setText:[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"type"]];
+			StopTime *stop_time = (StopTime *)[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"stop_time"];
+			[[cell departureTime] setText:stop_time.departure_time];
+			[[cell departureCost] setText:stop_time.price];
+			[[cell headsign] setText:@"foo-hiawatha"];
 			
 			[cell	departureIcon].image = [UIImage imageNamed:@"clock.png"];
 			[cell setBackgroundColor:[UIColor whiteColor]];
