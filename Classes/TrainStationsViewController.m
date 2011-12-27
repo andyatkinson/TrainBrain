@@ -96,15 +96,26 @@
 	
 	if ([records count] > 0) {
 		for (id _record in records) {
-			NSDictionary *_stop = [_record objectForKey:@"stop"];
-			Stop *stop = [[Stop alloc] init];
-			stop.stop_name = [_stop objectForKey:@"stop_name"];
-			stop.stop_id = [_stop objectForKey:@"stop_id"];
-			stop.stop_desc = [_stop objectForKey:@"stop_desc"];
+			// a record groups stops by name: {name:name, stops:stops}
+			
+			NSString *selectedStopName = [_record objectForKey:@"stop_name"];
+			
+			NSMutableArray *selectedStops = [[NSMutableArray alloc] init];
+			
+			NSArray *stops = [_record objectForKey:@"stops"];
+			for (id _s in stops) {
+				NSDictionary *_stop = [_s objectForKey:@"stop"];
+				Stop *stop = [[Stop alloc] init];
+				stop.stop_name = [_stop objectForKey:@"stop_name"];
+				stop.stop_id = [_stop objectForKey:@"stop_id"];
+				stop.stop_desc = [_stop objectForKey:@"stop_desc"];
+				[selectedStops addObject:stop];
+			}
 			
 			TimeEntryViewController *_controller = [[TimeEntryViewController alloc] init];
-			[_controller setSelectedStop:stop];
 			[_controller setSelectedRoute:selectedRoute];
+			[_controller setSelectedStopName:selectedStopName];
+			[_controller setSelectedStops:selectedStops];
 			
 			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 												_controller, @"controller",
@@ -160,10 +171,11 @@
 	}
 	
 	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-	Stop *stop = (Stop *)[[[views objectAtIndex:indexPath.row] objectForKey:@"controller"] selectedStop];
-	cell.stationName.text = stop.stop_name;
-	cell.stationDescription.text = stop.stop_desc;
+	
+	NSString *stopName = (NSString *)[[[views objectAtIndex:indexPath.row] objectForKey:@"controller"] selectedStopName];
+	cell.stationName.text = stopName;
 	cell.backgroundView = [[[GradientView alloc] init] autorelease];
+	
 	return cell;
 }
 
@@ -183,8 +195,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	TimeEntryViewController *controller = (TimeEntryViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
-	[controller setSelectedStop:controller.selectedStop];
-	[controller setSelectedRoute:controller.selectedRoute];
+	//[controller setSelectedStop:controller.selectedStop];
+	//[controller setSelectedRoute:controller.selectedRoute];
 	
 	[[self navigationController] pushViewController:controller animated:YES];
 }

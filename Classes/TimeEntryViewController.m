@@ -15,7 +15,7 @@
 
 @implementation TimeEntryViewController
 
-@synthesize responseData, timeEntryRows, timeEntriesTableView, nextDepartureImage, appDelegate, selectedStop, selectedRoute;
+@synthesize responseData, timeEntryRows, timeEntriesTableView, nextDepartureImage, appDelegate, selectedRoute, selectedStopName, selectedStops;
 
 -(IBAction)refreshTimes:(id)sender {
 	// TODO add refresh button
@@ -28,14 +28,20 @@
 	[HUD show:YES];
 	
 	// get the hour and minute to send to server
-	//NSDate *now = [NSDate date];
-//	NSCalendar *calendar = [NSCalendar currentCalendar];
-//	NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
-//	int *hour = (int *)[components hour];
-//	components = [calendar components:NSMinuteCalendarUnit fromDate:now];
-//	int *minute = (int *)[components minute];
+	NSDate *now = [NSDate date];
+	NSCalendar *calendar = [NSCalendar currentCalendar];
+	NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
+	int *hour = (int *)[components hour];
 	
-	NSString *requestURL = [NSString stringWithFormat:@"%@train/v1/routes/%@/stops/%@/stop_times.json", [appDelegate getBaseUrl], selectedRoute.route_id, selectedStop.stop_id];
+	NSArray *stop_ids = [selectedStops valueForKey:@"stop_id"];
+	NSString *stopIds = [stop_ids componentsJoinedByString:@","];
+	NSLog(@"[debug] stop_ids: %@", stopIds);
+	
+	NSString *requestURL = [NSString stringWithFormat:@"%@train/v1/routes/%@/stops/%@/stop_times.json?hour=%d", 
+													[appDelegate getBaseUrl], 
+													selectedRoute.route_id, 
+													stopIds,
+													hour];
 	NSLog(@"request URL: %@", requestURL);
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
@@ -84,7 +90,7 @@
 	responseData = [[NSMutableData data] retain];
 	
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	self.title = selectedStop.stop_name;
+	self.title = selectedStopName;
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {

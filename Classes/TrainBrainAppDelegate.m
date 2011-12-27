@@ -40,6 +40,7 @@
 	mapController.tabBarItem.image = [UIImage imageNamed:@"72-pin.png"];
 	[mapStopsViewController release];
 	
+	/* 2011-12-26 removing news for now */
 	newsViewController = [[NewsViewController alloc] init];
 	UINavigationController *newsController = [[[UINavigationController alloc] initWithRootViewController:newsViewController] autorelease];
 	newsController.navigationBar.barStyle = UIBarStyleDefault;
@@ -56,7 +57,7 @@
 	infoController.tabBarItem.image = [UIImage imageNamed:@"90-lifebuoy.png"];
 	[infoViewController release];
 	
-	tabBarController.viewControllers = [NSArray arrayWithObjects:routesController, mapController, newsController, infoController, nil];
+	tabBarController.viewControllers = [NSArray arrayWithObjects:routesController, mapController, infoController, nil];
 	[window addSubview:tabBarController.view];
 
 	

@@ -22,8 +22,9 @@
 	IBOutlet UIImageView *nextDepartureImage;
 	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD *HUD;
-	Stop *selectedStop;
 	Route *selectedRoute;
+	NSString *selectedStopName;
+	NSMutableArray *selectedStops;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *timeEntriesTableView;
@@ -31,8 +32,9 @@
 @property (nonatomic, retain) IBOutlet NSMutableArray *timeEntryRows;
 @property (nonatomic, retain) IBOutlet UIImageView *nextDepartureImage;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
-@property (nonatomic, retain) Stop *selectedStop;
 @property (nonatomic, retain) Route *selectedRoute;
+@property (nonatomic, retain) NSString *selectedStopName;
+@property (nonatomic, retain) NSMutableArray *selectedStops;
 
 -(IBAction)refreshTimes:(id)sender;
 
