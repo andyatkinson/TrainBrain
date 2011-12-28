@@ -15,7 +15,7 @@
 
 @implementation TimeEntryViewController
 
-@synthesize responseData, timeEntryRows, timeEntriesTableView, nextDepartureImage, appDelegate, selectedRoute, selectedStopName, selectedStops;
+@synthesize responseData, timeEntryRows, tableView, nextDepartureImage, appDelegate, selectedRoute, selectedStopName, selectedStops;
 
 -(IBAction)refreshTimes:(id)sender {
 	// TODO add refresh button
@@ -49,30 +49,38 @@
 	// TODO investigate request caching
 }
 
-//
-// Hack to add 1px header/footer around tableview to prevent separator rows from showing
-// See: http://stackoverflow.com/questions/1369831/eliminate-extra-separators-below-uitableview-in-iphone-sdk
-// 
-- (void) addHeaderAndFooter
-{
-	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
-	v.backgroundColor = [UIColor clearColor];
-	[self.timeEntriesTableView setTableHeaderView:v];
-	[self.timeEntriesTableView setTableFooterView:v];
-	[v release];
-}
 
 - (void)viewDidAppear:(BOOL)animated {
-	// 231/231/231
-	timeEntriesTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-	timeEntriesTableView.separatorColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1.0];
+
 	
 	[super viewDidAppear:animated];
 	
-	// prevent cell separators from showing on empty cells
-	[self addHeaderAndFooter];
-	
+
 	[self loadTimeEntries];
+}
+
+- (void)loadView
+{
+	UITableView *tv = [[UITableView alloc] initWithFrame:CGRectMake(0,50,340,410) style:UITableViewStylePlain];
+	self.tableView = tv;
+	[tableView release];
+	
+	UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,360.0,100)];
+	webView.backgroundColor = [UIColor redColor];
+	NSString *url = [NSString stringWithFormat:@"http://localhost:3000/switcher"]; // load a template in the request, just for testing
+	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+	[webView loadRequest:request];
+	
+	webView.delegate = self;
+	
+	UIView *container = [[UIView alloc] init];
+	[container addSubview:webView];
+	[container addSubview:tv];
+
+	self.view = container;
+	[container release];
+	
+	self.tableView.dataSource = self;
 }
 
 - (void)viewDidLoad {
@@ -247,7 +255,7 @@
 //		}
 		
 	
-	[timeEntriesTableView reloadData];
+	[tableView reloadData];
 	[HUD hide:YES];
 }
 
@@ -309,6 +317,12 @@
 	return cell;
 }
 
+- (void)viewDidUnload {
+	self.tableView = nil;
+	
+	[super viewDidUnload];
+}
+
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 }
@@ -320,7 +334,7 @@
 - (void)dealloc {
 	[timeEntryRows release];
 	[responseData release];
-	[timeEntriesTableView release];
+	[tableView release];
 	[HUD release];
 	[super dealloc];
 }

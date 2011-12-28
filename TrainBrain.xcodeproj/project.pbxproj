@@ -19,7 +19,6 @@
 		A10FBFE312258C1000C02996 /* 72-pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE012258C1000C02996 /* 72-pin@2x.png */; };
 		A10FBFE412258C1000C02996 /* 90-lifebuoy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE112258C1000C02996 /* 90-lifebuoy@2x.png */; };
 		A115173C102F962E007CFBF6 /* TimeEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */; };
-		A115173D102F962E007CFBF6 /* TimeEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */; };
 		A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */; };
 		A1253AF71235D89F003AEF64 /* YellowGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1253AF61235D89F003AEF64 /* YellowGradientView.m */; };
 		A1436AA312920F48004299E0 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1436AA212920F48004299E0 /* Icon@2x.png */; };
@@ -104,7 +103,6 @@
 		A10FBFE112258C1000C02996 /* 90-lifebuoy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy@2x.png"; sourceTree = "<group>"; };
 		A1151739102F962E007CFBF6 /* TimeEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeEntryViewController.h; sourceTree = "<group>"; };
 		A115173A102F962E007CFBF6 /* TimeEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeEntryViewController.m; sourceTree = "<group>"; };
-		A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TimeEntryViewController.xib; path = Classes/TimeEntryViewController.xib; sourceTree = "<group>"; };
 		A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureDetailCell.h; sourceTree = "<group>"; };
 		A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureDetailCell.m; sourceTree = "<group>"; };
 		A1253AF51235D89F003AEF64 /* YellowGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YellowGradientView.h; sourceTree = "<group>"; };
@@ -330,7 +328,6 @@
 				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
 				2899E55F0DE3E45000AC0155 /* RootViewController.xib */,
 				A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */,
-				A115173B102F962E007CFBF6 /* TimeEntryViewController.xib */,
 				A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */,
 				A1B3C66F12C7FF9E002B008B /* NewsCell.xib */,
 			);
@@ -458,7 +455,6 @@
 			files = (
 				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
 				2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */,
-				A115173D102F962E007CFBF6 /* TimeEntryViewController.xib in Resources */,
 				A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */,
 				A16A8BCB1038F93C001DF0EF /* Icon.png in Resources */,
 				A1DF9D06109D3BB100328466 /* TrainStationsViewController.xib in Resources */,

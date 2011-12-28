@@ -15,10 +15,10 @@
 #import "Stop.h"
 #import "Route.h"
 
-@interface TimeEntryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
-	IBOutlet UITableView *timeEntriesTableView;
+@interface TimeEntryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate, UIWebViewDelegate> {
+	UITableView *tableView;
 	NSMutableData *responseData;
-	IBOutlet NSMutableArray *timeEntryRows;
+	NSMutableArray *timeEntryRows;
 	IBOutlet UIImageView *nextDepartureImage;
 	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD *HUD;
@@ -27,9 +27,9 @@
 	NSMutableArray *selectedStops;
 }
 
-@property (nonatomic, retain) IBOutlet UITableView *timeEntriesTableView;
+@property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSMutableData	*responseData;
-@property (nonatomic, retain) IBOutlet NSMutableArray *timeEntryRows;
+@property (nonatomic, retain) NSMutableArray *timeEntryRows;
 @property (nonatomic, retain) IBOutlet UIImageView *nextDepartureImage;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 @property (nonatomic, retain) Route *selectedRoute;
