@@ -281,7 +281,7 @@
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
-							<string>{{0, 154}, {254, 1152}}</string>
+							<string>{{0, 0}, {254, 1152}}</string>
 						</dict>
 						<key>PBXTopSmartGroupGIDs</key>
 						<array/>
@@ -300,7 +300,7 @@
 							<real>254</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>619 183 1665 1211 0 0 2560 1418 </string>
+						<string>877 161 1665 1211 0 0 2560 1418 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -330,7 +330,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>A162116314AAD4CF0072517B</string>
+										<string>A16211D314AB98530072517B</string>
 										<key>history</key>
 										<array>
 											<string>A1E5ED061220CB0E00B15224</string>
@@ -392,8 +392,12 @@
 											<string>A1620F8314A96EEA0072517B</string>
 											<string>A162111514AAC0D80072517B</string>
 											<string>A162111614AAC0D80072517B</string>
-											<string>A162114314AAD17D0072517B</string>
-											<string>A162114414AAD17D0072517B</string>
+											<string>A162118614AB903F0072517B</string>
+											<string>A162118814AB903F0072517B</string>
+											<string>A162118914AB903F0072517B</string>
+											<string>A162118A14AB903F0072517B</string>
+											<string>A162119014AB90910072517B</string>
+											<string>A162118714AB903F0072517B</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -407,7 +411,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1389, 1040}}</string>
 								<key>RubberWindowFrame</key>
-								<string>619 183 1665 1211 0 0 2560 1418 </string>
+								<string>877 161 1665 1211 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
@@ -427,7 +431,7 @@
 								<key>Frame</key>
 								<string>{{0, 1045}, {1389, 125}}</string>
 								<key>RubberWindowFrame</key>
-								<string>619 183 1665 1211 0 0 2560 1418 </string>
+								<string>877 161 1665 1211 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
@@ -595,7 +599,7 @@
 		<string>/Users/andy/Projects/TrainBrain/TrainBrain.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>619 183 1665 1211 0 0 2560 1418 </string>
+	<string>877 161 1665 1211 0 0 2560 1418 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -685,7 +689,7 @@
 			<key>WindowToolGUID</key>
 			<string>A169E415102F915800A65E05</string>
 			<key>WindowToolIsVisible</key>
-			<false/>
+			<true/>
 		</dict>
 		<dict>
 			<key>FirstTimeWindowDisplayed</key>
@@ -933,7 +937,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1890, 823}}</string>
 								<key>RubberWindowFrame</key>
-								<string>133 32 1890 864 0 0 2560 1418 </string>
+								<string>206 55 1890 864 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -962,7 +966,7 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>133 32 1890 864 0 0 2560 1418 </string>
+			<string>206 55 1890 864 0 0 2560 1418 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>

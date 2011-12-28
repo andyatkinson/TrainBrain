@@ -18,7 +18,10 @@
 @interface TimeEntryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate, UIWebViewDelegate> {
 	UITableView *tableView;
 	NSMutableData *responseData;
-	NSMutableArray *timeEntryRows;
+	NSMutableArray *allStopTimes;
+	NSMutableArray *leftHeadsignStopTimes;
+	NSMutableArray *rightHeadsignStopTimes;
+	
 	IBOutlet UIImageView *nextDepartureImage;
 	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD *HUD;
@@ -29,7 +32,9 @@
 
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSMutableData	*responseData;
-@property (nonatomic, retain) NSMutableArray *timeEntryRows;
+@property (nonatomic, retain) NSMutableArray *allStopTimes;
+@property (nonatomic, retain) NSMutableArray *leftHeadsignStopTimes;
+@property (nonatomic, retain) NSMutableArray *rightHeadsignStopTimes;
 @property (nonatomic, retain) IBOutlet UIImageView *nextDepartureImage;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 @property (nonatomic, retain) Route *selectedRoute;

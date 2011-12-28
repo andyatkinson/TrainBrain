@@ -15,7 +15,7 @@
 
 @implementation TimeEntryViewController
 
-@synthesize responseData, timeEntryRows, tableView, nextDepartureImage, appDelegate, selectedRoute, selectedStopName, selectedStops;
+@synthesize responseData, allStopTimes, leftHeadsignStopTimes, rightHeadsignStopTimes, tableView, nextDepartureImage, appDelegate, selectedRoute, selectedStopName, selectedStops;
 
 -(IBAction)refreshTimes:(id)sender {
 	// TODO add refresh button
@@ -67,22 +67,17 @@
 		if([(NSString *)[components objectAtIndex:1] isEqualToString:@"clicked"]) {
 			NSLog([components objectAtIndex:2]); // param1
 			
-			NSString *headsign = [components objectAtIndex:2];
+			NSString *headsignKey = [components objectAtIndex:2];
 			
-			// change the data for the tableview to filter only the headsign values, then reload it
+			if ([headsignKey isEqualToString:@"north_55_downtown_minneapolis"]) {
+				NSRange range = NSMakeRange(0, allStopTimes.count-1);
+				[self.allStopTimes replaceObjectsInRange:range withObjectsFromArray:leftHeadsignStopTimes];
+			} else if ([headsignKey isEqualToString:@"south_55_mall_of_america"]) {
+				NSRange range = NSMakeRange(0, allStopTimes.count-1);
+				[self.allStopTimes replaceObjectsInRange:range withObjectsFromArray:rightHeadsignStopTimes];
+			}
 			
-			// filter the tableView data
-			//[NSPredicate predicateWithFormat:@"headsign_constant =[cd] '%@'", headsign];
-			
-			NSString *str1 = @"foo";
-			NSString *str2 = @"bar";
-			
-			NSMutableArray *testArray = [[NSMutableArray alloc] init];
-			[testArray addObject:str1];
-			[testArray addObject:str2];
-			
-			self.timeEntryRows = testArray;
-			//[self.tableView reloadData];
+			[self.tableView reloadData];
 		
 		}
 		return NO;
@@ -159,7 +154,9 @@
 	[parser release];
 	[responseString release];
 	
-	timeEntryRows = [[NSMutableArray alloc] init];	
+	allStopTimes = [[NSMutableArray alloc] init];	
+	leftHeadsignStopTimes = [[NSMutableArray alloc] init];	
+	rightHeadsignStopTimes = [[NSMutableArray alloc] init];	
 
 	NSDate *now = [NSDate date];
 	NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -171,6 +168,7 @@
 	if ([records count] > 0) {
 		for (id _record in records) {
 			NSDictionary *_stop_time = [_record objectForKey:@"stop_time"];
+			
 			StopTime *stop_time = [[StopTime alloc] init];
 			stop_time.departure_time = [_stop_time objectForKey:@"departure_time"];
 			stop_time.arrival_time = [_stop_time objectForKey:@"arrival_time"];
@@ -178,6 +176,7 @@
 			stop_time.pickup_type = [_stop_time objectForKey:@"pickup_type"];
 			stop_time.price = [_stop_time objectForKey:@"price"];
 			stop_time.headsign = [_stop_time objectForKey:@"headsign"];
+			stop_time.headsign_key = [_stop_time objectForKey:@"headsign_key"];
 			
 			NSArray *parts = [stop_time.departure_time componentsSeparatedByString:@":"];
 			int _hour = (int)[[parts objectAtIndex:0] intValue];
@@ -189,9 +188,21 @@
 				stop_time.minutes_from_now = @"";
 			}
 
-			[timeEntryRows addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+			[allStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 																stop_time, @"stop_time",
 																nil]];
+			
+			if ([stop_time.headsign_key isEqualToString:@"north_55_downtown_minneapolis"]) {
+				[leftHeadsignStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+																 stop_time, @"stop_time",
+																 nil]];
+				
+			} else if ([stop_time.headsign_key isEqualToString:@"south_55_mall_of_america"]) {
+				[rightHeadsignStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+																 stop_time, @"stop_time",
+																 nil]];
+			}
+			
 		}
 	}
 	else {
@@ -211,7 +222,7 @@
 //	int nowHour = (int)[components hour];
 //	components = [calendar components:NSMinuteCalendarUnit fromDate:now];
 //	int nowMinute = (int)[components minute];
-//	timeEntryRows = [[NSMutableArray alloc] init];
+//	allStopTimes = [[NSMutableArray alloc] init];
 //	int count = [entries count];
 //	for(int i=0; i < count; i++) {
 //		NSMutableDictionary *entry = [entries objectAtIndex:i];
@@ -285,6 +296,12 @@
 //		}
 		
 	
+	
+	// set the table stop times data to one headsign direction explicitly
+	
+	NSRange range = NSMakeRange(0, allStopTimes.count-1);
+	[self.allStopTimes replaceObjectsInRange:range withObjectsFromArray:rightHeadsignStopTimes];
+	
 	[tableView reloadData];
 	[HUD hide:YES];
 }
@@ -300,13 +317,13 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [timeEntryRows count];
+	return [allStopTimes count];
 }
 
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//	return 56;
-//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return 56;
+}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {	
 	static NSString *cellId = @"DepartureDetailCell";
@@ -324,8 +341,8 @@
 	// set the gradient
 	cell.backgroundView = [[[GradientView alloc] init] autorelease];
 
-	if([timeEntryRows count] > 0) {
-		StopTime *stop_time = (StopTime *)[[timeEntryRows objectAtIndex:indexPath.row] objectForKey:@"stop_time"];
+	if([allStopTimes count] > 0) {
+		StopTime *stop_time = (StopTime *)[[allStopTimes objectAtIndex:indexPath.row] objectForKey:@"stop_time"];
 		[[cell departureTime] setText:stop_time.departure_time];
 		[[cell departureCost] setText:stop_time.price];
 		[[cell headsign] setText:stop_time.headsign];
@@ -362,7 +379,9 @@
 }
 
 - (void)dealloc {
-	[timeEntryRows release];
+	[allStopTimes release];
+	[leftHeadsignStopTimes release];
+	[rightHeadsignStopTimes release];
 	[responseData release];
 	[tableView release];
 	[HUD release];
