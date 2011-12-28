@@ -59,6 +59,37 @@
 	[self loadTimeEntries];
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {	
+	NSString *requestString = [[request URL] absoluteString];
+	NSArray *components = [requestString componentsSeparatedByString:@":"];
+	
+	if ([components count] > 1 && [(NSString *)[components objectAtIndex:0] isEqualToString:@"trainbrain"]) {
+		if([(NSString *)[components objectAtIndex:1] isEqualToString:@"clicked"]) {
+			NSLog([components objectAtIndex:2]); // param1
+			
+			NSString *headsign = [components objectAtIndex:2];
+			
+			// change the data for the tableview to filter only the headsign values, then reload it
+			
+			// filter the tableView data
+			//[NSPredicate predicateWithFormat:@"headsign_constant =[cd] '%@'", headsign];
+			
+			NSString *str1 = @"foo";
+			NSString *str2 = @"bar";
+			
+			NSMutableArray *testArray = [[NSMutableArray alloc] init];
+			[testArray addObject:str1];
+			[testArray addObject:str2];
+			
+			self.timeEntryRows = testArray;
+			//[self.tableView reloadData];
+		
+		}
+		return NO;
+	}
+	return YES; // Return YES to make sure regular navigation works as expected.
+}
+
 - (void)loadView
 {
 	UITableView *tv = [[UITableView alloc] initWithFrame:CGRectMake(0,50,340,410) style:UITableViewStylePlain];
@@ -66,7 +97,6 @@
 	[tableView release];
 	
 	UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,360.0,100)];
-	webView.backgroundColor = [UIColor redColor];
 	NSString *url = [NSString stringWithFormat:@"http://localhost:3000/switcher"]; // load a template in the request, just for testing
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
 	[webView loadRequest:request];
@@ -273,10 +303,10 @@
 	return [timeEntryRows count];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	return 56;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//	return 56;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {	
 	static NSString *cellId = @"DepartureDetailCell";
