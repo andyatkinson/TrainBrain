@@ -16,6 +16,7 @@
 #import "Route.h"
 
 @interface TimeEntryViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate, UIWebViewDelegate> {
+	UIWebView *webView;
 	UITableView *tableView;
 	NSMutableData *responseData;
 	NSMutableArray *allStopTimes;
@@ -30,6 +31,7 @@
 	NSMutableArray *selectedStops;
 }
 
+@property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSMutableData	*responseData;
 @property (nonatomic, retain) NSMutableArray *allStopTimes;

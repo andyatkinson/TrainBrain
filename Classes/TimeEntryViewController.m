@@ -15,7 +15,7 @@
 
 @implementation TimeEntryViewController
 
-@synthesize responseData, allStopTimes, leftHeadsignStopTimes, rightHeadsignStopTimes, tableView, nextDepartureImage, appDelegate, selectedRoute, selectedStopName, selectedStops;
+@synthesize responseData, allStopTimes, leftHeadsignStopTimes, rightHeadsignStopTimes, tableView, nextDepartureImage, appDelegate, selectedRoute, selectedStopName, selectedStops, webView;
 
 -(IBAction)refreshTimes:(id)sender {
 	// TODO add refresh button
@@ -92,9 +92,10 @@
 	[tableView release];
 	
 	UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,360.0,100)];
-	NSString *url = [NSString stringWithFormat:@"http://localhost:3000/switcher"]; // load a template in the request, just for testing
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-	[webView loadRequest:request];
+	self.webView = webView;
+	//NSString *url = [NSString stringWithFormat:@"http://localhost:3000/switcher"]; // load a template in the request, just for testing
+//	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
+//	[webView loadRequest:request];
 	
 	webView.delegate = self;
 	
@@ -148,11 +149,20 @@
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
 	[connection release];
 	
-	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	SBJSON *parser = [[SBJSON alloc] init];
-	NSArray *records = [parser objectWithString:responseString error:nil];
+	NSString *jsonString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+	NSDictionary *dict = [jsonString JSONValue];
+	
+	NSArray *headsigns = [dict objectForKey:@"headsigns"];
+	NSString *switcherHTML = [dict objectForKey:@"template"];
+	NSString *stopTimeString = [dict objectForKey:@"stop_times"];
+	
+	NSArray *records = [parser objectWithString:stopTimeString error:nil];
+	
 	[parser release];
-	[responseString release];
+	[jsonString release];
+
+	[webView loadHTMLString:switcherHTML baseURL:[NSURL URLWithString:@""]]; 
 	
 	allStopTimes = [[NSMutableArray alloc] init];	
 	leftHeadsignStopTimes = [[NSMutableArray alloc] init];	
@@ -177,11 +187,11 @@
 			stop_time.price = [_stop_time objectForKey:@"price"];
 			stop_time.headsign = [_stop_time objectForKey:@"headsign"];
 			stop_time.headsign_key = [_stop_time objectForKey:@"headsign_key"];
-			
+	
 			NSArray *parts = [stop_time.departure_time componentsSeparatedByString:@":"];
 			int _hour = (int)[[parts objectAtIndex:0] intValue];
 			int _mins = (int)[[parts objectAtIndex:1] intValue];
-			
+	
 			if (hour == _hour && minute < _mins) {
 				stop_time.minutes_from_now = [[NSString alloc] initWithFormat:@"%d", (_mins - minute)];
 			} else {
@@ -192,16 +202,22 @@
 																stop_time, @"stop_time",
 																nil]];
 			
-			if ([stop_time.headsign_key isEqualToString:@"north_55_downtown_minneapolis"]) {
-				[leftHeadsignStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-																 stop_time, @"stop_time",
-																 nil]];
+			if ([headsigns count] == 2) {
+				NSString *leftHeadsign = [headsigns objectAtIndex:0];
+				NSString *rightHeadsign = [headsigns objectAtIndex:1];
 				
-			} else if ([stop_time.headsign_key isEqualToString:@"south_55_mall_of_america"]) {
-				[rightHeadsignStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-																 stop_time, @"stop_time",
-																 nil]];
+				if ([stop_time.headsign_key isEqualToString:leftHeadsign]) {
+					[leftHeadsignStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+																						stop_time, @"stop_time",
+																						nil]];
+					
+				} else if ([stop_time.headsign_key isEqualToString:rightHeadsign]) {
+					[rightHeadsignStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+																						 stop_time, @"stop_time",
+																						 nil]];
+				}
 			}
+			
 			
 		}
 	}
@@ -215,90 +231,8 @@
 		[alert release];
 	}
 	
-	// now is used for time remaining for each route and for big label
-//	NSDate *now = [NSDate date];
-//	NSCalendar *calendar = [NSCalendar currentCalendar];
-//	NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
-//	int nowHour = (int)[components hour];
-//	components = [calendar components:NSMinuteCalendarUnit fromDate:now];
-//	int nowMinute = (int)[components minute];
-//	allStopTimes = [[NSMutableArray alloc] init];
-//	int count = [entries count];
-//	for(int i=0; i < count; i++) {
-//		NSMutableDictionary *entry = [entries objectAtIndex:i];
-//		
-//		NSString *hour = [entry objectForKey:@"hour"];
-//		NSString *minute = [entry objectForKey:@"minute"];
-//		NSString *type = [entry objectForKey:@"type"];
-//		NSString *headsign = [entry objectForKey:@"headsign"];
-//		
-//		NSDateFormatter *timeFormatter = [[[NSDateFormatter alloc] init] autorelease];
-//		[timeFormatter setDateStyle:NSDateFormatterNoStyle];
-//		[timeFormatter setTimeStyle:NSDateFormatterShortStyle];
-//		
-//		NSString *entryTime = [NSString stringWithFormat:@"%@:%@", hour, minute];
-//		
-//		// method not officially part of iPhone SDK NSDate class, ignore warning
-//		NSDate *stringTime = [NSDate dateWithNaturalLanguageString:entryTime];
-//		NSString *formattedDateStringTime = [timeFormatter stringFromDate:stringTime];
-//		
-//		int minutesRemaining = 0;
-//		// return early if the hour is 23, and the next hour is zero, can't do a simple next check on that
-//		if((int)nowHour == 23 && [hour intValue] == 0) {
-//			minutesRemaining = (60 - (int)nowMinute) + [minute intValue];
-//		} else if((int)nowHour == 23 && [hour intValue] == 1) { // 2 hours out!
-//			minutesRemaining = (120 - (int)nowMinute) + [minute intValue];
-//		} else if([hour intValue] == (int)nowHour && [minute intValue] > nowMinute) { // happy case, current hour minute is greater
-//			minutesRemaining = [minute intValue] - (int)nowMinute;
-//		} else if([hour intValue] == ((int)nowHour + 1)) { // in the next hour, this works except falls down for hour 23 and hour 0 case
-//			minutesRemaining = (60 - (int)nowMinute) + [minute intValue];
-//		}
-//		NSString *minutesRemainingString = [NSString stringWithFormat:@"%d", minutesRemaining];
-//		
-//		
-//	}
-//	
-//	[timeEntriesTableView reloadData];
-//	[HUD hide:YES];
-//	
-//	if([entries count] > 0) {
-//		
-//		int count = [entries count];
-//		NSMutableDictionary *nextDeparture = nil;		
-//		int nextDepartureHour = 0;
-//		int nextDepartureMinute = 0;
-//		for(int i=0; i < count; i++) {
-//			nextDeparture = [entries objectAtIndex:i];
-//			nextDepartureHour = (int)[[nextDeparture objectForKey:@"hour"] intValue];
-//			nextDepartureMinute = (int)[[nextDeparture objectForKey:@"minute"] intValue];
-//			if(nextDepartureHour > nowHour || (nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute) || (nowHour == 23 && nextDepartureHour == 0)) {
-//				break; // break out of loop when right time is fetched
-//			}
-//		}
-//
-//		int minutesRemaining = 0;
-//		//bomb out early for 11PM case
-//		if(nowHour == 23 && nextDepartureHour == 0) {
-//			minutesRemaining = (60 - nowMinute) + nextDepartureMinute;
-//
-//		} else if(nowHour == 23 && nextDepartureHour == 1) { // try to be user friendly and show remaining minutes for 2 hours out
-//			minutesRemaining = (120 - nowMinute) + nextDepartureMinute;
-//			
-//		} else if(nowHour == 23 && nextDepartureHour == 2) { // 3 hours out!
-//			minutesRemaining = (180 - nowMinute) + nextDepartureMinute;
-//			
-//		} else if(nextDepartureHour == nowHour && nextDepartureMinute >= nowMinute) {
-//			// more than hour out, set label, else show minutes countdown
-//			minutesRemaining = nextDepartureMinute - nowMinute;
-//			
-//		} else if(nextDepartureHour == (nowHour+1)) { // departure in the next hour
-//			minutesRemaining = (60 - nowMinute) + nextDepartureMinute;
-//		}
-		
-	
 	
 	// set the table stop times data to one headsign direction explicitly
-	
 	NSRange range = NSMakeRange(0, allStopTimes.count-1);
 	[self.allStopTimes replaceObjectsInRange:range withObjectsFromArray:rightHeadsignStopTimes];
 	
