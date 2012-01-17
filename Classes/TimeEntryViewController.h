@@ -22,6 +22,8 @@
 	NSMutableArray *allStopTimes;
 	NSMutableArray *leftHeadsignStopTimes;
 	NSMutableArray *rightHeadsignStopTimes;
+	NSString *leftHeadsign;
+	NSString *rightHeadsign;
 	
 	IBOutlet UIImageView *nextDepartureImage;
 	TrainBrainAppDelegate *appDelegate;
@@ -42,6 +44,8 @@
 @property (nonatomic, retain) Route *selectedRoute;
 @property (nonatomic, retain) NSString *selectedStopName;
 @property (nonatomic, retain) NSMutableArray *selectedStops;
+@property (nonatomic, retain) NSString *leftHeadsign;
+@property (nonatomic, retain) NSString *rightHeadsign;
 
 -(IBAction)refreshTimes:(id)sender;
 

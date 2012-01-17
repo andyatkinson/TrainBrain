@@ -15,7 +15,8 @@
 
 @implementation TimeEntryViewController
 
-@synthesize responseData, allStopTimes, leftHeadsignStopTimes, rightHeadsignStopTimes, tableView, nextDepartureImage, appDelegate, selectedRoute, selectedStopName, selectedStops, webView;
+@synthesize responseData, allStopTimes, leftHeadsignStopTimes, rightHeadsignStopTimes, tableView, nextDepartureImage, appDelegate, selectedRoute, 
+selectedStopName, selectedStops, webView, leftHeadsign, rightHeadsign;
 
 -(IBAction)refreshTimes:(id)sender {
 	// TODO add refresh button
@@ -65,14 +66,13 @@
 	
 	if ([components count] > 1 && [(NSString *)[components objectAtIndex:0] isEqualToString:@"trainbrain"]) {
 		if([(NSString *)[components objectAtIndex:1] isEqualToString:@"clicked"]) {
-			NSLog([components objectAtIndex:2]); // param1
 			
 			NSString *headsignKey = [components objectAtIndex:2];
 			
-			if ([headsignKey isEqualToString:@"north_55_downtown_minneapolis"]) {
+			if ([headsignKey isEqualToString:self.leftHeadsign]) {
 				NSRange range = NSMakeRange(0, allStopTimes.count-1);
 				[self.allStopTimes replaceObjectsInRange:range withObjectsFromArray:leftHeadsignStopTimes];
-			} else if ([headsignKey isEqualToString:@"south_55_mall_of_america"]) {
+			} else if ([headsignKey isEqualToString:self.rightHeadsign]) {
 				NSRange range = NSMakeRange(0, allStopTimes.count-1);
 				[self.allStopTimes replaceObjectsInRange:range withObjectsFromArray:rightHeadsignStopTimes];
 			}
@@ -87,16 +87,13 @@
 
 - (void)loadView
 {
-	UITableView *tv = [[UITableView alloc] initWithFrame:CGRectMake(0,50,340,410) style:UITableViewStylePlain];
+	UITableView *tv = [[UITableView alloc] initWithFrame:CGRectMake(0,50,360,540) style:UITableViewStylePlain];
+	tv.rowHeight = 66.0f;
 	self.tableView = tv;
 	[tableView release];
 	
 	UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0,0,360.0,100)];
 	self.webView = webView;
-	//NSString *url = [NSString stringWithFormat:@"http://localhost:3000/switcher"]; // load a template in the request, just for testing
-//	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:url]];
-//	[webView loadRequest:request];
-	
 	webView.delegate = self;
 	
 	UIView *container = [[UIView alloc] init];
@@ -153,7 +150,7 @@
 	NSString *jsonString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	NSDictionary *dict = [jsonString JSONValue];
 	
-	NSArray *headsigns = [dict objectForKey:@"headsigns"];
+	NSArray *headsign_keys = [dict objectForKey:@"headsign_keys"];
 	NSString *switcherHTML = [dict objectForKey:@"template"];
 	NSString *stopTimeString = [dict objectForKey:@"stop_times"];
 	
@@ -163,6 +160,18 @@
 	[jsonString release];
 
 	[webView loadHTMLString:switcherHTML baseURL:[NSURL URLWithString:@""]]; 
+	
+	if ([headsign_keys count] == 2) {
+		NSString *_leftHeadsign = [headsign_keys objectAtIndex:0];
+		NSString *_rightHeadsign = [headsign_keys objectAtIndex:1];
+		self.leftHeadsign = _leftHeadsign;
+		self.rightHeadsign = _rightHeadsign;
+		
+		NSLog(@"left headsign: %@", self.leftHeadsign);
+		NSLog(@"right headsign: %@", self.rightHeadsign);
+	}
+	// TODO do the case where there is just one, stick them in the left side (or don't show the headsign switcher at all)
+	
 	
 	allStopTimes = [[NSMutableArray alloc] init];	
 	leftHeadsignStopTimes = [[NSMutableArray alloc] init];	
@@ -201,25 +210,19 @@
 			[allStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 																stop_time, @"stop_time",
 																nil]];
-			
-			if ([headsigns count] == 2) {
-				NSString *leftHeadsign = [headsigns objectAtIndex:0];
-				NSString *rightHeadsign = [headsigns objectAtIndex:1];
+			if ([stop_time.headsign_key isEqualToString:self.leftHeadsign]) {
+				[leftHeadsignStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+																					stop_time, @"stop_time",
+																					nil]];
 				
-				if ([stop_time.headsign_key isEqualToString:leftHeadsign]) {
-					[leftHeadsignStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-																						stop_time, @"stop_time",
-																						nil]];
-					
-				} else if ([stop_time.headsign_key isEqualToString:rightHeadsign]) {
-					[rightHeadsignStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-																						 stop_time, @"stop_time",
-																						 nil]];
-				}
+			} else if ([stop_time.headsign_key isEqualToString:self.rightHeadsign]) {
+				[rightHeadsignStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+																					 stop_time, @"stop_time",
+																					 nil]];
 			}
 			
-			
 		}
+		
 	}
 	else {
 		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No departure times found." 
@@ -252,11 +255,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return [allStopTimes count];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	return 56;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {	
