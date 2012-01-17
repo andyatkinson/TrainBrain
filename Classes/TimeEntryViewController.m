@@ -161,21 +161,15 @@ selectedStopName, selectedStops, webView, leftHeadsign, rightHeadsign;
 
 	[webView loadHTMLString:switcherHTML baseURL:[NSURL URLWithString:@""]]; 
 	
-	if ([headsign_keys count] == 2) {
-		NSString *_leftHeadsign = [headsign_keys objectAtIndex:0];
-		NSString *_rightHeadsign = [headsign_keys objectAtIndex:1];
-		self.leftHeadsign = _leftHeadsign;
-		self.rightHeadsign = _rightHeadsign;
-		
-		NSLog(@"left headsign: %@", self.leftHeadsign);
-		NSLog(@"right headsign: %@", self.rightHeadsign);
-	}
-	// TODO do the case where there is just one, stick them in the left side (or don't show the headsign switcher at all)
+	self.leftHeadsign = [headsign_keys objectAtIndex:0];
+	leftHeadsignStopTimes = [[NSMutableArray alloc] init];	
 	
+	if ([headsign_keys count] == 2) {
+		self.rightHeadsign = [headsign_keys objectAtIndex:1];
+		rightHeadsignStopTimes = [[NSMutableArray alloc] init];	
+	}
 	
 	allStopTimes = [[NSMutableArray alloc] init];	
-	leftHeadsignStopTimes = [[NSMutableArray alloc] init];	
-	rightHeadsignStopTimes = [[NSMutableArray alloc] init];	
 
 	NSDate *now = [NSDate date];
 	NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -210,6 +204,7 @@ selectedStopName, selectedStops, webView, leftHeadsign, rightHeadsign;
 			[allStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 																stop_time, @"stop_time",
 																nil]];
+			
 			if ([stop_time.headsign_key isEqualToString:self.leftHeadsign]) {
 				[leftHeadsignStopTimes addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
 																					stop_time, @"stop_time",
@@ -234,10 +229,6 @@ selectedStopName, selectedStops, webView, leftHeadsign, rightHeadsign;
 		[alert release];
 	}
 	
-	
-	// set the table stop times data to one headsign direction explicitly
-	NSRange range = NSMakeRange(0, allStopTimes.count-1);
-	[self.allStopTimes replaceObjectsInRange:range withObjectsFromArray:rightHeadsignStopTimes];
 	
 	[tableView reloadData];
 	[HUD hide:YES];

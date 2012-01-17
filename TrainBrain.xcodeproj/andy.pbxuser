@@ -244,6 +244,23 @@
 			A1B3F21914C5225000A5BFB9 /* PBXTextBookmark */ = A1B3F21914C5225000A5BFB9 /* PBXTextBookmark */;
 			A1B3F21C14C5229A00A5BFB9 /* PBXTextBookmark */ = A1B3F21C14C5229A00A5BFB9 /* PBXTextBookmark */;
 			A1B3F21D14C522AE00A5BFB9 /* PBXTextBookmark */ = A1B3F21D14C522AE00A5BFB9 /* PBXTextBookmark */;
+			A1B3F21E14C522C700A5BFB9 /* PBXTextBookmark */ = A1B3F21E14C522C700A5BFB9 /* PBXTextBookmark */;
+			A1B3F22314C5244100A5BFB9 /* PBXTextBookmark */ = A1B3F22314C5244100A5BFB9 /* PBXTextBookmark */;
+			A1B3F22414C5244100A5BFB9 /* PBXTextBookmark */ = A1B3F22414C5244100A5BFB9 /* PBXTextBookmark */;
+			A1B3F22514C5244100A5BFB9 /* PBXTextBookmark */ = A1B3F22514C5244100A5BFB9 /* PBXTextBookmark */;
+			A1B3F22614C5244700A5BFB9 /* PBXTextBookmark */ = A1B3F22614C5244700A5BFB9 /* PBXTextBookmark */;
+			A1B3F22914C5251B00A5BFB9 /* PBXTextBookmark */ = A1B3F22914C5251B00A5BFB9 /* PBXTextBookmark */;
+			A1B3F22C14C5253C00A5BFB9 /* PBXTextBookmark */ = A1B3F22C14C5253C00A5BFB9 /* PBXTextBookmark */;
+			A1B3F22F14C5259600A5BFB9 /* PBXTextBookmark */ = A1B3F22F14C5259600A5BFB9 /* PBXTextBookmark */;
+			A1B3F23014C5259A00A5BFB9 /* PBXTextBookmark */ = A1B3F23014C5259A00A5BFB9 /* PBXTextBookmark */;
+			A1B3F23114C525C400A5BFB9 /* PBXTextBookmark */ = A1B3F23114C525C400A5BFB9 /* PBXTextBookmark */;
+			A1B3F23214C5287400A5BFB9 /* PBXTextBookmark */ = A1B3F23214C5287400A5BFB9 /* PBXTextBookmark */;
+			A1B3F23714C5287E00A5BFB9 /* PBXTextBookmark */ = A1B3F23714C5287E00A5BFB9 /* PBXTextBookmark */;
+			A1B3F23E14C528A600A5BFB9 /* PBXTextBookmark */ = A1B3F23E14C528A600A5BFB9 /* PBXTextBookmark */;
+			A1B3F23F14C528A600A5BFB9 /* PBXTextBookmark */ = A1B3F23F14C528A600A5BFB9 /* PBXTextBookmark */;
+			A1B3F24014C528A800A5BFB9 /* PBXTextBookmark */ = A1B3F24014C528A800A5BFB9 /* PBXTextBookmark */;
+			A1B3F24114C528E600A5BFB9 /* PBXTextBookmark */ = A1B3F24114C528E600A5BFB9 /* PBXTextBookmark */;
+			A1B3F24214C5290500A5BFB9 /* PBXTextBookmark */ = A1B3F24214C5290500A5BFB9 /* PBXTextBookmark */;
 			A1BC246E122320F200C324C9 = A1BC246E122320F200C324C9 /* PBXTextBookmark */;
 			A1BC246F122320F200C324C9 = A1BC246F122320F200C324C9 /* PBXBookmark */;
 			A1BC266312236D6100C324C9 = A1BC266312236D6100C324C9 /* PBXBookmark */;
@@ -301,16 +318,16 @@
 	};
 	A1151739102F962E007CFBF6 /* TimeEntryViewController.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1328, 977}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1328, 1000}}";
 			sepNavSelRange = "{1729, 0}";
 			sepNavVisRange = "{0, 1774}";
 		};
 	};
 	A115173A102F962E007CFBF6 /* TimeEntryViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1328, 4225}}";
-			sepNavSelRange = "{3051, 0}";
-			sepNavVisRange = "{1792, 2904}";
+			sepNavIntBoundsRect = "{{0, 0}, {1328, 3991}}";
+			sepNavSelRange = "{8114, 0}";
+			sepNavVisRange = "{6252, 2803}";
 			sepNavWindowFrame = "{{15, 307}, {1419, 716}}";
 		};
 	};
@@ -976,7 +993,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 207";
 		rLen = 0;
-		rLoc = 8108;
+		rLoc = 7800;
 		rType = 0;
 		vrLen = 2940;
 		vrLoc = 5569;
@@ -986,7 +1003,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 209";
 		rLen = 0;
-		rLoc = 8108;
+		rLoc = 7800;
 		rType = 0;
 		vrLen = 3030;
 		vrLoc = 5722;
@@ -996,7 +1013,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 227";
 		rLen = 0;
-		rLoc = 8108;
+		rLoc = 7800;
 		rType = 0;
 		vrLen = 2910;
 		vrLoc = 6009;
@@ -1006,7 +1023,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 227";
 		rLen = 0;
-		rLoc = 8108;
+		rLoc = 7800;
 		rType = 0;
 		vrLen = 2910;
 		vrLoc = 6009;
@@ -1016,7 +1033,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 227";
 		rLen = 0;
-		rLoc = 8108;
+		rLoc = 7800;
 		rType = 0;
 		vrLen = 2910;
 		vrLoc = 6009;
@@ -1026,7 +1043,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 227";
 		rLen = 0;
-		rLoc = 8108;
+		rLoc = 7800;
 		rType = 0;
 		vrLen = 2910;
 		vrLoc = 6009;
@@ -1036,7 +1053,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 227";
 		rLen = 0;
-		rLoc = 8108;
+		rLoc = 7800;
 		rType = 0;
 		vrLen = 2977;
 		vrLoc = 4975;
@@ -1116,7 +1133,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 227";
 		rLen = 0;
-		rLoc = 8112;
+		rLoc = 7804;
 		rType = 0;
 		vrLen = 3025;
 		vrLoc = 5868;
@@ -1126,7 +1143,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 215";
 		rLen = 0;
-		rLoc = 8104;
+		rLoc = 7796;
 		rType = 0;
 		vrLen = 2884;
 		vrLoc = 6009;
@@ -1136,7 +1153,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 215";
 		rLen = 0;
-		rLoc = 8104;
+		rLoc = 7796;
 		rType = 0;
 		vrLen = 2884;
 		vrLoc = 6009;
@@ -1146,7 +1163,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 215";
 		rLen = 0;
-		rLoc = 8104;
+		rLoc = 7796;
 		rType = 0;
 		vrLen = 2800;
 		vrLoc = 6116;
@@ -1156,7 +1173,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 178";
 		rLen = 0;
-		rLoc = 5944;
+		rLoc = 5749;
 		rType = 0;
 		vrLen = 3040;
 		vrLoc = 4975;
@@ -1166,7 +1183,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 178";
 		rLen = 0;
-		rLoc = 5944;
+		rLoc = 5749;
 		rType = 0;
 		vrLen = 3040;
 		vrLoc = 4975;
@@ -1176,7 +1193,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 178";
 		rLen = 0;
-		rLoc = 5944;
+		rLoc = 5749;
 		rType = 0;
 		vrLen = 2526;
 		vrLoc = 1052;
@@ -1326,7 +1343,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2408;
 		vrLoc = 7830;
@@ -1336,7 +1353,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2438;
 		vrLoc = 7912;
@@ -1346,7 +1363,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2438;
 		vrLoc = 7912;
@@ -1386,7 +1403,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2438;
 		vrLoc = 7912;
@@ -1396,7 +1413,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 266";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2082;
 		vrLoc = 8378;
@@ -1406,7 +1423,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 266";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2082;
 		vrLoc = 8378;
@@ -1416,7 +1433,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2283;
 		vrLoc = 8773;
@@ -1426,7 +1443,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2283;
 		vrLoc = 8773;
@@ -1436,7 +1453,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2283;
 		vrLoc = 8773;
@@ -1446,7 +1463,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2283;
 		vrLoc = 8773;
@@ -1456,7 +1473,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2283;
 		vrLoc = 8773;
@@ -1466,7 +1483,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2283;
 		vrLoc = 8773;
@@ -1476,7 +1493,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2107;
 		vrLoc = 8976;
@@ -1486,7 +1503,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2107;
 		vrLoc = 8976;
@@ -1496,7 +1513,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2107;
 		vrLoc = 8976;
@@ -1506,7 +1523,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 261";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2107;
 		vrLoc = 8976;
@@ -1516,7 +1533,7 @@
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 257";
 		rLen = 0;
-		rLoc = 9030;
+		rLoc = 8500;
 		rType = 0;
 		vrLen = 2291;
 		vrLoc = 8670;
@@ -1535,8 +1552,8 @@
 		isa = PBXTextBookmark;
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 237";
-		rLen = 4;
-		rLoc = 8479;
+		rLen = 0;
+		rLoc = 8114;
 		rType = 0;
 		vrLen = 2197;
 		vrLoc = 8773;
@@ -1555,8 +1572,8 @@
 		isa = PBXTextBookmark;
 		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
 		name = "TimeEntryViewController.m: 237";
-		rLen = 4;
-		rLoc = 8479;
+		rLen = 0;
+		rLoc = 8114;
 		rType = 0;
 		vrLen = 2208;
 		vrLoc = 8762;
@@ -1700,6 +1717,176 @@
 		rType = 0;
 		vrLen = 2904;
 		vrLoc = 1792;
+	};
+	A1B3F21E14C522C700A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 91";
+		rLen = 0;
+		rLoc = 3051;
+		rType = 0;
+		vrLen = 2553;
+		vrLoc = 1430;
+	};
+	A1B3F22314C5244100A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1151739102F962E007CFBF6 /* TimeEntryViewController.h */;
+		name = "TimeEntryViewController.h: 48";
+		rLen = 0;
+		rLoc = 1729;
+		rType = 0;
+		vrLen = 1774;
+		vrLoc = 0;
+	};
+	A1B3F22414C5244100A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 165";
+		rLen = 0;
+		rLoc = 5485;
+		rType = 0;
+		vrLen = 3054;
+		vrLoc = 4785;
+	};
+	A1B3F22514C5244100A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 80";
+		rLen = 0;
+		rLoc = 2796;
+		rType = 0;
+		vrLen = 2462;
+		vrLoc = 1176;
+	};
+	A1B3F22614C5244700A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 80";
+		rLen = 0;
+		rLoc = 2796;
+		rType = 0;
+		vrLen = 2462;
+		vrLoc = 1176;
+	};
+	A1B3F22914C5251B00A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 170";
+		rLen = 0;
+		rLoc = 5687;
+		rType = 0;
+		vrLen = 3088;
+		vrLoc = 4231;
+	};
+	A1B3F22C14C5253C00A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 170";
+		rLen = 0;
+		rLoc = 5631;
+		rType = 0;
+		vrLen = 3081;
+		vrLoc = 4231;
+	};
+	A1B3F22F14C5259600A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 165";
+		rLen = 0;
+		rLoc = 5594;
+		rType = 0;
+		vrLen = 3056;
+		vrLoc = 4231;
+	};
+	A1B3F23014C5259A00A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 165";
+		rLen = 0;
+		rLoc = 5594;
+		rType = 0;
+		vrLen = 3056;
+		vrLoc = 4231;
+	};
+	A1B3F23114C525C400A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 165";
+		rLen = 0;
+		rLoc = 5594;
+		rType = 0;
+		vrLen = 3083;
+		vrLoc = 4231;
+	};
+	A1B3F23214C5287400A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 165";
+		rLen = 0;
+		rLoc = 5594;
+		rType = 0;
+		vrLen = 3083;
+		vrLoc = 4231;
+	};
+	A1B3F23714C5287E00A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 165";
+		rLen = 0;
+		rLoc = 5594;
+		rType = 0;
+		vrLen = 3056;
+		vrLoc = 4231;
+	};
+	A1B3F23E14C528A600A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 165";
+		rLen = 0;
+		rLoc = 5594;
+		rType = 0;
+		vrLen = 2484;
+		vrLoc = 7124;
+	};
+	A1B3F23F14C528A600A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 201";
+		rLen = 0;
+		rLoc = 7153;
+		rType = 0;
+		vrLen = 2700;
+		vrLoc = 6252;
+	};
+	A1B3F24014C528A800A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 201";
+		rLen = 0;
+		rLoc = 7153;
+		rType = 0;
+		vrLen = 2700;
+		vrLoc = 6252;
+	};
+	A1B3F24114C528E600A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 201";
+		rLen = 0;
+		rLoc = 7153;
+		rType = 0;
+		vrLen = 2807;
+		vrLoc = 6252;
+	};
+	A1B3F24214C5290500A5BFB9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */;
+		name = "TimeEntryViewController.m: 230";
+		rLen = 0;
+		rLoc = 8114;
+		rType = 0;
+		vrLen = 2803;
+		vrLoc = 6252;
 	};
 	A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */ = {
 		uiCtxt = {
