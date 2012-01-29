@@ -11,12 +11,12 @@
 
 @interface StationCell : UITableViewCell {
 	IBOutlet UILabel *stationName;
-	IBOutlet UILabel *stationDescription;
+	IBOutlet UILabel *subtitle;
 
 }
 
 @property (nonatomic, retain) IBOutlet UILabel *stationName;
-@property (nonatomic, retain) IBOutlet UILabel *stationDescription;
+@property (nonatomic, retain) IBOutlet UILabel *subtitle;
 
 
 @end

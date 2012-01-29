@@ -149,6 +149,8 @@
 		self.startingPoint = newLocation;
 	}
 	
+	NSLog(@"got location : %@", self.startingPoint);
+	
 	HUD.detailsLabelText = @"Routes";
 	
 	NSString *locationString = [[NSString alloc] initWithFormat:@"%@train/v1/routes.json", [appDelegate getBaseUrl]];
@@ -239,6 +241,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	TrainStationsViewController *targetViewController = (TrainStationsViewController *)[[views objectAtIndex:indexPath.row] objectForKey:@"controller"];
+	targetViewController.my_location = self.startingPoint;
 	[[self navigationController] pushViewController:targetViewController animated:YES];
 	
 }

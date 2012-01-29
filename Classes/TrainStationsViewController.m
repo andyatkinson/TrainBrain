@@ -13,7 +13,7 @@
 
 @implementation TrainStationsViewController
 
-@synthesize stationsTableView, responseData, views, appDelegate, selectedRoute, mapStopsViewController;
+@synthesize stationsTableView, responseData, views, appDelegate, selectedRoute, mapStopsViewController, my_location;
 
 - (void) loadTrainStations {
 	HUD.labelText = @"Loading";
@@ -109,6 +109,8 @@
 	
 	views = [[NSMutableArray alloc] init];
 	
+	NSLog(@"my location: %@", self.my_location);
+	
 	if ([records count] > 0) {
 		for (id _record in records) {
 			// a record groups stops by name: {name:name, stops:stops}
@@ -124,6 +126,12 @@
 				stop.stop_name = [_stop objectForKey:@"stop_name"];
 				stop.stop_id = [_stop objectForKey:@"stop_id"];
 				stop.stop_desc = [_stop objectForKey:@"stop_desc"];
+				stop.stop_lat = [_stop objectForKey:@"stop_lat"];
+				stop.stop_lon = [_stop objectForKey:@"stop_lon"];
+				
+				CLLocation *location = [[CLLocation alloc] initWithLatitude:stop.stop_lat.floatValue longitude:stop.stop_lon.floatValue];
+				stop.location = location;
+				
 				[selectedStops addObject:stop];
 			}
 			
@@ -189,6 +197,12 @@
 	
 	NSString *stopName = (NSString *)[[[views objectAtIndex:indexPath.row] objectForKey:@"controller"] selectedStopName];
 	cell.stationName.text = stopName;
+
+	Stop *stop = (Stop *)[[[[views objectAtIndex:indexPath.row] objectForKey:@"controller"] selectedStops] objectAtIndex:0];
+
+	double dist = [self.my_location getDistanceFrom:stop.location] / 1609.344;
+
+	cell.subtitle.text = [NSString stringWithFormat:@"%.1f miles", dist];
 	cell.backgroundView = [[[GradientView alloc] init] autorelease];
 	
 	return cell;
@@ -209,10 +223,7 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	TimeEntryViewController *controller = (TimeEntryViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];
-	//[controller setSelectedStop:controller.selectedStop];
-	//[controller setSelectedRoute:controller.selectedRoute];
-	
+	TimeEntryViewController *controller = (TimeEntryViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
 	[[self navigationController] pushViewController:controller animated:YES];
 }
 

@@ -23,6 +23,7 @@
 	MBProgressHUD *HUD;
 	Route *selectedRoute;
 	MapStopsViewController *mapStopsViewController;
+	CLLocation *my_location;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *stationsTableView;
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 @property (nonatomic, retain) Route *selectedRoute;
 @property (nonatomic, retain) MapStopsViewController *mapStopsViewController;
+@property (nonatomic, retain) CLLocation *my_location;
 
 -(IBAction)loadMapView:(id)sender;
 
