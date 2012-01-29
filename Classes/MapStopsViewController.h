@@ -14,16 +14,16 @@
 #import "CustomPinBlack.h"
 
 @interface MapStopsViewController : UIViewController <MKMapViewDelegate, MBProgressHUDDelegate> {
-	MKMapView *_mapView;
+	MKMapView *mapView;
 	NSMutableData *responseData;
 	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD	*HUD;
+	NSString *route_id;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
 @property (nonatomic, retain) NSMutableData *responseData;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
-
--(IBAction)refreshMap:(id)sender;
+@property (nonatomic, retain) NSString *route_id;
 
 @end

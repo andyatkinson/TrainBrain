@@ -13,7 +13,7 @@
 
 @implementation TrainStationsViewController
 
-@synthesize stationsTableView, responseData, views, appDelegate, selectedRoute;
+@synthesize stationsTableView, responseData, views, appDelegate, selectedRoute, mapStopsViewController;
 
 - (void) loadTrainStations {
 	HUD.labelText = @"Loading";
@@ -41,6 +41,17 @@
 	[v release];
 }
 
+-(IBAction)loadMapView:(id)sender {
+	NSLog(@"load map view!");
+	
+	mapStopsViewController = [[MapStopsViewController alloc] initWithNibName:@"MapStopsViewController" bundle: [NSBundle mainBundle]];
+	NSLog(@"passing selected route ID: %@", selectedRoute.route_id);
+	mapStopsViewController.route_id = selectedRoute.route_id;
+	//[self.view addSubview:mapStopsViewController.view];
+	[[self navigationController] pushViewController:mapStopsViewController animated:YES];
+	
+	// know the current route, so kick out a request to show the stops on map with the route
+}
 
 - (void)viewDidLoad {
 	// 231/231/231
@@ -51,6 +62,10 @@
 	[self addHeaderAndFooter];
 	
 	[super viewDidLoad];
+	
+	UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(loadMapView:)];
+	self.navigationItem.rightBarButtonItem = mapButton;
+	[mapButton release];	
 	
 	UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];

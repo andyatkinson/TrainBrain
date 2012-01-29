@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <MapKit/MapKit.h>
 
 @interface Stop : NSObject {
 	NSString *stop_id;
@@ -17,6 +17,7 @@
 	NSString *stop_lon;
 	NSString *stop_city;
 	NSString *stop_desc;
+	CLLocation *location;
 }
 
 @property (nonatomic, retain) NSString *stop_id;
@@ -26,5 +27,6 @@
 @property (nonatomic, retain) NSString *stop_lon;
 @property (nonatomic, retain) NSString *stop_city;
 @property (nonatomic, retain) NSString *stop_desc;
+@property (nonatomic, retain) CLLocation *location;
 
 @end

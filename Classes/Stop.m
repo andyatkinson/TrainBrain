@@ -11,6 +11,6 @@
 
 @implementation Stop
 
-@synthesize stop_id, stop_name, stop_street, stop_lat, stop_lon, stop_city, stop_desc;
+@synthesize stop_id, stop_name, stop_street, stop_lat, stop_lon, stop_city, stop_desc, location;
 
 @end

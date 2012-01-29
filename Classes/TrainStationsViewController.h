@@ -13,6 +13,7 @@
 #import "MBProgressHUD.h"
 #import "GradientView.h"
 #import "Route.h"
+#import "MapStopsViewController.h"
 
 @interface TrainStationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
 	IBOutlet UITableView *stationsTableView;
@@ -21,6 +22,7 @@
 	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD *HUD;
 	Route *selectedRoute;
+	MapStopsViewController *mapStopsViewController;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *stationsTableView;
@@ -28,5 +30,8 @@
 @property (nonatomic, retain) IBOutlet NSMutableArray *views;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 @property (nonatomic, retain) Route *selectedRoute;
+@property (nonatomic, retain) MapStopsViewController *mapStopsViewController;
+
+-(IBAction)loadMapView:(id)sender;
 
 @end

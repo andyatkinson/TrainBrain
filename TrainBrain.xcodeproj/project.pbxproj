@@ -45,7 +45,6 @@
 		A1AE19AA123742B100AB1691 /* background_texture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AE19A8123742B100AB1691 /* background_texture@2x.png */; };
 		A1AE19B11237439800AB1691 /* hiaw_map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AE19AF1237439800AB1691 /* hiaw_map_pin.png */; };
 		A1AE19B21237439800AB1691 /* hiaw_map_pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AE19B01237439800AB1691 /* hiaw_map_pin@2x.png */; };
-		A1B3C58212C7AA5F002B008B /* NewsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B3C58012C7AA5F002B008B /* NewsViewController.m */; };
 		A1B3C58312C7AA5F002B008B /* NewsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B3C58112C7AA5F002B008B /* NewsViewController.xib */; };
 		A1B3C5A912C7AC5F002B008B /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B3C5A812C7AC5F002B008B /* InfoViewController.xib */; };
 		A1B3C66E12C7FF05002B008B /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B3C66D12C7FF05002B008B /* NewsCell.m */; };
@@ -141,8 +140,6 @@
 		A1AE19A8123742B100AB1691 /* background_texture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_texture@2x.png"; sourceTree = "<group>"; };
 		A1AE19AF1237439800AB1691 /* hiaw_map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hiaw_map_pin.png; sourceTree = "<group>"; };
 		A1AE19B01237439800AB1691 /* hiaw_map_pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiaw_map_pin@2x.png"; sourceTree = "<group>"; };
-		A1B3C57F12C7AA5F002B008B /* NewsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsViewController.h; sourceTree = "<group>"; };
-		A1B3C58012C7AA5F002B008B /* NewsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsViewController.m; sourceTree = "<group>"; };
 		A1B3C58112C7AA5F002B008B /* NewsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = NewsViewController.xib; path = Classes/NewsViewController.xib; sourceTree = "<group>"; };
 		A1B3C5A812C7AC5F002B008B /* InfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = InfoViewController.xib; path = Classes/InfoViewController.xib; sourceTree = "<group>"; };
 		A1B3C66C12C7FF05002B008B /* NewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsCell.h; path = ../NewsCell.h; sourceTree = "<group>"; };
@@ -232,8 +229,6 @@
 				A169E494102F91E500A65E05 /* CustomCell.m */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
-				A1B3C57F12C7AA5F002B008B /* NewsViewController.h */,
-				A1B3C58012C7AA5F002B008B /* NewsViewController.m */,
 				A1DF9D02109D3BB100328466 /* TrainStationsViewController.h */,
 				A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */,
 				A1151739102F962E007CFBF6 /* TimeEntryViewController.h */,
@@ -529,7 +524,6 @@
 				A1BC24691223201E00C324C9 /* StationCell.m in Sources */,
 				A1BC24E2122328D100C324C9 /* GradientView.m in Sources */,
 				A1253AF71235D89F003AEF64 /* YellowGradientView.m in Sources */,
-				A1B3C58212C7AA5F002B008B /* NewsViewController.m in Sources */,
 				A1B3C66E12C7FF05002B008B /* NewsCell.m in Sources */,
 				A1EDA16A148A937C004C7E61 /* Route.m in Sources */,
 				A1EDA20A148A9F86004C7E61 /* StopTime.m in Sources */,

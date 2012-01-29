@@ -13,37 +13,30 @@
 
 @implementation MapStopsViewController
 
-@synthesize mapView = _mapView;
-@synthesize responseData, appDelegate;
+@synthesize responseData, appDelegate, mapView, route_id;
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 }
 
 - (void) loadStops {
+	NSLog(@"load stops called!");
 	HUD.labelText = @"Loading";
-	HUD.detailsLabelText = @"Stations";
+	HUD.detailsLabelText = @"Stops";
 	[HUD show:YES];
 	
-	NSString *requestURL = [NSString stringWithFormat:@"%@train_stations.json", [appDelegate getBaseUrl]];
+	NSString *requestURL = [NSString stringWithFormat:@"%@train/v1/maps.json?route_id=%@", [appDelegate getBaseUrl], self.route_id];
+	NSLog(@"request URL: %@", requestURL);
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
 	[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
--(IBAction)refreshMap:(id)sender {
-	[self loadStops];
-}
-
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {
-	
+- (void)viewDidLoad {	
+		
 	[super viewDidLoad];
 	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
 	responseData = [[NSMutableData data] retain];
-	
-	UIBarButtonItem *refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(refreshMap:)];
-	self.navigationItem.rightBarButtonItem = refreshButton;
-	[refreshButton release];	
 	
 	UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
@@ -103,11 +96,13 @@
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
   MKAnnotationView *view = nil;
-	if(annotation != mapView.userLocation) {
-		StopAnnotation *stopAnn = (StopAnnotation *)annotation;
+	if (annotation != mapView.userLocation) {
+		StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
 		view = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"stopRouteId"];
-		if(nil == view) {
-			//NSString *routeId = stopAnn.stop.routeId;
+		
+
+//		if (nil == view) {
+//			NSString *route_id = stopAnnotation.stop.routeId;
 //			NSRange hiawathaRange = [routeId rangeOfString:@"55"];
 //			NSRange northstarRange = [routeId rangeOfString:@"888"];
 //			if (hiawathaRange.location != NSNotFound) {
@@ -115,17 +110,19 @@
 //			} else if(northstarRange.location != NSNotFound) {
 //				view = [[[CustomPinBlue alloc] initWithAnnotation:annotation] autorelease];
 //			}
-		}
-		//[(MKPinAnnotationView *)view setAnimatesDrop:YES];
+		//}
+
+		[(MKPinAnnotationView *)view setAnimatesDrop:NO];
 		 
 		[view setCanShowCallout:YES];
-		//[view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
-  }
+		[view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
+	}
 
 	return view;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
+	NSLog(@"callout accessory tapped, load the time entry view");
 	StopAnnotation *stopAnn = (StopAnnotation *)[view annotation];
 
 	//NSURL *webUrl = [NSURL URLWithString:stopAnn.stop.webUrl];
@@ -133,7 +130,7 @@
 }
 
 - (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Map data is unavailable." 
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Map data is not available." 
 																									message:nil 
 																								 delegate:nil 
 																				cancelButtonTitle:@"OK" 
@@ -148,33 +145,32 @@
 	
 	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
 	SBJSON *parser = [[SBJSON alloc] init];
-	NSArray *train_stations = [parser objectWithString:responseString error:nil];
+	NSArray *records = [parser objectWithString:responseString error:nil];
 	[parser release];
 	[responseString release];
 	
-	int count = [train_stations count];
-	if(count > 0) {
-		for(int i=0; i < count; i++) {
-			NSDictionary *trainStation = [[train_stations objectAtIndex:i] objectForKey:@"train_station"];
+	if ([records count] > 0) {
+		for (id _record in records) {
 			
-			Stop *newStop = [[Stop alloc] init];
-			[newStop setStopName:[trainStation objectForKey:@"name"]];
-			[newStop setStreet:[trainStation objectForKey:@"street"]];
-			[newStop setDescription:[trainStation objectForKey:@"description"]];
-			[newStop setRouteId:[trainStation objectForKey:@"route_id"]];
-			[newStop setRouteShortName:[trainStation objectForKey:@"route_short_name"]];
-			//[newStop setWebUrl:[trainStation objectForKey:@"web_url"]];
+			NSDictionary *_stop = [_record objectForKey:@"stop"];			
+			Stop *stop = [[Stop alloc] init];
+			stop.stop_name = [_stop objectForKey:@"stop_name"];
+			stop.stop_street = [_stop objectForKey:@"stop_street"];
+			stop.stop_id = [_stop objectForKey:@"stop_id"];
+			stop.stop_desc = [_stop objectForKey:@"stop_desc"];
+			stop.stop_lat = [_stop objectForKey:@"stop_lat"];
+			stop.stop_lon = [_stop objectForKey:@"stop_lon"];
 			
-			NSNumber *stopLat = [trainStation objectForKey:@"stop_lat"];
-			NSNumber *stopLon = [trainStation objectForKey:@"stop_lon"];
-			CLLocation *stopLocation = [[CLLocation alloc] initWithLatitude:stopLat.floatValue longitude:stopLon.floatValue];
-	
-			[newStop setLocation:stopLocation];
-			[stopLocation release];
+			CLLocation *location = [[CLLocation alloc] initWithLatitude:stop.stop_lat.floatValue longitude:stop.stop_lon.floatValue];
+			stop.location = location;
 
-			StopAnnotation *stopAnnotation = [StopAnnotation annotationWithStop:newStop];
-			[self.mapView addAnnotation:stopAnnotation];
-			[newStop release];
+			[location release];
+			
+			StopAnnotation *annotation = [StopAnnotation annotationWithStop:stop];
+			[self.mapView addAnnotation:annotation];
+			
+			[stop release];
+			[annotation release];
 		}
 	
 	} else {
@@ -209,7 +205,7 @@
 
 - (void)dealloc {
 	[super dealloc];
-	_mapView = nil;
+	[mapView dealloc];
 	[responseData dealloc];
 	[appDelegate dealloc];
 }

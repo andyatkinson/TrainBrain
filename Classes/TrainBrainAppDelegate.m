@@ -8,13 +8,11 @@
 
 #import "TrainBrainAppDelegate.h"
 #import "RootViewController.h"
-#import "MapStopsViewController.h"
 #import "InfoViewController.h"
-#import "NewsViewController.h"
 
 @implementation TrainBrainAppDelegate
 
-@synthesize window, routesTableViewController, mapStopsViewController, newsViewController, infoViewController, tabBarController;
+@synthesize window, routesTableViewController, infoViewController, tabBarController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
 	
@@ -32,23 +30,6 @@
 	routesController.tabBarItem.image = [UIImage imageNamed:@"11-clock.png"];
 	[routesTableViewController release];
 	
-	mapStopsViewController = [[MapStopsViewController alloc] init];
-	UINavigationController *mapController = [[[UINavigationController alloc] initWithRootViewController:mapStopsViewController] autorelease];
-	mapController.navigationBar.barStyle = UIBarStyleDefault;
-	mapController.navigationBar.tintColor = navBarColor;
-	mapController.title = @"Map";
-	mapController.tabBarItem.image = [UIImage imageNamed:@"72-pin.png"];
-	[mapStopsViewController release];
-	
-	/* 2011-12-26 removing news for now */
-	newsViewController = [[NewsViewController alloc] init];
-	UINavigationController *newsController = [[[UINavigationController alloc] initWithRootViewController:newsViewController] autorelease];
-	newsController.navigationBar.barStyle = UIBarStyleDefault;
-	newsController.navigationBar.tintColor = navBarColor;
-	newsController.title = @"News";
-	newsController.tabBarItem.image = [UIImage imageNamed:@"icon_news.png"];
-	[newsViewController release];
-	
 	infoViewController = [[InfoViewController alloc] init];
 	UINavigationController *infoController = [[[UINavigationController alloc] initWithRootViewController:infoViewController] autorelease];
 	infoController.navigationBar.barStyle = UIBarStyleDefault;
@@ -57,7 +38,7 @@
 	infoController.tabBarItem.image = [UIImage imageNamed:@"90-lifebuoy.png"];
 	[infoViewController release];
 	
-	tabBarController.viewControllers = [NSArray arrayWithObjects:routesController, mapController, infoController, nil];
+	tabBarController.viewControllers = [NSArray arrayWithObjects:routesController, infoController, nil];
 	[window addSubview:tabBarController.view];
 
 	
