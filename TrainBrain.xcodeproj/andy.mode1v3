@@ -329,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>A1931B0514D4E47500FB73D9</string>
+										<string>A1931B0C14D4EA0B00FB73D9</string>
 										<key>history</key>
 										<array>
 											<string>A1E5ED061220CB0E00B15224</string>
@@ -591,9 +591,9 @@
 	<key>WindowOrderList</key>
 	<array>
 		<string>1C530D57069F1CE1000CFCEE</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>A169E415102F915800A65E05</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/andy/Projects/TrainBrain/TrainBrain.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -935,7 +935,7 @@
 								<key>Frame</key>
 								<string>{{0, 0}, {1890, 823}}</string>
 								<key>RubberWindowFrame</key>
-								<string>148 38 1890 864 0 0 2560 1418 </string>
+								<string>424 42 1890 864 0 0 2560 1418 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXDebugCLIModule</string>
@@ -964,11 +964,11 @@
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.consoleV3</string>
 			<key>WindowString</key>
-			<string>148 38 1890 864 0 0 2560 1418 </string>
+			<string>424 42 1890 864 0 0 2560 1418 </string>
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

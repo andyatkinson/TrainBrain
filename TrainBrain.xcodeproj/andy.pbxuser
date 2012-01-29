@@ -321,6 +321,11 @@
 			A1931B0314D4E44D00FB73D9 /* PBXTextBookmark */ = A1931B0314D4E44D00FB73D9 /* PBXTextBookmark */;
 			A1931B0414D4E45000FB73D9 /* PBXTextBookmark */ = A1931B0414D4E45000FB73D9 /* PBXTextBookmark */;
 			A1931B0514D4E47500FB73D9 /* PBXTextBookmark */ = A1931B0514D4E47500FB73D9 /* PBXTextBookmark */;
+			A1931B0814D4E9C600FB73D9 /* PBXTextBookmark */ = A1931B0814D4E9C600FB73D9 /* PBXTextBookmark */;
+			A1931B0914D4E9C800FB73D9 /* PBXTextBookmark */ = A1931B0914D4E9C800FB73D9 /* PBXTextBookmark */;
+			A1931B0A14D4E9C800FB73D9 /* PBXTextBookmark */ = A1931B0A14D4E9C800FB73D9 /* PBXTextBookmark */;
+			A1931B0B14D4E9C900FB73D9 /* PBXTextBookmark */ = A1931B0B14D4E9C900FB73D9 /* PBXTextBookmark */;
+			A1931B0C14D4EA0B00FB73D9 /* PBXTextBookmark */ = A1931B0C14D4EA0B00FB73D9 /* PBXTextBookmark */;
 			A1958978129214680091B0A0 = A1958978129214680091B0A0 /* PlistBookmark */;
 			A1AE19B9123743C500AB1691 = A1AE19B9123743C500AB1691 /* PBXBookmark */;
 			A1AE19BA123743C500AB1691 = A1AE19BA123743C500AB1691 /* PBXBookmark */;
@@ -1446,7 +1451,7 @@
 		path = /Users/andy/Projects/TrainBrain/Classes/TrainBrainAppDelegate.h;
 		sourceTree = "<absolute>";
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {905, 539}}";
+			sepNavIntBoundsRect = "{{0, 0}, {905, 516}}";
 			sepNavSelRange = "{337, 0}";
 			sepNavVisRange = "{0, 738}";
 			sepNavWindowFrame = "{{38, 325}, {1505, 1067}}";
@@ -2676,6 +2681,56 @@
 		rType = 0;
 		vrLen = 2412;
 		vrLoc = 0;
+	};
+	A1931B0814D4E9C600FB73D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
+		name = "MapStopsViewController.m: 44";
+		rLen = 0;
+		rLoc = 1353;
+		rType = 0;
+		vrLen = 2436;
+		vrLoc = 3;
+	};
+	A1931B0914D4E9C800FB73D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
+		name = "MapStopsViewController.m: 28";
+		rLen = 0;
+		rLoc = 582;
+		rType = 0;
+		vrLen = 1792;
+		vrLoc = 0;
+	};
+	A1931B0A14D4E9C800FB73D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1931A3A14D4881D00FB73D9 /* TrainBrainAppDelegate.h */;
+		name = "TrainBrainAppDelegate.h: 11";
+		rLen = 0;
+		rLoc = 337;
+		rType = 0;
+		vrLen = 738;
+		vrLoc = 0;
+	};
+	A1931B0B14D4E9C900FB73D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
+		name = "MapStopsViewController.m: 44";
+		rLen = 0;
+		rLoc = 1353;
+		rType = 0;
+		vrLen = 2436;
+		vrLoc = 3;
+	};
+	A1931B0C14D4EA0B00FB73D9 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */;
+		name = "MapStopsViewController.m: 44";
+		rLen = 0;
+		rLoc = 1353;
+		rType = 0;
+		vrLen = 2522;
+		vrLoc = 3;
 	};
 	A1958978129214680091B0A0 /* PlistBookmark */ = {
 		isa = PlistBookmark;
@@ -4023,9 +4078,9 @@
 	};
 	A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {1328, 2665}}";
+			sepNavIntBoundsRect = "{{0, 0}, {1328, 2704}}";
 			sepNavSelRange = "{1353, 0}";
-			sepNavVisRange = "{0, 2412}";
+			sepNavVisRange = "{3, 2522}";
 			sepNavWindowFrame = "{{84, 300}, {977, 671}}";
 		};
 	};
