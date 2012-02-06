@@ -10,23 +10,12 @@
 #import "JSON/JSON.h"
 #import "TimeEntryViewController.h"
 #import "Stop.h"
+#import "StopGroup.h"
 
 @implementation TrainStationsViewController
 
-@synthesize stationsTableView, responseData, views, appDelegate, selectedRoute, mapStopsViewController, my_location;
+@synthesize tableView, appDelegate, selectedRoute, mapStopsViewController, my_location, stop_groups;
 
-- (void) loadTrainStations {
-	HUD.labelText = @"Loading";
-	HUD.detailsLabelText = @"Stations";
-	
-	// was passing lat/lng here lat=44.948364&lng=-93.239143
-	NSString *requestURL = [NSString stringWithFormat:@"%@train/v1/routes/%@/stops.json",
-													[appDelegate getBaseUrl],
-													selectedRoute.route_id];
-	NSLog(@"request URL: %@", requestURL);
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
-}
 
 //
 // Hack to add 1px header/footer around tableview to prevent separator rows from showing
@@ -36,18 +25,15 @@
 {
 	UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 1)];
 	v.backgroundColor = [UIColor clearColor];
-	[self.stationsTableView setTableHeaderView:v];
-	[self.stationsTableView setTableFooterView:v];
+	[self.tableView setTableHeaderView:v];
+	[self.tableView setTableFooterView:v];
 	[v release];
 }
 
 -(IBAction)loadMapView:(id)sender {
-	NSLog(@"load map view!");
 	
 	mapStopsViewController = [[MapStopsViewController alloc] initWithNibName:@"MapStopsViewController" bundle: [NSBundle mainBundle]];
-	NSLog(@"passing selected route ID: %@", selectedRoute.route_id);
 	mapStopsViewController.route_id = selectedRoute.route_id;
-	//[self.view addSubview:mapStopsViewController.view];
 	[[self navigationController] pushViewController:mapStopsViewController animated:YES];
 	
 	// know the current route, so kick out a request to show the stops on map with the route
@@ -55,8 +41,8 @@
 
 - (void)viewDidLoad {
 	// 231/231/231
-	stationsTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-	stationsTableView.separatorColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1.0];
+	tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
+	tableView.separatorColor = [UIColor colorWithRed:231/255.0 green:231/255.0 blue:231/255.0 alpha:1.0];
 	
 	// prevent table view separator from showing on empty cells
 	[self addHeaderAndFooter];
@@ -73,100 +59,23 @@
 	HUD.delegate = self;
 	
 	appDelegate =	(TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	responseData = [[NSMutableData data] retain];
-	[self loadTrainStations];
+	
 	self.title = selectedRoute.long_name;
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	[responseData setLength:0];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	[responseData appendData:data];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	[HUD hide:YES];
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
-																									message:nil 
-																								 delegate:nil 
-																				cancelButtonTitle:@"OK" 
-																				otherButtonTitles:nil];
-	[alert show];
-	[alert release];
+    
+    HUD.labelText = @"Loading";
+    
+    [self loadStops];
 }
 
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	[connection release];
-	
-	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	SBJSON *parser = [[SBJSON alloc] init];
-	NSArray *records = [parser objectWithString:responseString error:nil];
-	[parser release];
-	[responseString release];
-	
-	views = [[NSMutableArray alloc] init];
-	
-	NSLog(@"my location: %@", self.my_location);
-	
-	if ([records count] > 0) {
-		for (id _record in records) {
-			// a record groups stops by name: {name:name, stops:stops}
-			
-			NSString *selectedStopName = [_record objectForKey:@"stop_name"];
-			
-			NSMutableArray *selectedStops = [[NSMutableArray alloc] init];
-			
-			NSArray *stops = [_record objectForKey:@"stops"];
-			for (id _s in stops) {
-				NSDictionary *_stop = [_s objectForKey:@"stop"];
-				Stop *stop = [[Stop alloc] init];
-				stop.stop_name = [_stop objectForKey:@"stop_name"];
-				stop.stop_id = [_stop objectForKey:@"stop_id"];
-				stop.stop_desc = [_stop objectForKey:@"stop_desc"];
-				stop.stop_lat = [_stop objectForKey:@"stop_lat"];
-				stop.stop_lon = [_stop objectForKey:@"stop_lon"];
-				
-				CLLocation *location = [[CLLocation alloc] initWithLatitude:stop.stop_lat.floatValue longitude:stop.stop_lon.floatValue];
-				stop.location = location;
-				
-				[selectedStops addObject:stop];
-			}
-			
-			TimeEntryViewController *_controller = [[TimeEntryViewController alloc] init];
-			[_controller setSelectedRoute:selectedRoute];
-			[_controller setSelectedStopName:selectedStopName];
-			[_controller setSelectedStops:selectedStops];
-			
-			[views addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:
-												_controller, @"controller",
-												nil]];
-			
-		}
-	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Stops Found." 
-																										message:nil 
-																									 delegate:nil 
-																					cancelButtonTitle:@"OK" 
-																					otherButtonTitles:nil];
-		[alert show];
-		[alert release];
-	}
-	
-	// IMPORTANT: this call reloads the UITableView cells data after the data is available
-	[stationsTableView reloadData];
-	[HUD hide:YES];
-}
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	
 	// Unselect the selected row if any
-	NSIndexPath*	selection = [stationsTableView indexPathForSelectedRow];
+	NSIndexPath*	selection = [tableView indexPathForSelectedRow];
 	if (selection) {
-		[stationsTableView deselectRowAtIndexPath:selection animated:YES];
+		[tableView deselectRowAtIndexPath:selection animated:YES];
 	}
 }
 
@@ -177,7 +86,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [views count];
+	return [self.stop_groups count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -194,20 +103,32 @@
 	}
 	
 	[cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-	
-	NSString *stopName = (NSString *)[[[views objectAtIndex:indexPath.row] objectForKey:@"controller"] selectedStopName];
-	cell.stationName.text = stopName;
-
-	Stop *stop = (Stop *)[[[[views objectAtIndex:indexPath.row] objectForKey:@"controller"] selectedStops] objectAtIndex:0];
-
-	double dist = [self.my_location getDistanceFrom:stop.location] / 1609.344;
-
-	cell.subtitle.text = [NSString stringWithFormat:@"%.1f miles", dist];
-	cell.backgroundView = [[[GradientView alloc] init] autorelease];
+    
+    if([self.stop_groups count] > 0) {
+        StopGroup *group = (StopGroup *)[self.stop_groups objectAtIndex:indexPath.row];
+        Stop *stop = (Stop*)[group.stops objectAtIndex:0];
+        cell.stationName.text = stop.stop_name;
+        
+        double dist = [self.my_location getDistanceFrom:stop.location] / 1609.344;
+        
+        cell.subtitle.text = [NSString stringWithFormat:@"%.1f miles", dist];
+        cell.backgroundView = [[[GradientView alloc] init] autorelease];
+    }
 	
 	return cell;
 }
 
+- (void)loadStops {
+    NSString *requestURL = [NSString stringWithFormat:@"train/v1/routes/%@/stops", self.selectedRoute.route_id];
+    
+    [Stop stopsWithURLString:requestURL near:self.my_location parameters:nil block:^(NSArray *records) {
+        
+        [HUD hide:YES];
+        self.stop_groups = records;
+        [self.tableView reloadData];
+        
+    }];
+}
 
 // set the table view cell height
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -223,7 +144,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	TimeEntryViewController *controller = (TimeEntryViewController *)[[views objectAtIndex: indexPath.row] objectForKey:@"controller"];	
+    StopGroup *group = (StopGroup *)[self.stop_groups objectAtIndex:indexPath.row];
+
+    TimeEntryViewController *controller = [[TimeEntryViewController alloc] init];
+    [controller setSelectedRoute:self.selectedRoute];
+    [controller setSelectedStopName:group.name];
+    [controller setSelectedStops:group.stops];
 	[[self navigationController] pushViewController:controller animated:YES];
 }
 
@@ -233,10 +159,8 @@
 
 - (void)dealloc {
     [super dealloc];
-		[stationsTableView dealloc];
-		[responseData dealloc];
-		[views dealloc];
-		[appDelegate dealloc];
+    [tableView dealloc];
+    [appDelegate dealloc];
 }
 
 

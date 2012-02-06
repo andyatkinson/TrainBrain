@@ -16,23 +16,21 @@
 #import "MapStopsViewController.h"
 
 @interface TrainStationsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MBProgressHUDDelegate> {
-	IBOutlet UITableView *stationsTableView;
-	NSMutableData *responseData;
-	IBOutlet NSMutableArray *views;
+	IBOutlet UITableView *tableView;
 	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD *HUD;
 	Route *selectedRoute;
 	MapStopsViewController *mapStopsViewController;
 	CLLocation *my_location;
+    NSArray *stop_groups;
 }
 
-@property (nonatomic, retain) IBOutlet UITableView *stationsTableView;
-@property (nonatomic, retain) NSMutableData	*responseData;
-@property (nonatomic, retain) IBOutlet NSMutableArray *views;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
 @property (nonatomic, retain) Route *selectedRoute;
 @property (nonatomic, retain) MapStopsViewController *mapStopsViewController;
 @property (nonatomic, retain) CLLocation *my_location;
+@property (readwrite, nonatomic, retain) NSArray *stop_groups;
 
 -(IBAction)loadMapView:(id)sender;
 

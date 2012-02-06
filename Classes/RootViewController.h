@@ -15,22 +15,19 @@
 #import "GradientView.h"
 
 @interface RootViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate, MBProgressHUDDelegate> {
-	IBOutlet UITableView *routesTableView;
-	IBOutlet NSMutableArray *views;
-	NSMutableData *responseData;
+	IBOutlet UITableView *tableView;
 	CLLocationManager *locationManager;
 	CLLocation *startingPoint;
 	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD *HUD;
-	BOOL HAS_INTERNET_CONNECTION;
+    NSArray *routes;
 }
 
-@property (nonatomic, retain) IBOutlet UITableView *routesTableView;
-@property (nonatomic, retain) NSMutableData	*responseData;
-@property (nonatomic, retain) IBOutlet NSMutableArray *views;
+@property (nonatomic, retain) IBOutlet UITableView *tableView;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 @property (nonatomic, retain) CLLocation *startingPoint;
 @property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
+@property (readwrite, nonatomic, retain) NSArray *routes;
 
 -(IBAction)refreshStations:(id)sender;
 

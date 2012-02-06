@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface Stop : NSObject {
 	NSString *stop_id;
@@ -28,5 +29,8 @@
 @property (nonatomic, retain) NSString *stop_city;
 @property (nonatomic, retain) NSString *stop_desc;
 @property (nonatomic, retain) CLLocation *location;
+
++ (void)stopsWithURLString:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block;
++ (NSArray *)stopsFromArray:(NSArray *)array;
 
 @end

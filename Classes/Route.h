@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <CoreLocation/CoreLocation.h>
 
 @interface Route : NSObject {
 	NSString *route_id;
@@ -24,5 +24,8 @@
 @property (nonatomic, retain) NSString *route_desc;
 @property (nonatomic, retain) NSString *route_type;
 @property (nonatomic, retain) NSString *route_url;
+
+- (id)initWithAttributes:(NSDictionary *)attributes;
++ (void)routesWithURLString:(NSString *)urlString parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block;
 
 @end
