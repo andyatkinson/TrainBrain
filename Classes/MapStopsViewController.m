@@ -13,30 +13,32 @@
 
 @implementation MapStopsViewController
 
-@synthesize responseData, appDelegate, mapView, route_id;
+@synthesize stops, mapView, route_id;
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
 }
 
-- (void) loadStops {
-	NSLog(@"load stops called!");
-	HUD.labelText = @"Loading";
-	HUD.detailsLabelText = @"Stops";
-	[HUD show:YES];
-	
-	NSString *requestURL = [NSString stringWithFormat:@"%@train/v1/maps.json?route_id=%@", [appDelegate getBaseUrl], self.route_id];
-	NSLog(@"request URL: %@", requestURL);
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:requestURL]];
-	[[NSURLConnection alloc] initWithRequest:request delegate:self];
+- (void)loadStops {
+  NSString *requestURL = [NSString stringWithFormat:@"train/v1/routes/%@/stops/all", self.route_id];
+  
+  [Stop stopsWithURLString:requestURL near:nil parameters:nil block:^(NSArray *records) {
+    
+    [HUD hide:YES];
+    self.stops = records;
+    [self displayMapData];
+    
+  }];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
 - (void)viewDidLoad {	
 		
 	[super viewDidLoad];
-	appDelegate = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
-	responseData = [[NSMutableData data] retain];
+  
+  HUD.labelText = @"Loading";
+	HUD.detailsLabelText = @"Stops";
+	[HUD show:YES];
 	
 	UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
@@ -47,24 +49,6 @@
 	self.title = @"Map";
 }
 
-- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
-	[responseData setLength:0];
-}
-
-- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
-	[responseData appendData:data];
-}
-
-- (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-	[HUD hide:YES];
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Network connection failed. \n\n Ensure Airplane Mode is not enabled and a network connection is available." 
-																									message:nil 
-																								 delegate:nil 
-																				cancelButtonTitle:@"OK" 
-																				otherButtonTitles:nil];
-	[alert show];
-	[alert release];
-}
 
 - (void)recenterMap {
 	NSArray *coordinates = [self.mapView valueForKeyPath:@"annotations.coordinate"];
@@ -129,61 +113,19 @@
 //  [[UIApplication sharedApplication] openURL:webUrl];
 }
 
-- (void)mapViewDidFailLoadingMap:(MKMapView *)mapView withError:(NSError *)error {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Map data is not available." 
-																									message:nil 
-																								 delegate:nil 
-																				cancelButtonTitle:@"OK" 
-																				otherButtonTitles:nil];
-	[alert show];
-	[alert release];
-}
 
-
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-	[connection release];
+- (void)displayMapData {
+  
+  for (id _stop in self.stops) {
+    Stop *stop = (Stop*)_stop;
+    StopAnnotation *annotation = [StopAnnotation annotationWithStop:stop];
+    [self.mapView addAnnotation:annotation];			
+    
+    [stop release];
+    [annotation release];
+  }
 	
-	NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-	SBJSON *parser = [[SBJSON alloc] init];
-	NSArray *records = [parser objectWithString:responseString error:nil];
-	[parser release];
-	[responseString release];
-	
-	if ([records count] > 0) {
-		for (id _record in records) {
-			
-			NSDictionary *_stop = [_record objectForKey:@"stop"];			
-			Stop *stop = [[Stop alloc] init];
-			stop.stop_name = [_stop objectForKey:@"stop_name"];
-			stop.stop_street = [_stop objectForKey:@"stop_street"];
-			stop.stop_id = [_stop objectForKey:@"stop_id"];
-			stop.stop_desc = [_stop objectForKey:@"stop_desc"];
-			stop.stop_lat = [_stop objectForKey:@"stop_lat"];
-			stop.stop_lon = [_stop objectForKey:@"stop_lon"];
-			
-			CLLocation *location = [[CLLocation alloc] initWithLatitude:stop.stop_lat.floatValue longitude:stop.stop_lon.floatValue];
-			stop.location = location;
-
-			[location release];
-			
-			StopAnnotation *annotation = [StopAnnotation annotationWithStop:stop];
-			[self.mapView addAnnotation:annotation];
-			
-			[stop release];
-			[annotation release];
-		}
-	
-	} else {
-		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No Stops Found." 
-																										message:nil 
-																									 delegate:nil 
-																					cancelButtonTitle:@"OK" 
-																					otherButtonTitles:nil];
-		[alert show];
-		[alert release];
-	}
-	
-	[self recenterMap];
+  [self recenterMap];
 	[HUD hide:YES];
 }
 
@@ -198,16 +140,9 @@
 }
 
 
-- (void)hudWasHidden
-{
-}
-
-
 - (void)dealloc {
 	[super dealloc];
 	[mapView dealloc];
-	[responseData dealloc];
-	[appDelegate dealloc];
 }
 
 

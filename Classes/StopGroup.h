@@ -16,4 +16,6 @@
 @property (nonatomic, retain) NSArray *stops;
 @property (nonatomic, retain) NSString *name;
 
+- (id)initWithAttributes:(NSDictionary *)attributes;
+
 @end

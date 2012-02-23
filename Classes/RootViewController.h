@@ -20,7 +20,7 @@
 	CLLocation *startingPoint;
 	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD *HUD;
-    NSArray *routes;
+  NSArray *routes;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;

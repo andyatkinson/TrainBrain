@@ -15,15 +15,16 @@
 
 @interface MapStopsViewController : UIViewController <MKMapViewDelegate, MBProgressHUDDelegate> {
 	MKMapView *mapView;
-	NSMutableData *responseData;
-	TrainBrainAppDelegate *appDelegate;
 	MBProgressHUD	*HUD;
+  NSArray *stops;
 	NSString *route_id;
 }
 
 @property (nonatomic, retain) IBOutlet MKMapView *mapView;
-@property (nonatomic, retain) NSMutableData *responseData;
-@property (nonatomic, retain) TrainBrainAppDelegate *appDelegate;
+@property (readwrite, nonatomic, retain) NSArray *stops;
 @property (nonatomic, retain) NSString *route_id;
+
+- (void) displayMapData;
+- (void)loadStops;
 
 @end

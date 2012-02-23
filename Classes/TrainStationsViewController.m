@@ -52,6 +52,7 @@
 	UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" style:UIBarButtonItemStylePlain target:self action:@selector(loadMapView:)];
 	self.navigationItem.rightBarButtonItem = mapButton;
 	[mapButton release];	
+  self.navigationItem.rightBarButtonItem.enabled = NO;
 	
 	UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
@@ -121,7 +122,9 @@
 - (void)loadStops {
     NSString *requestURL = [NSString stringWithFormat:@"train/v1/routes/%@/stops", self.selectedRoute.route_id];
     
-    [Stop stopsWithURLString:requestURL near:self.my_location parameters:nil block:^(NSArray *records) {
+    [Stop stopGroupsWithURLString:requestURL near:self.my_location parameters:nil block:^(NSArray *records) {
+      
+      self.navigationItem.rightBarButtonItem.enabled = YES;
         
         [HUD hide:YES];
         self.stop_groups = records;

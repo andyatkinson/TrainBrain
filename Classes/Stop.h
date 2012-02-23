@@ -30,6 +30,7 @@
 @property (nonatomic, retain) NSString *stop_desc;
 @property (nonatomic, retain) CLLocation *location;
 
++ (void)stopGroupsWithURLString:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block;
 + (void)stopsWithURLString:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block;
 + (NSArray *)stopsFromArray:(NSArray *)array;
 

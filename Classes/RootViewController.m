@@ -78,13 +78,10 @@
 - (void)loadRoutes {
     [Route routesWithURLString:@"train/v1/routes" near:nil parameters:nil block:^(NSArray *records) {
         
-        [HUD hide:YES];
-        
-        self.routes = records;
-        
-        [self.tableView reloadData];
-        
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+      [HUD hide:YES];
+      self.routes = records;
+      [self.tableView reloadData];
+      self.navigationItem.rightBarButtonItem.enabled = YES;
         
     }];
 }
@@ -131,11 +128,9 @@
 	return 1;
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	return [self.routes count];
 }
-
 
 // Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -152,7 +147,7 @@
 	}
 	
 	if([self.routes count] > 0) {
-        Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
+    Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
 
 		[[cell lineTitle] setText:route.long_name];
 		[[cell lineDescription] setText:route.short_name];
@@ -179,16 +174,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
-    TrainStationsViewController *target = [[TrainStationsViewController alloc] init];
-    target.selectedRoute = route;
+  Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
+  TrainStationsViewController *target = [[TrainStationsViewController alloc] init];
+  target.selectedRoute = route;
 	target.my_location = self.startingPoint;
 	[[self navigationController] pushViewController:target animated:YES];
 	
-}
-
-- (void)hudWasHidden
-{
 }
 
 - (void)dealloc {
