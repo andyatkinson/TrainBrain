@@ -116,27 +116,39 @@ selectedStopName, selectedStops, webView, leftHeadsign, rightHeadsign, timeEntri
         
         [HUD hide:YES];
         self.timeEntries = records;
+      
+      
+      if ([self.timeEntries count] > 0) {
         self.timeEntry = [timeEntries objectAtIndex:0];
         
         self.leftHeadsign = [self.timeEntry.headsign_keys objectAtIndex:0];
         if ([self.timeEntry.headsign_keys count] == 2) {
-            self.rightHeadsign = [self.timeEntry.headsign_keys objectAtIndex:1];
+          self.rightHeadsign = [self.timeEntry.headsign_keys objectAtIndex:1];
         }
         
-        for (StopTime *st in self.timeEntry.stop_times) {
+        if ([self.timeEntry.stop_times count] > 0) {
+          for (StopTime *st in self.timeEntry.stop_times) {
             [self.allStopTimes addObject:st];
             
             if ([st.headsign_key isEqualToString:self.leftHeadsign]) {
-                [self.leftHeadsignStopTimes addObject:st];
-                
+              [self.leftHeadsignStopTimes addObject:st];
+              
             } else if ([st.headsign_key isEqualToString:self.rightHeadsign]) {
-                [self.rightHeadsignStopTimes addObject:st];
+              [self.rightHeadsignStopTimes addObject:st];
             }
-        }
-
-        [self.webView loadHTMLString:self.timeEntry.template baseURL:[NSURL URLWithString:@""]];
+          }
+          
+          [self.webView loadHTMLString:self.timeEntry.template baseURL:[NSURL URLWithString:@""]];
+          
+          [self.tableView reloadData];
         
-        [self.tableView reloadData];
+        } else {
+          
+            //NSLog(@"no stop times");
+        }
+        
+      }
+        
     }];
     
     
