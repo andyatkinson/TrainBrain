@@ -22,7 +22,7 @@
 	Route *selectedRoute;
 	MapStopsViewController *mapStopsViewController;
 	CLLocation *my_location;
-    NSArray *stop_groups;
+  NSArray *stop_groups;
 }
 
 @property (nonatomic, retain) IBOutlet UITableView *tableView;

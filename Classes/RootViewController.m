@@ -71,6 +71,17 @@
 	self.navigationItem.rightBarButtonItem = refreshButton;
 	[refreshButton release];
     self.navigationItem.rightBarButtonItem.enabled = NO;
+  
+  NSLog(@"trying to read last stop ID");
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  NSString *documentsDirectory = [paths objectAtIndex:0];
+  NSString *path = [documentsDirectory stringByAppendingPathComponent:@"user_data.plist"];
+  NSMutableDictionary *userData = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
+  
+  NSLog(@"read last stop ID: %@", [userData objectForKey:@"last_stop_id"]);
+  
+  [userData release];
+  
     
     [self loadRoutes];
 }

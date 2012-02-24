@@ -59,6 +59,7 @@
 		A1BC24691223201E00C324C9 /* StationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BC24681223201E00C324C9 /* StationCell.m */; };
 		A1BC24E2122328D100C324C9 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BC24E1122328D100C324C9 /* GradientView.m */; };
 		A1BC252612232C0E00C324C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BC252512232C0E00C324C9 /* QuartzCore.framework */; };
+		A1C259B714F7FC77003215E6 /* user_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C259B614F7FC77003215E6 /* user_data.plist */; };
 		A1CD8A7812C79E9700734313 /* icon_news.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CD8A7612C79E9700734313 /* icon_news.png */; };
 		A1CD8A7912C79E9700734313 /* icon_news@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CD8A7712C79E9700734313 /* icon_news@2x.png */; };
 		A1D14A3214DF204A002AD13A /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D14A1E14DF204A002AD13A /* AFHTTPClient.m */; };
@@ -174,6 +175,7 @@
 		A1BC24E0122328D100C324C9 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		A1BC24E1122328D100C324C9 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		A1BC252512232C0E00C324C9 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A1C259B614F7FC77003215E6 /* user_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user_data.plist; sourceTree = "<group>"; };
 		A1CD8A7612C79E9700734313 /* icon_news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_news.png; sourceTree = "<group>"; };
 		A1CD8A7712C79E9700734313 /* icon_news@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_news@2x.png"; sourceTree = "<group>"; };
 		A1D14A1D14DF204A002AD13A /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPClient.h; sourceTree = "<group>"; };
@@ -300,6 +302,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A1C259B614F7FC77003215E6 /* user_data.plist */,
 				A1D14A1C14DF204A002AD13A /* AFNetworking */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -561,6 +564,7 @@
 				A153FC3F12CA4C9500AE0AF3 /* avatar_border@2x.png in Resources */,
 				A14CDF0212CA52F40087E69D /* header_shadow.png in Resources */,
 				A14CDF0312CA52F40087E69D /* header_shadow@2x.png in Resources */,
+				A1C259B714F7FC77003215E6 /* user_data.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

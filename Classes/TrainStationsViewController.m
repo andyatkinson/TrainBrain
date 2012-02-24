@@ -148,6 +148,25 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     StopGroup *group = (StopGroup *)[self.stop_groups objectAtIndex:indexPath.row];
+  
+  Stop *stop = (Stop*)[group.stops objectAtIndex:0];
+
+  
+  //store the stop_id from the first stop in the group
+  NSLog(@"writing user data");
+  
+  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+  NSString *documentsDirectory = [paths objectAtIndex:0];
+  NSString *path = [documentsDirectory stringByAppendingPathComponent:@"user_data.plist"];
+  
+  NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
+
+  
+  [data setObject:stop.stop_id forKey:@"last_stop_id"];
+  
+  [data writeToFile: path atomically:YES];
+  [data release];
+
 
     TimeEntryViewController *controller = [[TimeEntryViewController alloc] init];
     [controller setSelectedRoute:self.selectedRoute];
