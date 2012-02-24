@@ -114,15 +114,15 @@ selectedStopName, selectedStops, webView, leftHeadsign, rightHeadsign, timeEntri
 
     [StopTime stopTimesWithURLString:requestURL near:nil parameters:[NSDictionary dictionaryWithObject:hour forKey:@"hour"] block:^(NSArray *records) {
         
-        [HUD hide:YES];
-        self.timeEntries = records;
-      
+      [HUD hide:YES];
+      self.timeEntries = records;
       
       if ([self.timeEntries count] > 0) {
         self.timeEntry = [timeEntries objectAtIndex:0];
         
-        self.leftHeadsign = [self.timeEntry.headsign_keys objectAtIndex:0];
-        if ([self.timeEntry.headsign_keys count] == 2) {
+        if ([self.timeEntry.headsign_keys count] == 1) {
+          self.leftHeadsign = [self.timeEntry.headsign_keys objectAtIndex:0];
+        } else if ([self.timeEntry.headsign_keys count] == 2) {
           self.rightHeadsign = [self.timeEntry.headsign_keys objectAtIndex:1];
         }
         
