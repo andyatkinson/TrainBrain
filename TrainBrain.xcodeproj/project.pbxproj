@@ -20,6 +20,13 @@
 		A10FBFE412258C1000C02996 /* 90-lifebuoy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE112258C1000C02996 /* 90-lifebuoy@2x.png */; };
 		A115173C102F962E007CFBF6 /* TimeEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */; };
 		A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */; };
+		A115788215117ABE0064593E /* bg_header.png in Resources */ = {isa = PBXBuildFile; fileRef = A115788015117ABE0064593E /* bg_header.png */; };
+		A115788315117ABE0064593E /* bg_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A115788115117ABE0064593E /* bg_header@2x.png */; };
+		A115788915117D6E0064593E /* RouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A115788815117D6D0064593E /* RouteCell.m */; };
+		A115788C15117EB90064593E /* bg_cell.png in Resources */ = {isa = PBXBuildFile; fileRef = A115788A15117EB90064593E /* bg_cell.png */; };
+		A115788D15117EB90064593E /* bg_cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A115788B15117EB90064593E /* bg_cell@2x.png */; };
+		A115789015118CEA0064593E /* header_bar_choose_line.png in Resources */ = {isa = PBXBuildFile; fileRef = A115788E15118CEA0064593E /* header_bar_choose_line.png */; };
+		A115789115118CEA0064593E /* header_bar_choose_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A115788F15118CEA0064593E /* header_bar_choose_line@2x.png */; };
 		A1253AF71235D89F003AEF64 /* YellowGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1253AF61235D89F003AEF64 /* YellowGradientView.m */; };
 		A1436AA312920F48004299E0 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1436AA212920F48004299E0 /* Icon@2x.png */; };
 		A14CDF0212CA52F40087E69D /* header_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = A14CDF0012CA52F40087E69D /* header_shadow.png */; };
@@ -121,6 +128,14 @@
 		A115173A102F962E007CFBF6 /* TimeEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeEntryViewController.m; sourceTree = "<group>"; };
 		A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureDetailCell.h; sourceTree = "<group>"; };
 		A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureDetailCell.m; sourceTree = "<group>"; };
+		A115788015117ABE0064593E /* bg_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_header.png; sourceTree = "<group>"; };
+		A115788115117ABE0064593E /* bg_header@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_header@2x.png"; sourceTree = "<group>"; };
+		A115788715117D6D0064593E /* RouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteCell.h; sourceTree = "<group>"; };
+		A115788815117D6D0064593E /* RouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteCell.m; sourceTree = "<group>"; };
+		A115788A15117EB90064593E /* bg_cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_cell.png; sourceTree = "<group>"; };
+		A115788B15117EB90064593E /* bg_cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_cell@2x.png"; sourceTree = "<group>"; };
+		A115788E15118CEA0064593E /* header_bar_choose_line.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_bar_choose_line.png; sourceTree = "<group>"; };
+		A115788F15118CEA0064593E /* header_bar_choose_line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header_bar_choose_line@2x.png"; sourceTree = "<group>"; };
 		A1253AF51235D89F003AEF64 /* YellowGradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YellowGradientView.h; sourceTree = "<group>"; };
 		A1253AF61235D89F003AEF64 /* YellowGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YellowGradientView.m; sourceTree = "<group>"; };
 		A1436A7F12872EE5004299E0 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
@@ -267,16 +282,7 @@
 				A1BC257E122338B500C324C9 /* HUD */,
 				A1BC24DE122328BB00C324C9 /* Gradient */,
 				A169E49D102F927100A65E05 /* JSON */,
-				A1BC24671223201E00C324C9 /* StationCell.h */,
-				A1BC24681223201E00C324C9 /* StationCell.m */,
-				A1B3C66C12C7FF05002B008B /* NewsCell.h */,
-				A1B3C66D12C7FF05002B008B /* NewsCell.m */,
-				A1D68749121B64DA002C6081 /* TrainLineCell.h */,
-				A1D6874A121B64DA002C6081 /* TrainLineCell.m */,
-				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
-				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
-				A169E493102F91C600A65E05 /* CustomCell.h */,
-				A169E494102F91E500A65E05 /* CustomCell.m */,
+				A115788615117B700064593E /* Views */,
 				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
 				28C286E00D94DF7D0034E888 /* RootViewController.m */,
 				A1DF9D02109D3BB100328466 /* TrainStationsViewController.h */,
@@ -299,8 +305,6 @@
 				A1D14A3D14DF2224002AD13A /* TransitAPIClient.m */,
 				A1C259B914F809D8003215E6 /* RoutesTableViewController.h */,
 				A1C259BA14F809D8003215E6 /* RoutesTableViewController.m */,
-				A1D0683714F83D85000EFD55 /* BigDepartureTableViewCell.h */,
-				A1D0683814F83D85000EFD55 /* BigDepartureTableViewCell.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -340,6 +344,12 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A115788E15118CEA0064593E /* header_bar_choose_line.png */,
+				A115788F15118CEA0064593E /* header_bar_choose_line@2x.png */,
+				A115788A15117EB90064593E /* bg_cell.png */,
+				A115788B15117EB90064593E /* bg_cell@2x.png */,
+				A115788015117ABE0064593E /* bg_header.png */,
+				A115788115117ABE0064593E /* bg_header@2x.png */,
 				A1BA024614F84D47008C6B0B /* bg_timer.png */,
 				A1BA024714F84D47008C6B0B /* bg_timer@2x.png */,
 				A14CDF0012CA52F40087E69D /* header_shadow.png */,
@@ -399,6 +409,27 @@
 				A1BC252512232C0E00C324C9 /* QuartzCore.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A115788615117B700064593E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A1BC24671223201E00C324C9 /* StationCell.h */,
+				A1BC24681223201E00C324C9 /* StationCell.m */,
+				A1B3C66C12C7FF05002B008B /* NewsCell.h */,
+				A1B3C66D12C7FF05002B008B /* NewsCell.m */,
+				A1D68749121B64DA002C6081 /* TrainLineCell.h */,
+				A1D6874A121B64DA002C6081 /* TrainLineCell.m */,
+				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
+				A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */,
+				A169E493102F91C600A65E05 /* CustomCell.h */,
+				A169E494102F91E500A65E05 /* CustomCell.m */,
+				A1D0683714F83D85000EFD55 /* BigDepartureTableViewCell.h */,
+				A1D0683814F83D85000EFD55 /* BigDepartureTableViewCell.m */,
+				A115788715117D6D0064593E /* RouteCell.h */,
+				A115788815117D6D0064593E /* RouteCell.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		A169E49D102F927100A65E05 /* JSON */ = {
@@ -583,6 +614,12 @@
 				A1C259B714F7FC77003215E6 /* user_data.plist in Resources */,
 				A1BA024814F84D47008C6B0B /* bg_timer.png in Resources */,
 				A1BA024914F84D47008C6B0B /* bg_timer@2x.png in Resources */,
+				A115788215117ABE0064593E /* bg_header.png in Resources */,
+				A115788315117ABE0064593E /* bg_header@2x.png in Resources */,
+				A115788C15117EB90064593E /* bg_cell.png in Resources */,
+				A115788D15117EB90064593E /* bg_cell@2x.png in Resources */,
+				A115789015118CEA0064593E /* header_bar_choose_line.png in Resources */,
+				A115789115118CEA0064593E /* header_bar_choose_line@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -635,6 +672,7 @@
 				A1D14A4414DF761B002AD13A /* TimeEntry.m in Sources */,
 				A1C259BB14F809D8003215E6 /* RoutesTableViewController.m in Sources */,
 				A1D0683914F83D85000EFD55 /* BigDepartureTableViewCell.m in Sources */,
+				A115788915117D6E0064593E /* RouteCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

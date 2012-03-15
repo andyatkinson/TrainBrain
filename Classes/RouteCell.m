@@ -1,49 +1,36 @@
 //
-//  BigDepartureTableViewCell.m
+//  RouteCell.m
 //  TrainBrain
 //
+//  Created by Aaron Batalion on 3/14/12.
 //  Copyright (c) 2012 Beetle Fight. All rights reserved.
 //
 
-#import "BigDepartureTableViewCell.h"
+#import "RouteCell.h"
 
-@implementation BigDepartureTableViewCell
+@implementation RouteCell
 
-@synthesize bigNumberLabel;
+@synthesize routeTitleLabel;
 
-- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
   if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-    UIView *contentView = self.contentView;    
+    UIView *contentView = self.contentView;
     
-//    UIImageView *bgImageView = [[UIImageView alloc] init];
-//    bgImageView.image = [UIImage imageNamed:@"bg_timer.png"];
-    
-    UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"bg_timer" ofType:@"png"]];
+    UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"bg_cell" ofType:@"png"]];
     
     UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
     [imgView setUserInteractionEnabled:NO];	
     self.backgroundView = imgView;
     
-    //add the subView to the cell
-    //[self.contentView addSubview:bgImageView];
-    
-    
-    self.bigNumberLabel = [self newLabelWithPrimaryColor:[UIColor blackColor] selectedColor:[UIColor whiteColor] fontSize:14.0 bold:YES];
-		self.bigNumberLabel.textAlignment = UITextAlignmentLeft; // default
-		[contentView addSubview:self.bigNumberLabel];
-		[self.bigNumberLabel release];
-    
+    self.routeTitleLabel = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:14.0 bold:YES];
+		
+		[contentView addSubview:self.routeTitleLabel];
+		[self.routeTitleLabel release];
     
   }
+
   return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-	[super setSelected:selected animated:animated];
-}
-
-- (void) setData:(NSDictionary *)dict {
-	self.bigNumberLabel.text = [dict objectForKey:@"title"];
 }
 
 - (void)layoutSubviews {
@@ -68,10 +55,10 @@
 		 make the label 20 pixels high
      */
 		frame = CGRectMake(boundsX + 10, 4, 200, 20);
-		self.bigNumberLabel.frame = frame;
+		self.routeTitleLabel.frame = frame;
     
-//    CGRect imageRectangle = CGRectMake(0.0f,0.0f,320.0f,44.0f); //cells are 44 px high
-//    bgImageView.frame = imageRectangle;
+    //    CGRect imageRectangle = CGRectMake(0.0f,0.0f,320.0f,44.0f); //cells are 44 px high
+    //    bgImageView.frame = imageRectangle;
     
 	}
 }
@@ -93,7 +80,7 @@
 	 Views are drawn most efficiently when they are opaque and do not have a clear background, so set these defaults.  To show selection properly, however, the views need to be transparent (so that the selection color shows through).  This is handled in setSelected:animated:.
 	 */
 	UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-	newLabel.backgroundColor = [UIColor whiteColor];
+	newLabel.backgroundColor = [UIColor clearColor];
 	newLabel.opaque = YES;
 	newLabel.textColor = primaryColor;
 	newLabel.highlightedTextColor = selectedColor;
@@ -102,9 +89,15 @@
 	return newLabel;
 }
 
-- (void)dealloc {
-	[bigNumberLabel dealloc];
-	[super dealloc];
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated
+{
+    [super setSelected:selected animated:animated];
+
+    // Configure the view for the selected state
 }
+
+- (void) dealloc {
+}
+
 
 @end

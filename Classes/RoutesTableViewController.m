@@ -4,7 +4,8 @@
 //
 
 #import "RoutesTableViewController.h"
-#import "BigDepartureTableViewCell.h"
+#import "RouteCell.h"
+#import "Route.h"
 
 @implementation RoutesTableViewController
 
@@ -14,13 +15,13 @@
 	//Initialize the array.
 	listOfItems = [[NSMutableArray alloc] init];
 	
-	NSArray *routes = [NSArray arrayWithObjects:@"Light rail", nil];
+	NSArray *routes = [NSArray arrayWithObjects:@"Light rail", @"Northstar line", nil];
 	NSDictionary *routesDict = [NSDictionary dictionaryWithObject:routes forKey:@"items"];
   
   NSArray *lastStopID = [NSArray arrayWithObjects:@"51234", nil];
   NSDictionary *lastStopIDDict = [NSDictionary dictionaryWithObject:lastStopID forKey:@"items"];
 	
-	NSArray *stops = [NSArray arrayWithObjects:@"Lake St", @"Franklink", @"MOA", nil];
+	NSArray *stops = [NSArray arrayWithObjects:@"Lake St", @"Franklin", @"MOA", nil];
 	NSDictionary *stopsDict = [NSDictionary dictionaryWithObject:stops forKey:@"items"];
 	
 	[listOfItems addObject:routesDict];
@@ -28,16 +29,7 @@
 	[listOfItems addObject:stopsDict];
 	
 	//Set the title
-	self.navigationItem.title = @"Departures";
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.section == 0) {
-    if (indexPath.row == 0) {
-      return 154;
-    }
-  }
-  return 44;
+	self.navigationItem.title = @"Routes";
 }
 
 
@@ -70,6 +62,18 @@
  }
  */
 
+- (void)loadRoutes {
+  // TODO use the location that is found to send to the server as [lat="",lon=""]
+  [Route routesWithURLString:@"train/v1/routes/nearby_stops" near:nil parameters:nil block:^(NSArray *records) {
+    
+    //[HUD hide:YES];
+    //self.routes = records;
+    [self.tableView reloadData];
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    
+  }];
+}
+
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
   // Release anything that's not essential, such as cached data
@@ -84,17 +88,20 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
   if ([self tableView:tableView titleForHeaderInSection:section] != nil) {
-    if (section == 1) {
-      return 100;
-    } else {
-      return 40;
-    }
-    
+    return 40;
   }
   else {
     // If no section header title, no section header needed
     return 0;
   }
+}
+
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+  UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"header_bar_choose_line" ofType:@"png"]];
+  
+  UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+  return imgView;
+  
 }
 
 
@@ -110,11 +117,11 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	
 	if (section == 0) {
-    return NULL;
+    return @"Choose your line";
   } else if (section == 1) {
-    return @"Last viewed stop";
+    return @"Last Viewed";
   } else if (section == 2) {
-    return @"Nearby stops";
+    return @"Nearby Stops";
   }
 		
 }
@@ -123,16 +130,23 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   static NSString *CellIdentifier = @"Cell";
+  
+  // indexPath.section == 0  to choose a specific section
+  // e.g. if (indexPath.section == 0) { BigDepartureTableViewCell }
 
   if (indexPath.section == 0) {
     
-    BigDepartureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    RouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-      cell = [[[BigDepartureTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    NSDictionary *itemAtIndex = [NSDictionary dictionaryWithObject:@"foo bar" forKey:@"title"];
-    [cell setData:itemAtIndex];
+    //NSDictionary *itemAtIndex = [NSDictionary dictionaryWithObject:@"foo bar" forKey:@"title"];
+    NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
+    NSArray *array = [dictionary objectForKey:@"items"];
+    NSString *route_title = [array objectAtIndex:indexPath.row];
+    
+    cell.routeTitleLabel.text = route_title;
       
     return cell;
     
@@ -176,5 +190,48 @@
 }
 
 
+
+
 @end
 
+// SET HEAD section titles
+//
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//	
+//	if (section == 0) {
+//    return NULL;
+//  } else if (section == 1) {
+//    return @"Last viewed stop";
+//  } else if (section == 2) {
+//    return @"Nearby stops";
+//  }
+//  
+//}
+
+// SET HEADER SECTION heights
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+//  if ([self tableView:tableView titleForHeaderInSection:section] != nil) {
+//    if (section == 1) {
+//      return 100;
+//    } else {
+//      return 40;
+//    }
+//    
+//  }
+//  else {
+//    // If no section header title, no section header needed
+//    return 0;
+//  }
+//}
+
+// SET AN EXPLICIT row height
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+//  if (indexPath.section == 0) {
+//    if (indexPath.row == 0) {
+//      return 154;
+//    }
+//  }
+//  return 44;
+//}

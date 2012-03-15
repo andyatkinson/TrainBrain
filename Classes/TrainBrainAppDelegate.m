@@ -32,10 +32,14 @@
   }
   // END data storage in plist file
   
+  // Create image for navigation background - portrait
+  UIImage *navigationBarImage = [UIImage imageNamed:@"bg_header.png"];
+  [[UINavigationBar appearance] setBackgroundImage:navigationBarImage forBarMetrics:UIBarMetricsDefault];
+  
 	
-	[application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+	//[application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 	
-	UIColor *navBarColor = UIColorFromRGB(0x111111);
+	//UIColor *navBarColor = UIColorFromRGB(0x111111);
 	
 	tabBarController = [[UITabBarController alloc] init];
   //routesTableViewController = [[RootViewController alloc] init];
@@ -51,8 +55,8 @@
 	
 	infoViewController = [[InfoViewController alloc] init];
 	UINavigationController *infoController = [[[UINavigationController alloc] initWithRootViewController:infoViewController] autorelease];
-	infoController.navigationBar.barStyle = UIBarStyleDefault;
-	infoController.navigationBar.tintColor = navBarColor;
+	//infoController.navigationBar.barStyle = UIBarStyleDefault;
+	//infoController.navigationBar.tintColor = navBarColor;
 	infoController.title = @"Help";
 	infoController.tabBarItem.image = [UIImage imageNamed:@"90-lifebuoy.png"];
 	[infoViewController release];
