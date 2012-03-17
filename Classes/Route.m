@@ -7,6 +7,7 @@
 //
 
 #import "Route.h"
+#import "Stop.h"
 #import "TransitAPIClient.h"
 
 @implementation Route
@@ -47,6 +48,43 @@
             block([NSArray array]);
         }
     }];
+}
+
++ (void)routesWithNearbyStops:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSDictionary *data))block {
+  NSDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+
+	if (location) {
+		[mutableParameters setValue:[NSString stringWithFormat:@"%1.7f", location.coordinate.latitude] forKey:@"lat"];
+		[mutableParameters setValue:[NSString stringWithFormat:@"%1.7f", location.coordinate.longitude] forKey:@"lon"];
+	}
+  
+  [[TransitAPIClient sharedClient] getPath:urlString parameters:mutableParameters success:^(__unused AFHTTPRequestOperation *operation, id JSON) {
+    
+    NSMutableDictionary *data = [NSMutableDictionary dictionary];
+    
+    NSMutableArray *routes = [NSMutableArray array];
+    for (NSDictionary *attributes in [JSON valueForKeyPath:@"routes"]) {
+      Route *route = [[[Route alloc] initWithAttributes:attributes] autorelease];
+      [routes addObject:route];
+    }
+    
+    NSMutableArray *stops = [NSMutableArray array];
+    for (NSDictionary *attributes in [JSON valueForKeyPath:@"stops"]) {
+      Stop *stop = [[[Stop alloc] initWithAttributes:attributes] autorelease];
+      [stops addObject:stop];
+    }
+    
+    [data setObject:routes forKey:@"routes"];
+    [data setObject:stops forKey:@"stops"];
+    
+    if (block) {
+      block([NSDictionary dictionaryWithDictionary:data]);
+    }
+  } failure:^(__unused AFHTTPRequestOperation *operation, NSError *error) {
+    if (block) {
+      block([NSArray array]);
+    }
+  }];
 }
 
 @end

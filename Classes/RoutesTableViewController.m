@@ -6,12 +6,57 @@
 #import "RoutesTableViewController.h"
 #import "RouteCell.h"
 #import "Route.h"
+#import "Stop.h"
 
 @implementation RoutesTableViewController
 
-@synthesize tableView;
+@synthesize tableView, dataArraysForRoutesScreen, routes, stops, locationManager;
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+	[self loadSpotsForLocation:newLocation];
+  [self.locationManager stopUpdatingLocation];
+}
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to acquire location." 
+																									message:nil 
+																								 delegate:nil 
+																				cancelButtonTitle:@"OK" 
+																				otherButtonTitles:nil];
+	[alert show];
+	[alert release];
+	
+}
+
+- (void)loadSpotsForLocation:(CLLocation *)location {  
+  NSDictionary *params = [NSDictionary dictionaryWithObject:@"1000" forKey:@"last_viewed_stop_id"];
+  
+  [Route routesWithNearbyStops:@"train/v1/routes/nearby_stops" near:location parameters:params block:^(NSDictionary *data) {
+    
+    //[HUD hide:YES];
+
+    
+    self.routes = [data objectForKey:@"routes"];
+    self.stops = [data objectForKey:@"stops"];
+    
+    [self.tableView reloadData];
+    
+    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+    
+    //self.navigationItem.rightBarButtonItem.enabled = YES;
+    
+  }];
+
+}
 
 - (void)viewDidLoad {
+  
+  // Load from a fixed location, in case location services are disabled or unavailable
+  CLLocation *mpls = [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223];
+  [self loadSpotsForLocation:mpls];
+  
+  [self.locationManager startUpdatingLocation];
+  
   
   self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(22, 207, 270, 233)];
   
@@ -25,26 +70,23 @@
 
 	
 	//Initialize the array.
-	listOfItems = [[NSMutableArray alloc] init];
+	dataArraysForRoutesScreen = [[NSMutableArray alloc] init];
   
-  Route *r1 = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                 @"Hiawatha Light rail", @"long_name", @"Minneapolis to MOA", @"route_desc", nil]];
-  
-  Route *r2 = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
-                                                 @"Northstar commuter rail", @"long_name", @"Big lake to Mpls", @"route_desc", nil]];
-	
-	NSArray *routes = [NSArray arrayWithObjects:r1, r2, nil];
+  Route *r1 = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Loading...", @"route_desc", nil]];
+	self.routes = [NSArray arrayWithObjects:r1, nil];
 	NSDictionary *routesDict = [NSDictionary dictionaryWithObject:routes forKey:@"items"];
   
   NSArray *lastStopID = [NSArray arrayWithObjects:@"51234", nil];
   NSDictionary *lastStopIDDict = [NSDictionary dictionaryWithObject:lastStopID forKey:@"items"];
 	
-	NSArray *stops = [NSArray arrayWithObjects:@"Lake St", @"Franklin", @"MOA", nil];
+  
+  Stop *s1 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Loading...", @"stop_desc", nil]];
+  self.stops = [NSArray arrayWithObjects:s1, nil];
 	NSDictionary *stopsDict = [NSDictionary dictionaryWithObject:stops forKey:@"items"];
 	
-	[listOfItems addObject:routesDict];
-  [listOfItems addObject:lastStopIDDict];
-	[listOfItems addObject:stopsDict];
+	[dataArraysForRoutesScreen addObject:routesDict];
+  [dataArraysForRoutesScreen addObject:lastStopIDDict];
+	[dataArraysForRoutesScreen addObject:stopsDict];
 
 	
 	//Set the title
@@ -83,17 +125,6 @@
  }
  */
 
-- (void)loadRoutes {
-  // TODO use the location that is found to send to the server as [lat="",lon=""]
-  [Route routesWithURLString:@"train/v1/routes/nearby_stops" near:nil parameters:nil block:^(NSArray *records) {
-    
-    //[HUD hide:YES];
-    //self.routes = records;
-    [self.tableView reloadData];
-    self.navigationItem.rightBarButtonItem.enabled = YES;
-    
-  }];
-}
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
@@ -104,7 +135,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
   
-	return [listOfItems count];
+	return [dataArraysForRoutesScreen count];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -154,9 +185,17 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 	
 	//Number of rows it should expect should be based on the section
-	NSDictionary *dictionary = [listOfItems objectAtIndex:section];
-  NSArray *array = [dictionary objectForKey:@"items"];
-	return [array count];
+//	NSDictionary *dictionary = [dataArraysForRoutesScreen objectAtIndex:section];
+//  NSArray *array = [dictionary objectForKey:@"items"];
+//	return [array count];
+  if (section == 0) {
+    return [self.routes count];
+  } else if (section == 1) {
+    return 1;
+  } else if (section == 2) {
+    return [self.stops count];
+  }
+  
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -186,9 +225,9 @@
     }
     
     //NSDictionary *itemAtIndex = [NSDictionary dictionaryWithObject:@"foo bar" forKey:@"title"];
-    NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
-    NSArray *array = [dictionary objectForKey:@"items"];
-    Route *route = (Route *)[array objectAtIndex:indexPath.row];
+    //NSDictionary *dictionary = [dataArraysForRoutesScreen objectAtIndex:indexPath.section];
+    //NSArray *array = [dictionary objectForKey:@"items"];
+    Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
     
     cell.routeTitle.text = route.long_name;
     cell.routeDescription.text = route.route_desc;
@@ -207,7 +246,7 @@
     }
     
     //NSDictionary *itemAtIndex = [NSDictionary dictionaryWithObject:@"foo bar" forKey:@"title"];
-    NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
+    NSDictionary *dictionary = [dataArraysForRoutesScreen objectAtIndex:indexPath.section];
     NSArray *array = [dictionary objectForKey:@"items"];
     NSString *route_title = [array objectAtIndex:indexPath.row];
     
@@ -230,12 +269,14 @@
     }
     
     //NSDictionary *itemAtIndex = [NSDictionary dictionaryWithObject:@"foo bar" forKey:@"title"];
-    NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
-    NSArray *array = [dictionary objectForKey:@"items"];
-    NSString *route_title = [array objectAtIndex:indexPath.row];
+//    NSDictionary *dictionary = [dataArraysForRoutesScreen objectAtIndex:indexPath.section];
+//    NSArray *array = [dictionary objectForKey:@"items"];
+//    NSString *route_title = [array objectAtIndex:indexPath.row];
     
-    cell.routeTitle.text = route_title;
-    cell.routeDescription.text = @"foo";
+    Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
+    
+    cell.routeTitle.text = stop.stop_name;
+    cell.routeDescription.text = stop.stop_desc;
     cell.extraInfo.text = @"4 blocks";
     
     cell.routeIcon.image = [UIImage imageNamed:@"icon_northstar.png"];
@@ -271,7 +312,7 @@
 
 - (void)dealloc {
 	
-	[listOfItems release];
+	[dataArraysForRoutesScreen release];
   [super dealloc];
 }
 
@@ -310,3 +351,21 @@
 //    return 0;
 //  }
 //}
+
+
+// DISTANCE SORTING gowalla style
+//
+//[Spot spotsWithURLString:@"/spots" near:location parameters:[NSDictionary dictionaryWithObject:@"128" forKey:@"per_page"] block:^(NSArray *records) {
+//  self.nearbySpots = [records sortedArrayUsingComparator:^ NSComparisonResult(id obj1, id obj2) {
+//    CLLocationDistance d1 = [[(Spot *)obj1 location] distanceFromLocation:location];
+//    CLLocationDistance d2 = [[(Spot *)obj2 location] distanceFromLocation:location];
+//    
+//    if (d1 < d2) {
+//      return NSOrderedAscending;
+//    } else if (d1 > d2) {
+//      return NSOrderedDescending;
+//    } else {
+//      return NSOrderedSame;
+//    }
+//  }];      
+//}];

@@ -3,14 +3,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface RoutesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface RoutesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate> {
 	UITableView *tableView;
-	NSMutableArray *listOfItems;
+	NSMutableArray *dataArraysForRoutesScreen;
+  
+  CLLocationManager *locationManager;
+  
+  NSArray *routes;
+  NSArray *stops;
 }
 
 @property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, retain) NSMutableArray *dataArraysForRoutesScreen;
+@property (nonatomic, retain) NSArray *routes;
+@property (nonatomic, retain) NSArray *stops;
 
-- (void)loadRoutes;
+@property (nonatomic, retain) CLLocationManager *locationManager;
+
+- (void)loadSpotsForLocation:(CLLocation *)location;
 
 @end
