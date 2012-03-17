@@ -70,6 +70,10 @@
 		A1BC252612232C0E00C324C9 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1BC252512232C0E00C324C9 /* QuartzCore.framework */; };
 		A1C259B714F7FC77003215E6 /* user_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C259B614F7FC77003215E6 /* user_data.plist */; };
 		A1C259BB14F809D8003215E6 /* RoutesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C259BA14F809D8003215E6 /* RoutesTableViewController.m */; };
+		A1C3DB1015150EC4007D5B4A /* arrow_lg.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C3DB0E15150EC4007D5B4A /* arrow_lg.png */; };
+		A1C3DB1115150EC4007D5B4A /* arrow_lg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C3DB0F15150EC4007D5B4A /* arrow_lg@2x.png */; };
+		A1C3DB1415152E7D007D5B4A /* arrow_cell.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C3DB1215152E7D007D5B4A /* arrow_cell.png */; };
+		A1C3DB1515152E7D007D5B4A /* arrow_cell@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1C3DB1315152E7D007D5B4A /* arrow_cell@2x.png */; };
 		A1CD8A7812C79E9700734313 /* icon_news.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CD8A7612C79E9700734313 /* icon_news.png */; };
 		A1CD8A7912C79E9700734313 /* icon_news@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1CD8A7712C79E9700734313 /* icon_news@2x.png */; };
 		A1D0683914F83D85000EFD55 /* BigDepartureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D0683814F83D85000EFD55 /* BigDepartureTableViewCell.m */; };
@@ -199,6 +203,10 @@
 		A1C259B614F7FC77003215E6 /* user_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user_data.plist; sourceTree = "<group>"; };
 		A1C259B914F809D8003215E6 /* RoutesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoutesTableViewController.h; sourceTree = "<group>"; };
 		A1C259BA14F809D8003215E6 /* RoutesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoutesTableViewController.m; sourceTree = "<group>"; };
+		A1C3DB0E15150EC4007D5B4A /* arrow_lg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_lg.png; sourceTree = "<group>"; };
+		A1C3DB0F15150EC4007D5B4A /* arrow_lg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_lg@2x.png"; sourceTree = "<group>"; };
+		A1C3DB1215152E7D007D5B4A /* arrow_cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow_cell.png; sourceTree = "<group>"; };
+		A1C3DB1315152E7D007D5B4A /* arrow_cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow_cell@2x.png"; sourceTree = "<group>"; };
 		A1CD8A7612C79E9700734313 /* icon_news.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_news.png; sourceTree = "<group>"; };
 		A1CD8A7712C79E9700734313 /* icon_news@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_news@2x.png"; sourceTree = "<group>"; };
 		A1D0683714F83D85000EFD55 /* BigDepartureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigDepartureTableViewCell.h; sourceTree = "<group>"; };
@@ -344,6 +352,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A1C3DB1215152E7D007D5B4A /* arrow_cell.png */,
+				A1C3DB1315152E7D007D5B4A /* arrow_cell@2x.png */,
+				A1C3DB0E15150EC4007D5B4A /* arrow_lg.png */,
+				A1C3DB0F15150EC4007D5B4A /* arrow_lg@2x.png */,
 				A115788E15118CEA0064593E /* header_bar_choose_line.png */,
 				A115788F15118CEA0064593E /* header_bar_choose_line@2x.png */,
 				A115788A15117EB90064593E /* bg_cell.png */,
@@ -620,6 +632,10 @@
 				A115788D15117EB90064593E /* bg_cell@2x.png in Resources */,
 				A115789015118CEA0064593E /* header_bar_choose_line.png in Resources */,
 				A115789115118CEA0064593E /* header_bar_choose_line@2x.png in Resources */,
+				A1C3DB1015150EC4007D5B4A /* arrow_lg.png in Resources */,
+				A1C3DB1115150EC4007D5B4A /* arrow_lg@2x.png in Resources */,
+				A1C3DB1415152E7D007D5B4A /* arrow_cell.png in Resources */,
+				A1C3DB1515152E7D007D5B4A /* arrow_cell@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,13 +9,31 @@
 
 @implementation RoutesTableViewController
 
+@synthesize tableView;
+
 - (void)viewDidLoad {
-  [super viewDidLoad];
+  
+  self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(22, 207, 270, 233)];
+  
+  [super viewDidLoad];  
+ 
+  self.tableView.delegate = self;
+  self.tableView.dataSource = self;
+  
+  self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
+	//tableView.separatorColor = [UIColor blueColor];
+
 	
 	//Initialize the array.
 	listOfItems = [[NSMutableArray alloc] init];
+  
+  Route *r1 = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                 @"Hiawatha Light rail", @"long_name", @"Minneapolis to MOA", @"route_desc", nil]];
+  
+  Route *r2 = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                 @"Northstar commuter rail", @"long_name", @"Big lake to Mpls", @"route_desc", nil]];
 	
-	NSArray *routes = [NSArray arrayWithObjects:@"Light rail", @"Northstar line", nil];
+	NSArray *routes = [NSArray arrayWithObjects:r1, r2, nil];
 	NSDictionary *routesDict = [NSDictionary dictionaryWithObject:routes forKey:@"items"];
   
   NSArray *lastStopID = [NSArray arrayWithObjects:@"51234", nil];
@@ -27,9 +45,12 @@
 	[listOfItems addObject:routesDict];
   [listOfItems addObject:lastStopIDDict];
 	[listOfItems addObject:stopsDict];
+
 	
 	//Set the title
 	self.navigationItem.title = @"Routes";
+  
+  self.view = self.tableView;
 }
 
 
@@ -88,7 +109,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
   if ([self tableView:tableView titleForHeaderInSection:section] != nil) {
-    return 40;
+    return 28; // want to eliminate a 1px bottom gray line, and a 1px bottom white line under
   }
   else {
     // If no section header title, no section header needed
@@ -97,12 +118,36 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+  UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.tableView.frame.size.width,29)] autorelease];
+  
+  UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, headerView.frame.size.width-120.0, headerView.frame.size.height)];
+  
+  headerLabel.textAlignment = UITextAlignmentRight;
+  headerLabel.text = @"foo";
+  headerLabel.backgroundColor = [UIColor clearColor];
+  
   UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"header_bar_choose_line" ofType:@"png"]];
-  
   UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-  return imgView;
   
+  //[headerView addSubview:headerLabel];
+  [headerView addSubview:imgView];
+  [headerLabel release];
+  
+  return headerView;
 }
+
+
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+//
+//  
+//  UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"header_bar_choose_line" ofType:@"png"]];
+//  
+//  UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+//  imgView.backgroundColor = [UIColor clearColor];
+//
+//  return imgView;
+//  
+//}
 
 
 // Customize the number of rows in the table view.
@@ -135,6 +180,26 @@
   // e.g. if (indexPath.section == 0) { BigDepartureTableViewCell }
 
   if (indexPath.section == 0) {
+    RouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+      cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    //NSDictionary *itemAtIndex = [NSDictionary dictionaryWithObject:@"foo bar" forKey:@"title"];
+    NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
+    NSArray *array = [dictionary objectForKey:@"items"];
+    Route *route = (Route *)[array objectAtIndex:indexPath.row];
+    
+    cell.routeTitle.text = route.long_name;
+    cell.routeDescription.text = route.route_desc;
+    
+    cell.routeIcon.image = [UIImage imageNamed:@"icon_northstar.png"];
+    
+    cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_lg.png"]];
+    
+    return cell;
+    
+  } else if (indexPath.section == 1) {
     
     RouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
@@ -146,21 +211,37 @@
     NSArray *array = [dictionary objectForKey:@"items"];
     NSString *route_title = [array objectAtIndex:indexPath.row];
     
-    cell.routeTitleLabel.text = route_title;
-      
+    cell.routeTitle.text = route_title;
+    cell.routeDescription.text = @"foo";
+    cell.extraInfo.text = @"12 min";
+    
+    cell.routeIcon.image = [UIImage imageNamed:@"icon_northstar.png"];
+    
+    cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+    
     return cell;
+
     
-  } else {
+  } else if (indexPath.section == 2) {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    RouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-      cell = [[[UITableViewCell alloc] initWithFrame:CGRectZero reuseIdentifier:CellIdentifier] autorelease];
+      cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    //First get the dictionary object
+    
+    //NSDictionary *itemAtIndex = [NSDictionary dictionaryWithObject:@"foo bar" forKey:@"title"];
     NSDictionary *dictionary = [listOfItems objectAtIndex:indexPath.section];
     NSArray *array = [dictionary objectForKey:@"items"];
-    NSString *cellValue = [array objectAtIndex:indexPath.row];
-    cell.text = cellValue;
+    NSString *route_title = [array objectAtIndex:indexPath.row];
+    
+    cell.routeTitle.text = route_title;
+    cell.routeDescription.text = @"foo";
+    cell.extraInfo.text = @"4 blocks";
+    
+    cell.routeIcon.image = [UIImage imageNamed:@"icon_northstar.png"];
+    
+    cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+    
     return cell;
   }
   
@@ -181,6 +262,11 @@
 - (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
 	
 	[self tableView:tableView didSelectRowAtIndexPath:indexPath];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  // indexPath.section && indexPath.row (inside a section) are options to control in more detail
+  return 57;
 }
 
 - (void)dealloc {
@@ -223,15 +309,4 @@
 //    // If no section header title, no section header needed
 //    return 0;
 //  }
-//}
-
-// SET AN EXPLICIT row height
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-//  if (indexPath.section == 0) {
-//    if (indexPath.row == 0) {
-//      return 154;
-//    }
-//  }
-//  return 44;
 //}

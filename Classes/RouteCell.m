@@ -10,28 +10,37 @@
 
 @implementation RouteCell
 
-@synthesize routeTitleLabel;
+@synthesize routeTitle, routeDescription, extraInfo, routeIcon;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
   if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     UIView *contentView = self.contentView;
     
-    UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"bg_cell" ofType:@"png"]];
+    UIImage *bgImg = [[UIImage imageNamed:@"bg_cell.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
+    self.backgroundView = [[UIImageView alloc] initWithImage:bgImg];
     
-    UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-    [imgView setUserInteractionEnabled:NO];	
-    self.backgroundView = imgView;
+    self.routeIcon = [[ UIImageView alloc ] init];
     
-    self.routeTitleLabel = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:14.0 bold:YES];
+    self.routeTitle = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:16.0 bold:YES];
+    self.routeDescription = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:14.0 bold:NO];
+    
+    self.extraInfo = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:16.0 bold:YES];
+    self.extraInfo.textAlignment = UITextAlignmentRight;
 		
-		[contentView addSubview:self.routeTitleLabel];
-		[self.routeTitleLabel release];
-    
+    [contentView addSubview:self.routeIcon];
+		[contentView addSubview:self.routeTitle];
+    [contentView addSubview:self.routeDescription];
+    [contentView addSubview:self.extraInfo];
+		
+    [self.routeTitle release];
+    [self.routeDescription release];
   }
 
   return self;
 }
+
+// TODO is there any way to specify the accessory view in the uitableviewcell subclass?
 
 - (void)layoutSubviews {
   
@@ -54,8 +63,17 @@
 		 make the label 200 pixels wide
 		 make the label 20 pixels high
      */
-		frame = CGRectMake(boundsX + 10, 4, 200, 20);
-		self.routeTitleLabel.frame = frame;
+    frame = CGRectMake(boundsX + 10, 15, 27, 28);
+    self.routeIcon.frame = frame;
+    
+		frame = CGRectMake(boundsX + 46, 10, 200, 20);
+		self.routeTitle.frame = frame;
+    
+    frame = CGRectMake(boundsX + 46, 28, 200, 20);
+    self.routeDescription.frame = frame;
+    
+    frame = CGRectMake(boundsX + 204, 18, 80, 20);
+    self.extraInfo.frame = frame;
     
     //    CGRect imageRectangle = CGRectMake(0.0f,0.0f,320.0f,44.0f); //cells are 44 px high
     //    bgImageView.frame = imageRectangle;
