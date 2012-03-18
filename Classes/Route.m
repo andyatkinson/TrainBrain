@@ -79,8 +79,21 @@
       [stops addObject:stop];
     }
     
+    NSArray *sortedStops = [stops sortedArrayUsingComparator:^ NSComparisonResult(id obj1, id obj2) {
+      CLLocationDistance d1 = [[(Stop *)obj1 location] distanceFromLocation:location];
+      CLLocationDistance d2 = [[(Stop *)obj2 location] distanceFromLocation:location];
+      
+      if (d1 < d2) {
+        return NSOrderedAscending;
+      } else if (d1 > d2) {
+        return NSOrderedDescending;
+      } else {
+        return NSOrderedSame;
+      }
+    }];     
+    
     [data setObject:routes forKey:@"routes"];
-    [data setObject:stops forKey:@"stops"];
+    [data setObject:sortedStops forKey:@"stops"];
     
     if (block) {
       block([NSDictionary dictionaryWithDictionary:data]);

@@ -55,6 +55,7 @@
   
   // Load from a fixed location, in case location services are disabled or unavailable
   CLLocation *mpls = [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223];
+  self.myLocation = mpls;
   [self loadSpotsForLocation:mpls];
   
   [self.locationManager startUpdatingLocation];
@@ -68,7 +69,7 @@
   self.tableView.dataSource = self;
   
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
-	//tableView.separatorColor = [UIColor blueColor];
+  self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
 
 	
 	//Initialize the array.
@@ -223,10 +224,10 @@
     }
     Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
     
-    cell.routeTitle.text = route.long_name;
-    cell.routeDescription.text = route.route_desc;
+    cell.title.text = route.long_name;
+    cell.description.text = route.route_desc;
     
-    cell.routeIcon.image = [UIImage imageNamed:route.icon_path];
+    cell.icon.image = [UIImage imageNamed:route.icon_path];
     
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_lg.png"]];
     
@@ -244,11 +245,11 @@
     NSArray *array = [dictionary objectForKey:@"items"];
     NSString *route_title = [array objectAtIndex:indexPath.row];
     
-    cell.routeTitle.text = route_title;
-    cell.routeDescription.text = @"foo";
+    cell.title.text = route_title;
+    //cell.description.text = @"foo";
     //cell.extraInfo.text = @"12 min";
     
-    cell.routeIcon.image = [UIImage imageNamed:@"icon_northstar.png"];
+    cell.icon.image = [UIImage imageNamed:@"icon_northstar.png"];
     
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
     
@@ -264,11 +265,16 @@
     
     Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
     
-    cell.routeTitle.text = stop.stop_name;
-    cell.routeDescription.text = stop.stop_desc;
+    cell.title.text = stop.stop_name;
+    cell.description.text = stop.stop_desc;
     //cell.extraInfo.text = @"4 blocks";
     
-    cell.routeIcon.image = [UIImage imageNamed:stop.icon_path];
+    
+    
+    double dist = [self.myLocation getDistanceFrom:stop.location] / 1609.344;
+    cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
+    
+    cell.icon.image = [UIImage imageNamed:stop.icon_path];
     
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
     
@@ -292,6 +298,8 @@
   } else if (indexPath.section == 1 || indexPath.section == 2) {
     
     // stop_id available => go to stop times
+
+
     
   }
 	
@@ -324,19 +332,7 @@
 
 @end
 
-// SET HEAD section titles
-//
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//	
-//	if (section == 0) {
-//    return NULL;
-//  } else if (section == 1) {
-//    return @"Last viewed stop";
-//  } else if (section == 2) {
-//    return @"Nearby stops";
-//  }
-//  
-//}
+
 
 // SET HEADER SECTION heights
 //
@@ -354,21 +350,3 @@
 //    return 0;
 //  }
 //}
-
-
-// DISTANCE SORTING gowalla style
-//
-//[Spot spotsWithURLString:@"/spots" near:location parameters:[NSDictionary dictionaryWithObject:@"128" forKey:@"per_page"] block:^(NSArray *records) {
-//  self.nearbySpots = [records sortedArrayUsingComparator:^ NSComparisonResult(id obj1, id obj2) {
-//    CLLocationDistance d1 = [[(Spot *)obj1 location] distanceFromLocation:location];
-//    CLLocationDistance d2 = [[(Spot *)obj2 location] distanceFromLocation:location];
-//    
-//    if (d1 < d2) {
-//      return NSOrderedAscending;
-//    } else if (d1 > d2) {
-//      return NSOrderedDescending;
-//    } else {
-//      return NSOrderedSame;
-//    }
-//  }];      
-//}];

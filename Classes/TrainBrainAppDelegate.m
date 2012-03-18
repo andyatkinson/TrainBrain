@@ -10,10 +10,11 @@
 #import "RootViewController.h"
 #import "RoutesTableViewController.h"
 #import "InfoViewController.h"
+#import "InfoTableViewController.h"
 
 @implementation TrainBrainAppDelegate
 
-@synthesize window, routesTableViewController, infoViewController, tabBarController;
+@synthesize window, routesTableViewController, infoViewController, infoTableViewController, tabBarController;
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
   
@@ -52,13 +53,13 @@
   routesController.tabBarItem.image = [UIImage imageNamed:@"11-clock.png"];
 	[routesTableViewController release];
 	
-	infoViewController = [[InfoViewController alloc] init];
-	UINavigationController *infoController = [[[UINavigationController alloc] initWithRootViewController:infoViewController] autorelease];
+	infoTableViewController = [[InfoTableViewController alloc] init];
+	UINavigationController *infoController = [[[UINavigationController alloc] initWithRootViewController:infoTableViewController] autorelease];
 	//infoController.navigationBar.barStyle = UIBarStyleDefault;
 	//infoController.navigationBar.tintColor = navBarColor;
-	infoController.title = @"Help";
+	infoController.title = @"Info";
 	infoController.tabBarItem.image = [UIImage imageNamed:@"90-lifebuoy.png"];
-	[infoViewController release];
+	[infoTableViewController release];
 	
 	tabBarController.viewControllers = [NSArray arrayWithObjects:routesController, infoController, nil];
 	[window addSubview:tabBarController.view];

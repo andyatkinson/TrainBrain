@@ -9,16 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @interface RouteCell : UITableViewCell {
-  UILabel *routeTitle;
-  UILabel *routeDescription;
+  UILabel *title;
+  UILabel *description;
   UILabel *extraInfo;
-  UIImageView *routeIcon;
+  UIImageView *icon;
 }
 
-@property (nonatomic, retain) UILabel *routeTitle;
-@property (nonatomic, retain) UILabel *routeDescription;
+@property (nonatomic, retain) UILabel *title;
+@property (nonatomic, retain) UILabel *description;
 @property (nonatomic, retain) UILabel *extraInfo;
-@property (nonatomic, retain) UIImageView *routeIcon;
+@property (nonatomic, retain) UIImageView *icon;
 
 // internal function to ease setting up label text
 -(UILabel *)newLabelWithPrimaryColor:(UIColor *)primaryColor selectedColor:(UIColor *)selectedColor fontSize:(CGFloat)fontSize bold:(BOOL)bold;

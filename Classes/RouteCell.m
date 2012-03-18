@@ -10,7 +10,7 @@
 
 @implementation RouteCell
 
-@synthesize routeTitle, routeDescription, extraInfo, routeIcon;
+@synthesize title, description, extraInfo, icon;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -20,21 +20,21 @@
     UIImage *bgImg = [[UIImage imageNamed:@"bg_cell.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(5, 5, 5, 5)];
     self.backgroundView = [[UIImageView alloc] initWithImage:bgImg];
     
-    self.routeIcon = [[ UIImageView alloc ] init];
+    self.icon = [[ UIImageView alloc ] init];
     
-    self.routeTitle = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:16.0 bold:YES];
-    self.routeDescription = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:14.0 bold:NO];
+    self.title = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:16.0 bold:YES];
+    self.description = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:14.0 bold:NO];
     
     self.extraInfo = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:16.0 bold:YES];
     self.extraInfo.textAlignment = UITextAlignmentRight;
 		
-    [contentView addSubview:self.routeIcon];
-		[contentView addSubview:self.routeTitle];
-    [contentView addSubview:self.routeDescription];
+    [contentView addSubview:self.icon];
+		[contentView addSubview:self.title];
+    [contentView addSubview:self.description];
     [contentView addSubview:self.extraInfo];
 		
-    [self.routeTitle release];
-    [self.routeDescription release];
+    [self.title release];
+    [self.description release];
   }
 
   return self;
@@ -64,13 +64,13 @@
 		 make the label 20 pixels high
      */
     frame = CGRectMake(boundsX + 10, 15, 27, 28);
-    self.routeIcon.frame = frame;
+    self.icon.frame = frame;
     
 		frame = CGRectMake(boundsX + 46, 10, 170, 20);
-		self.routeTitle.frame = frame;
+		self.title.frame = frame;
     
     frame = CGRectMake(boundsX + 46, 28, 200, 20);
-    self.routeDescription.frame = frame;
+    self.description.frame = frame;
     
     frame = CGRectMake(boundsX + 204, 18, 80, 20);
     self.extraInfo.frame = frame;
