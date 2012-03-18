@@ -12,7 +12,7 @@
 
 @implementation Route
 
-@synthesize route_id, long_name, short_name, route_desc, route_type, route_url;
+@synthesize route_id, long_name, short_name, route_desc, route_type, route_url, icon_path;
 
 - (id)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
@@ -26,6 +26,11 @@
     self.route_desc = [attributes valueForKeyPath:@"route_desc"];
     self.route_type = [attributes valueForKeyPath:@"route_type"];
     self.route_url = [attributes valueForKeyPath:@"route_url"];
+    
+    NSString *family = [attributes valueForKeyPath:@"route_family"];
+    if ([family length] > 0) {
+      self.icon_path = [NSString stringWithFormat: @"icon_%@.png", family];
+    }
     
     return self;
 }

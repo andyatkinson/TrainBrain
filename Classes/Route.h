@@ -16,6 +16,7 @@
 	NSString *route_desc;
 	NSString *route_type;
 	NSString *route_url;
+  NSString *icon_path;
 }
 
 @property (nonatomic, retain) NSString *route_id;
@@ -24,8 +25,10 @@
 @property (nonatomic, retain) NSString *route_desc;
 @property (nonatomic, retain) NSString *route_type;
 @property (nonatomic, retain) NSString *route_url;
+@property (nonatomic, retain) NSString *icon_path;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
 + (void)routesWithURLString:(NSString *)urlString parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block;
++ (void)routesWithNearbyStops:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSDictionary *data))block;
 
 @end

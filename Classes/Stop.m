@@ -12,7 +12,7 @@
 
 @implementation Stop
 
-@synthesize stop_id, stop_name, stop_street, stop_lat, stop_lon, stop_city, stop_desc, location;
+@synthesize stop_id, stop_name, stop_street, stop_lat, stop_lon, stop_city, stop_desc, location, icon_path;
 
 - (id)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
@@ -27,6 +27,11 @@
     self.stop_lon = [attributes valueForKeyPath:@"stop_lon"];
     self.stop_city = [attributes valueForKey:@"stop_city"];
     self.location = [[CLLocation alloc] initWithLatitude:self.stop_lat.floatValue longitude:self.stop_lon.floatValue];
+  
+    NSString *family = [attributes valueForKeyPath:@"route_family"];
+    if ([family length] > 0) {
+      self.icon_path = [NSString stringWithFormat: @"icon_%@.png", family];
+    }
     
     return self;
 }

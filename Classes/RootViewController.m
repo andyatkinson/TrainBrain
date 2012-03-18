@@ -164,11 +164,7 @@
 		[[cell lineDescription] setText:route.short_name];
 		[cell disclosureArrow].image = [UIImage imageNamed:@"icon_arrow.png"];
 		
-		if ([route.long_name rangeOfString:@"Hiawatha"].location == NSNotFound) {
-			[cell lineImage].image = [UIImage imageNamed:@"icon_northstar.png"];
-		} else {
-			[cell lineImage].image = [UIImage imageNamed:@"icon_hiawatha.png"];
-		}
+		[cell lineImage].image = [UIImage imageNamed:route.icon_path];
 		
 		cell.backgroundView = [[[GradientView alloc] init] autorelease];
 	}

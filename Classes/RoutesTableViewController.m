@@ -74,7 +74,7 @@
   
   Route *r1 = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Loading...", @"route_desc", nil]];
 	self.routes = [NSArray arrayWithObjects:r1, nil];
-	NSDictionary *routesDict = [NSDictionary dictionaryWithObject:routes forKey:@"items"];
+	NSDictionary *routesDict = [NSDictionary dictionaryWithObject:self.routes forKey:@"items"];
   
   NSArray *lastStopID = [NSArray arrayWithObjects:@"51234", nil];
   NSDictionary *lastStopIDDict = [NSDictionary dictionaryWithObject:lastStopID forKey:@"items"];
@@ -82,7 +82,7 @@
   
   Stop *s1 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Loading...", @"stop_desc", nil]];
   self.stops = [NSArray arrayWithObjects:s1, nil];
-	NSDictionary *stopsDict = [NSDictionary dictionaryWithObject:stops forKey:@"items"];
+	NSDictionary *stopsDict = [NSDictionary dictionaryWithObject:self.stops forKey:@"items"];
 	
 	[dataArraysForRoutesScreen addObject:routesDict];
   [dataArraysForRoutesScreen addObject:lastStopIDDict];
@@ -151,34 +151,31 @@
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
   UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.tableView.frame.size.width,29)] autorelease];
   
-  UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, headerView.frame.size.width-120.0, headerView.frame.size.height)];
+//  UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, headerView.frame.size.width-120.0, headerView.frame.size.height)];
+//  headerLabel.textAlignment = UITextAlignmentRight;
+//  headerLabel.text = @"foo";
+//  headerLabel.backgroundColor = [UIColor clearColor];
+//  [headerView addSubview:headerLabel];
   
-  headerLabel.textAlignment = UITextAlignmentRight;
-  headerLabel.text = @"foo";
-  headerLabel.backgroundColor = [UIColor clearColor];
+  NSString *filename = [[NSString alloc] init];
+  if (section == 0) {
+    filename = @"header_bar_choose_line";
+  } else if (section == 1) {
+    filename = @"header_bar_last_viewed";
+  } else if (section == 2) {
+    filename = @"header_bar_nearby_stops";
+  }
   
-  UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"header_bar_choose_line" ofType:@"png"]];
+  UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:filename ofType:@"png"]];
   UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
   
-  //[headerView addSubview:headerLabel];
+  
   [headerView addSubview:imgView];
-  [headerLabel release];
+  
+  //[headerLabel release];
   
   return headerView;
 }
-
-
-//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-//
-//  
-//  UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"header_bar_choose_line" ofType:@"png"]];
-//  
-//  UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-//  imgView.backgroundColor = [UIColor clearColor];
-//
-//  return imgView;
-//  
-//}
 
 
 // Customize the number of rows in the table view.
@@ -214,7 +211,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   static NSString *CellIdentifier = @"Cell";
-  
   // indexPath.section == 0  to choose a specific section
   // e.g. if (indexPath.section == 0) { BigDepartureTableViewCell }
 
@@ -223,16 +219,12 @@
     if (cell == nil) {
       cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    //NSDictionary *itemAtIndex = [NSDictionary dictionaryWithObject:@"foo bar" forKey:@"title"];
-    //NSDictionary *dictionary = [dataArraysForRoutesScreen objectAtIndex:indexPath.section];
-    //NSArray *array = [dictionary objectForKey:@"items"];
     Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
     
     cell.routeTitle.text = route.long_name;
     cell.routeDescription.text = route.route_desc;
     
-    cell.routeIcon.image = [UIImage imageNamed:@"icon_northstar.png"];
+    cell.routeIcon.image = [UIImage imageNamed:route.icon_path];
     
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_lg.png"]];
     
@@ -252,7 +244,7 @@
     
     cell.routeTitle.text = route_title;
     cell.routeDescription.text = @"foo";
-    cell.extraInfo.text = @"12 min";
+    //cell.extraInfo.text = @"12 min";
     
     cell.routeIcon.image = [UIImage imageNamed:@"icon_northstar.png"];
     
@@ -268,18 +260,13 @@
       cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    //NSDictionary *itemAtIndex = [NSDictionary dictionaryWithObject:@"foo bar" forKey:@"title"];
-//    NSDictionary *dictionary = [dataArraysForRoutesScreen objectAtIndex:indexPath.section];
-//    NSArray *array = [dictionary objectForKey:@"items"];
-//    NSString *route_title = [array objectAtIndex:indexPath.row];
-    
     Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
     
     cell.routeTitle.text = stop.stop_name;
     cell.routeDescription.text = stop.stop_desc;
-    cell.extraInfo.text = @"4 blocks";
+    //cell.extraInfo.text = @"4 blocks";
     
-    cell.routeIcon.image = [UIImage imageNamed:@"icon_northstar.png"];
+    cell.routeIcon.image = [UIImage imageNamed:stop.icon_path];
     
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
     

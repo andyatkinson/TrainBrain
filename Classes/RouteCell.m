@@ -66,7 +66,7 @@
     frame = CGRectMake(boundsX + 10, 15, 27, 28);
     self.routeIcon.frame = frame;
     
-		frame = CGRectMake(boundsX + 46, 10, 200, 20);
+		frame = CGRectMake(boundsX + 46, 10, 170, 20);
 		self.routeTitle.frame = frame;
     
     frame = CGRectMake(boundsX + 46, 28, 200, 20);
@@ -103,6 +103,7 @@
 	newLabel.textColor = primaryColor;
 	newLabel.highlightedTextColor = selectedColor;
 	newLabel.font = font;
+  newLabel.lineBreakMode = UILineBreakModeTailTruncation;
   
 	return newLabel;
 }
