@@ -7,13 +7,15 @@
 #import "RouteCell.h"
 #import "Route.h"
 #import "Stop.h"
+#import "TrainStationsViewController.h"
 
 @implementation RoutesTableViewController
 
-@synthesize tableView, dataArraysForRoutesScreen, routes, stops, locationManager;
+@synthesize tableView, dataArraysForRoutesScreen, routes, stops, locationManager, myLocation;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 	[self loadSpotsForLocation:newLocation];
+  self.myLocation = newLocation;
   [self.locationManager stopUpdatingLocation];
 }
 
@@ -277,8 +279,22 @@
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {	
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.section == 0) {
+    // route_id available => go to stops
+    Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
+    
+    TrainStationsViewController *target = [[TrainStationsViewController alloc] init];
+    target.selectedRoute = route;
+    target.my_location = self.myLocation;
+    [[self navigationController] pushViewController:target animated:YES];
+    
+  } else if (indexPath.section == 1 || indexPath.section == 2) {
+    
+    // stop_id available => go to stop times
+    
+  }
+	
 }
 
 - (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
