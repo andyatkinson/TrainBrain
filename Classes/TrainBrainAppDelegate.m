@@ -19,18 +19,18 @@
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
   
   // START data storage in plist file
-  NSError *error;
-  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-  NSString *documentsDirectory = [paths objectAtIndex:0];
-  NSString *path = [documentsDirectory stringByAppendingPathComponent:@"user_data.plist"];
-  
-  NSFileManager *fileManager = [NSFileManager defaultManager];
-  
-  if (![fileManager fileExistsAtPath: path])
-  {
-    NSString *bundle = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
-    [fileManager copyItemAtPath:bundle toPath: path error:&error];
-  }
+//  NSError *error;
+//  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//  NSString *documentsDirectory = [paths objectAtIndex:0];
+//  NSString *path = [documentsDirectory stringByAppendingPathComponent:@"user_data.plist"];
+//  
+//  NSFileManager *fileManager = [NSFileManager defaultManager];
+//  
+//  if (![fileManager fileExistsAtPath: path])
+//  {
+//    NSString *bundle = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
+//    [fileManager copyItemAtPath:bundle toPath: path error:&error];
+//  }
   // END data storage in plist file
   
   // Create image for navigation background - portrait
@@ -66,13 +66,6 @@
 
 	
 	[window makeKeyAndVisible];
-}
-
-- (NSString *) getBaseUrl {
-	// IMPORTANT: ensure trailing slash is present.
-	//return @"http://api2.trainbrainapp.com/";
-	//return @"http://localhost:3000/";
-	return @"http://api.beetlefight.com/";
 }
 
 - (void)dealloc {

@@ -328,8 +328,6 @@
 				A1E5ED481220D10000B15224 /* CustomPinBllue.m */,
 				A1E5ED811220D39000B15224 /* CustomPinBlack.h */,
 				A1E5ED821220D39000B15224 /* CustomPinBlack.m */,
-				A1D14A3C14DF2224002AD13A /* TransitAPIClient.h */,
-				A1D14A3D14DF2224002AD13A /* TransitAPIClient.m */,
 				A1C259B914F809D8003215E6 /* RoutesTableViewController.h */,
 				A1C259BA14F809D8003215E6 /* RoutesTableViewController.m */,
 				A1C3DB2615156BCB007D5B4A /* InfoTableViewController.h */,
@@ -544,6 +542,8 @@
 		A1EDA0831489E2C3004C7E61 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A1D14A3C14DF2224002AD13A /* TransitAPIClient.h */,
+				A1D14A3D14DF2224002AD13A /* TransitAPIClient.m */,
 				A1B5C58510A27E5B00CD3045 /* Stop.h */,
 				A1B5C58610A27E5B00CD3045 /* Stop.m */,
 				A1EDA168148A937C004C7E61 /* Route.h */,
@@ -737,12 +737,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Projects/TrainBrain/Entitlements.plist";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TrainBrain_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "TrainBrain-Info.plist";
 				PRODUCT_NAME = TrainBrain;
 			};
@@ -752,10 +752,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Projects/TrainBrain/Entitlements.plist";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TrainBrain_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "TrainBrain-Info.plist";
 				PRODUCT_NAME = TrainBrain;
 			};
@@ -782,12 +782,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_ENTITLEMENTS = "~/Projects/TrainBrain/Entitlements.plist";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TrainBrain_Prefix.pch;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "TrainBrain-Info.plist";
 				PRODUCT_NAME = TrainBrain;
 				PROVISIONING_PROFILE = "";

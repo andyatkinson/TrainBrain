@@ -34,19 +34,11 @@
   NSDictionary *params = [NSDictionary dictionaryWithObject:@"1000" forKey:@"last_viewed_stop_id"];
   
   [Route routesWithNearbyStops:@"train/v1/routes/nearby_stops" near:location parameters:params block:^(NSDictionary *data) {
-    
-    //[HUD hide:YES];
-
-    
     self.routes = [data objectForKey:@"routes"];
     self.stops = [data objectForKey:@"stops"];
     
     [self.tableView reloadData];
-    
-    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
-    
-    //self.navigationItem.rightBarButtonItem.enabled = YES;
-    
+    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];    
   }];
 
 }

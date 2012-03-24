@@ -20,8 +20,6 @@
 @property (nonatomic, retain) UITableViewController *infoTableViewController;
 @property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
-- (NSString *) getBaseUrl;
-
 
 @end
 
