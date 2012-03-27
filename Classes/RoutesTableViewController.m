@@ -7,7 +7,11 @@
 #import "RouteCell.h"
 #import "Route.h"
 #import "Stop.h"
+# import "StopsTableViewController.h"
+
+// REMOVE ME
 #import "TrainStationsViewController.h"
+
 
 @implementation RoutesTableViewController
 
@@ -91,36 +95,6 @@
 }
 
 
-/*
- - (void)viewWillAppear:(BOOL)animated {
- [super viewWillAppear:animated];
- }
- */
-/*
- - (void)viewDidAppear:(BOOL)animated {
- [super viewDidAppear:animated];
- }
- */
-/*
- - (void)viewWillDisappear:(BOOL)animated {
- [super viewWillDisappear:animated];
- }
- */
-/*
- - (void)viewDidDisappear:(BOOL)animated {
- [super viewDidDisappear:animated];
- }
- */
-
-/*
- // Override to allow orientations other than the default portrait orientation.
- - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
- // Return YES for supported orientations
- return (interfaceOrientation == UIInterfaceOrientationPortrait);
- }
- */
-
-
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
   // Release anything that's not essential, such as cached data
@@ -186,8 +160,10 @@
     return 1;
   } else if (section == 2) {
     return [self.stops count];
+  } else {
+    // should not reach here
+    return 0;
   }
-  
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
@@ -282,9 +258,11 @@
     // route_id available => go to stops
     Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
     
-    TrainStationsViewController *target = [[TrainStationsViewController alloc] init];
-    target.selectedRoute = route;
-    target.my_location = self.myLocation;
+    //TrainStationsViewController *target = [[TrainStationsViewController alloc] init];
+    StopsTableViewController *target = [[StopsTableViewController alloc] init];
+    //target.selectedRoute = route;
+    //target.my_location = self.myLocation;
+    
     [[self navigationController] pushViewController:target animated:YES];
     
   } else if (indexPath.section == 1 || indexPath.section == 2) {

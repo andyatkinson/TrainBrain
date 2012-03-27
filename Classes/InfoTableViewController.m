@@ -132,6 +132,9 @@
     return 3;
   } else if (section == 2) {
     return 2;
+  } else {
+    // should not reach here
+    return 0;
   }
   
 }
