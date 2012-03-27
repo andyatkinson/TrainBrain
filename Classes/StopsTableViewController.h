@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "SVSegmentedControl.h"
 
 @interface StopsTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate> {
   UITableView *tableView;
@@ -23,5 +24,7 @@
 @property (nonatomic, retain) NSMutableArray *data;
 @property (nonatomic, retain) CLLocation *myLocation;
 @property (nonatomic, retain) CLLocationManager *locationManager;
+
+- (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl;
 
 @end

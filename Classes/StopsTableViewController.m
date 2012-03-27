@@ -51,6 +51,29 @@
   
   UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height - 20)];
   
+  
+  SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"Andy", @"Nate", nil]];
+  navSC.height = 40.0;
+  
+  UIImage *normImage = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"tab_biglake_norm" ofType:@"png"]];
+  UIImage *highlightedImage = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"tab_biglake_down" ofType:@"png"]];
+  
+  navSC.backgroundImage = normImage;
+  
+  navSC.thumb.backgroundImage = normImage;
+  navSC.thumb.highlightedBackgroundImage = highlightedImage;
+  
+  navSC.changeHandler = ^(NSUInteger newIndex) {
+    NSLog(@"segmentedControl did select index %i (via block handler)", newIndex);
+  };
+  
+	[headsignSwitcher addSubview:navSC];
+	[navSC release];
+	
+	navSC.center = CGPointMake(self.view.frame.size.width / 2, 25);
+  
+  
+  
   [container addSubview:headsignSwitcher];
   [container addSubview:self.tableView];
   
