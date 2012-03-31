@@ -8,6 +8,7 @@
 #import "StopTimesTableViewController.h"
 #import "BigDepartureTableViewCell.h"
 #import "RouteCell.h"
+#import "StopTimeCell.h"
 
 @implementation StopTimesTableViewController
 
@@ -136,18 +137,16 @@
     
     return cell;
     
-  } else if (indexPath.section == 1) {
-    
-    static NSString *CellIdentifier = @"Cell";
-    RouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
-    cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    
-    
-//    NSDictionary *dictionary = [data objectAtIndex:indexPath.section];
-//    NSArray *array = [dictionary objectForKey:@"items"];
-//    NSString *foo = [array objectAtIndex:indexPath.row];
+  } else if (indexPath.section == 1) {    
 
-    cell.title.text = @"foo";
+    StopTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
+    cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+
+    cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];
+    cell.relativeTime.text = @"09m";
+    cell.scheduleTime.text = @"9h 19m";
+    cell.price.text = @"$1.75";
+
     return cell;
     
   }

@@ -31,6 +31,9 @@
 		A13F128F1526A72600DEDF42 /* header_bar_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A13F128D1526A72600DEDF42 /* header_bar_default@2x.png */; };
 		A13F12921526BB6300DEDF42 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A13F12901526BB6300DEDF42 /* Default.png */; };
 		A13F12931526BB6300DEDF42 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A13F12911526BB6300DEDF42 /* Default@2x.png */; };
+		A13F12961526BDB100DEDF42 /* icon_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = A13F12941526BDB100DEDF42 /* icon_clock.png */; };
+		A13F12971526BDB100DEDF42 /* icon_clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A13F12951526BDB100DEDF42 /* icon_clock@2x.png */; };
+		A13F129A1526BE2300DEDF42 /* StopTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A13F12991526BE2300DEDF42 /* StopTimeCell.m */; };
 		A1436AA312920F48004299E0 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1436AA212920F48004299E0 /* Icon@2x.png */; };
 		A14CDF0212CA52F40087E69D /* header_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = A14CDF0012CA52F40087E69D /* header_shadow.png */; };
 		A14CDF0312CA52F40087E69D /* header_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A14CDF0112CA52F40087E69D /* header_shadow@2x.png */; };
@@ -169,6 +172,10 @@
 		A13F128D1526A72600DEDF42 /* header_bar_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header_bar_default@2x.png"; sourceTree = "<group>"; };
 		A13F12901526BB6300DEDF42 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A13F12911526BB6300DEDF42 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		A13F12941526BDB100DEDF42 /* icon_clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_clock.png; sourceTree = "<group>"; };
+		A13F12951526BDB100DEDF42 /* icon_clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_clock@2x.png"; sourceTree = "<group>"; };
+		A13F12981526BE2300DEDF42 /* StopTimeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTimeCell.h; sourceTree = "<group>"; };
+		A13F12991526BE2300DEDF42 /* StopTimeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTimeCell.m; sourceTree = "<group>"; };
 		A1436A7F12872EE5004299E0 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		A1436AA212920F48004299E0 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		A14CDF0012CA52F40087E69D /* header_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_shadow.png; sourceTree = "<group>"; };
@@ -401,6 +408,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A13F12941526BDB100DEDF42 /* icon_clock.png */,
+				A13F12951526BDB100DEDF42 /* icon_clock@2x.png */,
 				A13F12901526BB6300DEDF42 /* Default.png */,
 				A13F12911526BB6300DEDF42 /* Default@2x.png */,
 				A13F128C1526A72600DEDF42 /* header_bar_default.png */,
@@ -501,6 +510,8 @@
 				A1D0683814F83D85000EFD55 /* BigDepartureTableViewCell.m */,
 				A115788715117D6D0064593E /* RouteCell.h */,
 				A115788815117D6D0064593E /* RouteCell.m */,
+				A13F12981526BE2300DEDF42 /* StopTimeCell.h */,
+				A13F12991526BE2300DEDF42 /* StopTimeCell.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -724,6 +735,8 @@
 				A13F128F1526A72600DEDF42 /* header_bar_default@2x.png in Resources */,
 				A13F12921526BB6300DEDF42 /* Default.png in Resources */,
 				A13F12931526BB6300DEDF42 /* Default@2x.png in Resources */,
+				A13F12961526BDB100DEDF42 /* icon_clock.png in Resources */,
+				A13F12971526BDB100DEDF42 /* icon_clock@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -783,6 +796,7 @@
 				A1FD11DC1521682A002D6E20 /* SVSegmentedThumb.m in Sources */,
 				A13CF55A152670E4008D2D14 /* Headsign.m in Sources */,
 				A13F128B1526A47D00DEDF42 /* StopTimesTableViewController.m in Sources */,
+				A13F129A1526BE2300DEDF42 /* StopTimeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
