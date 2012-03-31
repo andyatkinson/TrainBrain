@@ -28,17 +28,23 @@
     //[self.contentView addSubview:bgImageView];
     
     self.bigDeparture = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
-    
-    self.funnySaying = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:YES];
-
+    self.funnySaying = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:14.0 bold:YES];
     self.description = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:YES];
+    self.formattedTime = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:NO];
+    self.price = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:NO];
     
 		[contentView addSubview:self.bigDeparture];
     [contentView addSubview:self.funnySaying];
     [contentView addSubview:self.description];
+    [contentView addSubview:self.formattedTime];
+    [contentView addSubview:self.price];
 		
     [self.bigDeparture release];
+    [self.funnySaying release];
     [self.description release];
+    [self.formattedTime release];
+    [self.price release];
+    
     
   }
   return self;
@@ -76,11 +82,17 @@
 		frame = CGRectMake(boundsX + 50, 0, 300, 100);
 		self.bigDeparture.frame = frame;
     
-    frame = CGRectMake(boundsX + 20, 95, 200, 20);
+    frame = CGRectMake(boundsX + 20, 98, 200, 20);
 		self.funnySaying.frame = frame;
     
     frame = CGRectMake(boundsX + 20, 115, 200, 20);
 		self.description.frame = frame;
+    
+    frame = CGRectMake(boundsX + 250, 95, 80, 20);
+		self.formattedTime.frame = frame;
+    
+    frame = CGRectMake(boundsX + 250, 115, 80, 20);
+		self.price.frame = frame;
     
 	}
 }

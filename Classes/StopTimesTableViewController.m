@@ -129,9 +129,10 @@
     cell = [[BigDepartureTableViewCell alloc] init];
 
     cell.bigDeparture.text = @"4m 34s";
-    
     cell.funnySaying.text = @"Hurry Up. No Shoving.";
     cell.description.text = @"The next estimated train departs:";
+    cell.formattedTime.text = @"11:15 PM";
+    cell.price.text = @"$1.75";
     
     return cell;
     
