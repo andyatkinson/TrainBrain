@@ -9,7 +9,7 @@
 
 @implementation BigDepartureTableViewCell
 
-@synthesize bigNumberLabel;
+@synthesize bigDeparture, funnySaying, description, formattedTime, price;
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -27,12 +27,18 @@
     //add the subView to the cell
     //[self.contentView addSubview:bgImageView];
     
+    self.bigDeparture = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
     
-    self.bigNumberLabel = [self newLabelWithPrimaryColor:[UIColor blackColor] selectedColor:[UIColor whiteColor] fontSize:14.0 bold:YES];
-		self.bigNumberLabel.textAlignment = UITextAlignmentLeft; // default
-		[contentView addSubview:self.bigNumberLabel];
-		[self.bigNumberLabel release];
+    self.funnySaying = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:YES];
+
+    self.description = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:YES];
     
+		[contentView addSubview:self.bigDeparture];
+    [contentView addSubview:self.funnySaying];
+    [contentView addSubview:self.description];
+		
+    [self.bigDeparture release];
+    [self.description release];
     
   }
   return self;
@@ -43,7 +49,7 @@
 }
 
 - (void) setData:(NSDictionary *)dict {
-	self.bigNumberLabel.text = [dict objectForKey:@"title"];
+	self.bigDeparture.text = [dict objectForKey:@"title"];
 }
 
 - (void)layoutSubviews {
@@ -67,11 +73,14 @@
 		 make the label 200 pixels wide
 		 make the label 20 pixels high
      */
-		frame = CGRectMake(boundsX + 10, 4, 200, 20);
-		self.bigNumberLabel.frame = frame;
+		frame = CGRectMake(boundsX + 50, 0, 300, 100);
+		self.bigDeparture.frame = frame;
     
-//    CGRect imageRectangle = CGRectMake(0.0f,0.0f,320.0f,44.0f); //cells are 44 px high
-//    bgImageView.frame = imageRectangle;
+    frame = CGRectMake(boundsX + 20, 95, 200, 20);
+		self.funnySaying.frame = frame;
+    
+    frame = CGRectMake(boundsX + 20, 115, 200, 20);
+		self.description.frame = frame;
     
 	}
 }
@@ -93,7 +102,7 @@
 	 Views are drawn most efficiently when they are opaque and do not have a clear background, so set these defaults.  To show selection properly, however, the views need to be transparent (so that the selection color shows through).  This is handled in setSelected:animated:.
 	 */
 	UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectZero];
-	newLabel.backgroundColor = [UIColor whiteColor];
+	newLabel.backgroundColor = [UIColor clearColor];
 	newLabel.opaque = YES;
 	newLabel.textColor = primaryColor;
 	newLabel.highlightedTextColor = selectedColor;
@@ -103,7 +112,11 @@
 }
 
 - (void)dealloc {
-	[bigNumberLabel dealloc];
+	[bigDeparture dealloc];
+  [funnySaying dealloc];
+  [description dealloc];
+  [formattedTime dealloc];
+  [price dealloc];
 	[super dealloc];
 }
 

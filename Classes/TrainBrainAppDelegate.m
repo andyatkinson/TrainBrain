@@ -12,6 +12,7 @@
 #import "InfoViewController.h"
 
 #import "StopsTableViewController.h"
+#import "StopTimesTableViewController.h"
 #import "InfoTableViewController.h"
 
 @implementation TrainBrainAppDelegate
@@ -47,7 +48,7 @@
 	tabBarController = [[UITabBarController alloc] init];
   //routesTableViewController = [[RootViewController alloc] init];
   //routesTableViewController = [[RoutesTableViewController alloc] init];
-  routesTableViewController = [[StopsTableViewController alloc] init];
+  routesTableViewController = [[StopTimesTableViewController alloc] init];
   
 	UINavigationController *routesController = [[[UINavigationController alloc] initWithRootViewController:routesTableViewController] autorelease];
   routesController.navigationBar.barStyle = UIBarStyleDefault;

@@ -88,7 +88,6 @@
 	[dataArraysForRoutesScreen addObject:stopsDict];
 
 	
-	//Set the title
 	self.navigationItem.title = @"Routes";
   
   self.view = self.tableView;

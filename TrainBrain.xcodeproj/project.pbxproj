@@ -26,6 +26,9 @@
 		A115789115118CEA0064593E /* header_bar_choose_line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A115788F15118CEA0064593E /* header_bar_choose_line@2x.png */; };
 		A1253AF71235D89F003AEF64 /* YellowGradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1253AF61235D89F003AEF64 /* YellowGradientView.m */; };
 		A13CF55A152670E4008D2D14 /* Headsign.m in Sources */ = {isa = PBXBuildFile; fileRef = A13CF559152670E4008D2D14 /* Headsign.m */; };
+		A13F128B1526A47D00DEDF42 /* StopTimesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A13F128A1526A47D00DEDF42 /* StopTimesTableViewController.m */; };
+		A13F128E1526A72600DEDF42 /* header_bar_default.png in Resources */ = {isa = PBXBuildFile; fileRef = A13F128C1526A72600DEDF42 /* header_bar_default.png */; };
+		A13F128F1526A72600DEDF42 /* header_bar_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A13F128D1526A72600DEDF42 /* header_bar_default@2x.png */; };
 		A1436AA312920F48004299E0 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1436AA212920F48004299E0 /* Icon@2x.png */; };
 		A14CDF0212CA52F40087E69D /* header_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = A14CDF0012CA52F40087E69D /* header_shadow.png */; };
 		A14CDF0312CA52F40087E69D /* header_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A14CDF0112CA52F40087E69D /* header_shadow@2x.png */; };
@@ -160,6 +163,10 @@
 		A1253AF61235D89F003AEF64 /* YellowGradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YellowGradientView.m; sourceTree = "<group>"; };
 		A13CF558152670E4008D2D14 /* Headsign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Headsign.h; sourceTree = "<group>"; };
 		A13CF559152670E4008D2D14 /* Headsign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Headsign.m; sourceTree = "<group>"; };
+		A13F12891526A47D00DEDF42 /* StopTimesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTimesTableViewController.h; sourceTree = "<group>"; };
+		A13F128A1526A47D00DEDF42 /* StopTimesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTimesTableViewController.m; sourceTree = "<group>"; };
+		A13F128C1526A72600DEDF42 /* header_bar_default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_bar_default.png; sourceTree = "<group>"; };
+		A13F128D1526A72600DEDF42 /* header_bar_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header_bar_default@2x.png"; sourceTree = "<group>"; };
 		A1436A7F12872EE5004299E0 /* Entitlements.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Entitlements.plist; sourceTree = "<group>"; };
 		A1436AA212920F48004299E0 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		A14CDF0012CA52F40087E69D /* header_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_shadow.png; sourceTree = "<group>"; };
@@ -350,6 +357,8 @@
 				A1C259BA14F809D8003215E6 /* RoutesTableViewController.m */,
 				A1FD11C515215CC7002D6E20 /* StopsTableViewController.h */,
 				A1FD11C615215CC7002D6E20 /* StopsTableViewController.m */,
+				A13F12891526A47D00DEDF42 /* StopTimesTableViewController.h */,
+				A13F128A1526A47D00DEDF42 /* StopTimesTableViewController.m */,
 				A1C3DB2615156BCB007D5B4A /* InfoTableViewController.h */,
 				A1C3DB2715156BCB007D5B4A /* InfoTableViewController.m */,
 			);
@@ -392,6 +401,8 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A13F128C1526A72600DEDF42 /* header_bar_default.png */,
+				A13F128D1526A72600DEDF42 /* header_bar_default@2x.png */,
 				A1FD11F6152171B2002D6E20 /* Icon-Small.png */,
 				A1FD11F2152170F3002D6E20 /* Icon-72.png */,
 				A1C3DB2215156516007D5B4A /* bg_app.png */,
@@ -711,6 +722,8 @@
 				A1C3DB2515156516007D5B4A /* bg_app@2x.png in Resources */,
 				A1FD11F3152170F3002D6E20 /* Icon-72.png in Resources */,
 				A1FD11F7152171B2002D6E20 /* Icon-Small.png in Resources */,
+				A13F128E1526A72600DEDF42 /* header_bar_default.png in Resources */,
+				A13F128F1526A72600DEDF42 /* header_bar_default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -769,6 +782,7 @@
 				A1FD11DB1521682A002D6E20 /* SVSegmentedControl.m in Sources */,
 				A1FD11DC1521682A002D6E20 /* SVSegmentedThumb.m in Sources */,
 				A13CF55A152670E4008D2D14 /* Headsign.m in Sources */,
+				A13F128B1526A47D00DEDF42 /* StopTimesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

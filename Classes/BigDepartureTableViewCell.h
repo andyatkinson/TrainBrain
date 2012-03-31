@@ -8,10 +8,19 @@
 #import <UIKit/UIKit.h>
 
 @interface BigDepartureTableViewCell : UITableViewCell {
-  UILabel *bigNumberLabel;
+  UILabel *bigDeparture;
+  UILabel *funnySaying;
+  UILabel *description;
+  UILabel *formattedTime;
+  UILabel *price;
+  
 }
 
-@property (nonatomic, retain) UILabel *bigNumberLabel;
+@property (nonatomic, retain) UILabel *bigDeparture;
+@property (nonatomic, retain) UILabel *funnySaying;
+@property (nonatomic, retain) UILabel *description;
+@property (nonatomic, retain) UILabel *formattedTime;
+@property (nonatomic, retain) UILabel *price;
 
 // these are the functions we will create in the .m file
 
