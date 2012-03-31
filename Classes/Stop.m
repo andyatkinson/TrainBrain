@@ -9,6 +9,7 @@
 #import "Stop.h"
 #import "StopGroup.h"
 #import "TransitAPIClient.h"
+#import "Headsign.h"
 
 @implementation Stop
 
@@ -86,5 +87,49 @@
     return mutableRecords;
 }
 
++ (void)stopsWithHeadsigns:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSDictionary *data))block {
+  NSDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+  
+  [[TransitAPIClient sharedClient] getPath:urlString parameters:mutableParameters success:^(__unused AFHTTPRequestOperation *operation, id JSON) {
+    
+    NSMutableDictionary *data = [NSMutableDictionary dictionary];
+    
+    NSMutableArray *headsigns = [NSMutableArray array];
+    for (NSDictionary *attributes in [JSON valueForKeyPath:@"headsigns"]) {
+      Headsign *headsign = [[[Headsign alloc] initWithAttributes:attributes] autorelease];
+      [headsigns addObject:headsign];
+    }
+    
+    NSMutableArray *stops = [NSMutableArray array];
+    for (NSDictionary *attributes in [JSON valueForKeyPath:@"stops"]) {
+      Stop *stop = [[[Stop alloc] initWithAttributes:attributes] autorelease];
+      [stops addObject:stop];
+    }
+    
+    NSArray *sortedStops = [stops sortedArrayUsingComparator:^ NSComparisonResult(id obj1, id obj2) {
+      CLLocationDistance d1 = [[(Stop *)obj1 location] distanceFromLocation:location];
+      CLLocationDistance d2 = [[(Stop *)obj2 location] distanceFromLocation:location];
+      
+      if (d1 < d2) {
+        return NSOrderedAscending;
+      } else if (d1 > d2) {
+        return NSOrderedDescending;
+      } else {
+        return NSOrderedSame;
+      }
+    }];     
+    
+    [data setObject:headsigns forKey:@"headsigns"];
+    [data setObject:sortedStops forKey:@"stops"];
+    
+    if (block) {
+      block([NSDictionary dictionaryWithDictionary:data]);
+    }
+  } failure:^(__unused AFHTTPRequestOperation *operation, NSError *error) {
+    if (block) {
+      block([NSArray array]);
+    }
+  }];
+}
 
 @end

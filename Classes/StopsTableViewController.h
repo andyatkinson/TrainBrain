@@ -12,18 +12,23 @@
 
 @interface StopsTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate> {
   UITableView *tableView;
+  NSArray *headsigns;
   NSArray *stops;
+  
   NSMutableArray *data;
+  NSString *selected_route_id;
   
   CLLocation *myLocation;
   CLLocationManager *locationManager;
 }
 
 @property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, retain) NSArray *headsigns;
 @property (nonatomic, retain) NSArray *stops;
 @property (nonatomic, retain) NSMutableArray *data;
 @property (nonatomic, retain) CLLocation *myLocation;
 @property (nonatomic, retain) CLLocationManager *locationManager;
+@property (nonatomic, retain) NSString *selected_route_id;
 
 - (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl;
 

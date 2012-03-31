@@ -12,7 +12,7 @@
 
 @implementation StopsTableViewController
 
-@synthesize tableView, stops, locationManager, myLocation, data;
+@synthesize tableView, headsigns, stops, locationManager, myLocation, data, selected_route_id;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,8 +23,27 @@
     return self;
 }
 
+- (void)loadStopsWithHeadsigns:(CLLocation *)location {
+  //NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/with_headsigns", self.selected_route_id];
+  NSString *url = [NSString stringWithFormat:@"train/v1/routes/55-55/stops/with_headsigns"];
+  
+  [Stop stopsWithHeadsigns:url near:location parameters:nil block:^(NSDictionary *data) {
+    self.headsigns = [data objectForKey:@"headsigns"];
+    self.stops = [data objectForKey:@"stops"];
+    
+    [self.tableView reloadData];
+    //[self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+  }];
+  
+}
+
+
 - (void)viewDidLoad
 {
+  
+  CLLocation *mpls = [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223];
+  self.myLocation = mpls;
+  [self loadStopsWithHeadsigns:mpls];
   
   self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 260)];
 
@@ -36,10 +55,20 @@
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
   
+  // set height of frame of tableview
+  CGRect tvframe = [self.tableView frame];
+  [self.tableView setFrame:CGRectMake(tvframe.origin.x, 
+                                 tvframe.origin.y, 
+                                 tvframe.size.width, 
+                                 tvframe.size.height + 47)];
+  
+  
   self.data = [[NSMutableArray alloc] init];
   
-  Stop *s1 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Loading...", @"stop_desc", nil]];
-	self.stops = [NSArray arrayWithObjects:s1, nil];
+  Stop *s1 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Lake St", @"stop_name", nil]];
+  Stop *s2 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Franklin St", @"stop_name", nil]];
+  
+	self.stops = [NSArray arrayWithObjects:s1, s2, nil];
 	NSDictionary *stopsDict = [NSDictionary dictionaryWithObject:self.stops forKey:@"items"];
   
   [data addObject:stopsDict];
@@ -47,21 +76,18 @@
 	//Set the title
 	self.navigationItem.title = @"Stops";
   
-  UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,60)] autorelease];
+  UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
+  container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
   
-  UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height - 20)];
+  UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 50)];
   
+  SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"Downtown Mpls", @"Mall of America", nil]];
+  navSC.height = 50.0f;
+  navSC.font = [UIFont boldSystemFontOfSize:15];
   
-  SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"Andy", @"Nate", nil]];
-  navSC.height = 40.0;
+  navSC.tintColor = [UIColor blackColor]; // background color
   
-  UIImage *normImage = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"tab_biglake_norm" ofType:@"png"]];
-  UIImage *highlightedImage = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"tab_biglake_down" ofType:@"png"]];
-  
-  navSC.backgroundImage = normImage;
-  
-  navSC.thumb.backgroundImage = normImage;
-  navSC.thumb.highlightedBackgroundImage = highlightedImage;
+  navSC.thumb.tintColor = [UIColor yellowColor]; // background color  
   
   navSC.changeHandler = ^(NSUInteger newIndex) {
     NSLog(@"segmentedControl did select index %i (via block handler)", newIndex);
@@ -70,13 +96,13 @@
 	[headsignSwitcher addSubview:navSC];
 	[navSC release];
 	
-	navSC.center = CGPointMake(self.view.frame.size.width / 2, 25);
-  
+	navSC.center = CGPointMake(self.view.frame.size.width / 2, 30);
   
   
   [container addSubview:headsignSwitcher];
   [container addSubview:self.tableView];
   
+
   self.view = container;
   
 }
@@ -88,6 +114,13 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.section == 0) {
+    return 57;
+  }
+  return 0;
+}
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 1;
@@ -95,7 +128,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+  return [stops count];
 }
 
 // Customize the appearance of table view cells.
@@ -110,18 +143,14 @@
   
   Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
   
-  //cell.title.text = stop.stop_name;
+  cell.title.text = stop.stop_name;
   cell.description.text = stop.stop_desc;
-  //cell.extraInfo.text = @"4 blocks";
   
-  
-  
-//  double dist = [self.myLocation getDistanceFrom:stop.location] / 1609.344;
-//  cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
+  double dist = [self.myLocation getDistanceFrom:stop.location] / 1609.344;
+  cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
 //  
-//  cell.icon.image = [UIImage imageNamed:stop.icon_path];
-//  
-//  cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+  //cell.icon.image = [UIImage imageNamed:stop.icon_path];
+  cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
   
   return cell;
   

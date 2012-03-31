@@ -18,7 +18,7 @@
 @synthesize tableView, dataArraysForRoutesScreen, routes, stops, locationManager, myLocation;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-	[self loadSpotsForLocation:newLocation];
+	[self loadRoutesForLocation:newLocation];
   self.myLocation = newLocation;
   [self.locationManager stopUpdatingLocation];
 }
@@ -34,7 +34,7 @@
 	
 }
 
-- (void)loadSpotsForLocation:(CLLocation *)location {  
+- (void)loadRoutesForLocation:(CLLocation *)location {  
   NSDictionary *params = [NSDictionary dictionaryWithObject:@"1000" forKey:@"last_viewed_stop_id"];
   
   [Route routesWithNearbyStops:@"train/v1/routes/nearby_stops" near:location parameters:params block:^(NSDictionary *data) {
@@ -52,7 +52,7 @@
   // Load from a fixed location, in case location services are disabled or unavailable
   CLLocation *mpls = [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223];
   self.myLocation = mpls;
-  [self loadSpotsForLocation:mpls];
+  [self loadRoutesForLocation:mpls];
   
   [self.locationManager startUpdatingLocation];
   
