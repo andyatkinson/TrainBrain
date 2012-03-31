@@ -20,6 +20,7 @@
 	NSString *stop_desc;
 	CLLocation *location;
   NSString *icon_path;
+  NSString *headsign_key;
 }
 
 @property (nonatomic, retain) NSString *stop_id;
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) NSString *stop_desc;
 @property (nonatomic, retain) NSString *icon_path;
 @property (nonatomic, retain) CLLocation *location;
+@property (nonatomic, retain) NSString *headsign_key;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
 + (void)stopGroupsWithURLString:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block;

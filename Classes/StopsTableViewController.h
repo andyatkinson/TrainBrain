@@ -14,6 +14,8 @@
   UITableView *tableView;
   NSArray *headsigns;
   NSArray *stops;
+  NSArray *stopsIndex0;
+  NSArray *stopsIndex1;
   
   NSMutableArray *data;
   NSString *selected_route_id;
@@ -25,6 +27,8 @@
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSArray *headsigns;
 @property (nonatomic, retain) NSArray *stops;
+@property (nonatomic, retain) NSArray *stopsIndex0;
+@property (nonatomic, retain) NSArray *stopsIndex1;
 @property (nonatomic, retain) NSMutableArray *data;
 @property (nonatomic, retain) CLLocation *myLocation;
 @property (nonatomic, retain) CLLocationManager *locationManager;

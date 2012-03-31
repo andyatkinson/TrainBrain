@@ -13,7 +13,7 @@
 
 @implementation Stop
 
-@synthesize stop_id, stop_name, stop_street, stop_lat, stop_lon, stop_city, stop_desc, location, icon_path;
+@synthesize stop_id, stop_name, stop_street, stop_lat, stop_lon, stop_city, stop_desc, location, icon_path, headsign_key;
 
 - (id)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
@@ -26,13 +26,15 @@
     self.stop_desc = [attributes valueForKeyPath:@"stop_desc"];
     self.stop_lat = [attributes valueForKeyPath:@"stop_lat"];
     self.stop_lon = [attributes valueForKeyPath:@"stop_lon"];
-    self.stop_city = [attributes valueForKey:@"stop_city"];
+    self.stop_city = [attributes valueForKeyPath:@"stop_city"];
     self.location = [[CLLocation alloc] initWithLatitude:self.stop_lat.floatValue longitude:self.stop_lon.floatValue];
   
     NSString *family = [attributes valueForKeyPath:@"route_family"];
     if ([family length] > 0) {
       self.icon_path = [NSString stringWithFormat: @"icon_%@.png", family];
     }
+  
+    self.headsign_key = [attributes valueForKeyPath:@"headsign_key"];
     
     return self;
 }
@@ -117,10 +119,25 @@
       } else {
         return NSOrderedSame;
       }
-    }];     
+    }];
+    
+    NSMutableArray *stopsIndex0 = [NSMutableArray array];
+    NSMutableArray *stopsIndex1 = [NSMutableArray array];
+    
+    Headsign *h0 = (Headsign *)[headsigns objectAtIndex:0];
+    Headsign *h1 = (Headsign *)[headsigns objectAtIndex:1];
+    
+    for(Stop *stop in sortedStops) {
+      if ([stop.headsign_key isEqualToString:h0.headsign_key]) {
+        [stopsIndex0 addObject:stop];
+      } else if ([stop.headsign_key isEqualToString:h1.headsign_key]) {
+        [stopsIndex1 addObject:stop]; 
+      }
+    }
     
     [data setObject:headsigns forKey:@"headsigns"];
-    [data setObject:sortedStops forKey:@"stops"];
+    [data setObject:stopsIndex0 forKey:@"stopsIndex0"];
+    [data setObject:stopsIndex1 forKey:@"stopsIndex1"];
     
     if (block) {
       block([NSDictionary dictionaryWithDictionary:data]);

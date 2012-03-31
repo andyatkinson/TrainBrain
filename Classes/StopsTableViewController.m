@@ -12,7 +12,7 @@
 
 @implementation StopsTableViewController
 
-@synthesize tableView, headsigns, stops, locationManager, myLocation, data, selected_route_id;
+@synthesize tableView, headsigns, stops, locationManager, myLocation, data, selected_route_id, stopsIndex0, stopsIndex1;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,10 +29,14 @@
   
   [Stop stopsWithHeadsigns:url near:location parameters:nil block:^(NSDictionary *data) {
     self.headsigns = [data objectForKey:@"headsigns"];
-    self.stops = [data objectForKey:@"stops"];
+    
+    self.stopsIndex0 = [data objectForKey:@"stopsIndex0"];
+    self.stopsIndex1 = [data objectForKey:@"stopsIndex1"];
+    
+    self.stops = self.stopsIndex0;
     
     [self.tableView reloadData];
-    //[self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
   }];
   
 }
@@ -87,17 +91,30 @@
   
   navSC.tintColor = [UIColor blackColor]; // background color
   
-  navSC.thumb.tintColor = [UIColor yellowColor]; // background color  
+  navSC.thumb.tintColor = [UIColor colorWithRed:255/255.0 green:223/255.0 blue:4/255.0 alpha:1];
   
   navSC.changeHandler = ^(NSUInteger newIndex) {
     NSLog(@"segmentedControl did select index %i (via block handler)", newIndex);
+    
+    if ([self.stopsIndex0 count] > 0 && [self.stopsIndex1 count] > 0) {
+      
+      if (newIndex == 0) {
+        self.stops = self.stopsIndex0;
+      } else if (newIndex == 1) {
+        self.stops = self.stopsIndex1;
+      }
+      
+      [self.tableView reloadData];
+      [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
+    
   };
   
 	[headsignSwitcher addSubview:navSC];
 	[navSC release];
 	
 	navSC.center = CGPointMake(self.view.frame.size.width / 2, 30);
-  
   
   [container addSubview:headsignSwitcher];
   [container addSubview:self.tableView];
