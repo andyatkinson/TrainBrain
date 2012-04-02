@@ -50,6 +50,27 @@
     }];
 }
 
++ (void)stopTimesSimple:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block {
+  NSDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
+  
+  [[TransitAPIClient sharedClient] getPath:urlString parameters:mutableParameters success:^(__unused AFHTTPRequestOperation *operation, id JSON) {
+    
+    NSMutableArray *mutableRecords = [NSMutableArray array];
+    for (NSDictionary *attributes in [JSON valueForKeyPath:@"stop_times"]) {
+      StopTime *stop_time = [[[StopTime alloc] initWithAttributes:attributes] autorelease];
+      [mutableRecords addObject:stop_time];
+    }
+    
+    if (block) {
+      block([NSArray arrayWithArray:mutableRecords]);
+    }
+  } failure:^(__unused AFHTTPRequestOperation *operation, NSError *error) {
+    if (block) {
+      block([NSArray array]);
+    }
+  }];
+}
+
 + (NSArray *)stopTimesFromArray:(NSArray *)array {
     NSMutableArray *mutableRecords = [NSMutableArray array];
     for (NSDictionary *attributes in array) {

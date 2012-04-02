@@ -2,7 +2,6 @@
 //  StopTimeCell.m
 //  TrainBrain
 //
-//  Created by Aaron Batalion on 3/31/12.
 //  Copyright (c) 2012 Beetle Fight. All rights reserved.
 //
 
@@ -67,10 +66,10 @@
 		frame = CGRectMake(boundsX + 50, 12, 80, 30);
 		self.relativeTime.frame = frame;
     
-    frame = CGRectMake(boundsX + 150, 5, 80, 50);
+    frame = CGRectMake(boundsX + 140, 5, 80, 50);
     self.scheduleTime.frame = frame;
     
-    frame = CGRectMake(boundsX + 240, 5, 50, 50);
+    frame = CGRectMake(boundsX + 239, 5, 50, 50);
     self.price.frame = frame;
 
     

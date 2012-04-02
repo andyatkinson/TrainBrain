@@ -2,7 +2,6 @@
 //  RouteCell.h
 //  TrainBrain
 //
-//  Created by Aaron Batalion on 3/14/12.
 //  Copyright (c) 2012 Beetle Fight. All rights reserved.
 //
 

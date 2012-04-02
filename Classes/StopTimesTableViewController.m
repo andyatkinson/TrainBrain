@@ -9,6 +9,7 @@
 #import "BigDepartureTableViewCell.h"
 #import "RouteCell.h"
 #import "StopTimeCell.h"
+#import "StopTime.h"
 
 @implementation StopTimesTableViewController
 
@@ -23,6 +24,21 @@
   return self;
 }
 
+- (void)loadStopTimes {
+  // TODO get current hour, route_id, stop_id that was picked
+  
+  NSString *url = [NSString stringWithFormat:@"train/v1/routes/55-55/stops/17874/stop_times"];
+  NSDictionary *params = [NSDictionary dictionaryWithObject:@"11" forKey:@"hour"];
+  
+  [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSDictionary *data) {
+    self.stop_times = data;
+    
+    [self.tableView reloadData];
+    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];    
+  }];
+  
+}
+
 - (void)viewDidLoad
 {
   self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(22, 207, 270, 233)];
@@ -33,12 +49,13 @@
   self.tableView.delegate = self;
   
   self.data = [[NSMutableArray alloc] init];
-
   
-  self.stop_times = [NSArray arrayWithObjects:@"foo", @"bar", @"baz", nil];
-	NSDictionary *dict = [NSDictionary dictionaryWithObject:self.stop_times forKey:@"items"];
-	
-	[data addObject:dict];
+  [self loadStopTimes];
+  
+  StopTime *st1 = [[StopTime alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"$2.25", @"price", nil]];
+  StopTime *st2 = [[StopTime alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"$2.25", @"price", nil]];
+  
+  self.stop_times = [NSArray arrayWithObjects:st1, st2, nil];
 
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
@@ -125,6 +142,8 @@
     static NSString *CellIdentifier = @"Cell";
     
   if (indexPath.section == 0) {
+    
+    StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
 
     BigDepartureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
     cell = [[BigDepartureTableViewCell alloc] init];
@@ -133,11 +152,11 @@
     cell.funnySaying.text = @"Hurry Up. No Shoving.";
     cell.description.text = @"The next estimated train departs:";
     cell.formattedTime.text = @"11:15 PM";
-    cell.price.text = @"$1.75";
+    cell.price.text = stop_time.price;
     
     return cell;
     
-  } else if (indexPath.section == 1) {    
+  } else if (indexPath.section == 1) {
 
     StopTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
     cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -145,7 +164,7 @@
     cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];
     cell.relativeTime.text = @"09m";
     cell.scheduleTime.text = @"9h 19m";
-    cell.price.text = @"$1.75";
+    cell.price.text = @"$2.25";
 
     return cell;
     

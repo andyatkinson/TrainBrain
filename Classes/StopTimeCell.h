@@ -2,7 +2,6 @@
 //  StopTimeCell.h
 //  TrainBrain
 //
-//  Created by Aaron Batalion on 3/31/12.
 //  Copyright (c) 2012 Beetle Fight. All rights reserved.
 //
 

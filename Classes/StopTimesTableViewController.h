@@ -18,6 +18,8 @@
 @property (nonatomic, retain) NSMutableArray *data;
 @property (nonatomic, retain) NSArray *stop_times;
 
+- (void)loadStopTimes;
+
 @end
 
 
