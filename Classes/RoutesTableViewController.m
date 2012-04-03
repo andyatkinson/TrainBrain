@@ -256,11 +256,9 @@
   if (indexPath.section == 0) {
     // route_id available => go to stops
     Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
-    
-    //TrainStationsViewController *target = [[TrainStationsViewController alloc] init];
     StopsTableViewController *target = [[StopsTableViewController alloc] init];
-    //target.selectedRoute = route;
-    //target.my_location = self.myLocation;
+    target.selectedRoute = route;
+    target.myLocation = self.myLocation;
     
     [[self navigationController] pushViewController:target animated:YES];
     
@@ -296,26 +294,4 @@
   [super dealloc];
 }
 
-
-
-
 @end
-
-
-
-// SET HEADER SECTION heights
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//  if ([self tableView:tableView titleForHeaderInSection:section] != nil) {
-//    if (section == 1) {
-//      return 100;
-//    } else {
-//      return 40;
-//    }
-//    
-//  }
-//  else {
-//    // If no section header title, no section header needed
-//    return 0;
-//  }
-//}

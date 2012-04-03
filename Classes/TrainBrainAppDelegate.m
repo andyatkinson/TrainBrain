@@ -21,35 +21,16 @@
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
   
-  // START data storage in plist file
-//  NSError *error;
-//  NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//  NSString *documentsDirectory = [paths objectAtIndex:0];
-//  NSString *path = [documentsDirectory stringByAppendingPathComponent:@"user_data.plist"];
-//  
-//  NSFileManager *fileManager = [NSFileManager defaultManager];
-//  
-//  if (![fileManager fileExistsAtPath: path])
-//  {
-//    NSString *bundle = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"plist"];
-//    [fileManager copyItemAtPath:bundle toPath: path error:&error];
-//  }
-  // END data storage in plist file
-  
   // Create image for navigation background - portrait
   UIImage *navigationBarImage = [UIImage imageNamed:@"bg_header.png"];
   [[UINavigationBar appearance] setBackgroundImage:navigationBarImage forBarMetrics:UIBarMetricsDefault];
   
-	
-	//[application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
+	[application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
 	
 	//UIColor *navBarColor = UIColorFromRGB(0x111111);
 	
 	tabBarController = [[UITabBarController alloc] init];
-  //routesTableViewController = [[RootViewController alloc] init];
-  //routesTableViewController = [[RoutesTableViewController alloc] init];
-  routesTableViewController = [[StopTimesTableViewController alloc] init];
-  
+  routesTableViewController = [[RoutesTableViewController alloc] init];
 	UINavigationController *routesController = [[[UINavigationController alloc] initWithRootViewController:routesTableViewController] autorelease];
   routesController.navigationBar.barStyle = UIBarStyleDefault;
   //routesController.navigationBar.tintColor = navBarColor;
@@ -59,7 +40,7 @@
 	
 	infoTableViewController = [[InfoTableViewController alloc] init];
 	UINavigationController *infoController = [[[UINavigationController alloc] initWithRootViewController:infoTableViewController] autorelease];
-	//infoController.navigationBar.barStyle = UIBarStyleDefault;
+	infoController.navigationBar.barStyle = UIBarStyleDefault;
 	//infoController.navigationBar.tintColor = navBarColor;
 	infoController.title = @"Info";
 	infoController.tabBarItem.image = [UIImage imageNamed:@"90-lifebuoy.png"];
@@ -73,7 +54,8 @@
 }
 
 - (void)dealloc {
-	//[navigationController release];
+	[routesTableViewController release];
+  [infoViewController release];
 	[tabBarController release];
 	[window release];
 	[super dealloc];

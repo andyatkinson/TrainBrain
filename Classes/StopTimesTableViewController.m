@@ -13,7 +13,7 @@
 
 @implementation StopTimesTableViewController
 
-@synthesize tableView, data, stop_times, routeID, stopID;
+@synthesize tableView, data, stop_times, selectedRoute, selectedStop;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -31,10 +31,8 @@
   NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
   int hour = (int)[components hour];
   
-  NSString *routeID = @"55-55";
-  NSString *stopID = @"17874";
-  
-  NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/%@/stop_times", routeID, stopID];
+  NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/%@/stop_times", 
+                   self.selectedRoute.route_id, self.selectedStop.stop_id];
   NSDictionary *params = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", [components hour]] forKey:@"hour"];
   
   [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSDictionary *data) {
@@ -48,9 +46,15 @@
 
 - (void)viewDidLoad
 {
+  
+  // TODO set the custom background
+  UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
+  self.navigationItem.backBarButtonItem = backBarButton;
+  [backBarButton release];
+
   self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(22, 207, 270, 233)];
   
-    [super viewDidLoad];
+  [super viewDidLoad];
   
   self.tableView.dataSource = self;
   self.tableView.delegate = self;
@@ -61,14 +65,16 @@
   
   StopTime *st1 = [[StopTime alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"$2.25", @"price", nil]];
   StopTime *st2 = [[StopTime alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"$2.25", @"price", nil]];
+  StopTime *st3 = [[StopTime alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"$2.25", @"price", nil]];
+  StopTime *st4 = [[StopTime alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"$2.25", @"price", nil]];
   
-  self.stop_times = [NSArray arrayWithObjects:st1, st2, nil];
+  self.stop_times = [NSArray arrayWithObjects:st1, st2, st3, st4, nil];
 
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
   
   
-  self.navigationItem.title = @"Warehouse Station";
+  self.navigationItem.title = self.selectedStop.stop_name;
   
   self.view = self.tableView;
     
@@ -135,7 +141,7 @@
   if (section == 0) {
     return 1;
   } else if (section == 1) {
-    return 4;
+    return [self.stop_times count];
   } else {
     // error
     return 0;
@@ -186,13 +192,14 @@
     
   } else if (indexPath.section == 1) {
 
+    StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
     StopTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
     cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
 
     cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];
     cell.relativeTime.text = @"09m";
-    cell.scheduleTime.text = @"9h 19m";
-    cell.price.text = @"$2.25";
+    cell.scheduleTime.text = stop_time.departure_time;
+    cell.price.text = stop_time.price;
 
     return cell;
     
@@ -201,38 +208,4 @@
 
 }
 
-
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
-}
-
 @end
-
-
-// SET HEADER SECTION heights
-//
-//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-//  if ([self tableView:tableView titleForHeaderInSection:section] != nil) {
-//    if (section == 1) {
-//      return 100;
-//    } else {
-//      return 40;
-//    }
-//    
-//  }
-//  else {
-//    // If no section header title, no section header needed
-//    return 0;
-//  }
-//}

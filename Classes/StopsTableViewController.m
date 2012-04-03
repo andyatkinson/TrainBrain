@@ -7,11 +7,12 @@
 
 #import "StopsTableViewController.h"
 #import "Stop.h"
+#import "StopTimesTableViewController.h"
 #import "RouteCell.h"
 
 @implementation StopsTableViewController
 
-@synthesize tableView, headsigns, stops, locationManager, myLocation, data, selected_route_id, stopsIndex0, stopsIndex1;
+@synthesize tableView, headsigns, stops, locationManager, myLocation, data, selectedRoute, stopsIndex0, stopsIndex1;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,8 +24,7 @@
 }
 
 - (void)loadStopsWithHeadsigns:(CLLocation *)location {
-  //NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/with_headsigns", self.selected_route_id];
-  NSString *url = [NSString stringWithFormat:@"train/v1/routes/55-55/stops/with_headsigns"];
+  NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/with_headsigns", self.selectedRoute.route_id];
   
   [Stop stopsWithHeadsigns:url near:location parameters:nil block:^(NSDictionary *data) {
     self.headsigns = [data objectForKey:@"headsigns"];
@@ -77,7 +77,7 @@
   [data addObject:stopsDict];
 	
 	//Set the title
-	self.navigationItem.title = @"Stops";
+	self.navigationItem.title = self.selectedRoute.short_name;
   
   UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
   container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
@@ -182,14 +182,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+
+    Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
+    StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
+    target.selectedRoute = self.selectedRoute;
+    target.selectedStop = stop;
+  
+    [[self navigationController] pushViewController:target animated:YES];
 }
 
 @end

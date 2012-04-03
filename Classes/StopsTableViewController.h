@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "SVSegmentedControl.h"
+#import "Route.h"
 
 @interface StopsTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate> {
   UITableView *tableView;
@@ -17,7 +18,7 @@
   NSArray *stopsIndex1;
   
   NSMutableArray *data;
-  NSString *selected_route_id;
+  Route *selectedRoute;
   
   CLLocation *myLocation;
   CLLocationManager *locationManager;
@@ -31,7 +32,7 @@
 @property (nonatomic, retain) NSMutableArray *data;
 @property (nonatomic, retain) CLLocation *myLocation;
 @property (nonatomic, retain) CLLocationManager *locationManager;
-@property (nonatomic, retain) NSString *selected_route_id;
+@property (nonatomic, retain) Route *selectedRoute;
 
 - (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl;
 
