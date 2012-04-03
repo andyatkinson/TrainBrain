@@ -13,7 +13,7 @@
 
 @implementation StopTimesTableViewController
 
-@synthesize tableView, data, stop_times;
+@synthesize tableView, data, stop_times, routeID, stopID;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -26,9 +26,16 @@
 
 - (void)loadStopTimes {
   // TODO get current hour, route_id, stop_id that was picked
+  NSDate *now = [NSDate date];
+  NSCalendar *calendar = [NSCalendar currentCalendar];
+  NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
+  int hour = (int)[components hour];
   
-  NSString *url = [NSString stringWithFormat:@"train/v1/routes/55-55/stops/17874/stop_times"];
-  NSDictionary *params = [NSDictionary dictionaryWithObject:@"11" forKey:@"hour"];
+  NSString *routeID = @"55-55";
+  NSString *stopID = @"17874";
+  
+  NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/%@/stop_times", routeID, stopID];
+  NSDictionary *params = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", [components hour]] forKey:@"hour"];
   
   [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSDictionary *data) {
     self.stop_times = data;
@@ -128,7 +135,7 @@
   if (section == 0) {
     return 1;
   } else if (section == 1) {
-    return 3;
+    return 4;
   } else {
     // error
     return 0;
@@ -148,10 +155,31 @@
     BigDepartureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
     cell = [[BigDepartureTableViewCell alloc] init];
 
-    cell.bigDeparture.text = @"4m 34s";
-    cell.funnySaying.text = @"Hurry Up. No Shoving.";
+    cell.bigDeparture.text = stop_time.departure_time;
+    
+    NSArray *phrasesArray = [NSArray arrayWithObjects:@"Hurry Up. No Shoving.", @"Cool story, bro.", nil];
+    
+    NSUInteger randomIndex = arc4random() % [phrasesArray count];
+    
+    cell.funnySaying.text = [phrasesArray objectAtIndex:randomIndex];
+    
+    
     cell.description.text = @"The next estimated train departs:";
-    cell.formattedTime.text = @"11:15 PM";
+    cell.formattedTime.text = stop_time.departure_time;
+
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"HH:mm:ss"];
+    NSDate *date = [formatter dateFromString:stop_time.departure_time];
+    
+    [formatter setDateFormat:@"HH:mm a"];
+    
+    NSString *formattedTime = [NSString stringWithFormat:@"%@", [formatter stringFromDate:date]];
+    
+    [formatter release];
+    
+    cell.formattedTime.text = formattedTime;
+    
+    
     cell.price.text = stop_time.price;
     
     return cell;
