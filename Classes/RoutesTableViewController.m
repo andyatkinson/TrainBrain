@@ -115,30 +115,21 @@
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
-  UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.tableView.frame.size.width,29)] autorelease];
   
-//  UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 0, headerView.frame.size.width-120.0, headerView.frame.size.height)];
-//  headerLabel.textAlignment = UITextAlignmentRight;
-//  headerLabel.text = @"foo";
-//  headerLabel.backgroundColor = [UIColor clearColor];
-//  [headerView addSubview:headerLabel];
+  UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.tableView.frame.size.width,30)] autorelease];
   
-  NSString *filename = [[NSString alloc] init];
-  if (section == 0) {
-    filename = @"header_bar_choose_line";
-  } else if (section == 1) {
-    filename = @"header_bar_last_viewed";
-  } else if (section == 2) {
-    filename = @"header_bar_nearby_stops";
-  }
+  UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,0,headerView.frame.size.width, headerView.frame.size.height)];
+  headerLabel.textAlignment = UITextAlignmentLeft;
+  headerLabel.textColor = [UIColor blackColor];
+  headerLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+  headerLabel.font = [UIFont boldSystemFontOfSize:14.0];
+  headerLabel.shadowColor = [UIColor whiteColor];
+  headerLabel.shadowOffset = CGSizeMake(0,1);
   
-  UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:filename ofType:@"png"]];
-  UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+  headerLabel.backgroundColor = [UIColor clearColor];
+  [headerView addSubview:headerLabel];
   
-  
-  [headerView addSubview:imgView];
-  
-  //[headerLabel release];
+  headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"header_bar_default.png"]];
   
   return headerView;
 }
