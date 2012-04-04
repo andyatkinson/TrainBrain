@@ -188,6 +188,10 @@
     target.selectedRoute = self.selectedRoute;
     target.selectedStop = stop;
   
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    [settings setObject:stop.stop_id forKey:@"last_stop_id"];
+    [settings synchronize];
+  
     [[self navigationController] pushViewController:target animated:YES];
 }
 

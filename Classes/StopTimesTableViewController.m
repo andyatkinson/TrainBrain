@@ -39,7 +39,7 @@
     self.stop_times = data;
     
     [self.tableView reloadData];
-    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];    
+//    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];    
   }];
   
 }
@@ -156,39 +156,31 @@
     
   if (indexPath.section == 0) {
     
-    StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
+    if ([stop_times count] > 0) {
+      StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
+      
+      BigDepartureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
+      cell = [[BigDepartureTableViewCell alloc] init];
+      
+      cell.bigDeparture.text = stop_time.departure_time;
+      NSArray *phrasesArray = [NSArray arrayWithObjects:@"Hurry Up. No Shoving.", @"Cool story, bro.", nil];
+      NSUInteger randomIndex = arc4random() % [phrasesArray count];
+      cell.funnySaying.text = [phrasesArray objectAtIndex:randomIndex];
+      cell.description.text = @"The next estimated train departs:";
+      cell.formattedTime.text = stop_time.departure_time;
+      
+      NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+      [formatter setDateFormat:@"HH:mm:ss"];
+      NSDate *date = [formatter dateFromString:stop_time.departure_time];
+      
+      [formatter setDateFormat:@"HH:mm a"];
+      NSString *formattedTime = [NSString stringWithFormat:@"%@", [formatter stringFromDate:date]];
+      [formatter release];
+      cell.formattedTime.text = formattedTime;
+      cell.price.text = stop_time.price;
+      return cell;
+    }
 
-    BigDepartureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
-    cell = [[BigDepartureTableViewCell alloc] init];
-
-    cell.bigDeparture.text = stop_time.departure_time;
-    
-    NSArray *phrasesArray = [NSArray arrayWithObjects:@"Hurry Up. No Shoving.", @"Cool story, bro.", nil];
-    
-    NSUInteger randomIndex = arc4random() % [phrasesArray count];
-    
-    cell.funnySaying.text = [phrasesArray objectAtIndex:randomIndex];
-    
-    
-    cell.description.text = @"The next estimated train departs:";
-    cell.formattedTime.text = stop_time.departure_time;
-
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"HH:mm:ss"];
-    NSDate *date = [formatter dateFromString:stop_time.departure_time];
-    
-    [formatter setDateFormat:@"HH:mm a"];
-    
-    NSString *formattedTime = [NSString stringWithFormat:@"%@", [formatter stringFromDate:date]];
-    
-    [formatter release];
-    
-    cell.formattedTime.text = formattedTime;
-    
-    
-    cell.price.text = stop_time.price;
-    
-    return cell;
     
   } else if (indexPath.section == 1) {
 

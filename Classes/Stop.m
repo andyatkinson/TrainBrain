@@ -13,7 +13,7 @@
 
 @implementation Stop
 
-@synthesize stop_id, stop_name, stop_street, stop_lat, stop_lon, stop_city, stop_desc, location, icon_path, headsign_key;
+@synthesize stop_id, stop_name, stop_street, stop_lat, stop_lon, stop_city, stop_desc, location, icon_path, headsign_key, route;
 
 - (id)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
@@ -35,6 +35,8 @@
     }
   
     self.headsign_key = [attributes valueForKeyPath:@"headsign_key"];
+  
+    self.route = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[attributes valueForKeyPath:@"route_id"], @"route_id", nil]];
     
     return self;
 }

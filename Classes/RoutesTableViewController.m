@@ -7,10 +7,8 @@
 #import "RouteCell.h"
 #import "Route.h"
 #import "Stop.h"
-# import "StopsTableViewController.h"
-
-// REMOVE ME
-#import "TrainStationsViewController.h"
+#import "StopsTableViewController.h"
+#import "StopTimesTableViewController.h"
 
 
 @implementation RoutesTableViewController
@@ -156,7 +154,16 @@
   if (section == 0) {
     return [self.routes count];
   } else if (section == 1) {
-    return 1;
+    
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    NSString *last_stop_id = [settings stringForKey: @"last_stop_id"];
+    NSLog(@"got last stop ID: %@", last_stop_id);
+    if (last_stop_id != NULL) {
+        return 1;
+    } else {
+      return 0;
+    }
+    
   } else if (section == 2) {
     return [self.stops count];
   } else {
@@ -170,7 +177,15 @@
 	if (section == 0) {
     return @"Choose your line";
   } else if (section == 1) {
-    return @"Last Viewed";
+    
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    NSString *last_stop_id = [settings stringForKey: @"last_stop_id"];
+    if (last_stop_id != NULL) {
+      return @"Last Viewed";
+    } else {
+      return NULL;
+    }
+    
   } else if (section == 2) {
     return @"Nearby Stops";
   }
@@ -265,9 +280,17 @@
   } else if (indexPath.section == 1 || indexPath.section == 2) {
     
     // stop_id available => go to stop times
-
-
+    // route_id available => go to stops
+    Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
     
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    [settings setObject:stop.stop_id forKey:@"last_stop_id"];
+    [settings synchronize];
+    
+    StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
+    target.selectedRoute = stop.route;
+    target.selectedStop = stop;
+    [[self navigationController] pushViewController:target animated:YES];
   }
 	
 }
