@@ -10,6 +10,7 @@
 #import "RouteCell.h"
 #import "StopTimeCell.h"
 #import "StopTime.h"
+#import "NSString+BeetleFight.h"
 
 @implementation StopTimesTableViewController
 
@@ -30,6 +31,15 @@
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
   int hour = (int)[components hour];
+  
+  // FOR TESTING
+  if (self.selectedRoute == NULL) {
+    self.selectedRoute = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"55-55", @"route_id", nil]];
+  }
+  if (self.selectedStop == NULL) {
+    self.selectedStop = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"17874", @"stop_id", nil]];
+  }
+  // END FOR TESTING
   
   NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/%@/stop_times", 
                    self.selectedRoute.route_id, self.selectedStop.stop_id];
@@ -152,51 +162,43 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-    static NSString *CellIdentifier = @"Cell";
-    
-  if (indexPath.section == 0) {
-    
-    if ([stop_times count] > 0) {
+  static NSString *CellIdentifier = @"Cell";
+  
+  if ([stop_times count] > 0) {
+    if (indexPath.section == 0) {
+      
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
       
       BigDepartureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
       cell = [[BigDepartureTableViewCell alloc] init];
       
-      cell.bigDeparture.text = stop_time.departure_time;
+      cell.bigDeparture.text = [stop_time.departure_time relativeTimeHourAndMinute];
       NSArray *phrasesArray = [NSArray arrayWithObjects:@"Hurry Up. No Shoving.", @"Cool story, bro.", nil];
       NSUInteger randomIndex = arc4random() % [phrasesArray count];
       cell.funnySaying.text = [phrasesArray objectAtIndex:randomIndex];
       cell.description.text = @"The next estimated train departs:";
       cell.formattedTime.text = stop_time.departure_time;
       
-      NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-      [formatter setDateFormat:@"HH:mm:ss"];
-      NSDate *date = [formatter dateFromString:stop_time.departure_time];
-      
-      [formatter setDateFormat:@"HH:mm a"];
-      NSString *formattedTime = [NSString stringWithFormat:@"%@", [formatter stringFromDate:date]];
-      [formatter release];
-      cell.formattedTime.text = formattedTime;
+      cell.formattedTime.text = [stop_time.departure_time hourMinuteFormatted];
       cell.price.text = stop_time.price;
       return cell;
+      
+      
+    } else if (indexPath.section == 1) {
+      
+      StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
+      StopTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
+      cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      
+      cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];
+      cell.relativeTime.text = [stop_time.departure_time relativeTimeHourAndMinute];
+      cell.scheduleTime.text = [stop_time.departure_time hourMinuteFormatted];
+      cell.price.text = stop_time.price;
+      
+      return cell;
+      
     }
-
-    
-  } else if (indexPath.section == 1) {
-
-    StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
-    StopTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
-    cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-
-    cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];
-    cell.relativeTime.text = @"09m";
-    cell.scheduleTime.text = stop_time.departure_time;
-    cell.price.text = stop_time.price;
-
-    return cell;
-    
-  }
-    
+  }  
 
 }
 

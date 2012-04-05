@@ -101,6 +101,7 @@
 		A1D688F812209E80002C6081 /* icon_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D688F412209E80002C6081 /* icon_arrow@2x.png */; };
 		A1D688F912209E80002C6081 /* icon_hiawatha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D688F512209E80002C6081 /* icon_hiawatha@2x.png */; };
 		A1D688FA12209E80002C6081 /* icon_northstar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D688F612209E80002C6081 /* icon_northstar@2x.png */; };
+		A1DD5C86152DD89F00C1A88A /* NSString+BeetleFight.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD5C85152DD89F00C1A88A /* NSString+BeetleFight.m */; };
 		A1DF9D05109D3BB100328466 /* TrainStationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */; };
 		A1DF9D06109D3BB100328466 /* TrainStationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */; };
 		A1E5EC651220B52000B15224 /* icon_hiawatha.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E5EC631220B52000B15224 /* icon_hiawatha.png */; };
@@ -275,6 +276,8 @@
 		A1D688F412209E80002C6081 /* icon_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow@2x.png"; sourceTree = "<group>"; };
 		A1D688F512209E80002C6081 /* icon_hiawatha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_hiawatha@2x.png"; sourceTree = "<group>"; };
 		A1D688F612209E80002C6081 /* icon_northstar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_northstar@2x.png"; sourceTree = "<group>"; };
+		A1DD5C84152DD89F00C1A88A /* NSString+BeetleFight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BeetleFight.h"; sourceTree = "<group>"; };
+		A1DD5C85152DD89F00C1A88A /* NSString+BeetleFight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BeetleFight.m"; sourceTree = "<group>"; };
 		A1DF9D02109D3BB100328466 /* TrainStationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainStationsViewController.h; sourceTree = "<group>"; };
 		A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainStationsViewController.m; sourceTree = "<group>"; };
 		A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TrainStationsViewController.xib; path = Classes/TrainStationsViewController.xib; sourceTree = "<group>"; };
@@ -324,6 +327,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A1DD5C83152DD86800C1A88A /* Categories */,
 				A16E462D152AB52F008FBABE /* Controllers */,
 				A1EDA0831489E2C3004C7E61 /* Models */,
 				A115788615117B700064593E /* Views */,
@@ -577,6 +581,15 @@
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
+		A1DD5C83152DD86800C1A88A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				A1DD5C84152DD89F00C1A88A /* NSString+BeetleFight.h */,
+				A1DD5C85152DD89F00C1A88A /* NSString+BeetleFight.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		A1EDA0831489E2C3004C7E61 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -785,6 +798,7 @@
 				A13CF55A152670E4008D2D14 /* Headsign.m in Sources */,
 				A13F128B1526A47D00DEDF42 /* StopTimesTableViewController.m in Sources */,
 				A13F129A1526BE2300DEDF42 /* StopTimeCell.m in Sources */,
+				A1DD5C86152DD89F00C1A88A /* NSString+BeetleFight.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

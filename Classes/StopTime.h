@@ -28,6 +28,7 @@
 @property (nonatomic, retain) NSString *headsign_key;
 
 + (void)stopTimesWithURLString:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block;
++ (void)stopTimesSimple;
 + (NSArray *)stopTimesFromArray:(NSArray *)array;
 
 @end
