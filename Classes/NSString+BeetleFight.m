@@ -32,8 +32,15 @@
   int scheduleHour = (int)[[parts objectAtIndex:0] intValue];
   int scheduleMinute = (int)[[parts objectAtIndex:1] intValue];
   
-  int relativeHour = scheduleHour - currentHour;
-  int relativeMinute = scheduleMinute - currentMinute;
+  int relativeHour = NULL;
+  if (scheduleHour > currentHour) {
+    relativeHour = scheduleHour - currentHour;
+  }
+
+  int relativeMinute = NULL;
+  if (scheduleMinute > currentMinute) {
+    relativeMinute = scheduleMinute - currentMinute;
+  }
   
   return [NSString stringWithFormat:@"%dh%dm", relativeHour, relativeMinute];
 }

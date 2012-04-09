@@ -11,6 +11,7 @@
 #import "StopTimeCell.h"
 #import "StopTime.h"
 #import "NSString+BeetleFight.h"
+#import "FunnyPhrase.h"
 
 @implementation StopTimesTableViewController
 
@@ -173,9 +174,7 @@
       cell = [[BigDepartureTableViewCell alloc] init];
       
       cell.bigDeparture.text = [stop_time.departure_time relativeTimeHourAndMinute];
-      NSArray *phrasesArray = [NSArray arrayWithObjects:@"Hurry Up. No Shoving.", @"Cool story, bro.", nil];
-      NSUInteger randomIndex = arc4random() % [phrasesArray count];
-      cell.funnySaying.text = [phrasesArray objectAtIndex:randomIndex];
+      cell.funnySaying.text = [FunnyPhrase rand];
       cell.description.text = @"The next estimated train departs:";
       cell.formattedTime.text = stop_time.departure_time;
       
