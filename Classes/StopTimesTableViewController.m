@@ -173,9 +173,10 @@
       BigDepartureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
       cell = [[BigDepartureTableViewCell alloc] init];
       
-      cell.bigDeparture.text = [stop_time.departure_time relativeTimeHourAndMinute];
+      cell.bigDepartureHour.text = [NSString stringWithFormat:@"%dh", stop_time.departure_time_hour];
+      cell.bigDepartureMinute.text = [NSString stringWithFormat:@"%dm", stop_time.departure_time_minute];
       cell.funnySaying.text = [FunnyPhrase rand];
-      cell.description.text = @"The next estimated train departs:";
+      cell.description.text = @"Next estimated train departure:";
       cell.formattedTime.text = stop_time.departure_time;
       
       cell.formattedTime.text = [stop_time.departure_time hourMinuteFormatted];
@@ -190,7 +191,8 @@
       cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
       
       cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];
-      cell.relativeTime.text = [stop_time.departure_time relativeTimeHourAndMinute];
+      cell.relativeTimeHour.text = [NSString stringWithFormat:@"%dh", stop_time.departure_time_hour];
+      cell.relativeTimeMinute.text = [NSString stringWithFormat:@"%dm", stop_time.departure_time_minute];
       cell.scheduleTime.text = [stop_time.departure_time hourMinuteFormatted];
       cell.price.text = stop_time.price;
       

@@ -12,7 +12,7 @@
 
 @implementation StopTime
 
-@synthesize departure_time, arrival_time, drop_off_type, pickup_type, price, headsign, headsign_key;
+@synthesize departure_time, arrival_time, drop_off_type, pickup_type, price, headsign, headsign_key, departure_time_hour, departure_time_minute;
 
 - (id)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
@@ -27,9 +27,12 @@
     self.price = [attributes valueForKeyPath:@"price"];
     self.headsign = [attributes valueForKey:@"headsign"];
     self.headsign_key = [attributes valueForKey:@"headsign_key"];
-    
+    self.departure_time_hour = [self.departure_time hourFromDepartureString];
+    self.departure_time_minute = [self.departure_time minuteFromDepartureString];
+
     return self;
 }
+
 
 + (void)stopTimesWithURLString:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block {
     NSDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];

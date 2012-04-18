@@ -45,12 +45,23 @@
   return [NSString stringWithFormat:@"%dh%dm", relativeHour, relativeMinute];
 }
 
+- (int)hourFromDepartureString {
+  NSArray *parts = [self componentsSeparatedByString:@":"];
+  return (int)[[parts objectAtIndex:0] intValue];
+}
+
+- (int)minuteFromDepartureString {
+  NSArray *parts = [self componentsSeparatedByString:@":"];
+  return (int)[[parts objectAtIndex:1] intValue];
+}
+
 - (NSString *)hourMinuteFormatted {
   NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
   [formatter setDateFormat:@"HH:mm:ss"];
   NSDate *date = [formatter dateFromString:self];
   
   [formatter setDateFormat:@"HH:mm a"];
+  
   NSString *formattedTime = [NSString stringWithFormat:@"%@", [formatter stringFromDate:date]];
   [formatter release];
   

@@ -9,7 +9,7 @@
 
 @implementation StopTimeCell
 
-@synthesize relativeTime, scheduleTime, price, icon;
+@synthesize relativeTimeHour, relativeTimeMinute, scheduleTime, price, icon;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -20,18 +20,21 @@
     self.backgroundView = [[UIImageView alloc] initWithImage:bgImg];
     
     self.icon = [[ UIImageView alloc ] init];
-    self.relativeTime = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:30.0 bold:YES];
+    self.relativeTimeHour = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:22.0 bold:YES];
+    self.relativeTimeMinute = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:22.0 bold:YES];
     self.scheduleTime = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:18.0 bold:NO];
     self.price = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:18.0 bold:NO];
     
     
     [contentView addSubview:self.icon];
-		[contentView addSubview:self.relativeTime];
+		[contentView addSubview:self.relativeTimeHour];
+    [contentView addSubview:self.relativeTimeMinute];
     [contentView addSubview:self.scheduleTime];
     [contentView addSubview:self.price];
     
 		[self.icon release];
-    [self.relativeTime release];
+    [self.relativeTimeHour release];
+    [self.relativeTimeMinute release];
     [self.scheduleTime release];
     [self.price release];
   }
@@ -63,8 +66,11 @@
     frame = CGRectMake(boundsX + 10, 18, 20, 20);
     self.icon.frame = frame;
     
-		frame = CGRectMake(boundsX + 50, 12, 80, 30);
-		self.relativeTime.frame = frame;
+		frame = CGRectMake(boundsX + 40, 12, 80, 30);
+		self.relativeTimeHour.frame = frame;
+    
+    frame = CGRectMake(boundsX + 80, 12, 80, 30);
+		self.relativeTimeMinute.frame = frame;
     
     frame = CGRectMake(boundsX + 140, 5, 80, 50);
     self.scheduleTime.frame = frame;

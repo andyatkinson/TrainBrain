@@ -9,7 +9,7 @@
 
 @implementation BigDepartureTableViewCell
 
-@synthesize bigDeparture, funnySaying, description, formattedTime, price;
+@synthesize bigDepartureHour, bigDepartureMinute, funnySaying, description, formattedTime, price;
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
@@ -27,19 +27,22 @@
     //add the subView to the cell
     //[self.contentView addSubview:bgImageView];
     
-    self.bigDeparture = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
+    self.bigDepartureHour = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
+    self.bigDepartureMinute = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
     self.funnySaying = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:14.0 bold:YES];
     self.description = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:YES];
     self.formattedTime = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:NO];
     self.price = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:NO];
     
-		[contentView addSubview:self.bigDeparture];
+		[contentView addSubview:self.bigDepartureHour];
+    [contentView addSubview:self.bigDepartureMinute];
     [contentView addSubview:self.funnySaying];
     [contentView addSubview:self.description];
     [contentView addSubview:self.formattedTime];
     [contentView addSubview:self.price];
 		
-    [self.bigDeparture release];
+    [self.bigDepartureHour release];
+    [self.bigDepartureMinute release];
     [self.funnySaying release];
     [self.description release];
     [self.formattedTime release];
@@ -55,7 +58,7 @@
 }
 
 - (void) setData:(NSDictionary *)dict {
-	self.bigDeparture.text = [dict objectForKey:@"title"];
+	self.bigDepartureHour.text = [dict objectForKey:@"title"];
 }
 
 - (void)layoutSubviews {
@@ -79,8 +82,11 @@
 		 make the label 200 pixels wide
 		 make the label 20 pixels high
      */
-		frame = CGRectMake(boundsX + 50, 0, 300, 100);
-		self.bigDeparture.frame = frame;
+		frame = CGRectMake(boundsX + 60, 0, 300, 100);
+		self.bigDepartureHour.frame = frame;
+    
+    frame = CGRectMake(boundsX + 170, 0, 300, 100);
+		self.bigDepartureMinute.frame = frame;
     
     frame = CGRectMake(boundsX + 20, 98, 200, 20);
 		self.funnySaying.frame = frame;
@@ -124,7 +130,8 @@
 }
 
 - (void)dealloc {
-	[bigDeparture dealloc];
+	[bigDepartureHour dealloc];
+  [bigDepartureMinute dealloc];
   [funnySaying dealloc];
   [description dealloc];
   [formattedTime dealloc];

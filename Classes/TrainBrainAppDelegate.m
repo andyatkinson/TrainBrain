@@ -30,7 +30,7 @@
 	//UIColor *navBarColor = UIColorFromRGB(0x111111);
 	
 	tabBarController = [[UITabBarController alloc] init];
-  routesTableViewController = [[StopTimesTableViewController alloc] init];
+  routesTableViewController = [[RoutesTableViewController alloc] init];
 	UINavigationController *routesController = [[[UINavigationController alloc] initWithRootViewController:routesTableViewController] autorelease];
   routesController.navigationBar.barStyle = UIBarStyleDefault;
   //routesController.navigationBar.tintColor = navBarColor;

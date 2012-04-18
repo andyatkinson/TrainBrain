@@ -11,5 +11,7 @@
 
 - (NSString *)relativeTimeHourAndMinute;
 - (NSString *)hourMinuteFormatted;
+- (int)hourFromDepartureString;
+- (int)minuteFromDepartureString;
 
 @end
