@@ -68,10 +68,9 @@
   
   self.data = [[NSMutableArray alloc] init];
   
-  Stop *s1 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Lake St", @"stop_name", nil]];
-  Stop *s2 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Franklin St", @"stop_name", nil]];
+  Stop *s1 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Loading...", @"stop_name", nil]];
   
-	self.stops = [NSArray arrayWithObjects:s1, s2, nil];
+	self.stops = [NSArray arrayWithObjects:s1, nil];
 	NSDictionary *stopsDict = [NSDictionary dictionaryWithObject:self.stops forKey:@"items"];
   
   [data addObject:stopsDict];
@@ -185,12 +184,7 @@
 
     Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
     StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
-    target.selectedRoute = self.selectedRoute;
-    target.selectedStop = stop;
-  
-    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-    [settings setObject:stop.stop_id forKey:@"last_stop_id"];
-    [settings synchronize];
+    [target setSelectedStop:stop];
   
     [[self navigationController] pushViewController:target animated:YES];
 }

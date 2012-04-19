@@ -13,7 +13,7 @@
 
 @implementation RoutesTableViewController
 
-@synthesize tableView, dataArraysForRoutesScreen, routes, stops, locationManager, myLocation;
+@synthesize tableView, dataArraysForRoutesScreen, routes, stops, lastViewed, locationManager, myLocation;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 	[self loadRoutesForLocation:newLocation];
@@ -33,11 +33,18 @@
 }
 
 - (void)loadRoutesForLocation:(CLLocation *)location {  
-  NSDictionary *params = [NSDictionary dictionaryWithObject:@"1000" forKey:@"last_viewed_stop_id"];
+  //NSDictionary *params = [NSDictionary dictionaryWithObject:@"1000" forKey:@"last_viewed_stop_id"];
+  NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+  NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+  NSString *last_stop_id = [settings stringForKey: @"last_stop_id"];
+  if (last_stop_id != NULL) {
+    [params setValue:last_stop_id forKey:@"last_viewed_stop_id"];
+  }
   
   [Route routesWithNearbyStops:@"train/v1/routes/nearby_stops" near:location parameters:params block:^(NSDictionary *data) {
     self.routes = [data objectForKey:@"routes"];
     self.stops = [data objectForKey:@"stops"];
+    self.lastViewed = [data objectForKey:@"last_viewed"];
     
     [self.tableView reloadData];
     [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];    
@@ -73,7 +80,7 @@
 	self.routes = [NSArray arrayWithObjects:r1, nil];
 	NSDictionary *routesDict = [NSDictionary dictionaryWithObject:self.routes forKey:@"items"];
   
-  NSArray *lastStopID = [NSArray arrayWithObjects:@"51234", nil];
+  NSArray *lastStopID = [NSArray arrayWithObjects:@"", nil];
   NSDictionary *lastStopIDDict = [NSDictionary dictionaryWithObject:lastStopID forKey:@"items"];
 	
   
@@ -84,9 +91,8 @@
 	[dataArraysForRoutesScreen addObject:routesDict];
   [dataArraysForRoutesScreen addObject:lastStopIDDict];
 	[dataArraysForRoutesScreen addObject:stopsDict];
-
 	
-	self.navigationItem.title = @"Routes";
+	self.navigationItem.title = @"train brain";
   
   self.view = self.tableView;
 }
@@ -137,18 +143,13 @@
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	
-	//Number of rows it should expect should be based on the section
-//	NSDictionary *dictionary = [dataArraysForRoutesScreen objectAtIndex:section];
-//  NSArray *array = [dictionary objectForKey:@"items"];
-//	return [array count];
+
   if (section == 0) {
     return [self.routes count];
   } else if (section == 1) {
     
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
     NSString *last_stop_id = [settings stringForKey: @"last_stop_id"];
-    NSLog(@"got last stop ID: %@", last_stop_id);
     if (last_stop_id != NULL) {
         return 1;
     } else {
@@ -166,7 +167,7 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	
 	if (section == 0) {
-    return @"Choose your line";
+    return @"Choose Your Line";
   } else if (section == 1) {
     
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
@@ -187,8 +188,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   static NSString *CellIdentifier = @"Cell";
-  // indexPath.section == 0  to choose a specific section
-  // e.g. if (indexPath.section == 0) { BigDepartureTableViewCell }
 
   if (indexPath.section == 0) {
     RouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -199,9 +198,7 @@
     
     cell.title.text = route.long_name;
     cell.description.text = route.route_desc;
-    
     cell.icon.image = [UIImage imageNamed:route.icon_path];
-    
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_lg.png"]];
     
     return cell;
@@ -212,18 +209,12 @@
     if (cell == nil) {
       cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    
-    //NSDictionary *itemAtIndex = [NSDictionary dictionaryWithObject:@"foo bar" forKey:@"title"];
-    NSDictionary *dictionary = [dataArraysForRoutesScreen objectAtIndex:indexPath.section];
-    NSArray *array = [dictionary objectForKey:@"items"];
-    NSString *route_title = [array objectAtIndex:indexPath.row];
-    
-    cell.title.text = route_title;
-    //cell.description.text = @"foo";
-    //cell.extraInfo.text = @"12 min";
-    
-    cell.icon.image = [UIImage imageNamed:@"icon_northstar.png"];
-    
+          
+    Stop *stop = (Stop *)[self.lastViewed valueForKey:@"stop"];
+    cell.title.text = stop.stop_name;
+    cell.description.text = stop.stop_desc;
+    cell.extraInfo.text = [[self.lastViewed valueForKey:@"next_departure"] hourMinuteFormatted];
+    cell.icon.image = [UIImage imageNamed:stop.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
     
     return cell;
@@ -237,18 +228,11 @@
     }
     
     Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
-    
     cell.title.text = stop.stop_name;
     cell.description.text = stop.stop_desc;
-    //cell.extraInfo.text = @"4 blocks";
-    
-    
-    
     double dist = [self.myLocation getDistanceFrom:stop.location] / 1609.344;
     cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
-    
     cell.icon.image = [UIImage imageNamed:stop.icon_path];
-    
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
     
     return cell;
@@ -268,19 +252,20 @@
     
     [[self navigationController] pushViewController:target animated:YES];
     
-  } else if (indexPath.section == 1 || indexPath.section == 2) {
+  } else if (indexPath.section == 1) {
     
-    // stop_id available => go to stop times
-    // route_id available => go to stops
-    Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
-    
-    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-    [settings setObject:stop.stop_id forKey:@"last_stop_id"];
-    [settings synchronize];
-    
+    Stop *stop = (Stop *)[self.lastViewed valueForKey:@"stop"];
     StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
-    target.selectedRoute = stop.route;
-    target.selectedStop = stop;
+    [target setSelectedStop:stop];    
+    
+    [[self navigationController] pushViewController:target animated:YES];
+    
+  } else if (indexPath.section == 2) {
+    
+    Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
+    StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
+    [target setSelectedStop:stop];    
+    
     [[self navigationController] pushViewController:target animated:YES];
   }
 	

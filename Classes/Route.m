@@ -73,6 +73,18 @@
       [routes addObject:route];
     }
     
+    NSMutableDictionary *lastViewedResult = [[NSMutableDictionary alloc] init];
+    NSDictionary *lastViewed = [JSON valueForKeyPath:@"last_viewed"];
+    if ([lastViewed valueForKey:@"next_departure"] != NULL) {
+      NSString *nextDeparture = [lastViewed valueForKey:@"next_departure"];
+      [lastViewedResult setValue:nextDeparture forKey:@"next_departure"];
+    }
+    if ([lastViewed valueForKey:@"stop"] != NULL) {
+      Stop *stop = [[[Stop alloc] initWithAttributes:[lastViewed valueForKey:@"stop"]] autorelease];
+      [lastViewedResult setValue:stop forKey:@"stop"];
+    }
+
+    
     NSMutableArray *stops = [NSMutableArray array];
     for (NSDictionary *attributes in [JSON valueForKeyPath:@"stops"]) {
       Stop *stop = [[[Stop alloc] initWithAttributes:attributes] autorelease];
@@ -90,9 +102,10 @@
       } else {
         return NSOrderedSame;
       }
-    }];     
+    }];
     
     [data setObject:routes forKey:@"routes"];
+    [data setObject:lastViewedResult forKey:@"last_viewed"];
     [data setObject:sortedStops forKey:@"stops"];
     
     if (block) {

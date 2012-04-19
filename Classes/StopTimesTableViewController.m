@@ -15,7 +15,7 @@
 
 @implementation StopTimesTableViewController
 
-@synthesize tableView, data, stop_times, selectedRoute, selectedStop;
+@synthesize tableView, data, stop_times, selectedStop;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -27,31 +27,36 @@
 }
 
 - (void)loadStopTimes {
-  // TODO get current hour, route_id, stop_id that was picked
   NSDate *now = [NSDate date];
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
-  int hour = (int)[components hour];
   
-  // FOR TESTING
-  if (self.selectedRoute == NULL) {
-    self.selectedRoute = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"55-55", @"route_id", nil]];
-  }
-  if (self.selectedStop == NULL) {
-    self.selectedStop = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"17874", @"stop_id", nil]];
-  }
-  // END FOR TESTING
-  
-  NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/%@/stop_times", 
-                   self.selectedRoute.route_id, self.selectedStop.stop_id];
-  NSDictionary *params = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", [components hour]] forKey:@"hour"];
-  
-  [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSDictionary *data) {
-    self.stop_times = data;
+  if (self.selectedStop == NULL || self.selectedStop.route.route_id == NULL) {
+    NSLog(@"error, exiting, got stop: %@", self.selectedStop);
+    return NULL;
+  } else {
     
-    [self.tableView reloadData];
-//    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];    
-  }];
+    
+    NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/%@/stop_times", 
+                     self.selectedStop.route.route_id, self.selectedStop.stop_id];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", [components hour]] forKey:@"hour"];
+    
+    [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSDictionary *data) {
+      self.stop_times = data;
+      
+      [self.tableView reloadData];
+      
+      NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+      [settings setObject:self.selectedStop.stop_id forKey:@"last_stop_id"];
+      [settings synchronize];
+      
+      //[self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+
+    }];
+    
+  }
+  
   
 }
 
@@ -73,13 +78,9 @@
   self.data = [[NSMutableArray alloc] init];
   
   [self loadStopTimes];
+
   
-  StopTime *st1 = [[StopTime alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"$2.25", @"price", nil]];
-  StopTime *st2 = [[StopTime alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"$2.25", @"price", nil]];
-  StopTime *st3 = [[StopTime alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"$2.25", @"price", nil]];
-  StopTime *st4 = [[StopTime alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"$2.25", @"price", nil]];
-  
-  self.stop_times = [NSArray arrayWithObjects:st1, st2, st3, st4, nil];
+  self.stop_times = [[NSArray alloc] init];
 
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
@@ -159,13 +160,15 @@
   }
 
 }
+  
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
   static NSString *CellIdentifier = @"Cell";
+  UITableViewCell *cell = [[UITableViewCell alloc] init];
   
-  if ([stop_times count] > 0) {
+  if ([self.stop_times count] > 0) {
     if (indexPath.section == 0) {
       
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
@@ -201,6 +204,7 @@
     }
   }  
 
+  return cell;
 }
 
 @end
