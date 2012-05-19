@@ -213,7 +213,9 @@
     Stop *stop = (Stop *)[self.lastViewed valueForKey:@"stop"];
     cell.title.text = stop.stop_name;
     cell.description.text = stop.stop_desc;
-    cell.extraInfo.text = [[self.lastViewed valueForKey:@"next_departure"] hourMinuteFormatted];
+    if ([self.lastViewed valueForKey:@"next_depature"]) {
+        cell.extraInfo.text = [[self.lastViewed valueForKey:@"next_departure"] hourMinuteFormatted];
+    }
     cell.icon.image = [UIImage imageNamed:stop.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
     
