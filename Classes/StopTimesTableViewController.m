@@ -51,7 +51,7 @@
       [settings setObject:self.selectedStop.stop_id forKey:@"last_stop_id"];
       [settings synchronize];
       
-      //[self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+      [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
 
     }];
     

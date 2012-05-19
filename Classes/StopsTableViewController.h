@@ -35,5 +35,6 @@
 @property (nonatomic, retain) Route *selectedRoute;
 
 - (void)segmentedControlChangedValue:(SVSegmentedControl*)segmentedControl;
+- (void)loadMapView;
 
 @end
