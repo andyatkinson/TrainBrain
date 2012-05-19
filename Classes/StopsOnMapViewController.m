@@ -87,8 +87,8 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
   MKAnnotationView *view = nil;
 	if (annotation != mapView.userLocation) {
-		StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
-		view = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"stopRouteId"];
+//		StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
+//		view = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"stopRouteId"];
 		
 
 //		if (nil == view) {
@@ -102,17 +102,17 @@
 //			}
 		//}
 
-		[(MKPinAnnotationView *)view setAnimatesDrop:NO];
-		 
-		[view setCanShowCallout:YES];
-		[view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
+//		[(MKPinAnnotationView *)view setAnimatesDrop:NO];
+//		 
+//		[view setCanShowCallout:YES];
+//		[view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
 	}
 
 	return view;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-	StopAnnotation *stopAnn = (StopAnnotation *)[view annotation];
+	//StopAnnotation *stopAnn = (StopAnnotation *)[view annotation];
 
 	//NSURL *webUrl = [NSURL URLWithString:stopAnn.stop.webUrl];
   //[[UIApplication sharedApplication] openURL:webUrl];
@@ -140,6 +140,10 @@
 - (void)viewDidUnload {
 	// Release any retained subviews of the main view.
 	// e.g. self.myOutlet = nil;
+}
+
+-(void)hudWasHidden{
+  
 }
 
 

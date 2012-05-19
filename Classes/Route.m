@@ -35,7 +35,7 @@
     return self;
 }
 
-+ (void)routesWithURLString:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block {
++ (void)routesWithURLString:(NSString *)urlString parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block {
     NSDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
     
     [[TransitAPIClient sharedClient] getPath:urlString parameters:mutableParameters success:^(__unused AFHTTPRequestOperation *operation, id JSON) {

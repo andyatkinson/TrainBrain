@@ -9,6 +9,7 @@
 #import "StopTime.h"
 #import "TransitAPIClient.h"
 #import "TimeEntry.h"
+#import "NSString+BeetleFight.h"
 
 @implementation StopTime
 

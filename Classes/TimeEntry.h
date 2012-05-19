@@ -20,4 +20,6 @@
 @property (nonatomic, retain) NSArray *stop_times;
 @property (nonatomic, retain) NSString *template;
 
+- (id)initWithAttributes:(NSDictionary *)attributes;
+
 @end

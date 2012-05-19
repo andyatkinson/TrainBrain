@@ -8,8 +8,6 @@
 
 #import "TrainBrainAppDelegate.h"
 #import "RoutesTableViewController.h"
-#import "InfoViewController.h"
-
 #import "StopsTableViewController.h"
 #import "StopTimesTableViewController.h"
 #import "InfoTableViewController.h"

@@ -115,6 +115,7 @@
 }
 
 - (void) dealloc {
+  [super dealloc];
 }
 
 

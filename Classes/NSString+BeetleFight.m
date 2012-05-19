@@ -32,12 +32,12 @@
   int scheduleHour = (int)[[parts objectAtIndex:0] intValue];
   int scheduleMinute = (int)[[parts objectAtIndex:1] intValue];
   
-  int relativeHour = NULL;
+  int relativeHour = 0;
   if (scheduleHour > currentHour) {
     relativeHour = scheduleHour - currentHour;
   }
 
-  int relativeMinute = NULL;
+  int relativeMinute = 0;
   if (scheduleMinute > currentMinute) {
     relativeMinute = scheduleMinute - currentMinute;
   }

@@ -33,7 +33,7 @@
   
   if (self.selectedStop == NULL || self.selectedStop.route.route_id == NULL) {
     NSLog(@"error, exiting, got stop: %@", self.selectedStop);
-    return NULL;
+
   } else {
     
     
@@ -42,7 +42,7 @@
     
     NSDictionary *params = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", [components hour]] forKey:@"hour"];
     
-    [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSDictionary *data) {
+    [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSArray *data) {
       self.stop_times = data;
       
       [self.tableView reloadData];

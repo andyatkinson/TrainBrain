@@ -9,7 +9,7 @@
 #import "Stop.h"
 #import "StopsTableViewController.h"
 #import "StopTimesTableViewController.h"
-
+#import "NSString+BeetleFight.h"
 
 @implementation RoutesTableViewController
 
@@ -120,8 +120,8 @@
 	return [dataArraysForRoutesScreen count];
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  if ([self tableView:tableView titleForHeaderInSection:section] != nil) {
+- (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
+  if ([self tableView:tv titleForHeaderInSection:section] != nil) {
     return 28; // want to eliminate a 1px bottom gray line, and a 1px bottom white line under
   }
   else {
@@ -130,14 +130,14 @@
   }
 }
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+- (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)section {
   
   UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.tableView.frame.size.width,30)] autorelease];
   
   UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,0,headerView.frame.size.width, headerView.frame.size.height)];
   headerLabel.textAlignment = UITextAlignmentLeft;
   headerLabel.textColor = [UIColor blackColor];
-  headerLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+  headerLabel.text = [self tableView:tv titleForHeaderInSection:section];
   headerLabel.font = [UIFont boldSystemFontOfSize:14.0];
   headerLabel.shadowColor = [UIColor whiteColor];
   headerLabel.shadowOffset = CGSizeMake(0,1);
@@ -191,7 +191,7 @@
   } else if (section == 2) {
     return @"Nearby Stops";
   }
-		
+  return NULL;
 }
 
 // Customize the appearance of table view cells.
@@ -250,7 +250,7 @@
     return cell;
   }
   
-  
+  return NULL;
 }
 
 
@@ -289,9 +289,12 @@
 	return UITableViewCellAccessoryDisclosureIndicator;
 }
 
-- (void)tableView:(UITableView *)tableView accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tv accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
 	
-	[self tableView:tableView didSelectRowAtIndexPath:indexPath];
+	[self tableView:tv didSelectRowAtIndexPath:indexPath];
+}
+
+-(void)hudWasHidden{
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -14,4 +14,6 @@
 - (int)hourFromDepartureString;
 - (int)minuteFromDepartureString;
 
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier;
+
 @end

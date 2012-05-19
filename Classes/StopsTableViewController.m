@@ -185,18 +185,16 @@
   return 0;
 }
 
+- (void) segmentedControlChangedValue:(SVSegmentedControl *)segmentedControl{
+}
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
     Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
     StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
-    [target setSelectedStop:stop];
-
-
-  
+    [target setSelectedStop:stop];  
     [[self navigationController] pushViewController:target animated:YES];
 }
 

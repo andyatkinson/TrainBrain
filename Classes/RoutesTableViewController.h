@@ -26,6 +26,6 @@
 @property (nonatomic, retain) CLLocation *myLocation;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 
-- (void)loadSpotsForLocation:(CLLocation *)location;
+- (void)loadRoutesForLocation:(CLLocation *)location;
 
 @end
