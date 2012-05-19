@@ -52,14 +52,12 @@
 		A1AE19AA123742B100AB1691 /* background_texture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AE19A8123742B100AB1691 /* background_texture@2x.png */; };
 		A1AE19B11237439800AB1691 /* hiaw_map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AE19AF1237439800AB1691 /* hiaw_map_pin.png */; };
 		A1AE19B21237439800AB1691 /* hiaw_map_pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AE19B01237439800AB1691 /* hiaw_map_pin@2x.png */; };
-		A1B3C66E12C7FF05002B008B /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B3C66D12C7FF05002B008B /* NewsCell.m */; };
 		A1B56E2E10F968BF00294BEC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */; };
 		A1B5C50510A1220F00CD3045 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C50410A1220F00CD3045 /* StopAnnotation.m */; };
 		A1B5C54A10A26FBE00CD3045 /* StopsOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C54810A26FBE00CD3045 /* StopsOnMapViewController.m */; };
 		A1B5C58710A27E5B00CD3045 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C58610A27E5B00CD3045 /* Stop.m */; };
 		A1BA024814F84D47008C6B0B /* bg_timer.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BA024614F84D47008C6B0B /* bg_timer.png */; };
 		A1BA024914F84D47008C6B0B /* bg_timer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BA024714F84D47008C6B0B /* bg_timer@2x.png */; };
-		A1BC24691223201E00C324C9 /* StationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BC24681223201E00C324C9 /* StationCell.m */; };
 		A1BC24E2122328D100C324C9 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BC24E1122328D100C324C9 /* GradientView.m */; };
 		A1C259B714F7FC77003215E6 /* user_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C259B614F7FC77003215E6 /* user_data.plist */; };
 		A1C259BB14F809D8003215E6 /* RoutesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1C259BA14F809D8003215E6 /* RoutesTableViewController.m */; };
@@ -185,8 +183,6 @@
 		A1AE19A8123742B100AB1691 /* background_texture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_texture@2x.png"; sourceTree = "<group>"; };
 		A1AE19AF1237439800AB1691 /* hiaw_map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hiaw_map_pin.png; sourceTree = "<group>"; };
 		A1AE19B01237439800AB1691 /* hiaw_map_pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiaw_map_pin@2x.png"; sourceTree = "<group>"; };
-		A1B3C66C12C7FF05002B008B /* NewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsCell.h; path = ../NewsCell.h; sourceTree = "<group>"; };
-		A1B3C66D12C7FF05002B008B /* NewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsCell.m; path = ../NewsCell.m; sourceTree = "<group>"; };
 		A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		A1B5C4E910A120F500CD3045 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -198,8 +194,6 @@
 		A1B5C58610A27E5B00CD3045 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
 		A1BA024614F84D47008C6B0B /* bg_timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_timer.png; sourceTree = "<group>"; };
 		A1BA024714F84D47008C6B0B /* bg_timer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_timer@2x.png"; sourceTree = "<group>"; };
-		A1BC24671223201E00C324C9 /* StationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationCell.h; path = ../StationCell.h; sourceTree = "<group>"; };
-		A1BC24681223201E00C324C9 /* StationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationCell.m; path = ../StationCell.m; sourceTree = "<group>"; };
 		A1BC24E0122328D100C324C9 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
 		A1BC24E1122328D100C324C9 /* GradientView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GradientView.m; sourceTree = "<group>"; };
 		A1C259B614F7FC77003215E6 /* user_data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = user_data.plist; sourceTree = "<group>"; };
@@ -423,10 +417,6 @@
 				A1E5ED481220D10000B15224 /* CustomPinBllue.m */,
 				A1E5ED811220D39000B15224 /* CustomPinBlack.h */,
 				A1E5ED821220D39000B15224 /* CustomPinBlack.m */,
-				A1BC24671223201E00C324C9 /* StationCell.h */,
-				A1BC24681223201E00C324C9 /* StationCell.m */,
-				A1B3C66C12C7FF05002B008B /* NewsCell.h */,
-				A1B3C66D12C7FF05002B008B /* NewsCell.m */,
 				A1D68749121B64DA002C6081 /* TrainLineCell.h */,
 				A1D6874A121B64DA002C6081 /* TrainLineCell.m */,
 				A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */,
@@ -706,10 +696,8 @@
 				A1D6874B121B64DA002C6081 /* TrainLineCell.m in Sources */,
 				A1E5ED491220D10000B15224 /* CustomPinBllue.m in Sources */,
 				A1E5ED831220D39000B15224 /* CustomPinBlack.m in Sources */,
-				A1BC24691223201E00C324C9 /* StationCell.m in Sources */,
 				A1BC24E2122328D100C324C9 /* GradientView.m in Sources */,
 				A1253AF71235D89F003AEF64 /* YellowGradientView.m in Sources */,
-				A1B3C66E12C7FF05002B008B /* NewsCell.m in Sources */,
 				A1EDA16A148A937C004C7E61 /* Route.m in Sources */,
 				A1EDA20A148A9F86004C7E61 /* StopTime.m in Sources */,
 				A1D14A3214DF204A002AD13A /* AFHTTPClient.m in Sources */,
