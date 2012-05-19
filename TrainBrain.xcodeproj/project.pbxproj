@@ -9,13 +9,9 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* TrainBrainAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2899E55F0DE3E45000AC0155 /* RootViewController.xib */; };
-		28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28AD735F0D9D9599002E5188 /* MainWindow.xib */; };
-		28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C286E00D94DF7D0034E888 /* RootViewController.m */; };
 		A10FBFE212258C1000C02996 /* 11-clock@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFDF12258C1000C02996 /* 11-clock@2x.png */; };
 		A10FBFE312258C1000C02996 /* 72-pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE012258C1000C02996 /* 72-pin@2x.png */; };
 		A10FBFE412258C1000C02996 /* 90-lifebuoy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A10FBFE112258C1000C02996 /* 90-lifebuoy@2x.png */; };
-		A115173C102F962E007CFBF6 /* TimeEntryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A115173A102F962E007CFBF6 /* TimeEntryViewController.m */; };
 		A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */; };
 		A115788215117ABE0064593E /* bg_header.png in Resources */ = {isa = PBXBuildFile; fileRef = A115788015117ABE0064593E /* bg_header.png */; };
 		A115788315117ABE0064593E /* bg_header@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A115788115117ABE0064593E /* bg_header@2x.png */; };
@@ -38,8 +34,6 @@
 		A143CD4615331D8B004DA4A2 /* FunnyPhrase.m in Sources */ = {isa = PBXBuildFile; fileRef = A143CD4515331D8B004DA4A2 /* FunnyPhrase.m */; };
 		A14CDF0212CA52F40087E69D /* header_shadow.png in Resources */ = {isa = PBXBuildFile; fileRef = A14CDF0012CA52F40087E69D /* header_shadow.png */; };
 		A14CDF0312CA52F40087E69D /* header_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A14CDF0112CA52F40087E69D /* header_shadow@2x.png */; };
-		A153FC3E12CA4C9500AE0AF3 /* avatar_border.png in Resources */ = {isa = PBXBuildFile; fileRef = A153FC3C12CA4C9500AE0AF3 /* avatar_border.png */; };
-		A153FC3F12CA4C9500AE0AF3 /* avatar_border@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A153FC3D12CA4C9500AE0AF3 /* avatar_border@2x.png */; };
 		A169E495102F91E500A65E05 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E494102F91E500A65E05 /* CustomCell.m */; };
 		A169E4B0102F928E00A65E05 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4A5102F928E00A65E05 /* NSObject+SBJSON.m */; };
 		A169E4B1102F928E00A65E05 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A169E4A7102F928E00A65E05 /* NSString+SBJSON.m */; };
@@ -58,18 +52,13 @@
 		A1AE19AA123742B100AB1691 /* background_texture@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AE19A8123742B100AB1691 /* background_texture@2x.png */; };
 		A1AE19B11237439800AB1691 /* hiaw_map_pin.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AE19AF1237439800AB1691 /* hiaw_map_pin.png */; };
 		A1AE19B21237439800AB1691 /* hiaw_map_pin@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1AE19B01237439800AB1691 /* hiaw_map_pin@2x.png */; };
-		A1B3C5A912C7AC5F002B008B /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B3C5A812C7AC5F002B008B /* InfoViewController.xib */; };
 		A1B3C66E12C7FF05002B008B /* NewsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B3C66D12C7FF05002B008B /* NewsCell.m */; };
-		A1B3C67012C7FF9E002B008B /* NewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B3C66F12C7FF9E002B008B /* NewsCell.xib */; };
 		A1B56E2E10F968BF00294BEC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */; };
-		A1B56FCD10F9B25300294BEC /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B56FCB10F9B25300294BEC /* InfoViewController.m */; };
 		A1B5C50510A1220F00CD3045 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C50410A1220F00CD3045 /* StopAnnotation.m */; };
-		A1B5C54A10A26FBE00CD3045 /* MapStopsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */; };
-		A1B5C54B10A26FBE00CD3045 /* MapStopsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */; };
+		A1B5C54A10A26FBE00CD3045 /* StopsOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C54810A26FBE00CD3045 /* StopsOnMapViewController.m */; };
 		A1B5C58710A27E5B00CD3045 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B5C58610A27E5B00CD3045 /* Stop.m */; };
 		A1BA024814F84D47008C6B0B /* bg_timer.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BA024614F84D47008C6B0B /* bg_timer.png */; };
 		A1BA024914F84D47008C6B0B /* bg_timer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1BA024714F84D47008C6B0B /* bg_timer@2x.png */; };
-		A1BC245F12231EBE00C324C9 /* StationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1BC245E12231EBE00C324C9 /* StationCell.xib */; };
 		A1BC24691223201E00C324C9 /* StationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BC24681223201E00C324C9 /* StationCell.m */; };
 		A1BC24E2122328D100C324C9 /* GradientView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BC24E1122328D100C324C9 /* GradientView.m */; };
 		A1C259B714F7FC77003215E6 /* user_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C259B614F7FC77003215E6 /* user_data.plist */; };
@@ -98,13 +87,10 @@
 		A1D14A4114DF626A002AD13A /* StopGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D14A4014DF626A002AD13A /* StopGroup.m */; };
 		A1D14A4414DF761B002AD13A /* TimeEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D14A4314DF761A002AD13A /* TimeEntry.m */; };
 		A1D6874B121B64DA002C6081 /* TrainLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1D6874A121B64DA002C6081 /* TrainLineCell.m */; };
-		A1D6874F121B65D7002C6081 /* TrainLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D6874E121B65D7002C6081 /* TrainLineCell.xib */; };
 		A1D688F812209E80002C6081 /* icon_arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D688F412209E80002C6081 /* icon_arrow@2x.png */; };
 		A1D688F912209E80002C6081 /* icon_hiawatha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D688F512209E80002C6081 /* icon_hiawatha@2x.png */; };
 		A1D688FA12209E80002C6081 /* icon_northstar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A1D688F612209E80002C6081 /* icon_northstar@2x.png */; };
 		A1DD5C86152DD89F00C1A88A /* NSString+BeetleFight.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DD5C85152DD89F00C1A88A /* NSString+BeetleFight.m */; };
-		A1DF9D05109D3BB100328466 /* TrainStationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */; };
-		A1DF9D06109D3BB100328466 /* TrainStationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */; };
 		A1E5EC651220B52000B15224 /* icon_hiawatha.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E5EC631220B52000B15224 /* icon_hiawatha.png */; };
 		A1E5EC661220B52000B15224 /* icon_northstar.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E5EC641220B52000B15224 /* icon_northstar.png */; };
 		A1E5EC741220B69400B15224 /* icon_arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = A1E5EC731220B69400B15224 /* icon_arrow.png */; };
@@ -118,7 +104,6 @@
 		A1EB2647152151D200134440 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		A1EB2648152151DB00134440 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169E4BB102F931800A65E05 /* CoreLocation.framework */; };
 		A1EB2649152151E800134440 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B5C4E910A120F500CD3045 /* MapKit.framework */; };
-		A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */; };
 		A1EDA16A148A937C004C7E61 /* Route.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EDA169148A937C004C7E61 /* Route.m */; };
 		A1EDA20A148A9F86004C7E61 /* StopTime.m in Sources */ = {isa = PBXBuildFile; fileRef = A1EDA209148A9F86004C7E61 /* StopTime.m */; };
 		A1FD11C415215BF9002D6E20 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FD11C315215BF9002D6E20 /* QuartzCore.framework */; };
@@ -135,18 +120,12 @@
 		1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainBrainAppDelegate.m; sourceTree = "<group>"; };
 		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		2899E55F0DE3E45000AC0155 /* RootViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RootViewController.xib; sourceTree = "<group>"; };
 		28A0AAE50D9B0CCF005BE974 /* TrainBrain_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainBrain_Prefix.pch; sourceTree = "<group>"; };
-		28AD735F0D9D9599002E5188 /* MainWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
-		28C286DF0D94DF7D0034E888 /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
-		28C286E00D94DF7D0034E888 /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TrainBrain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TrainBrain-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A10FBFDF12258C1000C02996 /* 11-clock@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock@2x.png"; sourceTree = "<group>"; };
 		A10FBFE012258C1000C02996 /* 72-pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "72-pin@2x.png"; sourceTree = "<group>"; };
 		A10FBFE112258C1000C02996 /* 90-lifebuoy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy@2x.png"; sourceTree = "<group>"; };
-		A1151739102F962E007CFBF6 /* TimeEntryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeEntryViewController.h; sourceTree = "<group>"; };
-		A115173A102F962E007CFBF6 /* TimeEntryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeEntryViewController.m; sourceTree = "<group>"; };
 		A115174E102F96BF007CFBF6 /* DepartureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureDetailCell.h; sourceTree = "<group>"; };
 		A115174F102F96BF007CFBF6 /* DepartureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureDetailCell.m; sourceTree = "<group>"; };
 		A115788015117ABE0064593E /* bg_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_header.png; sourceTree = "<group>"; };
@@ -178,8 +157,6 @@
 		A143CD4515331D8B004DA4A2 /* FunnyPhrase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FunnyPhrase.m; sourceTree = "<group>"; };
 		A14CDF0012CA52F40087E69D /* header_shadow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = header_shadow.png; sourceTree = "<group>"; };
 		A14CDF0112CA52F40087E69D /* header_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "header_shadow@2x.png"; sourceTree = "<group>"; };
-		A153FC3C12CA4C9500AE0AF3 /* avatar_border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = avatar_border.png; sourceTree = "<group>"; };
-		A153FC3D12CA4C9500AE0AF3 /* avatar_border@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "avatar_border@2x.png"; sourceTree = "<group>"; };
 		A169E493102F91C600A65E05 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		A169E494102F91E500A65E05 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
 		A169E4A3102F928E00A65E05 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
@@ -208,25 +185,19 @@
 		A1AE19A8123742B100AB1691 /* background_texture@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background_texture@2x.png"; sourceTree = "<group>"; };
 		A1AE19AF1237439800AB1691 /* hiaw_map_pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hiaw_map_pin.png; sourceTree = "<group>"; };
 		A1AE19B01237439800AB1691 /* hiaw_map_pin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hiaw_map_pin@2x.png"; sourceTree = "<group>"; };
-		A1B3C5A812C7AC5F002B008B /* InfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = InfoViewController.xib; path = Classes/InfoViewController.xib; sourceTree = "<group>"; };
 		A1B3C66C12C7FF05002B008B /* NewsCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NewsCell.h; path = ../NewsCell.h; sourceTree = "<group>"; };
 		A1B3C66D12C7FF05002B008B /* NewsCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = NewsCell.m; path = ../NewsCell.m; sourceTree = "<group>"; };
-		A1B3C66F12C7FF9E002B008B /* NewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsCell.xib; sourceTree = "<group>"; };
 		A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		A1B56FCA10F9B25300294BEC /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
-		A1B56FCB10F9B25300294BEC /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
 		A1B5C4E910A120F500CD3045 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A1B5C50310A1220F00CD3045 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
 		A1B5C50410A1220F00CD3045 /* StopAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopAnnotation.m; sourceTree = "<group>"; };
-		A1B5C54710A26FBE00CD3045 /* MapStopsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapStopsViewController.h; sourceTree = "<group>"; };
-		A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapStopsViewController.m; sourceTree = "<group>"; };
-		A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = MapStopsViewController.xib; path = Classes/MapStopsViewController.xib; sourceTree = "<group>"; };
+		A1B5C54710A26FBE00CD3045 /* StopsOnMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopsOnMapViewController.h; sourceTree = "<group>"; };
+		A1B5C54810A26FBE00CD3045 /* StopsOnMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsOnMapViewController.m; sourceTree = "<group>"; };
 		A1B5C58510A27E5B00CD3045 /* Stop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stop.h; sourceTree = "<group>"; };
 		A1B5C58610A27E5B00CD3045 /* Stop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stop.m; sourceTree = "<group>"; };
 		A1BA024614F84D47008C6B0B /* bg_timer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_timer.png; sourceTree = "<group>"; };
 		A1BA024714F84D47008C6B0B /* bg_timer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_timer@2x.png"; sourceTree = "<group>"; };
-		A1BC245E12231EBE00C324C9 /* StationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationCell.xib; sourceTree = "<group>"; };
 		A1BC24671223201E00C324C9 /* StationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = StationCell.h; path = ../StationCell.h; sourceTree = "<group>"; };
 		A1BC24681223201E00C324C9 /* StationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = StationCell.m; path = ../StationCell.m; sourceTree = "<group>"; };
 		A1BC24E0122328D100C324C9 /* GradientView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GradientView.h; sourceTree = "<group>"; };
@@ -275,15 +246,11 @@
 		A1D14A4314DF761A002AD13A /* TimeEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeEntry.m; sourceTree = "<group>"; };
 		A1D68749121B64DA002C6081 /* TrainLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainLineCell.h; sourceTree = "<group>"; };
 		A1D6874A121B64DA002C6081 /* TrainLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainLineCell.m; sourceTree = "<group>"; };
-		A1D6874E121B65D7002C6081 /* TrainLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TrainLineCell.xib; path = Classes/TrainLineCell.xib; sourceTree = "<group>"; };
 		A1D688F412209E80002C6081 /* icon_arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_arrow@2x.png"; sourceTree = "<group>"; };
 		A1D688F512209E80002C6081 /* icon_hiawatha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_hiawatha@2x.png"; sourceTree = "<group>"; };
 		A1D688F612209E80002C6081 /* icon_northstar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_northstar@2x.png"; sourceTree = "<group>"; };
 		A1DD5C84152DD89F00C1A88A /* NSString+BeetleFight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+BeetleFight.h"; sourceTree = "<group>"; };
 		A1DD5C85152DD89F00C1A88A /* NSString+BeetleFight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+BeetleFight.m"; sourceTree = "<group>"; };
-		A1DF9D02109D3BB100328466 /* TrainStationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainStationsViewController.h; sourceTree = "<group>"; };
-		A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainStationsViewController.m; sourceTree = "<group>"; };
-		A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = TrainStationsViewController.xib; path = Classes/TrainStationsViewController.xib; sourceTree = "<group>"; };
 		A1E5EC631220B52000B15224 /* icon_hiawatha.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_hiawatha.png; sourceTree = "<group>"; };
 		A1E5EC641220B52000B15224 /* icon_northstar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_northstar.png; sourceTree = "<group>"; };
 		A1E5EC731220B69400B15224 /* icon_arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_arrow.png; sourceTree = "<group>"; };
@@ -294,7 +261,6 @@
 		A1E810F4110BBD4F00BE6502 /* 11-clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "11-clock.png"; sourceTree = "<group>"; };
 		A1E810F6110BBD7D00BE6502 /* 72-pin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "72-pin.png"; sourceTree = "<group>"; };
 		A1E81104110BC21900BE6502 /* 90-lifebuoy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "90-lifebuoy.png"; sourceTree = "<group>"; };
-		A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepartureDetailCell.xib; sourceTree = "<group>"; };
 		A1EDA168148A937C004C7E61 /* Route.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Route.h; sourceTree = "<group>"; };
 		A1EDA169148A937C004C7E61 /* Route.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Route.m; sourceTree = "<group>"; };
 		A1EDA208148A9F86004C7E61 /* StopTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTime.h; sourceTree = "<group>"; };
@@ -334,24 +300,8 @@
 				A16E462D152AB52F008FBABE /* Controllers */,
 				A1EDA0831489E2C3004C7E61 /* Models */,
 				A115788615117B700064593E /* Views */,
-				28C286DF0D94DF7D0034E888 /* RootViewController.h */,
-				28C286E00D94DF7D0034E888 /* RootViewController.m */,
-				A1DF9D02109D3BB100328466 /* TrainStationsViewController.h */,
-				A1DF9D03109D3BB100328466 /* TrainStationsViewController.m */,
-				A1151739102F962E007CFBF6 /* TimeEntryViewController.h */,
-				A115173A102F962E007CFBF6 /* TimeEntryViewController.m */,
 				1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */,
 				1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */,
-				A1B5C54710A26FBE00CD3045 /* MapStopsViewController.h */,
-				A1B5C54810A26FBE00CD3045 /* MapStopsViewController.m */,
-				A1B5C50310A1220F00CD3045 /* StopAnnotation.h */,
-				A1B5C50410A1220F00CD3045 /* StopAnnotation.m */,
-				A1B56FCA10F9B25300294BEC /* InfoViewController.h */,
-				A1B56FCB10F9B25300294BEC /* InfoViewController.m */,
-				A1E5ED471220D10000B15224 /* CustomPinBlue.h */,
-				A1E5ED481220D10000B15224 /* CustomPinBllue.m */,
-				A1E5ED811220D39000B15224 /* CustomPinBlack.h */,
-				A1E5ED821220D39000B15224 /* CustomPinBlack.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -420,8 +370,6 @@
 				A1BA024714F84D47008C6B0B /* bg_timer@2x.png */,
 				A14CDF0012CA52F40087E69D /* header_shadow.png */,
 				A14CDF0112CA52F40087E69D /* header_shadow@2x.png */,
-				A153FC3C12CA4C9500AE0AF3 /* avatar_border.png */,
-				A153FC3D12CA4C9500AE0AF3 /* avatar_border@2x.png */,
 				A1436AA212920F48004299E0 /* Icon@2x.png */,
 				A1AE19AF1237439800AB1691 /* hiaw_map_pin.png */,
 				A1AE19B01237439800AB1691 /* hiaw_map_pin@2x.png */,
@@ -449,15 +397,6 @@
 				A1E810F6110BBD7D00BE6502 /* 72-pin.png */,
 				A1E810F4110BBD4F00BE6502 /* 11-clock.png */,
 				A16A8BCA1038F93C001DF0EF /* Icon.png */,
-				A1B3C5A812C7AC5F002B008B /* InfoViewController.xib */,
-				A1D6874E121B65D7002C6081 /* TrainLineCell.xib */,
-				A1BC245E12231EBE00C324C9 /* StationCell.xib */,
-				A1EB8E57102F987000347E7F /* DepartureDetailCell.xib */,
-				28AD735F0D9D9599002E5188 /* MainWindow.xib */,
-				2899E55F0DE3E45000AC0155 /* RootViewController.xib */,
-				A1DF9D04109D3BB100328466 /* TrainStationsViewController.xib */,
-				A1B5C54910A26FBE00CD3045 /* MapStopsViewController.xib */,
-				A1B3C66F12C7FF9E002B008B /* NewsCell.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -478,6 +417,12 @@
 		A115788615117B700064593E /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A1B5C50310A1220F00CD3045 /* StopAnnotation.h */,
+				A1B5C50410A1220F00CD3045 /* StopAnnotation.m */,
+				A1E5ED471220D10000B15224 /* CustomPinBlue.h */,
+				A1E5ED481220D10000B15224 /* CustomPinBllue.m */,
+				A1E5ED811220D39000B15224 /* CustomPinBlack.h */,
+				A1E5ED821220D39000B15224 /* CustomPinBlack.m */,
 				A1BC24671223201E00C324C9 /* StationCell.h */,
 				A1BC24681223201E00C324C9 /* StationCell.m */,
 				A1B3C66C12C7FF05002B008B /* NewsCell.h */,
@@ -526,6 +471,8 @@
 				A1C259BA14F809D8003215E6 /* RoutesTableViewController.m */,
 				A1FD11C515215CC7002D6E20 /* StopsTableViewController.h */,
 				A1FD11C615215CC7002D6E20 /* StopsTableViewController.m */,
+				A1B5C54710A26FBE00CD3045 /* StopsOnMapViewController.h */,
+				A1B5C54810A26FBE00CD3045 /* StopsOnMapViewController.m */,
 				A13F12891526A47D00DEDF42 /* StopTimesTableViewController.h */,
 				A13F128A1526A47D00DEDF42 /* StopTimesTableViewController.m */,
 				A1C3DB2615156BCB007D5B4A /* InfoTableViewController.h */,
@@ -681,23 +628,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28AD73600D9D9599002E5188 /* MainWindow.xib in Resources */,
-				2899E5600DE3E45000AC0155 /* RootViewController.xib in Resources */,
-				A1EB8E58102F987000347E7F /* DepartureDetailCell.xib in Resources */,
 				A16A8BCB1038F93C001DF0EF /* Icon.png in Resources */,
-				A1DF9D06109D3BB100328466 /* TrainStationsViewController.xib in Resources */,
-				A1B5C54B10A26FBE00CD3045 /* MapStopsViewController.xib in Resources */,
 				A1E810F5110BBD4F00BE6502 /* 11-clock.png in Resources */,
 				A1E810F7110BBD7D00BE6502 /* 72-pin.png in Resources */,
 				A1E81105110BC21900BE6502 /* 90-lifebuoy.png in Resources */,
-				A1D6874F121B65D7002C6081 /* TrainLineCell.xib in Resources */,
 				A1D688F812209E80002C6081 /* icon_arrow@2x.png in Resources */,
 				A1D688F912209E80002C6081 /* icon_hiawatha@2x.png in Resources */,
 				A1D688FA12209E80002C6081 /* icon_northstar@2x.png in Resources */,
 				A1E5EC651220B52000B15224 /* icon_hiawatha.png in Resources */,
 				A1E5EC661220B52000B15224 /* icon_northstar.png in Resources */,
 				A1E5EC741220B69400B15224 /* icon_arrow.png in Resources */,
-				A1BC245F12231EBE00C324C9 /* StationCell.xib in Resources */,
 				A10FBFE212258C1000C02996 /* 11-clock@2x.png in Resources */,
 				A10FBFE312258C1000C02996 /* 72-pin@2x.png in Resources */,
 				A10FBFE412258C1000C02996 /* 90-lifebuoy@2x.png in Resources */,
@@ -714,10 +654,6 @@
 				A1436AA312920F48004299E0 /* Icon@2x.png in Resources */,
 				A1CD8A7812C79E9700734313 /* icon_news.png in Resources */,
 				A1CD8A7912C79E9700734313 /* icon_news@2x.png in Resources */,
-				A1B3C5A912C7AC5F002B008B /* InfoViewController.xib in Resources */,
-				A1B3C67012C7FF9E002B008B /* NewsCell.xib in Resources */,
-				A153FC3E12CA4C9500AE0AF3 /* avatar_border.png in Resources */,
-				A153FC3F12CA4C9500AE0AF3 /* avatar_border@2x.png in Resources */,
 				A14CDF0212CA52F40087E69D /* header_shadow.png in Resources */,
 				A14CDF0312CA52F40087E69D /* header_shadow@2x.png in Resources */,
 				A1C259B714F7FC77003215E6 /* user_data.plist in Resources */,
@@ -755,7 +691,6 @@
 			files = (
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* TrainBrainAppDelegate.m in Sources */,
-				28C286E10D94DF7D0034E888 /* RootViewController.m in Sources */,
 				A169E495102F91E500A65E05 /* CustomCell.m in Sources */,
 				A169E4B0102F928E00A65E05 /* NSObject+SBJSON.m in Sources */,
 				A169E4B1102F928E00A65E05 /* NSString+SBJSON.m in Sources */,
@@ -763,14 +698,11 @@
 				A169E4B3102F928E00A65E05 /* SBJsonBase.m in Sources */,
 				A169E4B4102F928E00A65E05 /* SBJsonParser.m in Sources */,
 				A169E4B5102F928E00A65E05 /* SBJsonWriter.m in Sources */,
-				A115173C102F962E007CFBF6 /* TimeEntryViewController.m in Sources */,
 				A1151751102F96BF007CFBF6 /* DepartureDetailCell.m in Sources */,
-				A1DF9D05109D3BB100328466 /* TrainStationsViewController.m in Sources */,
 				A1B5C50510A1220F00CD3045 /* StopAnnotation.m in Sources */,
-				A1B5C54A10A26FBE00CD3045 /* MapStopsViewController.m in Sources */,
+				A1B5C54A10A26FBE00CD3045 /* StopsOnMapViewController.m in Sources */,
 				A1B5C58710A27E5B00CD3045 /* Stop.m in Sources */,
 				A1B56E2E10F968BF00294BEC /* MBProgressHUD.m in Sources */,
-				A1B56FCD10F9B25300294BEC /* InfoViewController.m in Sources */,
 				A1D6874B121B64DA002C6081 /* TrainLineCell.m in Sources */,
 				A1E5ED491220D10000B15224 /* CustomPinBllue.m in Sources */,
 				A1E5ED831220D39000B15224 /* CustomPinBlack.m in Sources */,

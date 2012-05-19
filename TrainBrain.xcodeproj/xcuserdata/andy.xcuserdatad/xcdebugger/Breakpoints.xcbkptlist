@@ -75,11 +75,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/RoutesTableViewController.m"
-         timestampString = "359139030.41796"
+         timestampString = "359139796.977641"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "270"
-         endingLineNumber = "270"
+         startingLineNumber = "280"
+         endingLineNumber = "280"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -88,11 +88,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/RoutesTableViewController.m"
-         timestampString = "359139030.41796"
+         timestampString = "359139796.977641"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "271"
-         endingLineNumber = "271"
+         startingLineNumber = "281"
+         endingLineNumber = "281"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -153,13 +153,26 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "Classes/RoutesTableViewController.m"
-         timestampString = "359139030.41796"
+         timestampString = "359139796.977641"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "267"
-         endingLineNumber = "267"
+         startingLineNumber = "277"
+         endingLineNumber = "277"
          landmarkName = "-tableView:didSelectRowAtIndexPath:"
          landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "Classes/StopsTableViewController.m"
+         timestampString = "359153763.289324"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "188"
+         endingLineNumber = "188"
+         landmarkName = "@implementation StopsTableViewController"
+         landmarkType = "3">
       </FileBreakpoint>
    </FileBreakpoints>
 </Bucket>

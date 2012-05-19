@@ -9,6 +9,7 @@
 #import "Stop.h"
 #import "StopTimesTableViewController.h"
 #import "RouteCell.h"
+#import "StopsOnMapViewController.h"
 
 @implementation StopsTableViewController
 
@@ -40,6 +41,11 @@
   
 }
 
+- (void)loadMapView {
+  StopsOnMapViewController *target = [[StopsOnMapViewController alloc] init];
+  [target setSelectedRoute:self.selectedRoute];
+  [[self navigationController] pushViewController:target animated:YES];
+}
 
 - (void)viewDidLoad
 {
@@ -68,11 +74,10 @@
   
   self.data = [[NSMutableArray alloc] init];
   
-  Stop *s1 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Loading...", @"stop_name", nil]];
   
+  Stop *s1 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Loading...", @"stop_name", nil]];
 	self.stops = [NSArray arrayWithObjects:s1, nil];
 	NSDictionary *stopsDict = [NSDictionary dictionaryWithObject:self.stops forKey:@"items"];
-  
   [data addObject:stopsDict];
 	
 	//Set the title
@@ -92,8 +97,6 @@
   navSC.thumb.tintColor = [UIColor colorWithRed:255/255.0 green:223/255.0 blue:4/255.0 alpha:1];
   
   navSC.changeHandler = ^(NSUInteger newIndex) {
-    NSLog(@"segmentedControl did select index %i (via block handler)", newIndex);
-    
     if ([self.stopsIndex0 count] > 0 && [self.stopsIndex1 count] > 0) {
       
       if (newIndex == 0) {
@@ -117,7 +120,13 @@
   [container addSubview:headsignSwitcher];
   [container addSubview:self.tableView];
   
-
+  UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" 
+                                                                style:UIBarButtonItemStylePlain 
+                                                                target:self 
+                                                               action:@selector(loadMapView)];
+  self.navigationItem.rightBarButtonItem = mapButton;
+  [mapButton release];
+  
   self.view = container;
   
 }
@@ -185,6 +194,8 @@
     Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
     StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
     [target setSelectedStop:stop];
+
+
   
     [[self navigationController] pushViewController:target animated:YES];
 }
