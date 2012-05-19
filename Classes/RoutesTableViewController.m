@@ -47,12 +47,22 @@
     self.lastViewed = [data objectForKey:@"last_viewed"];
     
     [self.tableView reloadData];
-    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];    
+    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+    [HUD hide:YES];
   }];
 
 }
 
 - (void)viewDidLoad {
+  
+  /* Progress HUD overlay START */  
+  UIWindow *window = [UIApplication sharedApplication].keyWindow;
+	HUD = [[MBProgressHUD alloc] initWithWindow:window];
+	[window addSubview:HUD];
+	HUD.delegate = self;
+  HUD.labelText = @"Loading";
+	[HUD show:YES];
+  /* Progress HUD overlay END */
   
   // Load from a fixed location, in case location services are disabled or unavailable
   CLLocation *mpls = [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223];

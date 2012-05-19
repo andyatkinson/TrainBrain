@@ -4,17 +4,17 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "MBProgressHUD.h"
 
-@interface RoutesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate> {
+@interface RoutesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, MBProgressHUDDelegate> {
 	UITableView *tableView;
 	NSMutableArray *dataArraysForRoutesScreen;
-  
   CLLocation *myLocation;
   CLLocationManager *locationManager;
-  
   NSArray *routes;
   NSArray *stops;
   NSDictionary *lastViewed;
+  MBProgressHUD *HUD;
 }
 
 @property (nonatomic, retain) UITableView *tableView;
