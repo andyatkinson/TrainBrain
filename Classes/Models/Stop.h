@@ -38,7 +38,6 @@
 @property (nonatomic, retain) Route *route;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
-+ (void)stopGroupsWithURLString:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block;
 + (void)stopsWithURLString:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block;
 + (NSArray *)stopsFromArray:(NSArray *)array;
 
