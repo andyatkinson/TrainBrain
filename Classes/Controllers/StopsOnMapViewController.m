@@ -12,45 +12,45 @@
 @synthesize stops, mapView, selectedRoute;
 
 - (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
+	[super viewWillAppear:animated];
 }
 
 - (void)loadStops {
-  NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/all", self.selectedRoute.route_id];
-  
-  [Stop stopsWithURLString:url near:nil parameters:nil block:^(NSArray *data) {
+	NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/all", self.selectedRoute.route_id];
 
-    self.stops = data;
-    
-    [self displayMapData];
+	[Stop stopsWithURLString:url near:nil parameters:nil block:^(NSArray *data) {
 
-  }];
-  
+	         self.stops = data;
+
+	         [self displayMapData];
+
+	 }];
+
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {	
-		
+- (void)viewDidLoad {
+
 	[super viewDidLoad];
-  
-  HUD.labelText = @"Loading";
+
+	HUD.labelText = @"Loading";
 	HUD.detailsLabelText = @"Stops";
 	[HUD show:YES];
-	
+
 	UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
 	[window addSubview:HUD];
 	HUD.delegate = self;
-  
-  
-  self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 260)];  
-  self.mapView.delegate = self;
 
-	
+
+	self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 260)];
+	self.mapView.delegate = self;
+
+
 	[self loadStops];
 	self.title = @"Map";
-  
-  self.view = self.mapView;
+
+	self.view = self.mapView;
 }
 
 
@@ -79,17 +79,17 @@
 	region.center.latitude = (minCoord.latitude + maxCoord.latitude) / 2.0;
 	region.span.longitudeDelta = maxCoord.longitude - minCoord.longitude;
 	region.span.latitudeDelta = maxCoord.latitude - minCoord.latitude;
-	//[self.mapView setRegion:region animated:YES];  
-  //*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: 'Invalid Region <center:+0.00000000, +0.00000000 span:-180.00000000, -360.00000000>'
+	//[self.mapView setRegion:region animated:YES];
+	//*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: 'Invalid Region <center:+0.00000000, +0.00000000 span:-180.00000000, -360.00000000>'
 
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)thisMapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    MKAnnotationView *view = nil;
+	MKAnnotationView *view = nil;
 	if (annotation != thisMapView.userLocation) {
 //		StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
 //		view = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"stopRouteId"];
-		
+
 
 //		if (nil == view) {
 //			NSString *route_id = stopAnnotation.stop.routeId;
@@ -103,7 +103,7 @@
 		//}
 
 //		[(MKPinAnnotationView *)view setAnimatesDrop:NO];
-//		 
+//
 //		[view setCanShowCallout:YES];
 //		[view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
 	}
@@ -115,20 +115,20 @@
 	//StopAnnotation *stopAnn = (StopAnnotation *)[view annotation];
 
 	//NSURL *webUrl = [NSURL URLWithString:stopAnn.stop.webUrl];
-  //[[UIApplication sharedApplication] openURL:webUrl];
+	//[[UIApplication sharedApplication] openURL:webUrl];
 }
 
 
 - (void)displayMapData {
 //  for (id stop in self.stops) {
 //    StopAnnotation *annotation = [StopAnnotation annotationWithStop:stop];
-//    [self.mapView addAnnotation:annotation];			
-//    
+//    [self.mapView addAnnotation:annotation];
+//
 //    [stop release];
 //    [annotation release];
 //  }
-	
-  [self recenterMap];
+
+	[self recenterMap];
 	[HUD hide:YES];
 }
 
@@ -142,8 +142,8 @@
 	// e.g. self.myOutlet = nil;
 }
 
--(void)hudWasHidden{
-  
+-(void)hudWasHidden {
+
 }
 
 

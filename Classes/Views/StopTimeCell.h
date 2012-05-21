@@ -8,11 +8,11 @@
 #import <UIKit/UIKit.h>
 
 @interface StopTimeCell : UITableViewCell {
-  UILabel *relativeTimeHour;
-  UILabel *relativeTimeMinute;
-  UILabel *scheduleTime;
-  UILabel *price;
-  UIImageView *icon;
+	UILabel *relativeTimeHour;
+	UILabel *relativeTimeMinute;
+	UILabel *scheduleTime;
+	UILabel *price;
+	UIImageView *icon;
 }
 
 @property (nonatomic, retain) UILabel *relativeTimeHour;

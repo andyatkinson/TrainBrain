@@ -9,10 +9,10 @@
 #import "Stop.h"
 
 @interface StopTimesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
-  UITableView *tableView;
-  NSMutableArray *data;
-  Stop *selectedStop;
-  NSArray *stop_times;
+	UITableView *tableView;
+	NSMutableArray *data;
+	Stop *selectedStop;
+	NSArray *stop_times;
 }
 
 @property (nonatomic, retain) UITableView *tableView;

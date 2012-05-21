@@ -8,13 +8,13 @@
 #import <UIKit/UIKit.h>
 
 @interface BigDepartureTableViewCell : UITableViewCell {
-  UILabel *bigDepartureHour;
-  UILabel *bigDepartureMinute;
-  UILabel *funnySaying;
-  UILabel *description;
-  UILabel *formattedTime;
-  UILabel *price;
-  
+	UILabel *bigDepartureHour;
+	UILabel *bigDepartureMinute;
+	UILabel *funnySaying;
+	UILabel *description;
+	UILabel *formattedTime;
+	UILabel *price;
+
 }
 
 @property (nonatomic, retain) UILabel *bigDepartureHour;
