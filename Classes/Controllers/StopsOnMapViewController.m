@@ -84,9 +84,9 @@
 
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
-  MKAnnotationView *view = nil;
-	if (annotation != mapView.userLocation) {
+- (MKAnnotationView *)mapView:(MKMapView *)thisMapView viewForAnnotation:(id <MKAnnotation>)annotation {
+    MKAnnotationView *view = nil;
+	if (annotation != thisMapView.userLocation) {
 //		StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
 //		view = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"stopRouteId"];
 		

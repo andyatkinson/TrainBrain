@@ -25,13 +25,13 @@
 }
 
 - (void)loadStopsWithHeadsigns:(CLLocation *)location {
-  NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/with_headsigns", self.selectedRoute.route_id];
+    NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/with_headsigns", self.selectedRoute.route_id];
   
-  [Stop stopsWithHeadsigns:url near:location parameters:nil block:^(NSDictionary *data) {
-    self.headsigns = [data objectForKey:@"headsigns"];
+    [Stop stopsWithHeadsigns:url near:location parameters:nil block:^(NSDictionary *blockdata) {
+    self.headsigns = [blockdata objectForKey:@"headsigns"];
     
-    self.stopsIndex0 = [data objectForKey:@"stopsIndex0"];
-    self.stopsIndex1 = [data objectForKey:@"stopsIndex1"];
+    self.stopsIndex0 = [blockdata objectForKey:@"stopsIndex0"];
+    self.stopsIndex1 = [blockdata objectForKey:@"stopsIndex1"];
     
     self.stops = self.stopsIndex0;
     
@@ -156,29 +156,27 @@
 }
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
-  static NSString *CellIdentifier = @"Cell";
+    static NSString *CellIdentifier = @"Cell";
   
-  RouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-  if (cell == nil) {
-    cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-  }
+    RouteCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+      cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
   
-  Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
+    Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
   
-  cell.title.text = stop.stop_name;
-  cell.description.text = stop.stop_desc;
+    cell.title.text = stop.stop_name;
+    cell.description.text = stop.stop_desc;
   
-  double dist = [self.myLocation getDistanceFrom:stop.location] / 1609.344;
-  cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
-//  
-  //cell.icon.image = [UIImage imageNamed:stop.icon_path];
-  cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+    double dist = [self.myLocation distanceFromLocation:stop.location] / 1609.344;
+    cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
   
-  return cell;
+    //cell.icon.image = [UIImage imageNamed:stop.icon_path];
+    cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
   
-  
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {

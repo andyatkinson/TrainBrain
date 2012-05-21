@@ -7,11 +7,11 @@
 //
 
 @interface TrainBrainAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
-  UIWindow *window;
-	UITableViewController *routesTableViewController;
-	UIViewController *infoViewController;	
-  UITableViewController *infoTableViewController;	
-	UITabBarController *tabBarController;
+    UIWindow *window;
+    UITableViewController *routesTableViewController;
+	UIViewController      *infoViewController;	
+    UITableViewController *infoTableViewController;	
+	UITabBarController    *tabBarController;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;

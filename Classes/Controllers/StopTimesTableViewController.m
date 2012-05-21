@@ -42,8 +42,8 @@
     
     NSDictionary *params = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", [components hour]] forKey:@"hour"];
     
-    [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSArray *data) {
-      self.stop_times = data;
+    [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSArray *blockdata) {
+      self.stop_times = blockdata;
       
       [self.tableView reloadData];
       
@@ -162,7 +162,7 @@
 }
   
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
   static NSString *CellIdentifier = @"Cell";
@@ -173,7 +173,7 @@
       
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
       
-      BigDepartureTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
+      BigDepartureTableViewCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];    
       cell = [[BigDepartureTableViewCell alloc] init];
       
       cell.bigDepartureHour.text = [NSString stringWithFormat:@"%dh", stop_time.departure_time_hour];
@@ -190,7 +190,7 @@
     } else if (indexPath.section == 1) {
       
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
-      StopTimeCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];    
+      StopTimeCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];    
       cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
       
       cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];

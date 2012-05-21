@@ -23,10 +23,10 @@
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to acquire location." 
-																									message:nil 
-																								 delegate:nil 
-																				cancelButtonTitle:@"OK" 
-																				otherButtonTitles:nil];
+                                                    message:nil 
+                                                   delegate:nil 
+                                          cancelButtonTitle:@"OK" 
+                                          otherButtonTitles:nil];
 	[alert show];
 	[alert release];
 	
@@ -195,12 +195,12 @@
 }
 
 // Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
   static NSString *CellIdentifier = @"Cell";
 
   if (indexPath.section == 0) {
-    RouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    RouteCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
       cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
@@ -215,7 +215,7 @@
     
   } else if (indexPath.section == 1) {
     
-    RouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    RouteCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
       cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
@@ -234,18 +234,20 @@
     
   } else if (indexPath.section == 2) {
     
-    RouteCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-      cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+      RouteCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+      if (cell == nil) {
+        cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      }
     
-    Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
-    cell.title.text = stop.stop_name;
-    cell.description.text = stop.stop_desc;
-    double dist = [self.myLocation getDistanceFrom:stop.location] / 1609.344;
-    cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
-    cell.icon.image = [UIImage imageNamed:stop.icon_path];
-    cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+      Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
+      cell.title.text = stop.stop_name;
+      cell.description.text = stop.stop_desc;
+      
+      double dist = [self.myLocation distanceFromLocation:stop.location] / 1609.344;
+    
+      cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
+      cell.icon.image = [UIImage imageNamed:stop.icon_path];
+      cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
     
     return cell;
   }
