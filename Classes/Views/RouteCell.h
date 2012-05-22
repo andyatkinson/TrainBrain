@@ -8,10 +8,10 @@
 #import <UIKit/UIKit.h>
 
 @interface RouteCell : UITableViewCell {
-	UILabel *title;
-	UILabel *description;
-	UILabel *extraInfo;
-	UIImageView *icon;
+  UILabel *title;
+  UILabel *description;
+  UILabel *extraInfo;
+  UIImageView *icon;
 }
 
 @property (nonatomic, retain) UILabel *title;

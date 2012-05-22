@@ -13,8 +13,8 @@
 
 @interface StopsOnMapViewController : UIViewController <MKMapViewDelegate, MBProgressHUDDelegate> {
 	MKMapView *mapView;
-	MBProgressHUD   *HUD;
-	NSArray *stops;
+	MBProgressHUD	*HUD;
+  NSArray *stops;
 	Route *selectedRoute;
 }
 

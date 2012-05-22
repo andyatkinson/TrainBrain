@@ -8,8 +8,8 @@
 #import <UIKit/UIKit.h>
 
 @interface InfoTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
-	NSMutableArray *dataArrays;
-	UITableView *tableView;
+  NSMutableArray *dataArrays;
+  UITableView *tableView;
 }
 
 @property (nonatomic, retain) NSMutableArray *dataArrays;

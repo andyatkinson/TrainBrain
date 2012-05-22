@@ -14,16 +14,16 @@
 - (id)initWithAnnotation:(id <MKAnnotation>)annotation
 {
 	self = [super initWithAnnotation:annotation reuseIdentifier:@"CustomPinBlackId"];
-
-	if (self)
+	
+	if (self)        
 	{
 		UIImage *theImage = [UIImage imageNamed:@"hiaw_map_pin.png"];
-
+		
 		if (!theImage)
 			return nil;
-
+		
 		self.image = theImage;
-	}
+	}    
 	return self;
 }
 @end

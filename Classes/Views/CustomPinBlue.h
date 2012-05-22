@@ -14,5 +14,5 @@
 @interface CustomPinBlue : MKAnnotationView
 {
 }
-- (id)initWithAnnotation:(id <MKAnnotation>)annotation;
+- (id)initWithAnnotation:(id <MKAnnotation>) annotation;
 @end

@@ -13,36 +13,36 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
 	if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-		self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-
-		UIView *myContentView = self.contentView;
-		self.titleLabel = [self newLabelWithPrimaryColor:[UIColor blackColor] selectedColor:[UIColor blackColor] fontSize:17.0 bold:YES];
-		self.titleLabel.textAlignment = UITextAlignmentLeft;
-		[myContentView addSubview:self.titleLabel];
-		[self.titleLabel release];
-
-		self.distanceLabel = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor grayColor] fontSize:12.0 bold:NO];
-		self.distanceLabel.textAlignment = UITextAlignmentLeft;
-		[myContentView addSubview:self.distanceLabel];
-		[self.distanceLabel release];
-	}
-	return self;
+			self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+			
+			UIView *myContentView = self.contentView;
+			self.titleLabel = [self newLabelWithPrimaryColor:[UIColor blackColor] selectedColor:[UIColor blackColor] fontSize:17.0 bold:YES];
+			self.titleLabel.textAlignment = UITextAlignmentLeft;
+			[myContentView addSubview:self.titleLabel];
+			[self.titleLabel release];
+			
+			self.distanceLabel = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor grayColor] fontSize:12.0 bold:NO];
+			self.distanceLabel.textAlignment = UITextAlignmentLeft;
+			[myContentView addSubview:self.distanceLabel];
+			[self.distanceLabel release];
+    }
+    return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-	[super setSelected:selected animated:animated];
+    [super setSelected:selected animated:animated];
 }
 
 - (void)layoutSubviews {
 	[super layoutSubviews];
-
+	
 	CGRect contentRect = self.contentView.bounds;
 	if(!self.editing) {
 		CGFloat boundsX = contentRect.origin.x;
 		CGRect frame;
 		frame = CGRectMake(boundsX + 15, 8, 280, 24);
 		self.titleLabel.frame = frame;
-
+		
 		frame = CGRectMake(boundsX + 15, 26, 280, 24);
 		self.distanceLabel.frame = frame;
 	}

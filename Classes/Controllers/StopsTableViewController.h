@@ -11,17 +11,17 @@
 #import "Route.h"
 
 @interface StopsTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate> {
-	UITableView *tableView;
-	NSArray *headsigns;
-	NSArray *stops;
-	NSArray *stopsIndex0;
-	NSArray *stopsIndex1;
-
-	NSMutableArray *data;
-	Route *selectedRoute;
-
-	CLLocation *myLocation;
-	CLLocationManager *locationManager;
+  UITableView *tableView;
+  NSArray *headsigns;
+  NSArray *stops;
+  NSArray *stopsIndex0;
+  NSArray *stopsIndex1;
+  
+  NSMutableArray *data;
+  Route *selectedRoute;
+  
+  CLLocation *myLocation;
+  CLLocationManager *locationManager;
 }
 
 @property (nonatomic, retain) UITableView *tableView;
