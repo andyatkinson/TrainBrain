@@ -11,10 +11,6 @@
 #import "StopTimesTableViewController.h"
 #import "NSString+BeetleFight.h"
 
-NSString * const ROUTES   = @"routes";
-NSString * const STOPS    = @"stops";
-NSString * const LASTSTOP = @"laststop";
-
 @implementation RoutesTableViewController
 
 @synthesize tableView, dataArraysForRoutesScreen, routes, stops, lastViewed, locationManager, myLocation;
@@ -92,22 +88,15 @@ NSString * const LASTSTOP = @"laststop";
 
 	Route *r1 = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Loading...", @"route_desc", nil]];
 	self.routes = [NSArray arrayWithObjects:r1, nil];
+	NSDictionary *routesDict = [NSDictionary dictionaryWithObject:self.routes forKey:@"items"];
+
+	NSArray *lastStopID = [NSArray arrayWithObjects:@"", nil];
+	NSDictionary *lastStopIDDict = [NSDictionary dictionaryWithObject:lastStopID forKey:@"items"];
+
 
 	Stop *s1 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Loading...", @"stop_desc", nil]];
 	self.stops = [NSArray arrayWithObjects:s1, nil];
-
-	//Setup Dictionaries that Describe View Secgtions
-	NSDictionary *routesDict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Choose Your Line", ROUTES, nil]
-	                            forKeys:[NSArray arrayWithObjects:@"title", @"id", nil]];
-
-
-	NSDictionary *lastStopIDDict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Last Viewed", LASTSTOP, nil]
-	                                forKeys:[NSArray arrayWithObjects:@"title", @"id", nil]];
-
-
-
-	NSDictionary *stopsDict = [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:@"Nearby Stops", ROUTES, nil]
-	                           forKeys:[NSArray arrayWithObjects:@"title", @"id", nil]];
+	NSDictionary *stopsDict = [NSDictionary dictionaryWithObject:self.stops forKey:@"items"];
 
 	[dataArraysForRoutesScreen addObject:routesDict];
 	[dataArraysForRoutesScreen addObject:lastStopIDDict];
@@ -161,51 +150,48 @@ NSString * const LASTSTOP = @"laststop";
 	return headerView;
 }
 
-- (Boolean) isLastStopNull {
-
-	NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-	NSString *last_stop_id = [settings stringForKey: @"last_stop_id"];
-	if (last_stop_id == NULL) {
-		return true;
-	} else {
-		return false;
-	}
-}
 
 // Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
-	NSString *ID    = [[dataArraysForRoutesScreen objectAtIndex:section] objectForKey:@"id"];
-
-	if([ID isEqualToString:ROUTES]) {
+	if (section == 0) {
 		return [self.routes count];
-	} else if([ID isEqualToString:LASTSTOP]) {
-		if([self isLastStopNull]) {
-			return 0;
-		} else {
+	} else if (section == 1) {
+
+		NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+		NSString *last_stop_id = [settings stringForKey: @"last_stop_id"];
+		if (last_stop_id != NULL) {
 			return 1;
+		} else {
+			return 0;
 		}
-	} else if([ID isEqualToString:STOPS]) {
+
+	} else if (section == 2) {
 		return [self.stops count];
+	} else {
+		// should not reach here
+		return 0;
 	}
-
-	// should not reach here
-	return 0;
-
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 
-	NSString *title = [[dataArraysForRoutesScreen objectAtIndex:section] objectForKey:@"title"];
-	NSString *ID    = [[dataArraysForRoutesScreen objectAtIndex:section] objectForKey:@"id"];
+	if (section == 0) {
+		return @"Choose Your Line";
+	} else if (section == 1) {
 
-	if([ID isEqualToString:LASTSTOP]) {
-		if([self isLastStopNull]) {
-			title = NULL;
+		NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+		NSString *last_stop_id = [settings stringForKey: @"last_stop_id"];
+		if (last_stop_id != NULL) {
+			return @"Last Viewed";
+		} else {
+			return NULL;
 		}
-	}
 
-	return title;
+	} else if (section == 2) {
+		return @"Nearby Stops";
+	}
+	return NULL;
 }
 
 // Customize the appearance of table view cells.
@@ -213,10 +199,7 @@ NSString * const LASTSTOP = @"laststop";
 
 	static NSString *CellIdentifier = @"Cell";
 
-	int section = indexPath.section;
-	NSString *ID    = [[dataArraysForRoutesScreen objectAtIndex:section] objectForKey:@"id"];
-
-	if([ID isEqualToString:ROUTES]) {
+	if (indexPath.section == 0) {
 		RouteCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		if (cell == nil) {
 			cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
@@ -230,7 +213,7 @@ NSString * const LASTSTOP = @"laststop";
 
 		return cell;
 
-	} else if([ID isEqualToString:LASTSTOP]) {
+	} else if (indexPath.section == 1) {
 
 		RouteCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		if (cell == nil) {
@@ -249,7 +232,7 @@ NSString * const LASTSTOP = @"laststop";
 		return cell;
 
 
-	} else if([ID isEqualToString:STOPS]) {
+	} else if (indexPath.section == 2) {
 
 		RouteCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];
 		if (cell == nil) {
@@ -274,10 +257,7 @@ NSString * const LASTSTOP = @"laststop";
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	int section = indexPath.section;
-	NSString *ID    = [[dataArraysForRoutesScreen objectAtIndex:section] objectForKey:@"id"];
-
-	if([ID isEqualToString:ROUTES]) {
+	if (indexPath.section == 0) {
 		// route_id available => go to stops
 		Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
 		StopsTableViewController *target = [[StopsTableViewController alloc] init];
@@ -286,7 +266,7 @@ NSString * const LASTSTOP = @"laststop";
 
 		[[self navigationController] pushViewController:target animated:YES];
 
-	} else if([ID isEqualToString:LASTSTOP]) {
+	} else if (indexPath.section == 1) {
 
 		Stop *stop = (Stop *)[self.lastViewed valueForKey:@"stop"];
 		StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
@@ -294,7 +274,7 @@ NSString * const LASTSTOP = @"laststop";
 
 		[[self navigationController] pushViewController:target animated:YES];
 
-	} else if([ID isEqualToString:STOPS]) {
+	} else if (indexPath.section == 2) {
 
 		Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
 		StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
