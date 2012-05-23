@@ -33,6 +33,15 @@
 }
 
 - (void)loadRoutesForLocation:(CLLocation *)location {  
+  /* Progress HUD overlay START */  
+  UIWindow *window = [UIApplication sharedApplication].keyWindow;
+	HUD = [[MBProgressHUD alloc] initWithWindow:window];
+	[window addSubview:HUD];
+	HUD.delegate = self;
+  HUD.labelText = @"Loading";
+	[HUD show:YES];
+  /* Progress HUD overlay END */
+  
   //NSDictionary *params = [NSDictionary dictionaryWithObject:@"1000" forKey:@"last_viewed_stop_id"];
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
@@ -49,20 +58,14 @@
     [self.tableView reloadData];
     [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
     [HUD hide:YES];
+    
+    [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+    
   }];
 
 }
 
 - (void)viewDidLoad {
-  
-  /* Progress HUD overlay START */  
-  UIWindow *window = [UIApplication sharedApplication].keyWindow;
-	HUD = [[MBProgressHUD alloc] initWithWindow:window];
-	[window addSubview:HUD];
-	HUD.delegate = self;
-  HUD.labelText = @"Loading";
-	[HUD show:YES];
-  /* Progress HUD overlay END */
   
   // Load from a fixed location, in case location services are disabled or unavailable
   CLLocation *mpls = [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223];
@@ -81,7 +84,6 @@
   
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
-
 	
 	//Initialize the array.
 	dataArraysForRoutesScreen = [[NSMutableArray alloc] init];
@@ -103,6 +105,18 @@
 	[dataArraysForRoutesScreen addObject:stopsDict];
 	
 	self.navigationItem.title = @"train brain";
+
+  
+  if (_refreshHeaderView == nil) {
+		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+		view.delegate = self;
+		[self.tableView addSubview:view];
+		_refreshHeaderView = view;
+		[view release];
+	}
+	
+	//  update the last update date
+	[_refreshHeaderView refreshLastUpdatedDate];
   
   self.view = self.tableView;
 }
@@ -302,6 +316,49 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   // indexPath.section && indexPath.row (inside a section) are options to control in more detail
   return 57;
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
+	//[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+  [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+  //[self loadRoutesForLocation:self.myLocation];
+  [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+- (void)doneLoadingTableViewData{
+	
+	//  model should call this when its done loading
+	//_reloading = NO;
+	//[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+}
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	
+	[self loadRoutesForLocation:self.myLocation];
+	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+	
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	
+	//return _reloading; // should return if data source model is reloading
+  return NO;
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
 }
 
 - (void)dealloc {

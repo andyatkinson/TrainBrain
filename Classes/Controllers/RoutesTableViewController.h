@@ -5,16 +5,18 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import "MBProgressHUD.h"
+#import "EGORefreshTableHeaderView.h"
 
-@interface RoutesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, MBProgressHUDDelegate> {
+@interface RoutesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, MBProgressHUDDelegate, EGORefreshTableHeaderDelegate> {
 	UITableView *tableView;
 	NSMutableArray *dataArraysForRoutesScreen;
-    CLLocation *myLocation;
-    CLLocationManager *locationManager;
-    NSArray *routes;
-    NSArray *stops;
-    NSDictionary *lastViewed;
-    MBProgressHUD *HUD;
+  CLLocation *myLocation;
+  CLLocationManager *locationManager;
+  NSArray *routes;
+  NSArray *stops;
+  NSDictionary *lastViewed;
+  MBProgressHUD *HUD;
+  EGORefreshTableHeaderView *_refreshHeaderView;
 }
 
 @property (nonatomic, retain) UITableView *tableView;
