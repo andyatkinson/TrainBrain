@@ -126,6 +126,12 @@
                                                                action:@selector(loadMapView)];
   self.navigationItem.rightBarButtonItem = mapButton;
   [mapButton release];
+
+  
+  UIImage *backButton = [[UIImage imageNamed:@"btn_routes_norm.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 12, 12, 12)];
+  [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+  
+  //self.navigationItem.leftBarButtonItem = backButton;
   
   self.view = container;
   
