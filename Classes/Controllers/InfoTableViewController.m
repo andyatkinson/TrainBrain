@@ -6,7 +6,7 @@
 //
 
 #import "InfoTableViewController.h"
-
+#import "InfoDetailViewController.h"
 
 @implementation InfoTableViewController
 
@@ -176,6 +176,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+  if (indexPath.section == 0) {
+    if (indexPath.row == 0) {
+      
+      // Hiawatha row
+      InfoDetailViewController *target = [[InfoDetailViewController alloc] init];
+      [[self navigationController] pushViewController:target animated:YES];
+      
+    }
+
+  }
 }
 
 @end

@@ -17,6 +17,8 @@
 		A16BA39715685C4C00B8BB55 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BA39115685C4C00B8BB55 /* SBJsonWriter.m */; };
 		A16E23BE156C4ACC008B4A3F /* btn_routes_norm.png in Resources */ = {isa = PBXBuildFile; fileRef = A16E23BC156C4ACC008B4A3F /* btn_routes_norm.png */; };
 		A16E23BF156C4ACC008B4A3F /* btn_routes_norm@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A16E23BD156C4ACC008B4A3F /* btn_routes_norm@2x.png */; };
+		A16E23C2156C6D2F008B4A3F /* InfoDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E23C1156C6D2F008B4A3F /* InfoDetailViewController.m */; };
+		A16E23C5156C6EAE008B4A3F /* Info.m in Sources */ = {isa = PBXBuildFile; fileRef = A16E23C4156C6EAE008B4A3F /* Info.m */; };
 		A1A796C51569D4E2006ACAAD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1A796C41569D4E2006ACAAD /* MainWindow.xib */; };
 		A1B56E2E10F968BF00294BEC /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A1B56E2D10F968BF00294BEC /* MBProgressHUD.m */; };
 		A1C259B714F7FC77003215E6 /* user_data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C259B614F7FC77003215E6 /* user_data.plist */; };
@@ -136,6 +138,10 @@
 		A16BA39115685C4C00B8BB55 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		A16E23BC156C4ACC008B4A3F /* btn_routes_norm.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_routes_norm.png; sourceTree = "<group>"; };
 		A16E23BD156C4ACC008B4A3F /* btn_routes_norm@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_routes_norm@2x.png"; sourceTree = "<group>"; };
+		A16E23C0156C6D2F008B4A3F /* InfoDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoDetailViewController.h; sourceTree = "<group>"; };
+		A16E23C1156C6D2F008B4A3F /* InfoDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoDetailViewController.m; sourceTree = "<group>"; };
+		A16E23C3156C6EAE008B4A3F /* Info.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Info.h; sourceTree = "<group>"; };
+		A16E23C4156C6EAE008B4A3F /* Info.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Info.m; sourceTree = "<group>"; };
 		A1789C1C12CA7FB000361D22 /* TrainBrain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TrainBrain.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1A796C41569D4E2006ACAAD /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		A1B56E2C10F968BF00294BEC /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -481,6 +487,8 @@
 				A1E848351569BAD3007DF636 /* StopTime.m */,
 				A1E848361569BAD3007DF636 /* TransitAPIClient.h */,
 				A1E848371569BAD3007DF636 /* TransitAPIClient.m */,
+				A16E23C3156C6EAE008B4A3F /* Info.h */,
+				A16E23C4156C6EAE008B4A3F /* Info.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -511,8 +519,6 @@
 		A1E8485A1569BC7F007DF636 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A1E8485B1569BC7F007DF636 /* InfoTableViewController.h */,
-				A1E8485C1569BC7F007DF636 /* InfoTableViewController.m */,
 				A1E8485D1569BC7F007DF636 /* RoutesTableViewController.h */,
 				A1E8485E1569BC7F007DF636 /* RoutesTableViewController.m */,
 				A1E8485F1569BC7F007DF636 /* StopsOnMapViewController.h */,
@@ -521,6 +527,10 @@
 				A1E848621569BC7F007DF636 /* StopsTableViewController.m */,
 				A1E848631569BC7F007DF636 /* StopTimesTableViewController.h */,
 				A1E848641569BC7F007DF636 /* StopTimesTableViewController.m */,
+				A1E8485B1569BC7F007DF636 /* InfoTableViewController.h */,
+				A1E8485C1569BC7F007DF636 /* InfoTableViewController.m */,
+				A16E23C0156C6D2F008B4A3F /* InfoDetailViewController.h */,
+				A16E23C1156C6D2F008B4A3F /* InfoDetailViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -693,6 +703,8 @@
 				A1E848671569BC7F007DF636 /* StopsOnMapViewController.m in Sources */,
 				A1E848681569BC7F007DF636 /* StopsTableViewController.m in Sources */,
 				A1E848691569BC7F007DF636 /* StopTimesTableViewController.m in Sources */,
+				A16E23C2156C6D2F008B4A3F /* InfoDetailViewController.m in Sources */,
+				A16E23C5156C6EAE008B4A3F /* Info.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
