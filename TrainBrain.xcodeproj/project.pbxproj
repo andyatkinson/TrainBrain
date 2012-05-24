@@ -580,10 +580,10 @@
 			children = (
 				A1E8485D1569BC7F007DF636 /* RoutesTableViewController.h */,
 				A1E8485E1569BC7F007DF636 /* RoutesTableViewController.m */,
-				A1E8485F1569BC7F007DF636 /* StopsOnMapViewController.h */,
-				A1E848601569BC7F007DF636 /* StopsOnMapViewController.m */,
 				A1E848611569BC7F007DF636 /* StopsTableViewController.h */,
 				A1E848621569BC7F007DF636 /* StopsTableViewController.m */,
+				A1E8485F1569BC7F007DF636 /* StopsOnMapViewController.h */,
+				A1E848601569BC7F007DF636 /* StopsOnMapViewController.m */,
 				A1E848631569BC7F007DF636 /* StopTimesTableViewController.h */,
 				A1E848641569BC7F007DF636 /* StopTimesTableViewController.m */,
 				A1E8485B1569BC7F007DF636 /* InfoTableViewController.h */,

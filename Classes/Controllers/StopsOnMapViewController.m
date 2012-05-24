@@ -6,6 +6,7 @@
 #import "StopsOnMapViewController.h"
 #import "Stop.h"
 #import "StopAnnotation.h"
+#import "StopTimesTableViewController.h"
 
 @implementation StopsOnMapViewController
 
@@ -41,7 +42,6 @@
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
 	[window addSubview:HUD];
 	HUD.delegate = self;
-  
   
   self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 260)];  
   self.mapView.delegate = self;
@@ -79,54 +79,67 @@
 	region.center.latitude = (minCoord.latitude + maxCoord.latitude) / 2.0;
 	region.span.longitudeDelta = maxCoord.longitude - minCoord.longitude;
 	region.span.latitudeDelta = maxCoord.latitude - minCoord.latitude;
-	//[self.mapView setRegion:region animated:YES];  
-  //*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: 'Invalid Region <center:+0.00000000, +0.00000000 span:-180.00000000, -360.00000000>'
-
+	
+  [self.mapView setRegion:region animated:YES];  
 }
 
-- (MKAnnotationView *)mapView:(MKMapView *)thisMapView viewForAnnotation:(id <MKAnnotation>)annotation {
-    MKAnnotationView *view = nil;
-	if (annotation != thisMapView.userLocation) {
-//		StopAnnotation *stopAnnotation = (StopAnnotation *)annotation;
-//		view = [self.mapView dequeueReusableAnnotationViewWithIdentifier:@"stopRouteId"];
-		
+- (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation {
 
-//		if (nil == view) {
-//			NSString *route_id = stopAnnotation.stop.routeId;
-//			NSRange hiawathaRange = [routeId rangeOfString:@"55"];
-//			NSRange northstarRange = [routeId rangeOfString:@"888"];
-//			if (hiawathaRange.location != NSNotFound) {
-//				view = [[[CustomPinBlack alloc] initWithAnnotation:annotation] autorelease];
-//			} else if(northstarRange.location != NSNotFound) {
-//				view = [[[CustomPinBlue alloc] initWithAnnotation:annotation] autorelease];
-//			}
-		//}
+  static NSString *ai = @"AnnotationIdentifier";
+  MKPinAnnotationView *pin = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:ai];
 
-//		[(MKPinAnnotationView *)view setAnimatesDrop:NO];
-//		 
-//		[view setCanShowCallout:YES];
-//		[view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
-	}
+  if (!pin) {
+    pin = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ai] autorelease];
+    [pin setUserInteractionEnabled:YES];
+    [pin setEnabled:YES];
+    [pin setCanShowCallout:YES];
+    [pin setAnimatesDrop:NO];
+    [pin setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
+    
+  } else {
+    
+    //we're re-using an annotation view
+    //update annotation property in case re-used view was for another  
+    pin.annotation = annotation;
+  }
+  
+//	if (annotation != mv.userLocation) {
+//    
+//    
+//    
+//    
+//    //[view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
+//    
+//    //      NSString *route_id = stopAnnotation.stop.route.route_id;
+//    //      NSRange hiawathaRange = [routeId rangeOfString:@"55"];
+//    //      NSRange northstarRange = [routeId rangeOfString:@"888"];
+//    //      if (hiawathaRange.location != NSNotFound) {
+//    //        view = [[[CustomPinBlack alloc] initWithAnnotation:annotation] autorelease];
+//    //      } else if(northstarRange.location != NSNotFound) {
+//    //        view = [[[CustomPinBlue alloc] initWithAnnotation:annotation] autorelease];
+//    //      }
+//    
+//	}
 
-	return view;
+	return pin;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-	//StopAnnotation *stopAnn = (StopAnnotation *)[view annotation];
+	StopAnnotation *sa = (StopAnnotation *)[view annotation];
 
-	//NSURL *webUrl = [NSURL URLWithString:stopAnn.stop.webUrl];
-  //[[UIApplication sharedApplication] openURL:webUrl];
+  StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
+  [target setSelectedStop:sa.stop];  
+  [[self navigationController] pushViewController:target animated:YES];
 }
 
 
 - (void)displayMapData {
-//  for (id stop in self.stops) {
-//    StopAnnotation *annotation = [StopAnnotation annotationWithStop:stop];
-//    [self.mapView addAnnotation:annotation];			
-//    
-//    [stop release];
-//    [annotation release];
-//  }
+  for (id stop in self.stops) {
+    StopAnnotation *annotation = [StopAnnotation annotationWithStop:stop];
+    [self.mapView addAnnotation:annotation];
+    [stop release];
+    [annotation release];
+  }
 	
   [self recenterMap];
 	[HUD hide:YES];
