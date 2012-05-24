@@ -31,6 +31,7 @@
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
   
+  
   if (self.selectedStop == NULL || self.selectedStop.route.route_id == NULL) {
     NSLog(@"error, exiting, got stop: %@", self.selectedStop);
 
@@ -42,6 +43,15 @@
     
     NSDictionary *params = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", [components hour]] forKey:@"hour"];
     
+    /* Progress HUD overlay START */  
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    HUD = [[MBProgressHUD alloc] initWithWindow:window];
+    [window addSubview:HUD];
+    HUD.delegate = self;
+    HUD.labelText = @"Loading";
+    [HUD show:YES];
+    /* Progress HUD overlay END */
+    
     [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSArray *blockdata) {
       self.stop_times = blockdata;
       
@@ -52,12 +62,16 @@
       [settings synchronize];
       
       [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+      [HUD hide:YES];
 
     }];
     
   }
   
   
+}
+
+-(void)hudWasHidden{
 }
 
 - (void)viewDidLoad
@@ -205,6 +219,11 @@
   }  
 
   return cell;
+}
+
+- (void)dealloc {
+  [super dealloc];
+  [HUD dealloc];
 }
 
 @end

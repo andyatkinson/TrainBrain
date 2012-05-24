@@ -7,12 +7,14 @@
 
 #import <UIKit/UIKit.h>
 #import "Stop.h"
+#import "MBProgressHUD.h"
 
 @interface StopTimesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
   UITableView *tableView;
   NSMutableArray *data;
   Stop *selectedStop;
   NSArray *stop_times;
+  MBProgressHUD *HUD;
 }
 
 @property (nonatomic, retain) UITableView *tableView;

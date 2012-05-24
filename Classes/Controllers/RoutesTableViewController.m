@@ -365,6 +365,7 @@
 	
 	[dataArraysForRoutesScreen release];
   [super dealloc];
+  [HUD dealloc];
 }
 
 @end
