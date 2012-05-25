@@ -17,24 +17,6 @@
 @synthesize bigDepartureHourUnit, bigDepartureMinuteUnit, bigDepartureSecondsUnit;
 @synthesize funnySaying, description, formattedTime, price;
 
-- (void) startTimer {
-  if([self countDownTimer] == nil){
-    [self setCountDownStartDate:[NSDate date]];
-    
-    // Create the stop watch timer that fires every 1 s
-    [self setCountDownTimer: [NSTimer scheduledTimerWithTimeInterval:1.0
-                                                  target:self
-                                                selector:@selector(updateTimer)
-                                                userInfo:nil
-                                                 repeats:YES]];
-  }
-}
-
-- (void) stopTimer {
-  [[self countDownTimer] invalidate];
-  [self setCountDownTimer: nil];
-}
-
 - (void) setStopTime: (StopTime*) stopTime {  
   //Gives us the current date
   NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
@@ -52,6 +34,22 @@
   self.price.text         = stopTime.price;
   
 }
+
+- (void) startTimer {
+  if([self countDownTimer] == nil){
+    [self setCountDownStartDate:[NSDate date]];
+    
+    // Create the stop watch timer that fires every 1 s
+    [self setCountDownTimer: [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                  target:self
+                                                selector:@selector(updateTimer)
+                                                userInfo:nil
+                                                 repeats:YES]];
+  }
+}
+
+#pragma mark -
+#pragma mark Countdown Timer Methods
 
 - (void)updateTimer {
   NSDate *currentDate = [NSDate date];
@@ -87,6 +85,14 @@
   }
    
 }
+
+- (void) stopTimer {
+  [[self countDownTimer] invalidate];
+  [self setCountDownTimer: nil];
+}
+
+#pragma mark -
+#pragma mark Table Methods
 
 - (void) addShadow:(UILabel*) thisLabel{
   thisLabel.shadowColor  = [UIColor blackColor];
@@ -247,6 +253,9 @@
   
 	return newLabel;
 }
+
+#pragma mark -
+#pragma mark Cleanup Methods
 
 - (void)dealloc {
 	[bigDepartureHour dealloc];

@@ -16,6 +16,7 @@
 @implementation StopTimesTableViewController
 
 @synthesize tableView, bigCell, data, stop_times, selectedStop;
+@synthesize refreshTimer = _refreshTimer;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -52,9 +53,9 @@
     [HUD show:YES];
     /* Progress HUD overlay END */
     
-    [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSArray *blockdata) {
-      self.stop_times = blockdata;
-      
+    [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSArray *stops) {
+      self.stop_times = stops;
+
       [self.tableView reloadData];
       
       NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
@@ -103,6 +104,13 @@
   self.navigationItem.title = self.selectedStop.stop_name;
   
   self.view = self.tableView;
+  
+  
+  [self setRefreshTimer: [NSTimer scheduledTimerWithTimeInterval:60.0
+                                                          target:self
+                                                        selector:@selector(loadStopTimes)
+                                                        userInfo:nil
+                                                         repeats:YES]];
     
 }
 

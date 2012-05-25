@@ -62,7 +62,21 @@
     NSMutableArray *mutableRecords = [NSMutableArray array];
     for (NSDictionary *attributes in [JSON valueForKeyPath:@"stop_times"]) {
       StopTime *stop_time = [[[StopTime alloc] initWithAttributes:attributes] autorelease];
-      [mutableRecords addObject:stop_time];
+      
+      //Cehck if stop is in the past
+      NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+      NSDateComponents *components = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:[NSDate date]];
+      [components setHour:stop_time.departure_time_hour];
+      [components setMinute:stop_time.departure_time_minute];
+      [components setSecond:0];
+      
+      NSDate *stopDate = [gregorian dateFromComponents:components];
+      [gregorian release];
+      
+      if([stopDate compare: [NSDate date]] == NSOrderedDescending) {
+        [mutableRecords addObject:stop_time];
+      }
+
     }
     
     if (block) {
