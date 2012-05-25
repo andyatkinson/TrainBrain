@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "Stop.h"
 #import "MBProgressHUD.h"
+#import "BigDepartureTableViewCell.h"
 
 @interface StopTimesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
   UITableView *tableView;
@@ -15,9 +16,11 @@
   Stop *selectedStop;
   NSArray *stop_times;
   MBProgressHUD *HUD;
+  BigDepartureTableViewCell *bigCell;
 }
 
 @property (nonatomic, retain) UITableView *tableView;
+@property (nonatomic, retain) BigDepartureTableViewCell *bigCell;
 @property (nonatomic, retain) NSMutableArray *data;
 @property (nonatomic, retain) NSArray *stop_times;
 @property (nonatomic, retain) Stop *selectedStop;

@@ -15,7 +15,7 @@
 
 @implementation StopTimesTableViewController
 
-@synthesize tableView, data, stop_times, selectedStop;
+@synthesize tableView, bigCell, data, stop_times, selectedStop;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -187,18 +187,17 @@
       
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
       
-      BigDepartureTableViewCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];    
-      cell = [[BigDepartureTableViewCell alloc] init];
-      
-      cell.bigDepartureHour.text = [NSString stringWithFormat:@"%dh", stop_time.departure_time_hour];
-      cell.bigDepartureMinute.text = [NSString stringWithFormat:@"%dm", stop_time.departure_time_minute];
-      cell.funnySaying.text = [FunnyPhrase rand];
-      cell.description.text = @"Next estimated train departure:";
-      cell.formattedTime.text = stop_time.departure_time;
-      
-      cell.formattedTime.text = [stop_time.departure_time hourMinuteFormatted];
-      cell.price.text = stop_time.price;
-      return cell;
+      if(bigCell == NULL){
+        //BigDepartureTableViewCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];    
+        [self setBigCell:[[BigDepartureTableViewCell alloc] init]];
+        
+        [[self bigCell] setStopTime:stop_time];
+        [self bigCell].funnySaying.text = [FunnyPhrase rand];
+        [self bigCell].description.text = @"Next estimated train departure:";
+        
+        [[self bigCell] startTimer];
+      }
+      return [self bigCell];
       
       
     } else if (indexPath.section == 1) {

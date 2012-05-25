@@ -6,17 +6,74 @@
 //
 
 #import "BigDepartureTableViewCell.h"
+#import "StopTime.h"
 
 @implementation BigDepartureTableViewCell
 
-@synthesize bigDepartureHour, bigDepartureMinute, funnySaying, description, formattedTime, price;
+@synthesize countDownTimer     = _countDownTimer;
+@synthesize countDownStartDate = _countDownStartDate;
+@synthesize stopDate           = _stopDate;
+@synthesize bigDepartureHour, bigDepartureMinute, bigDepartureSeconds;
+@synthesize bigDepartureHourUnit, bigDepartureMinuteUnit, bigDepartureSecondsUnit;
+@synthesize funnySaying, description, formattedTime, price;
+
+- (void) startTimer {
+  if([self countDownTimer] == nil){
+    NSLog(@"Start Timer");
+    [self setCountDownStartDate:[NSDate date]];
+    
+    // Create the stop watch timer that fires every 1 s
+    [self setCountDownTimer: [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                  target:self
+                                                selector:@selector(updateTimer)
+                                                userInfo:nil
+                                                 repeats:YES]];
+  }
+}
+
+- (void) stopTimer {
+  [[self countDownTimer] invalidate];
+  [self setCountDownTimer: nil];
+}
+
+- (void) setStopTime: (StopTime*) stopTime {  
+  //Gives us the current date
+  NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+  NSDateComponents *components = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:[self stopDate]];
+  [components setHour:stopTime.departure_time_hour];
+  [components setMinute:stopTime.departure_time_minute];
+  [components setSecond:0];
+  
+  [self setStopDate:[gregorian dateFromComponents:components]];
+  [gregorian release];
+  
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"hh:mm a"];
+  self.formattedTime.text = [dateFormatter stringFromDate:[self stopDate]];
+  self.price.text         = stopTime.price;
+  
+}
+
+- (void)updateTimer {
+  NSDate *currentDate = [NSDate date];
+  NSTimeInterval timeInterval = [[self stopDate] timeIntervalSinceDate:currentDate];
+  NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+  
+  NSCalendar *calendar = [NSCalendar currentCalendar];
+  [calendar setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+  NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:timerDate];
+  NSInteger hour    = [components hour];
+  NSInteger minute  = [components minute];
+  NSInteger seconds = [components second];
+  
+  self.bigDepartureHour.text    = [NSString stringWithFormat:@"%02d", hour];
+  self.bigDepartureMinute.text  = [NSString stringWithFormat:@"%02d", minute];
+  self.bigDepartureSeconds.text = [NSString stringWithFormat:@"%02d", seconds];
+}
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     UIView *contentView = self.contentView;    
-    
-//    UIImageView *bgImageView = [[UIImageView alloc] init];
-//    bgImageView.image = [UIImage imageNamed:@"bg_timer.png"];
     
     UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"bg_timer" ofType:@"png"]];
     
@@ -24,11 +81,14 @@
     [imgView setUserInteractionEnabled:NO];	
     self.backgroundView = imgView;
     
-    //add the subView to the cell
-    //[self.contentView addSubview:bgImageView];
+    self.bigDepartureHour    = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
+    self.bigDepartureMinute  = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
+    self.bigDepartureSeconds = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
     
-    self.bigDepartureHour = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
-    self.bigDepartureMinute = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
+    self.bigDepartureHourUnit    = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:30.0 bold:YES];
+    self.bigDepartureMinuteUnit  = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:30.0 bold:YES];
+    self.bigDepartureSecondsUnit = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:30.0 bold:YES];
+    
     self.funnySaying = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:14.0 bold:YES];
     self.description = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:YES];
     self.formattedTime = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:NO];
@@ -36,6 +96,12 @@
     
 		[contentView addSubview:self.bigDepartureHour];
     [contentView addSubview:self.bigDepartureMinute];
+    [contentView addSubview:self.bigDepartureSeconds];
+    
+    [contentView addSubview:bigDepartureHourUnit];
+    [contentView addSubview:bigDepartureMinuteUnit];
+    [contentView addSubview:bigDepartureSecondsUnit];
+    
     [contentView addSubview:self.funnySaying];
     [contentView addSubview:self.description];
     [contentView addSubview:self.formattedTime];
@@ -43,11 +109,19 @@
 		
     [self.bigDepartureHour release];
     [self.bigDepartureMinute release];
+    [self.bigDepartureSeconds release];
     [self.funnySaying release];
     [self.description release];
     [self.formattedTime release];
     [self.price release];
     
+    self.bigDepartureHour.text    = @"--";
+    self.bigDepartureMinute.text  = @"--";
+    self.bigDepartureSeconds.text = @"--";
+    
+    self.bigDepartureHourUnit.text    = @"h";
+    self.bigDepartureMinuteUnit.text  = @"m";
+    self.bigDepartureSecondsUnit.text = @"s";
     
   }
   return self;
@@ -73,7 +147,6 @@
     
 		// get the X pixel spot
     CGFloat boundsX = contentRect.origin.x;
-		CGRect frame;
     
     /*
 		 Place the label.
@@ -82,23 +155,18 @@
 		 make the label 200 pixels wide
 		 make the label 20 pixels high
      */
-		frame = CGRectMake(boundsX + 60, 0, 300, 100);
-		self.bigDepartureHour.frame = frame;
+
+		self.bigDepartureHour.frame        = CGRectMake(boundsX +  10,   0, 300, 100);
+    self.bigDepartureHourUnit.frame    = CGRectMake(boundsX +  80,  10, 300, 100);
+		self.bigDepartureMinute.frame      = CGRectMake(boundsX + 110,   0, 300, 100);
+    self.bigDepartureMinuteUnit.frame  = CGRectMake(boundsX + 180,  10, 300, 100);
+		self.bigDepartureSeconds.frame     = CGRectMake(boundsX + 220,   0, 300, 100);
+    self.bigDepartureSecondsUnit.frame = CGRectMake(boundsX + 290,  10, 300, 100);
     
-    frame = CGRectMake(boundsX + 170, 0, 300, 100);
-		self.bigDepartureMinute.frame = frame;
-    
-    frame = CGRectMake(boundsX + 20, 98, 200, 20);
-		self.funnySaying.frame = frame;
-    
-    frame = CGRectMake(boundsX + 20, 115, 200, 20);
-		self.description.frame = frame;
-    
-    frame = CGRectMake(boundsX + 250, 95, 80, 20);
-		self.formattedTime.frame = frame;
-    
-    frame = CGRectMake(boundsX + 250, 115, 80, 20);
-		self.price.frame = frame;
+    self.funnySaying.frame             = CGRectMake(boundsX +  20,  98, 200,  20);
+		self.description.frame             = CGRectMake(boundsX +  20, 115, 200,  20);
+		self.formattedTime.frame           = CGRectMake(boundsX + 250,  95,  80,  20);
+		self.price.frame                   = CGRectMake(boundsX + 250, 115,  80,  20);
     
 	}
 }

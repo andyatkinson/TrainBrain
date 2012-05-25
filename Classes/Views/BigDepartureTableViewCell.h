@@ -6,25 +6,44 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "StopTime.h"
 
 @interface BigDepartureTableViewCell : UITableViewCell {
   UILabel *bigDepartureHour;
   UILabel *bigDepartureMinute;
+  UILabel *bigDepartureSeconds;
+  UILabel *bigDepartureHourUnit;
+  UILabel *bigDepartureMinuteUnit;
+  UILabel *bigDepartureSecondsUnit;
   UILabel *funnySaying;
   UILabel *description;
   UILabel *formattedTime;
   UILabel *price;
   
+  NSTimer  *_countDownTimer; 
+  NSDate   *_countDownStartDate; 
+  NSDate   *_stopDate; 
 }
 
-@property (nonatomic, retain) UILabel *bigDepartureHour;
-@property (nonatomic, retain) UILabel *bigDepartureMinute;
-@property (nonatomic, retain) UILabel *funnySaying;
-@property (nonatomic, retain) UILabel *description;
-@property (nonatomic, retain) UILabel *formattedTime;
-@property (nonatomic, retain) UILabel *price;
+@property (nonatomic, retain) NSTimer   *countDownTimer;
+@property (nonatomic, retain) NSDate    *countDownStartDate;
+@property (nonatomic, retain) NSDate    *stopDate;
+@property (nonatomic, retain) UILabel   *bigDepartureHour;
+@property (nonatomic, retain) UILabel   *bigDepartureMinute;
+@property (nonatomic, retain) UILabel   *bigDepartureSeconds;
+@property (nonatomic, retain) UILabel   *bigDepartureHourUnit;
+@property (nonatomic, retain) UILabel   *bigDepartureMinuteUnit;
+@property (nonatomic, retain) UILabel   *bigDepartureSecondsUnit;
+@property (nonatomic, retain) UILabel   *funnySaying;
+@property (nonatomic, retain) UILabel   *description;
+@property (nonatomic, retain) UILabel   *formattedTime;
+@property (nonatomic, retain) UILabel   *price;
+
 
 // these are the functions we will create in the .m file
+
+- (void) startTimer;
+- (void) setStopTime: (StopTime*) stopTime;
 
 // gets the data from another class
 -(void)setData:(NSDictionary *)dict;
