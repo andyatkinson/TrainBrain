@@ -16,6 +16,7 @@
 @implementation StopTimesTableViewController
 
 @synthesize tableView, bigCell, data, stop_times, selectedStop;
+@synthesize refreshTimer = _refreshTimer;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -24,6 +25,49 @@
     // Custom initialization
   }
   return self;
+}
+
+-(void)hudWasHidden{
+}
+
+- (void) setupRefresh{
+
+  if ( [self refreshTimer] != (id)[NSNull null] ) {
+    StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:0];
+    NSArray  *departureData = [stop_time getTimeTillDeparture];
+    NSNumber *seconds = (NSNumber*) [departureData objectAtIndex:3];
+    
+    int interval = 0;
+    if( [seconds intValue] < 30 ){
+      interval = 30 + [seconds intValue];
+    } else if ([seconds intValue] > 30 ) {
+      interval = [seconds intValue] - 30;
+    }
+    
+    [self setRefreshTimer: [NSTimer scheduledTimerWithTimeInterval:interval
+                                                            target:self
+                                                          selector:@selector(refeshTable)
+                                                          userInfo:nil
+                                                           repeats:NO]];
+  }
+}
+
+- (void) refeshTable{
+  StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:0];
+  NSArray  *departureData = [stop_time getTimeTillDeparture];
+  NSNumber *timeTillDeparture = (NSNumber*) [departureData objectAtIndex:0];
+  if ([timeTillDeparture intValue] == 0) {
+    [self loadStopTimes];
+  } else {
+    [self.tableView reloadData];
+  }
+  
+  [self setRefreshTimer: [NSTimer scheduledTimerWithTimeInterval:60
+                                                          target:self
+                                                        selector:@selector(refeshTable)
+                                                        userInfo:nil
+                                                         repeats:NO]];
+
 }
 
 - (void)loadStopTimes {
@@ -52,9 +96,16 @@
     [HUD show:YES];
     /* Progress HUD overlay END */
     
-    [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSArray *blockdata) {
-      self.stop_times = blockdata;
-      
+    [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSArray *stops) {
+      self.stop_times = stops;
+
+      if ([self.stop_times count] > 0) {
+        StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:0];
+        [[self bigCell] setStopTime:stop_time];
+        
+        [self setupRefresh];
+      }
+        
       [self.tableView reloadData];
       
       NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
@@ -71,11 +122,7 @@
   
 }
 
--(void)hudWasHidden{
-}
-
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
   
   // TODO set the custom background
   UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
@@ -91,10 +138,8 @@
   
   self.data = [[NSMutableArray alloc] init];
   
-  [self loadStopTimes];
-
-  
   self.stop_times = [[NSArray alloc] init];
+  [self loadStopTimes];
 
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
@@ -102,8 +147,7 @@
   
   self.navigationItem.title = self.selectedStop.stop_name;
   
-  self.view = self.tableView;
-    
+  self.view = self.tableView; 
 }
 
 - (void)viewDidUnload
@@ -188,7 +232,6 @@
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
       
       if (bigCell == NULL) {
-        //BigDepartureTableViewCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];    
         [self setBigCell:[[BigDepartureTableViewCell alloc] init]];
 
         [[self bigCell] setStopTime:stop_time];
@@ -204,15 +247,11 @@
     } else if (indexPath.section == 1) {
       
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
-      StopTimeCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];    
-      cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      StopTimeCell *cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
       
-      cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];
-      cell.relativeTimeHour.text = [NSString stringWithFormat:@"%dh", stop_time.departure_time_hour];
-      cell.relativeTimeMinute.text = [NSString stringWithFormat:@"%dm", stop_time.departure_time_minute];
-      cell.scheduleTime.text = [stop_time.departure_time hourMinuteFormatted];
-      cell.price.text = stop_time.price;
-      
+      cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];      
+      [cell setStopTime:stop_time];
+
       return cell;
       
     }

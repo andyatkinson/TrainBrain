@@ -35,5 +35,7 @@
 + (void)stopTimesWithURLString:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block;
 + (void)stopTimesSimple:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block;
 + (NSArray *)stopTimesFromArray:(NSArray *)array;
+- (NSDate*) getStopDate;
+- (NSArray*) getTimeTillDeparture;
 
 @end

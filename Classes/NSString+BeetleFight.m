@@ -60,7 +60,7 @@
   [formatter setDateFormat:@"HH:mm:ss"];
   NSDate *date = [formatter dateFromString:self];
   
-  [formatter setDateFormat:@"HH:mm a"];
+  [formatter setDateFormat:@"h:mm a"];
   
   NSString *formattedTime = [NSString stringWithFormat:@"%@", [formatter stringFromDate:date]];
   [formatter release];

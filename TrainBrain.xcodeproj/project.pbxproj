@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		1D3623260D0F684500981E51 /* TrainBrainAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
+		52113EDD1571684F00CD19DE /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52113EDC1571684F00CD19DE /* UIKit.framework */; };
+		52113EDF1571685900CD19DE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52113EDE1571685900CD19DE /* CoreText.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		52113EE11571686A00CD19DE /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52113EE01571686A00CD19DE /* QuartzCore.framework */; };
+		52113EE31571687900CD19DE /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52113EE21571687900CD19DE /* CoreGraphics.framework */; };
+		52113EED157168AC00CD19DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52113EEC157168AC00CD19DE /* Foundation.framework */; };
+		52113EFA1571746F00CD19DE /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 52113EF71571745900CD19DE /* NSAttributedString+Attributes.m */; };
+		52113EFB1571747700CD19DE /* OHAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52113EF91571745900CD19DE /* OHAttributedLabel.m */; };
 		A16BA39215685C4C00B8BB55 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BA38715685C4C00B8BB55 /* NSObject+SBJSON.m */; };
 		A16BA39315685C4C00B8BB55 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BA38915685C4C00B8BB55 /* NSString+SBJSON.m */; };
 		A16BA39415685C4C00B8BB55 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BA38B15685C4C00B8BB55 /* SBJSON.m */; };
@@ -112,24 +119,26 @@
 		A1E848671569BC7F007DF636 /* StopsOnMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848601569BC7F007DF636 /* StopsOnMapViewController.m */; };
 		A1E848681569BC7F007DF636 /* StopsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848621569BC7F007DF636 /* StopsTableViewController.m */; };
 		A1E848691569BC7F007DF636 /* StopTimesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848641569BC7F007DF636 /* StopTimesTableViewController.m */; };
-		A1EB2645152151BE00134440 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		A1EB2646152151C900134440 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		A1EB2647152151D200134440 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */; };
 		A1EB2648152151DB00134440 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A169E4BB102F931800A65E05 /* CoreLocation.framework */; };
 		A1EB2649152151E800134440 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1B5C4E910A120F500CD3045 /* MapKit.framework */; };
-		A1FD11C415215BF9002D6E20 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1FD11C315215BF9002D6E20 /* QuartzCore.framework */; };
 		A1FD11DB1521682A002D6E20 /* SVSegmentedControl.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FD11D81521682A002D6E20 /* SVSegmentedControl.m */; };
 		A1FD11DC1521682A002D6E20 /* SVSegmentedThumb.m in Sources */ = {isa = PBXBuildFile; fileRef = A1FD11DA1521682A002D6E20 /* SVSegmentedThumb.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		1D3623240D0F684500981E51 /* TrainBrainAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainBrainAppDelegate.h; sourceTree = "<group>"; };
 		1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TrainBrainAppDelegate.m; sourceTree = "<group>"; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		28A0AAE50D9B0CCF005BE974 /* TrainBrain_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrainBrain_Prefix.pch; sourceTree = "<group>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		52113EDC1571684F00CD19DE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		52113EDE1571685900CD19DE /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		52113EE01571686A00CD19DE /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		52113EE21571687900CD19DE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		52113EEC157168AC00CD19DE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		52113EF61571745900CD19DE /* NSAttributedString+Attributes.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+Attributes.h"; path = "OHAttributedLabel/NSAttributedString+Attributes.h"; sourceTree = "<group>"; };
+		52113EF71571745900CD19DE /* NSAttributedString+Attributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Attributes.m"; path = "OHAttributedLabel/NSAttributedString+Attributes.m"; sourceTree = "<group>"; };
+		52113EF81571745900CD19DE /* OHAttributedLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OHAttributedLabel.h; path = OHAttributedLabel/OHAttributedLabel.h; sourceTree = "<group>"; };
+		52113EF91571745900CD19DE /* OHAttributedLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OHAttributedLabel.m; path = OHAttributedLabel/OHAttributedLabel.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TrainBrain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TrainBrain-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A11B344B1521472100A948F3 /* TrainBrain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TrainBrain.entitlements; sourceTree = "<group>"; };
 		A169E4BB102F931800A65E05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -281,7 +290,6 @@
 		A1E848621569BC7F007DF636 /* StopsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopsTableViewController.m; sourceTree = "<group>"; };
 		A1E848631569BC7F007DF636 /* StopTimesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopTimesTableViewController.h; sourceTree = "<group>"; };
 		A1E848641569BC7F007DF636 /* StopTimesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTimesTableViewController.m; sourceTree = "<group>"; };
-		A1FD11C315215BF9002D6E20 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A1FD11D71521682A002D6E20 /* SVSegmentedControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSegmentedControl.h; sourceTree = "<group>"; };
 		A1FD11D81521682A002D6E20 /* SVSegmentedControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVSegmentedControl.m; sourceTree = "<group>"; };
 		A1FD11D91521682A002D6E20 /* SVSegmentedThumb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVSegmentedThumb.h; sourceTree = "<group>"; };
@@ -293,12 +301,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1FD11C415215BF9002D6E20 /* QuartzCore.framework in Frameworks */,
-				A1EB2645152151BE00134440 /* Foundation.framework in Frameworks */,
-				A1EB2646152151C900134440 /* UIKit.framework in Frameworks */,
+				52113EDF1571685900CD19DE /* CoreText.framework in Frameworks */,
+				52113EE31571687900CD19DE /* CoreGraphics.framework in Frameworks */,
 				A1EB2648152151DB00134440 /* CoreLocation.framework in Frameworks */,
+				52113EED157168AC00CD19DE /* Foundation.framework in Frameworks */,
 				A1EB2649152151E800134440 /* MapKit.framework in Frameworks */,
-				A1EB2647152151D200134440 /* CoreGraphics.framework in Frameworks */,
+				52113EE11571686A00CD19DE /* QuartzCore.framework in Frameworks */,
+				52113EDD1571684F00CD19DE /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +317,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				52113EF51571741600CD19DE /* OHAttributedLabel */,
 				A1C3D46A156C8FC8007212F5 /* EGOTableViewPullRefresh */,
 				A1E8485A1569BC7F007DF636 /* Controllers */,
 				A1E848411569BC45007DF636 /* Views */,
@@ -359,14 +369,26 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A1FD11C315215BF9002D6E20 /* QuartzCore.framework */,
+				52113EEC157168AC00CD19DE /* Foundation.framework */,
+				52113EE21571687900CD19DE /* CoreGraphics.framework */,
+				52113EE01571686A00CD19DE /* QuartzCore.framework */,
+				52113EDE1571685900CD19DE /* CoreText.framework */,
+				52113EDC1571684F00CD19DE /* UIKit.framework */,
 				A1B5C4E910A120F500CD3045 /* MapKit.framework */,
 				A169E4BB102F931800A65E05 /* CoreLocation.framework */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-				2892E40F0DC94CBA00A64D0F /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		52113EF51571741600CD19DE /* OHAttributedLabel */ = {
+			isa = PBXGroup;
+			children = (
+				52113EF61571745900CD19DE /* NSAttributedString+Attributes.h */,
+				52113EF71571745900CD19DE /* NSAttributedString+Attributes.m */,
+				52113EF81571745900CD19DE /* OHAttributedLabel.h */,
+				52113EF91571745900CD19DE /* OHAttributedLabel.m */,
+			);
+			name = OHAttributedLabel;
 			sourceTree = "<group>";
 		};
 		A16BA38415685C4C00B8BB55 /* JSON */ = {
@@ -736,6 +758,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52113EFB1571747700CD19DE /* OHAttributedLabel.m in Sources */,
+				52113EFA1571746F00CD19DE /* NSAttributedString+Attributes.m in Sources */,
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* TrainBrainAppDelegate.m in Sources */,
 				A1B56E2E10F968BF00294BEC /* MBProgressHUD.m in Sources */,

@@ -12,14 +12,23 @@
 
 @synthesize countDownTimer     = _countDownTimer;
 @synthesize countDownStartDate = _countDownStartDate;
-@synthesize stopDate           = _stopDate;
+@synthesize stopTime           = _stopTime;
 @synthesize bigDepartureHour, bigDepartureMinute, bigDepartureSeconds;
 @synthesize bigDepartureHourUnit, bigDepartureMinuteUnit, bigDepartureSecondsUnit;
 @synthesize funnySaying, description, formattedTime, price;
 
+- (void) setStopTime: (StopTime*) stopTime {  
+  _stopTime = stopTime;
+
+  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+  [dateFormatter setDateFormat:@"hh:mm a"];
+  self.formattedTime.text = [dateFormatter stringFromDate:[[self stopTime] getStopDate]];
+  self.price.text         = stopTime.price;
+  
+}
+
 - (void) startTimer {
   if([self countDownTimer] == nil){
-    NSLog(@"Start Timer");
     [self setCountDownStartDate:[NSDate date]];
     
     // Create the stop watch timer that fires every 1 s
@@ -31,52 +40,46 @@
   }
 }
 
+#pragma mark -
+#pragma mark Countdown Timer Methods
+
+- (void)updateTimer {
+  NSArray  *departureData = [[self stopTime] getTimeTillDeparture];
+  NSNumber *timeTillDeparture = (NSNumber*) [departureData objectAtIndex:0];
+  NSNumber *hour    = (NSNumber*) [departureData objectAtIndex:1];
+  NSNumber *minute  = (NSNumber*) [departureData objectAtIndex:2];
+  NSNumber *seconds = (NSNumber*) [departureData objectAtIndex:3];
+  
+  if([timeTillDeparture intValue] > 0) {
+    [self setTimerColor:[UIColor whiteColor]];
+  } else {
+    [self setTimerColor:[UIColor redColor]];
+  }
+  
+
+  self.bigDepartureHour.text    = [NSString stringWithFormat:@"%02d", [hour intValue]];
+  self.bigDepartureMinute.text  = [NSString stringWithFormat:@"%02d", [minute intValue]];
+  self.bigDepartureSeconds.text = [NSString stringWithFormat:@"%02d", [seconds intValue]];
+  
+  if ([hour intValue] == 0) {
+    [self layoutTimer:false];
+  } else {
+    [self layoutTimer:true];
+  }
+}
+
+- (void) addShadow:(UILabel*) thisLabel{
+  thisLabel.shadowColor  = [UIColor blackColor];
+  thisLabel.shadowOffset = CGSizeMake(0.0, 2.0);
+}
+
 - (void) stopTimer {
   [[self countDownTimer] invalidate];
   [self setCountDownTimer: nil];
 }
 
-- (void) setStopTime: (StopTime*) stopTime {  
-  //Gives us the current date
-  NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-  NSDateComponents *components = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:[self stopDate]];
-  [components setHour:stopTime.departure_time_hour];
-  [components setMinute:stopTime.departure_time_minute];
-  [components setSecond:0];
-  
-  [self setStopDate:[gregorian dateFromComponents:components]];
-  [gregorian release];
-  
-  NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-  [dateFormatter setDateFormat:@"hh:mm a"];
-  self.formattedTime.text = [dateFormatter stringFromDate:[self stopDate]];
-  self.price.text         = stopTime.price;
-  
-}
-
-- (void)updateTimer {
-  NSDate *currentDate = [NSDate date];
-  NSTimeInterval timeInterval = [[self stopDate] timeIntervalSinceDate:currentDate];
-  NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
-  
-  NSCalendar *calendar = [NSCalendar currentCalendar];
-  [calendar setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-  NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:timerDate];
-  NSInteger hour    = [components hour];
-  NSInteger minute  = [components minute];
-  NSInteger seconds = [components second];
-  
-  self.bigDepartureHour.text    = [NSString stringWithFormat:@"%02d", hour];
-  self.bigDepartureMinute.text  = [NSString stringWithFormat:@"%02d", minute];
-  self.bigDepartureSeconds.text = [NSString stringWithFormat:@"%02d", seconds];
-  
-  if(hour == 0){
-    [self layoutTimer:false];
-  } else {
-    [self layoutTimer:true];
-  }
-  
-}
+#pragma mark -
+#pragma mark Table Methods
 
 - (void) addShadow:(UILabel*) thisLabel{
   thisLabel.shadowColor  = [UIColor blackColor];
@@ -96,6 +99,7 @@
     self.bigDepartureHour    = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:70.0 bold:YES];
     self.bigDepartureMinute  = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:70.0 bold:YES];
     self.bigDepartureSeconds = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:70.0 bold:YES];
+
     self.bigDepartureHourUnit    = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:30.0 bold:YES];
     self.bigDepartureMinuteUnit  = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:30.0 bold:YES];
     self.bigDepartureSecondsUnit = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:30.0 bold:YES];
@@ -133,9 +137,9 @@
     [self.formattedTime release];
     [self.price release];
     
-    self.bigDepartureHour.text    = @"--";
-    self.bigDepartureMinute.text  = @"--";
-    self.bigDepartureSeconds.text = @"--";
+    self.bigDepartureHour.text    = @"00";
+    self.bigDepartureMinute.text  = @"00";
+    self.bigDepartureSeconds.text = @"00";
     
     self.bigDepartureHourUnit.text    = @"h";
     self.bigDepartureMinuteUnit.text  = @"m";
@@ -151,6 +155,22 @@
 
 - (void) setData:(NSDictionary *)dict {
 	self.bigDepartureHour.text = [dict objectForKey:@"title"];
+}
+
+- (void) setTimerColor:(UIColor*) thisColor{
+  [self.bigDepartureHour setTextColor:thisColor];
+  [self.bigDepartureHourUnit setTextColor:thisColor];
+  [self.bigDepartureMinute setTextColor:thisColor];
+  [self.bigDepartureMinuteUnit setTextColor:thisColor];
+  [self.bigDepartureSeconds setTextColor:thisColor];
+  [self.bigDepartureSecondsUnit setTextColor:thisColor];
+  
+  [self.bigDepartureHour setHighlightedTextColor:thisColor];
+  [self.bigDepartureHourUnit setHighlightedTextColor:thisColor];
+  [self.bigDepartureMinute setHighlightedTextColor:thisColor];
+  [self.bigDepartureMinuteUnit setHighlightedTextColor:thisColor];
+  [self.bigDepartureSeconds setHighlightedTextColor:thisColor];
+  [self.bigDepartureSecondsUnit setHighlightedTextColor:thisColor];
 }
 
 - (void) layoutTimer:(BOOL) showHours {
@@ -186,10 +206,18 @@
   if (!self.editing) {
     [self layoutTimer:false];
     
+    /*
+		 Place the label.
+		 place the label whatever the current X is plus 10 pixels from the left
+		 place the label 4 pixels from the top
+		 make the label 200 pixels wide
+		 make the label 20 pixels high
+     */
+    
 		// get the X pixel spot
     CGFloat boundsX = contentRect.origin.x;    
     self.funnySaying.frame   = CGRectMake(boundsX +  20,  98, 200,  20);
-		self.description.frame   = CGRectMake(boundsX +  20, 115, 200,  20);
+    self.description.frame   = CGRectMake(boundsX +  20, 115, 200,  20);
 		self.formattedTime.frame = CGRectMake(boundsX + 250,  95,  80,  20);
 		self.price.frame         = CGRectMake(boundsX + 250, 115,  80,  20);
     
@@ -222,15 +250,25 @@
 	return newLabel;
 }
 
+#pragma mark -
+#pragma mark Cleanup Methods
+
 - (void)dealloc {
 	[bigDepartureHour dealloc];
   [bigDepartureMinute dealloc];
   [bigDepartureSeconds dealloc];
-  // dealloc the "unit" variables too?
+  [bigDepartureHourUnit dealloc];
+  [bigDepartureMinuteUnit dealloc];
+  [bigDepartureSecondsUnit dealloc];
   [funnySaying dealloc];
   [description dealloc];
   [formattedTime dealloc];
   [price dealloc];
+  
+  [_countDownTimer dealloc];
+  [_countDownStartDate dealloc];
+  [_stopTime dealloc];
+  
 	[super dealloc];
 }
 
