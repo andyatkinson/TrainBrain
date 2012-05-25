@@ -60,8 +60,11 @@
   if([[self stopDate] compare: currentDate] == NSOrderedDescending) {
     // if stop is in the future
     timeInterval = [[self stopDate] timeIntervalSinceDate:currentDate];
+    [self setTimerColor:[UIColor whiteColor]];
   } else {
-    timeInterval = [currentDate timeIntervalSinceDate:[self stopDate]];
+    //timeInterval = [currentDate timeIntervalSinceDate:[self stopDate]];
+    timeInterval = 0;
+    [self setTimerColor:[UIColor redColor]];
   }
   
   NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
@@ -158,6 +161,22 @@
 
 - (void) setData:(NSDictionary *)dict {
 	self.bigDepartureHour.text = [dict objectForKey:@"title"];
+}
+
+- (void) setTimerColor:(UIColor*) thisColor{
+  [self.bigDepartureHour setTextColor:thisColor];
+  [self.bigDepartureHourUnit setTextColor:thisColor];
+  [self.bigDepartureMinute setTextColor:thisColor];
+  [self.bigDepartureMinuteUnit setTextColor:thisColor];
+  [self.bigDepartureSeconds setTextColor:thisColor];
+  [self.bigDepartureSecondsUnit setTextColor:thisColor];
+  
+  [self.bigDepartureHour setHighlightedTextColor:thisColor];
+  [self.bigDepartureHourUnit setHighlightedTextColor:thisColor];
+  [self.bigDepartureMinute setHighlightedTextColor:thisColor];
+  [self.bigDepartureMinuteUnit setHighlightedTextColor:thisColor];
+  [self.bigDepartureSeconds setHighlightedTextColor:thisColor];
+  [self.bigDepartureSecondsUnit setHighlightedTextColor:thisColor];
 }
 
 - (void) layoutTimer:(BOOL) showHours {
