@@ -189,7 +189,7 @@
   CGRect contentRect = self.contentView.bounds;
   CGFloat boundsX    = contentRect.origin.x;
   
-  if(showHours){
+  if (showHours) {
     self.bigDepartureHour.frame        = CGRectMake(boundsX +  10,   0, 300, 100);
     self.bigDepartureHourUnit.frame    = CGRectMake(boundsX +  88,  14, 300, 100);
     self.bigDepartureMinute.frame      = CGRectMake(boundsX + 108,   0, 300, 100);

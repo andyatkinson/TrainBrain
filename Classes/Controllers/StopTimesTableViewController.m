@@ -56,6 +56,11 @@
     [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSArray *stops) {
       self.stop_times = stops;
 
+      if ([self.stop_times count] > 0) {
+        StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:0];
+        [[self bigCell] setStopTime:stop_time];
+      }
+        
       [self.tableView reloadData];
       
       NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
