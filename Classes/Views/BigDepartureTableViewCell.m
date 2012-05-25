@@ -241,6 +241,11 @@
   [description dealloc];
   [formattedTime dealloc];
   [price dealloc];
+  
+  [_countDownTimer dealloc];
+  [_countDownStartDate dealloc];
+  [_stopDate dealloc];
+  
 	[super dealloc];
 }
 

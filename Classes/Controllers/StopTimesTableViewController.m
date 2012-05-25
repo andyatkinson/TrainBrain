@@ -187,7 +187,7 @@
       
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
       
-      if(bigCell == NULL){
+      if (bigCell == NULL){
         //BigDepartureTableViewCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];    
         [self setBigCell:[[BigDepartureTableViewCell alloc] init]];
         
