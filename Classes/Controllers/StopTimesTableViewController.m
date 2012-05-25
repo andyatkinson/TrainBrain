@@ -27,6 +27,9 @@
   return self;
 }
 
+-(void)hudWasHidden{
+}
+
 - (void)loadStopTimes {
   NSDate *now = [NSDate date];
   NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -75,9 +78,6 @@
   }
   
   
-}
-
--(void)hudWasHidden{
 }
 
 - (void)viewDidLoad
@@ -201,7 +201,6 @@
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
       
       if (bigCell == NULL) {
-        //BigDepartureTableViewCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];    
         [self setBigCell:[[BigDepartureTableViewCell alloc] init]];
         
         [[self bigCell] setStopTime:stop_time];
@@ -216,12 +215,13 @@
     } else if (indexPath.section == 1) {
       
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
-      StopTimeCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];    
-      cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      StopTimeCell *cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
       
       cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];
+      
       cell.relativeTimeHour.text = [NSString stringWithFormat:@"%dh", stop_time.departure_time_hour];
       cell.relativeTimeMinute.text = [NSString stringWithFormat:@"%dm", stop_time.departure_time_minute];
+      
       cell.scheduleTime.text = [stop_time.departure_time hourMinuteFormatted];
       cell.price.text = stop_time.price;
       

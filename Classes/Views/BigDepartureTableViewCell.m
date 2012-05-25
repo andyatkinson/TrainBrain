@@ -18,16 +18,8 @@
 @synthesize funnySaying, description, formattedTime, price;
 
 - (void) setStopTime: (StopTime*) stopTime {  
-  //Gives us the current date
-  NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-  NSDateComponents *components = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:[NSDate date]];
-  [components setHour:stopTime.departure_time_hour];
-  [components setMinute:stopTime.departure_time_minute];
-  [components setSecond:0];
-  
-  [self setStopDate:[gregorian dateFromComponents:components]];
-  [gregorian release];
-  
+  [self setStopDate:[stopTime getStopDate]];
+
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"hh:mm a"];
   self.formattedTime.text = [dateFormatter stringFromDate:[self stopDate]];

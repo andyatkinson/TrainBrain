@@ -10,7 +10,7 @@
 #import "MBProgressHUD.h"
 #import "BigDepartureTableViewCell.h"
 
-@interface StopTimesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource> {
+@interface StopTimesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate> {
   UITableView *tableView;
   NSMutableArray *data;
   Stop *selectedStop;
