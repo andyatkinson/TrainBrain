@@ -19,7 +19,6 @@
 
 - (void) startTimer {
   if([self countDownTimer] == nil){
-    NSLog(@"Start Timer");
     [self setCountDownStartDate:[NSDate date]];
     
     // Create the stop watch timer that fires every 1 s
@@ -39,7 +38,7 @@
 - (void) setStopTime: (StopTime*) stopTime {  
   //Gives us the current date
   NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-  NSDateComponents *components = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:[self stopDate]];
+  NSDateComponents *components = [gregorian components:NSYearCalendarUnit | NSMonthCalendarUnit |  NSDayCalendarUnit fromDate:[NSDate date]];
   [components setHour:stopTime.departure_time_hour];
   [components setMinute:stopTime.departure_time_minute];
   [components setSecond:0];
@@ -56,7 +55,15 @@
 
 - (void)updateTimer {
   NSDate *currentDate = [NSDate date];
-  NSTimeInterval timeInterval = [[self stopDate] timeIntervalSinceDate:currentDate];
+  
+  NSTimeInterval timeInterval;
+  if([[self stopDate] compare: currentDate] == NSOrderedDescending) {
+    // if stop is in the future
+    timeInterval = [[self stopDate] timeIntervalSinceDate:currentDate];
+  } else {
+    timeInterval = [currentDate timeIntervalSinceDate:[self stopDate]];
+  }
+  
   NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
   
   NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -75,7 +82,7 @@
   } else {
     [self layoutTimer:true];
   }
-  
+   
 }
 
 - (void) addShadow:(UILabel*) thisLabel{
@@ -225,6 +232,11 @@
 - (void)dealloc {
 	[bigDepartureHour dealloc];
   [bigDepartureMinute dealloc];
+  [bigDepartureSeconds dealloc];
+  [bigDepartureHourUnit dealloc];
+  [bigDepartureMinuteUnit dealloc];
+  [bigDepartureSecondsUnit dealloc];
+  
   [funnySaying dealloc];
   [description dealloc];
   [formattedTime dealloc];
