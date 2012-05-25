@@ -12,17 +12,17 @@
 
 @synthesize countDownTimer     = _countDownTimer;
 @synthesize countDownStartDate = _countDownStartDate;
-@synthesize stopDate           = _stopDate;
+@synthesize stopTime           = _stopTime;
 @synthesize bigDepartureHour, bigDepartureMinute, bigDepartureSeconds;
 @synthesize bigDepartureHourUnit, bigDepartureMinuteUnit, bigDepartureSecondsUnit;
 @synthesize funnySaying, description, formattedTime, price;
 
 - (void) setStopTime: (StopTime*) stopTime {  
-  [self setStopDate:[stopTime getStopDate]];
+  _stopTime = stopTime;
 
   NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
   [dateFormatter setDateFormat:@"hh:mm a"];
-  self.formattedTime.text = [dateFormatter stringFromDate:[self stopDate]];
+  self.formattedTime.text = [dateFormatter stringFromDate:[[self stopTime] getStopDate]];
   self.price.text         = stopTime.price;
   
 }
@@ -44,33 +44,24 @@
 #pragma mark Countdown Timer Methods
 
 - (void)updateTimer {
-  NSDate *currentDate = [NSDate date];
+  NSArray *departureData = [[self stopTime] getTimeTillDeparture];
   
-  NSTimeInterval timeInterval;
-  if([[self stopDate] compare: currentDate] == NSOrderedDescending) {
-    // if stop is in the future
-    timeInterval = [[self stopDate] timeIntervalSinceDate:currentDate];
+  NSNumber *timeTillDeparture = (NSNumber*) [departureData objectAtIndex:0];
+  NSNumber *hour    = (NSNumber*) [departureData objectAtIndex:1];
+  NSNumber *minute  = (NSNumber*) [departureData objectAtIndex:2];
+  NSNumber *seconds = (NSNumber*) [departureData objectAtIndex:3];
+  
+  if([timeTillDeparture intValue] > 0) {
     [self setTimerColor:[UIColor whiteColor]];
   } else {
-    //timeInterval = [currentDate timeIntervalSinceDate:[self stopDate]];
-    timeInterval = 0;
     [self setTimerColor:[UIColor redColor]];
   }
   
-  NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+  self.bigDepartureHour.text    = [NSString stringWithFormat:@"%02d", [hour intValue]];
+  self.bigDepartureMinute.text  = [NSString stringWithFormat:@"%02d", [minute intValue]];
+  self.bigDepartureSeconds.text = [NSString stringWithFormat:@"%02d", [seconds intValue]];
   
-  NSCalendar *calendar = [NSCalendar currentCalendar];
-  [calendar setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
-  NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:timerDate];
-  NSInteger hour    = [components hour];
-  NSInteger minute  = [components minute];
-  NSInteger seconds = [components second];
-  
-  self.bigDepartureHour.text    = [NSString stringWithFormat:@"%02d", hour];
-  self.bigDepartureMinute.text  = [NSString stringWithFormat:@"%02d", minute];
-  self.bigDepartureSeconds.text = [NSString stringWithFormat:@"%02d", seconds];
-  
-  if(hour == 0){
+  if([hour intValue] == 0){
     [self layoutTimer:false];
   } else {
     [self layoutTimer:true];
@@ -264,7 +255,7 @@
   
   [_countDownTimer dealloc];
   [_countDownStartDate dealloc];
-  [_stopDate dealloc];
+  [_stopTime dealloc];
   
 	[super dealloc];
 }

@@ -22,12 +22,12 @@
   
   NSTimer  *_countDownTimer; 
   NSDate   *_countDownStartDate; 
-  NSDate   *_stopDate; 
+  StopTime *_stopTime; 
 }
 
 @property (nonatomic, retain) NSTimer   *countDownTimer;
 @property (nonatomic, retain) NSDate    *countDownStartDate;
-@property (nonatomic, retain) NSDate    *stopDate;
+@property (nonatomic, retain) StopTime  *stopTime;
 @property (nonatomic, retain) UILabel   *bigDepartureHour;
 @property (nonatomic, retain) UILabel   *bigDepartureMinute;
 @property (nonatomic, retain) UILabel   *bigDepartureSeconds;

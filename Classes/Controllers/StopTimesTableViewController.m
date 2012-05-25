@@ -219,6 +219,7 @@
       
       cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];
       
+      //TODO: Calc time till departure
       cell.relativeTimeHour.text = [NSString stringWithFormat:@"%dh", stop_time.departure_time_hour];
       cell.relativeTimeMinute.text = [NSString stringWithFormat:@"%dm", stop_time.departure_time_minute];
       

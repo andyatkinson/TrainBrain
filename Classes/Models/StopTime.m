@@ -47,6 +47,34 @@
   return stopDate;
 }
 
+- (NSArray*) getTimeTillDeparture {
+  NSDate *currentDate = [NSDate date];
+  NSDate *stopDate    = [self getStopDate];
+  
+  NSTimeInterval timeInterval;
+  if([stopDate compare: currentDate] == NSOrderedDescending) {
+    timeInterval = [stopDate timeIntervalSinceDate:currentDate];
+  } else {
+    timeInterval = 0;
+  }
+  
+  NSDate *timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+
+  NSCalendar *calendar = [NSCalendar currentCalendar];
+  [calendar setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
+  NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:timerDate];
+  NSInteger hour    = [components hour];
+  NSInteger minute  = [components minute];
+  NSInteger seconds = [components second];
+  
+  NSArray *timeArray = [NSArray arrayWithObjects:[NSNumber numberWithInteger:timeInterval],
+                                                 [NSNumber numberWithInteger:hour],
+                                                 [NSNumber numberWithInteger:minute],
+                                                 [NSNumber numberWithInteger:seconds],
+                                                 nil];
+  return timeArray;
+}
+
 
 + (void)stopTimesWithURLString:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block {
     NSDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
