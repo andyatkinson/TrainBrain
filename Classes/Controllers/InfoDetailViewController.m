@@ -10,7 +10,7 @@
 
 @implementation InfoDetailViewController
 
-@synthesize infos, webView;
+@synthesize infos, webView, selectedRow;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -21,15 +21,19 @@
     return self;
 }
 
-- (void)loadInfo {
-  [Info infoDetailURLEndpoint:@"/info/hiawatha" parameters:nil block:^(NSArray *data) {
+- (void)loadInfo:(NSString *)endpoint {
+  if (![endpoint isEqualToString:@"hiawatha"] && ![endpoint isEqualToString:@"northstar"]) {
+    NSLog(@"invalid data, caller should only ask for hiawatha or northstar");
     
+  } else {
     
-    self.infos = data;
+    NSString *url = [NSString stringWithFormat:@"/info/%@", endpoint];
+    [Info infoDetailURLEndpoint:url parameters:nil block:^(NSArray *data) {
+      self.infos = data;
+      [self loadHTML];
+    }];
     
-    [self loadHTML];
-    
-  }];
+  }
 }
 
 -(void) loadHTML {  
@@ -47,7 +51,7 @@
   
   self.infos = [[NSArray alloc] init];
   
-  [self loadInfo];
+  [self loadInfo:self.selectedRow];
   
   self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 260)];
   self.webView.delegate = self;
@@ -64,6 +68,10 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(void)dealloc {
+  [super dealloc];
 }
 
 @end
