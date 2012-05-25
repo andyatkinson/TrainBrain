@@ -44,6 +44,7 @@
 
 - (void) startTimer;
 - (void) setStopTime: (StopTime*) stopTime;
+- (void) layoutTimer:(BOOL) showHours;
 
 // gets the data from another class
 -(void)setData:(NSDictionary *)dict;

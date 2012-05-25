@@ -69,6 +69,13 @@
   self.bigDepartureHour.text    = [NSString stringWithFormat:@"%02d", hour];
   self.bigDepartureMinute.text  = [NSString stringWithFormat:@"%02d", minute];
   self.bigDepartureSeconds.text = [NSString stringWithFormat:@"%02d", seconds];
+  
+  if(hour == 0){
+    [self layoutTimer:false];
+  } else {
+    [self layoutTimer:true];
+  }
+  
 }
 
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
@@ -81,9 +88,9 @@
     [imgView setUserInteractionEnabled:NO];	
     self.backgroundView = imgView;
     
-    self.bigDepartureHour    = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
-    self.bigDepartureMinute  = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
-    self.bigDepartureSeconds = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:60.0 bold:YES];
+    self.bigDepartureHour    = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:70.0 bold:YES];
+    self.bigDepartureMinute  = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:70.0 bold:YES];
+    self.bigDepartureSeconds = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:70.0 bold:YES];
     
     self.bigDepartureHourUnit    = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:30.0 bold:YES];
     self.bigDepartureMinuteUnit  = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:30.0 bold:YES];
@@ -135,6 +142,28 @@
 	self.bigDepartureHour.text = [dict objectForKey:@"title"];
 }
 
+- (void) layoutTimer:(BOOL) showHours {
+  CGRect contentRect = self.contentView.bounds;
+  CGFloat boundsX    = contentRect.origin.x;
+  
+  if(showHours){
+    self.bigDepartureHour.frame        = CGRectMake(boundsX +  10,   0, 300, 100);
+    self.bigDepartureHourUnit.frame    = CGRectMake(boundsX +  88,  14, 300, 100);
+    self.bigDepartureMinute.frame      = CGRectMake(boundsX + 108,   0, 300, 100);
+    self.bigDepartureMinuteUnit.frame  = CGRectMake(boundsX + 185,  14, 300, 100);
+    self.bigDepartureSeconds.frame     = CGRectMake(boundsX + 214,   0, 300, 100);
+    self.bigDepartureSecondsUnit.frame = CGRectMake(boundsX + 290,  14, 300, 100);
+  } else {
+    self.bigDepartureHour.frame        = CGRectMake(boundsX - 100,   0, 300, 100);
+    self.bigDepartureHourUnit.frame    = CGRectMake(boundsX - 100,  14, 300, 100);
+    self.bigDepartureMinute.frame      = CGRectMake(boundsX +  70,   0, 300, 100);
+    self.bigDepartureMinuteUnit.frame  = CGRectMake(boundsX + 148,  14, 300, 100);
+    self.bigDepartureSeconds.frame     = CGRectMake(boundsX + 180,   0, 300, 100);
+    self.bigDepartureSecondsUnit.frame = CGRectMake(boundsX + 258,  14, 300, 100);
+  }
+  
+}
+
 - (void)layoutSubviews {
   
   [super layoutSubviews];
@@ -144,29 +173,14 @@
   
 	// In this example we will never be editing, but this illustrates the appropriate pattern
   if (!self.editing) {
+    [self layoutTimer:false];
     
 		// get the X pixel spot
-    CGFloat boundsX = contentRect.origin.x;
-    
-    /*
-		 Place the label.
-		 place the label whatever the current X is plus 10 pixels from the left
-		 place the label 4 pixels from the top
-		 make the label 200 pixels wide
-		 make the label 20 pixels high
-     */
-
-		self.bigDepartureHour.frame        = CGRectMake(boundsX +  10,   0, 300, 100);
-    self.bigDepartureHourUnit.frame    = CGRectMake(boundsX +  80,  10, 300, 100);
-		self.bigDepartureMinute.frame      = CGRectMake(boundsX + 110,   0, 300, 100);
-    self.bigDepartureMinuteUnit.frame  = CGRectMake(boundsX + 180,  10, 300, 100);
-		self.bigDepartureSeconds.frame     = CGRectMake(boundsX + 220,   0, 300, 100);
-    self.bigDepartureSecondsUnit.frame = CGRectMake(boundsX + 290,  10, 300, 100);
-    
-    self.funnySaying.frame             = CGRectMake(boundsX +  20,  98, 200,  20);
-		self.description.frame             = CGRectMake(boundsX +  20, 115, 200,  20);
-		self.formattedTime.frame           = CGRectMake(boundsX + 250,  95,  80,  20);
-		self.price.frame                   = CGRectMake(boundsX + 250, 115,  80,  20);
+    CGFloat boundsX = contentRect.origin.x;    
+    self.funnySaying.frame   = CGRectMake(boundsX +  20,  98, 200,  20);
+		self.description.frame   = CGRectMake(boundsX +  20, 115, 200,  20);
+		self.formattedTime.frame = CGRectMake(boundsX + 250,  95,  80,  20);
+		self.price.frame         = CGRectMake(boundsX + 250, 115,  80,  20);
     
 	}
 }
