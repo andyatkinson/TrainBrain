@@ -78,6 +78,11 @@
   
 }
 
+- (void) addShadow:(UILabel*) thisLabel{
+  thisLabel.shadowColor  = [UIColor blackColor];
+  thisLabel.shadowOffset = CGSizeMake(0.0, 2.0);
+}
+
 - (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
     UIView *contentView = self.contentView;    
@@ -91,10 +96,16 @@
     self.bigDepartureHour    = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:70.0 bold:YES];
     self.bigDepartureMinute  = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:70.0 bold:YES];
     self.bigDepartureSeconds = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:70.0 bold:YES];
-    
     self.bigDepartureHourUnit    = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:30.0 bold:YES];
     self.bigDepartureMinuteUnit  = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:30.0 bold:YES];
     self.bigDepartureSecondsUnit = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:30.0 bold:YES];
+
+    [self addShadow:self.bigDepartureHour];
+    [self addShadow:self.bigDepartureMinute];
+    [self addShadow:self.bigDepartureSeconds];
+    [self addShadow:self.bigDepartureHourUnit];
+    [self addShadow:self.bigDepartureMinuteUnit];
+    [self addShadow:self.bigDepartureSecondsUnit];
     
     self.funnySaying = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:14.0 bold:YES];
     self.description = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:YES];
@@ -156,10 +167,10 @@
   } else {
     self.bigDepartureHour.frame        = CGRectMake(boundsX - 100,   0, 300, 100);
     self.bigDepartureHourUnit.frame    = CGRectMake(boundsX - 100,  14, 300, 100);
-    self.bigDepartureMinute.frame      = CGRectMake(boundsX +  70,   0, 300, 100);
-    self.bigDepartureMinuteUnit.frame  = CGRectMake(boundsX + 148,  14, 300, 100);
-    self.bigDepartureSeconds.frame     = CGRectMake(boundsX + 180,   0, 300, 100);
-    self.bigDepartureSecondsUnit.frame = CGRectMake(boundsX + 258,  14, 300, 100);
+    self.bigDepartureMinute.frame      = CGRectMake(boundsX +  40,   0, 300, 100);
+    self.bigDepartureMinuteUnit.frame  = CGRectMake(boundsX + 118,  14, 300, 100);
+    self.bigDepartureSeconds.frame     = CGRectMake(boundsX + 154,   0, 300, 100);
+    self.bigDepartureSecondsUnit.frame = CGRectMake(boundsX + 232,  14, 300, 100);
   }
   
 }
