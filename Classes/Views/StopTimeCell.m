@@ -20,8 +20,8 @@
     self.backgroundView = [[UIImageView alloc] initWithImage:bgImg];
     
     self.icon = [[ UIImageView alloc ] init];
-    self.relativeTimeHour = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:22.0 bold:YES];
-    self.relativeTimeMinute = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:22.0 bold:YES];
+    self.relativeTimeHour = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:18.0 bold:YES];
+    self.relativeTimeMinute = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:18.0 bold:YES];
     self.scheduleTime = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:18.0 bold:NO];
     self.price = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:18.0 bold:NO];
     
@@ -54,7 +54,6 @@
     
 		// get the X pixel spot
     CGFloat boundsX = contentRect.origin.x;
-		CGRect frame;
     
     /*
 		 Place the label.
@@ -63,21 +62,11 @@
 		 make the label 200 pixels wide
 		 make the label 20 pixels high
      */
-    frame = CGRectMake(boundsX + 10, 18, 20, 20);
-    self.icon.frame = frame;
-    
-		frame = CGRectMake(boundsX + 40, 12, 80, 30);
-		self.relativeTimeHour.frame = frame;
-    
-    frame = CGRectMake(boundsX + 80, 12, 80, 30);
-		self.relativeTimeMinute.frame = frame;
-    
-    frame = CGRectMake(boundsX + 140, 5, 80, 50);
-    self.scheduleTime.frame = frame;
-    
-    frame = CGRectMake(boundsX + 239, 5, 50, 50);
-    self.price.frame = frame;
-
+    self.icon.frame               = CGRectMake(boundsX +  10, 18, 20, 20);
+		self.relativeTimeHour.frame   = CGRectMake(boundsX +  40, 15, 80, 30);
+		self.relativeTimeMinute.frame = CGRectMake(boundsX +  65, 15, 80, 30);
+    self.scheduleTime.frame       = CGRectMake(boundsX + 140,  5, 80, 50);
+    self.price.frame              = CGRectMake(boundsX + 239,  5, 50, 50);
     
 	}
 }

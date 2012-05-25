@@ -30,6 +30,10 @@
 -(void)hudWasHidden{
 }
 
+- (void) refeshTable{
+  [self.tableView reloadData];
+}
+
 - (void)loadStopTimes {
   NSDate *now = [NSDate date];
   NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -113,7 +117,7 @@
   
   [self setRefreshTimer: [NSTimer scheduledTimerWithTimeInterval:60.0
                                                           target:self
-                                                        selector:@selector(loadStopTimes)
+                                                        selector:@selector(refeshTable)
                                                         userInfo:nil
                                                          repeats:YES]];
     
@@ -219,9 +223,12 @@
       
       cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];
       
-      //TODO: Calc time till departure
-      cell.relativeTimeHour.text = [NSString stringWithFormat:@"%dh", stop_time.departure_time_hour];
-      cell.relativeTimeMinute.text = [NSString stringWithFormat:@"%dm", stop_time.departure_time_minute];
+      NSArray  *departureData = [stop_time getTimeTillDeparture];
+      NSNumber *hour    = (NSNumber*) [departureData objectAtIndex:1];
+      NSNumber *minute  = (NSNumber*) [departureData objectAtIndex:2];
+      
+      cell.relativeTimeHour.text = [NSString stringWithFormat:@"%dh", [hour intValue]];
+      cell.relativeTimeMinute.text = [NSString stringWithFormat:@"%02dm", [minute intValue]];
       
       cell.scheduleTime.text = [stop_time.departure_time hourMinuteFormatted];
       cell.price.text = stop_time.price;

@@ -44,8 +44,7 @@
 #pragma mark Countdown Timer Methods
 
 - (void)updateTimer {
-  NSArray *departureData = [[self stopTime] getTimeTillDeparture];
-  
+  NSArray  *departureData = [[self stopTime] getTimeTillDeparture];
   NSNumber *timeTillDeparture = (NSNumber*) [departureData objectAtIndex:0];
   NSNumber *hour    = (NSNumber*) [departureData objectAtIndex:1];
   NSNumber *minute  = (NSNumber*) [departureData objectAtIndex:2];
