@@ -6,10 +6,37 @@
 //
 
 #import "StopTimeCell.h"
+#import "StopTime.h"
+#import "OHAttributedLabel.h"
+#import "NSAttributedString+Attributes.h"
+#import "NSString+BeetleFight.h"
 
 @implementation StopTimeCell
 
-@synthesize relativeTimeHour, relativeTimeMinute, scheduleTime, price, icon;
+@synthesize relativeTime, scheduleTime, price, icon;
+
+- (void) setStopTime:(StopTime*) stopTime {
+  NSArray  *departureData = [stopTime getTimeTillDeparture];
+  NSNumber *hour    = (NSNumber*) [departureData objectAtIndex:1];
+  NSNumber *minute  = (NSNumber*) [departureData objectAtIndex:2];
+  NSString *relativeString = [NSString stringWithFormat:@"%dh %02dm", [hour intValue], [minute intValue]];
+  
+  NSMutableAttributedString * string = [[NSMutableAttributedString alloc] 
+                                        initWithString:relativeString];
+  
+  [string setTextColor:self.relativeTime.textColor];
+  [string setFont:self.relativeTime.font];
+  
+  UIFont *smallFont = [UIFont boldSystemFontOfSize:15.0]; 
+  [string setFont:smallFont range:[relativeString rangeOfString:@"h"]];
+  [string setFont:smallFont range:[relativeString rangeOfString:@"m"]];
+  
+  
+  
+  self.relativeTime.attributedText = string;
+  self.scheduleTime.text = [stopTime.departure_time hourMinuteFormatted];
+  self.price.text = [stopTime price];
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -20,21 +47,18 @@
     self.backgroundView = [[UIImageView alloc] initWithImage:bgImg];
     
     self.icon = [[ UIImageView alloc ] init];
-    self.relativeTimeHour = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:18.0 bold:YES];
-    self.relativeTimeMinute = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:18.0 bold:YES];
-    self.scheduleTime = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:18.0 bold:NO];
-    self.price = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:18.0 bold:NO];
+    self.relativeTime = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:28.0 bold:YES];
+    self.scheduleTime = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:15.0 bold:NO];
+    self.price = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:15.0 bold:NO];
     
     
     [contentView addSubview:self.icon];
-		[contentView addSubview:self.relativeTimeHour];
-    [contentView addSubview:self.relativeTimeMinute];
+		[contentView addSubview:self.relativeTime];
     [contentView addSubview:self.scheduleTime];
     [contentView addSubview:self.price];
     
 		[self.icon release];
-    [self.relativeTimeHour release];
-    [self.relativeTimeMinute release];
+    [self.relativeTime release];
     [self.scheduleTime release];
     [self.price release];
   }
@@ -62,16 +86,15 @@
 		 make the label 200 pixels wide
 		 make the label 20 pixels high
      */
-    self.icon.frame               = CGRectMake(boundsX +  10, 18, 20, 20);
-		self.relativeTimeHour.frame   = CGRectMake(boundsX +  40, 15, 80, 30);
-		self.relativeTimeMinute.frame = CGRectMake(boundsX +  65, 15, 80, 30);
-    self.scheduleTime.frame       = CGRectMake(boundsX + 140,  5, 80, 50);
-    self.price.frame              = CGRectMake(boundsX + 239,  5, 50, 50);
+    self.icon.frame          = CGRectMake(boundsX +  10, 18, 20,  20);
+		self.relativeTime.frame  = CGRectMake(boundsX +  40, 12, 200, 50);
+    self.scheduleTime.frame  = CGRectMake(boundsX + 185, 23, 80,  50);
+    self.price.frame         = CGRectMake(boundsX + 270, 23, 50,  50);
     
 	}
 }
 
-- (UILabel *)newLabelWithPrimaryColor:(UIColor *)primaryColor selectedColor:(UIColor *)selectedColor fontSize:(CGFloat)fontSize bold:(BOOL)bold
+- (OHAttributedLabel *)newLabelWithPrimaryColor:(UIColor *)primaryColor selectedColor:(UIColor *)selectedColor fontSize:(CGFloat)fontSize bold:(BOOL)bold
 {
 	/*
 	 Create and configure a label.
@@ -87,13 +110,13 @@
   /*
 	 Views are drawn most efficiently when they are opaque and do not have a clear background, so set these defaults.  To show selection properly, however, the views need to be transparent (so that the selection color shows through).  This is handled in setSelected:animated:.
 	 */
-	UILabel *newLabel = [[UILabel alloc] initWithFrame:CGRectZero];
+	OHAttributedLabel *newLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
 	newLabel.backgroundColor = [UIColor clearColor];
 	newLabel.opaque = YES;
 	newLabel.textColor = primaryColor;
 	newLabel.highlightedTextColor = selectedColor;
 	newLabel.font = font;
-  newLabel.lineBreakMode = UILineBreakModeTailTruncation;
+  //newLabel.lineBreakMode = UILineBreakModeTailTruncation;
   
 	return newLabel;
 }

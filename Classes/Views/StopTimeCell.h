@@ -6,22 +6,23 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "OHAttributedLabel.h"
+#import "StopTime.h"
 
 @interface StopTimeCell : UITableViewCell {
-  UILabel *relativeTimeHour;
-  UILabel *relativeTimeMinute;
-  UILabel *scheduleTime;
-  UILabel *price;
+  OHAttributedLabel *relativeTime;
+  OHAttributedLabel *scheduleTime;
+  OHAttributedLabel *price;
   UIImageView *icon;
 }
 
-@property (nonatomic, retain) UILabel *relativeTimeHour;
-@property (nonatomic, retain) UILabel *relativeTimeMinute;
-@property (nonatomic, retain) UILabel *scheduleTime;
-@property (nonatomic, retain) UILabel *price;
+@property (nonatomic, retain) OHAttributedLabel *relativeTime;
+@property (nonatomic, retain) OHAttributedLabel *scheduleTime;
+@property (nonatomic, retain) OHAttributedLabel *price;
 @property (nonatomic, retain) UIImageView *icon;
 
 // internal function to ease setting up label text
--(UILabel *)newLabelWithPrimaryColor:(UIColor *)primaryColor selectedColor:(UIColor *)selectedColor fontSize:(CGFloat)fontSize bold:(BOOL)bold;
+-(OHAttributedLabel *)newLabelWithPrimaryColor:(UIColor *)primaryColor selectedColor:(UIColor *)selectedColor fontSize:(CGFloat)fontSize bold:(BOOL)bold;
+- (void) setStopTime:(StopTime*) stopTime;
 
 @end

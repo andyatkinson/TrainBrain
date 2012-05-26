@@ -230,18 +230,9 @@
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
       StopTimeCell *cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
       
-      cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];
-      
-      NSArray  *departureData = [stop_time getTimeTillDeparture];
-      NSNumber *hour    = (NSNumber*) [departureData objectAtIndex:1];
-      NSNumber *minute  = (NSNumber*) [departureData objectAtIndex:2];
-      
-      cell.relativeTimeHour.text = [NSString stringWithFormat:@"%dh", [hour intValue]];
-      cell.relativeTimeMinute.text = [NSString stringWithFormat:@"%02dm", [minute intValue]];
-      
-      cell.scheduleTime.text = [stop_time.departure_time hourMinuteFormatted];
-      cell.price.text = stop_time.price;
-      
+      cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];      
+      [cell setStopTime:stop_time];
+
       return cell;
       
     }
