@@ -31,7 +31,16 @@
 }
 
 - (void) refeshTable{
-  [self.tableView reloadData];
+  
+  StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:0];
+  NSArray  *departureData = [stop_time getTimeTillDeparture];
+  NSNumber *timeTillDeparture = (NSNumber*) [departureData objectAtIndex:0];
+  if ([timeTillDeparture intValue] == 0) {
+    [self loadStopTimes];
+  } else {
+    [self.tableView reloadData];
+  }
+
 }
 
 - (void)loadStopTimes {
