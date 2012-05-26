@@ -131,9 +131,9 @@
     [self.formattedTime release];
     [self.price release];
     
-    self.bigDepartureHour.text    = @"--";
-    self.bigDepartureMinute.text  = @"--";
-    self.bigDepartureSeconds.text = @"--";
+    self.bigDepartureHour.text    = @"00";
+    self.bigDepartureMinute.text  = @"00";
+    self.bigDepartureSeconds.text = @"00";
     
     self.bigDepartureHourUnit.text    = @"h";
     self.bigDepartureMinuteUnit.text  = @"m";

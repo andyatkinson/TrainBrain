@@ -17,7 +17,7 @@
   NSArray *stop_times;
   MBProgressHUD *HUD;
   BigDepartureTableViewCell *bigCell;
-  NSTimer  *_refreshTimer; 
+  NSTimer  *_refreshTimer;
 }
 
 @property (nonatomic, retain) UITableView *tableView;
