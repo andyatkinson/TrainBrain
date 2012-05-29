@@ -170,14 +170,13 @@
     }
   
     Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
-  
     cell.title.text = stop.stop_name;
     cell.description.text = stop.stop_desc;
   
     double dist = [self.myLocation distanceFromLocation:stop.location] / 1609.344;
     cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
-  
-    //cell.icon.image = [UIImage imageNamed:stop.icon_path];
+
+    cell.icon.image = [UIImage imageNamed:stop.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
   
     return cell;
