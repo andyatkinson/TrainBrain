@@ -233,12 +233,13 @@
       
       if (bigCell == NULL) {
         [self setBigCell:[[BigDepartureTableViewCell alloc] init]];
-        
+
         [[self bigCell] setStopTime:stop_time];
         [self bigCell].funnySaying.text = [FunnyPhrase rand];
         [self bigCell].description.text = @"Next estimated train departure:";
         
         [[self bigCell] startTimer];
+        self.bigCell.selectionStyle = UITableViewCellSelectionStyleNone;
       }
       return [self bigCell];
       

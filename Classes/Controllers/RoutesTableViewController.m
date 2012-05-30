@@ -155,10 +155,8 @@
   headerLabel.font = [UIFont boldSystemFontOfSize:14.0];
   headerLabel.shadowColor = [UIColor whiteColor];
   headerLabel.shadowOffset = CGSizeMake(0,1);
-  
   headerLabel.backgroundColor = [UIColor clearColor];
   [headerView addSubview:headerLabel];
-  
   headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"header_bar_default.png"]];
   
   return headerView;

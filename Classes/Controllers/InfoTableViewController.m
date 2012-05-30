@@ -36,23 +36,11 @@
   
   UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 20)];
   headerLabel.textAlignment = UITextAlignmentLeft;
-
-  // FIXME, how do I get this from the delegate method instead?
-  if (section == 0) {
-    headerLabel.text = @"General Information";
-  } else if (section == 1) {
-    headerLabel.text = @"Support";
-  } else if (section == 2) {
-    headerLabel.text = @"Metro Transit";
-  }
-
+  headerLabel.text = [self tableView:tableView titleForHeaderInSection:section];
   headerLabel.font = [UIFont boldSystemFontOfSize:14.0];
   headerLabel.textColor = [UIColor grayColor];
   headerLabel.backgroundColor = [UIColor clearColor];
   [headerView addSubview:headerLabel];
-  
-  [headerView addSubview:headerLabel];
-  
   [headerLabel release];
   
   return headerView;
@@ -74,13 +62,13 @@
 	//Initialize the array.
 	dataArrays = [[NSMutableArray alloc] init];
   
-  NSArray *general = [NSArray arrayWithObjects:@"Hiawatha Light Rail Line", @"Northstar Commuter Line", nil];
-  NSArray *support = [NSArray arrayWithObjects:@"Contact Us", @"Feedback", @"Credits", nil];
-  NSArray *metroTransit = [NSArray arrayWithObjects:@"Call", @"Feedback", nil];
+  NSArray *general = [NSArray arrayWithObjects:@"Hiawatha Light Rail", @"Northstar Commuter Rail", nil];
+  NSArray *metroTransit = [NSArray arrayWithObjects:@"Call Metro Transit", @"Feedback by email", nil];
+  NSArray *support = [NSArray arrayWithObjects:@"Email the team", nil];
 
 	[self.dataArrays addObject:general];
+  [self.dataArrays addObject:metroTransit];
   [self.dataArrays addObject:support];
-	[self.dataArrays addObject:metroTransit];
 	
 	//Set the title
 	self.navigationItem.title = @"Information";
@@ -124,28 +112,26 @@
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-
+  // these could be array counts instead of hard-coded
   if (section == 0) {
     return 2;
   } else if (section == 1) {
-    return 3;
-  } else if (section == 2) {
     return 2;
+  } else if (section == 2) {
+    return 1;
   } else {
     // should not reach here
     return 0;
   }
-  
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-	
 	if (section == 0) {
-    return @"General Information";
+    return @"Rider Information";
   } else if (section == 1) {
-    return @"Support";
-  } else if (section == 2) {
     return @"Metro Transit";
+  } else if (section == 2) {
+    return @"Application Support";
   }
   return NULL;
 }
@@ -155,37 +141,32 @@
     return 3; // [self.dataArrays count]
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
+    static NSString *CellIdentifier = @"Cell";    
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-  
-    
-  cell.textLabel.text = [[self.dataArrays objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-
-    
+    cell.textLabel.text = [[self.dataArrays objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     return cell;
 }
-
-
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if (indexPath.section == 0) {
+    InfoDetailViewController *target = [[InfoDetailViewController alloc] init];
     if (indexPath.row == 0) {
-      
-      // Hiawatha row
-      InfoDetailViewController *target = [[InfoDetailViewController alloc] init];
-      [[self navigationController] pushViewController:target animated:YES];
-      
+      target.selectedRow = @"hiawatha";
+    } else if (indexPath.row == 1) {
+      target.selectedRow = @"northstar";
     }
-
+    [[self navigationController] pushViewController:target animated:YES];
   }
+}
+
+-(void)dealloc {
+  [super dealloc];
 }
 
 @end
