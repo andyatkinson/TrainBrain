@@ -131,6 +131,8 @@
     [self.formattedTime release];
     [self.price release];
     
+    [self setTimerColor:[UIColor whiteColor]];
+    
     self.bigDepartureHour.text    = @"00";
     self.bigDepartureMinute.text  = @"00";
     self.bigDepartureSeconds.text = @"00";
