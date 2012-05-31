@@ -247,7 +247,10 @@
     } else if (indexPath.section == 1) {
       
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
-      StopTimeCell *cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      StopTimeCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+      if (cell == nil) {
+        cell = [[[StopTimeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      }
       
       cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];      
       [cell setStopTime:stop_time];
