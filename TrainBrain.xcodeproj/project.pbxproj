@@ -16,6 +16,7 @@
 		52113EED157168AC00CD19DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52113EEC157168AC00CD19DE /* Foundation.framework */; };
 		52113EFA1571746F00CD19DE /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 52113EF71571745900CD19DE /* NSAttributedString+Attributes.m */; };
 		52113EFB1571747700CD19DE /* OHAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52113EF91571745900CD19DE /* OHAttributedLabel.m */; };
+		A1201227157C4CF300A25DAB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1201226157C4CF300A25DAB /* MessageUI.framework */; };
 		A16BA39215685C4C00B8BB55 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BA38715685C4C00B8BB55 /* NSObject+SBJSON.m */; };
 		A16BA39315685C4C00B8BB55 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BA38915685C4C00B8BB55 /* NSString+SBJSON.m */; };
 		A16BA39415685C4C00B8BB55 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = A16BA38B15685C4C00B8BB55 /* SBJSON.m */; };
@@ -141,6 +142,7 @@
 		52113EF91571745900CD19DE /* OHAttributedLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OHAttributedLabel.m; path = OHAttributedLabel/OHAttributedLabel.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TrainBrain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TrainBrain-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A11B344B1521472100A948F3 /* TrainBrain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TrainBrain.entitlements; sourceTree = "<group>"; };
+		A1201226157C4CF300A25DAB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A169E4BB102F931800A65E05 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		A16BA38515685C4C00B8BB55 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
 		A16BA38615685C4C00B8BB55 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
@@ -303,6 +305,10 @@
 			files = (
 				52113EDF1571685900CD19DE /* CoreText.framework in Frameworks */,
 				52113EE31571687900CD19DE /* CoreGraphics.framework in Frameworks */,
+				A1201227157C4CF300A25DAB /* MessageUI.framework in Frameworks */,
+				A1FD11C415215BF9002D6E20 /* QuartzCore.framework in Frameworks */,
+				A1EB2645152151BE00134440 /* Foundation.framework in Frameworks */,
+				A1EB2646152151C900134440 /* UIKit.framework in Frameworks */,
 				A1EB2648152151DB00134440 /* CoreLocation.framework in Frameworks */,
 				52113EED157168AC00CD19DE /* Foundation.framework in Frameworks */,
 				A1EB2649152151E800134440 /* MapKit.framework in Frameworks */,
@@ -344,6 +350,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				A1201226157C4CF300A25DAB /* MessageUI.framework */,
 				A1A796C41569D4E2006ACAAD /* MainWindow.xib */,
 				A11B344B1521472100A948F3 /* TrainBrain.entitlements */,
 				8D1107310486CEB800E47090 /* TrainBrain-Info.plist */,

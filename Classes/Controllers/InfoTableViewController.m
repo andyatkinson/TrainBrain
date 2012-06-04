@@ -23,10 +23,7 @@
 
 - (void)didReceiveMemoryWarning
 {
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
+  [super didReceiveMemoryWarning];
 }
 
 #pragma mark - View lifecycle
@@ -63,7 +60,7 @@
 	dataArrays = [[NSMutableArray alloc] init];
   
   NSArray *general = [NSArray arrayWithObjects:@"Hiawatha Light Rail", @"Northstar Commuter Rail", nil];
-  NSArray *metroTransit = [NSArray arrayWithObjects:@"Call Metro Transit", @"Feedback by email", nil];
+  NSArray *metroTransit = [NSArray arrayWithObjects:@"Call Metro Transit", nil];
   NSArray *support = [NSArray arrayWithObjects:@"Email the team", nil];
 
 	[self.dataArrays addObject:general];
@@ -79,8 +76,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -116,7 +111,7 @@
   if (section == 0) {
     return 2;
   } else if (section == 1) {
-    return 2;
+    return 1;
   } else if (section == 2) {
     return 1;
   } else {
@@ -138,7 +133,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 3; // [self.dataArrays count]
+  [self.dataArrays count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -152,6 +147,33 @@
     return cell;
 }
 
+- (void)composeEmail:(NSString *)emailAddr {
+  NSArray *recipients = [[NSArray alloc] initWithObjects:emailAddr, nil];
+  
+  NSString *emailBody = @"<br/><br/>Download <a href='http://itunes.apple.com/us/app/train-brain/id328945770'>Train Brain</a> for iOS and follow <a href='http://twitter.com/trainbrainapp'>@trainbrainapp</a> on twitter";
+  
+  if ([MFMailComposeViewController canSendMail]) {
+    
+    MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
+    mailViewController.mailComposeDelegate = self;
+    [mailViewController setToRecipients:recipients];
+    [mailViewController setSubject:@"Message from train brain"];
+    [mailViewController setMessageBody:emailBody isHTML:YES];
+    
+    [self presentModalViewController:mailViewController animated:YES];
+    [mailViewController release];
+    
+  } else {
+    NSLog(@"can't send email");
+  }
+}
+
+-(void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
+{ 
+  [self dismissModalViewControllerAnimated:YES];
+}
+
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
   if (indexPath.section == 0) {
@@ -162,6 +184,17 @@
       target.selectedRow = @"northstar";
     }
     [[self navigationController] pushViewController:target animated:YES];
+  } else if (indexPath.section == 1) {
+    
+    if (indexPath.row == 0) {
+      // call metro transit
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"tel://612-373-3333"]];
+    }
+  } else if (indexPath.section == 2) {
+    
+    if (indexPath.row == 0) {
+      [self composeEmail:@"beetlefight@gmail.com"];
+    }
   }
 }
 
