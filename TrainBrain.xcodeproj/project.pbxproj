@@ -306,9 +306,6 @@
 				52113EDF1571685900CD19DE /* CoreText.framework in Frameworks */,
 				52113EE31571687900CD19DE /* CoreGraphics.framework in Frameworks */,
 				A1201227157C4CF300A25DAB /* MessageUI.framework in Frameworks */,
-				A1FD11C415215BF9002D6E20 /* QuartzCore.framework in Frameworks */,
-				A1EB2645152151BE00134440 /* Foundation.framework in Frameworks */,
-				A1EB2646152151C900134440 /* UIKit.framework in Frameworks */,
 				A1EB2648152151DB00134440 /* CoreLocation.framework in Frameworks */,
 				52113EED157168AC00CD19DE /* Foundation.framework in Frameworks */,
 				A1EB2649152151E800134440 /* MapKit.framework in Frameworks */,
@@ -350,7 +347,6 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				A1201226157C4CF300A25DAB /* MessageUI.framework */,
 				A1A796C41569D4E2006ACAAD /* MainWindow.xib */,
 				A11B344B1521472100A948F3 /* TrainBrain.entitlements */,
 				8D1107310486CEB800E47090 /* TrainBrain-Info.plist */,
@@ -376,6 +372,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A1201226157C4CF300A25DAB /* MessageUI.framework */,
 				52113EEC157168AC00CD19DE /* Foundation.framework */,
 				52113EE21571687900CD19DE /* CoreGraphics.framework */,
 				52113EE01571686A00CD19DE /* QuartzCore.framework */,
