@@ -9,8 +9,9 @@
 #import "Stop.h"
 #import "MBProgressHUD.h"
 #import "BigDepartureTableViewCell.h"
+#import "EGORefreshTableHeaderView.h"
 
-@interface StopTimesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate> {
+@interface StopTimesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate, EGORefreshTableHeaderDelegate> {
   UITableView *tableView;
   NSMutableArray *data;
   Stop *selectedStop;
@@ -18,6 +19,7 @@
   MBProgressHUD *HUD;
   BigDepartureTableViewCell *bigCell;
   NSTimer  *_refreshTimer;
+  EGORefreshTableHeaderView *_refreshHeaderView;
 }
 
 @property (nonatomic, retain) UITableView *tableView;

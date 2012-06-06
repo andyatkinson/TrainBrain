@@ -114,6 +114,8 @@
       
       [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
       [HUD hide:YES];
+      
+      [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 
     }];
     
@@ -146,6 +148,17 @@
   
   
   self.navigationItem.title = self.selectedStop.stop_name;
+  
+  if (_refreshHeaderView == nil) {
+		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
+		view.delegate = self;
+		[self.tableView addSubview:view];
+		_refreshHeaderView = view;
+		[view release];
+	}
+	
+	//  update the last update date
+	[_refreshHeaderView refreshLastUpdatedDate];
   
   self.view = self.tableView; 
 }
@@ -254,6 +267,7 @@
       
       cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];      
       [cell setStopTime:stop_time];
+      cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
       return cell;
       
@@ -261,6 +275,49 @@
   }  
 
   return cell;
+}
+
+#pragma mark -
+#pragma mark UIScrollViewDelegate Methods
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
+	//[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+  [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+	
+  //[self loadRoutesForLocation:self.myLocation];
+  [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
+}
+
+- (void)doneLoadingTableViewData{
+	
+	//  model should call this when its done loading
+	//_reloading = NO;
+	//[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+}
+
+#pragma mark -
+#pragma mark EGORefreshTableHeaderDelegate Methods
+
+- (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
+	
+	[self loadStopTimes];
+	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+	
+}
+
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
+	
+	//return _reloading; // should return if data source model is reloading
+  return NO;
+}
+
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
+	
+	return [NSDate date]; // should return date data source was last changed
+	
 }
 
 - (void)dealloc {

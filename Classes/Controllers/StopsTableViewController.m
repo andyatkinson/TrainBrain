@@ -69,7 +69,7 @@
   [self.tableView setFrame:CGRectMake(tvframe.origin.x, 
                                  tvframe.origin.y, 
                                  tvframe.size.width, 
-                                 tvframe.size.height + 47)];
+                                 tvframe.size.height + 42)];
   
   
   self.data = [[NSMutableArray alloc] init];
@@ -86,7 +86,7 @@
   UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
   container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
   
-  UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 50)];
+  UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 55)];
   
   SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"Downtown Mpls", @"Mall of America", nil]];
   navSC.height = 50.0f;
@@ -120,12 +120,13 @@
   [container addSubview:headsignSwitcher];
   [container addSubview:self.tableView];
   
-  UIBarButtonItem *mapButton = [[UIBarButtonItem alloc] initWithTitle:@"Map" 
-                                                                style:UIBarButtonItemStylePlain 
-                                                                target:self 
-                                                               action:@selector(loadMapView)];
-  self.navigationItem.rightBarButtonItem = mapButton;
-  [mapButton release];
+  UIButton *mapBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+  [mapBtn setFrame:CGRectMake(0.0f, 0.0f, 35.0f, 30.0f)];
+  [mapBtn addTarget:self action:@selector(loadMapView) forControlEvents:UIControlEventTouchUpInside];
+  [mapBtn setImage:[UIImage imageNamed:@"btn_map_norm.png"] forState:UIControlStateNormal];
+  UIBarButtonItem *mapButtonItem = [[UIBarButtonItem alloc] initWithCustomView:mapBtn];
+  self.navigationItem.rightBarButtonItem = mapButtonItem;
+  [mapButtonItem release];
 
   
   UIImage *backButton = [[UIImage imageNamed:@"btn.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 12, 12, 12)];
@@ -178,6 +179,7 @@
 
     cell.icon.image = [UIImage imageNamed:stop.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+  cell.selectionStyle = UITableViewCellSelectionStyleGray;
   
     return cell;
 }

@@ -81,7 +81,6 @@
  
   self.tableView.delegate = self;
   self.tableView.dataSource = self;
-  
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
 	
@@ -222,6 +221,7 @@
     cell.description.text = route.route_desc;
     cell.icon.image = [UIImage imageNamed:route.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_lg.png"]];
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     return cell;
     
@@ -240,6 +240,7 @@
     }
     cell.icon.image = [UIImage imageNamed:stop.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     return cell;
 
@@ -260,6 +261,7 @@
       cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
       cell.icon.image = [UIImage imageNamed:stop.icon_path];
       cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+      cell.selectionStyle = UITableViewCellSelectionStyleGray;
     
     return cell;
   }
