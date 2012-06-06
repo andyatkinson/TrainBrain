@@ -142,7 +142,15 @@
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+      cell.backgroundColor = [UIColor clearColor];
+      cell.textLabel.textColor = [UIColor whiteColor];
+      cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }
+    
+    if (indexPath.section == 0) {
+      cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+    }
+  
     cell.textLabel.text = [[self.dataArrays objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     return cell;
 }
@@ -159,6 +167,7 @@
     [mailViewController setToRecipients:recipients];
     [mailViewController setSubject:@"Message from train brain"];
     [mailViewController setMessageBody:emailBody isHTML:YES];
+    [[mailViewController navigationBar] setTintColor:[UIColor blackColor]];
     
     [self presentModalViewController:mailViewController animated:YES];
     [mailViewController release];

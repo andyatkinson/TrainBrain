@@ -152,7 +152,7 @@
   headerLabel.textColor = [UIColor blackColor];
   headerLabel.text = [self tableView:tv titleForHeaderInSection:section];
   headerLabel.font = [UIFont boldSystemFontOfSize:14.0];
-  headerLabel.shadowColor = [UIColor whiteColor];
+  headerLabel.shadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.5];
   headerLabel.shadowOffset = CGSizeMake(0,1);
   headerLabel.backgroundColor = [UIColor clearColor];
   [headerView addSubview:headerLabel];

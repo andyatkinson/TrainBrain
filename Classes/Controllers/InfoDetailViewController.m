@@ -49,6 +49,10 @@
 {
   [super viewDidLoad];
   
+  self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
+
+  self.navigationController.navigationBar.tintColor = [UIColor blackColor];
+  
   self.infos = [[NSArray alloc] init];
   
   [self loadInfo:self.selectedRow];
@@ -56,6 +60,7 @@
   self.webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 260)];
   self.webView.delegate = self;
   
+  [self.webView setOpaque:NO];
   self.view = self.webView;
 }
 

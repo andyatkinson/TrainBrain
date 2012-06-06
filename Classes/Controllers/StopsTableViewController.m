@@ -54,7 +54,7 @@
   self.myLocation = mpls;
   [self loadStopsWithHeadsigns:mpls];
   
-  self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 260)];
+  self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 55, self.view.frame.size.width, 260)];
 
   [super viewDidLoad];  
   
@@ -87,13 +87,14 @@
   container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
   
   UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 55)];
+  headsignSwitcher.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tabswitcher.png"]];
   
+  // TODO make these titles dynamic
   SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"Downtown Mpls", @"Mall of America", nil]];
-  navSC.height = 50.0f;
-  navSC.font = [UIFont boldSystemFontOfSize:15];
+  navSC.height = 45.0f;
+  navSC.font = [UIFont boldSystemFontOfSize:14];
   
   navSC.tintColor = [UIColor blackColor]; // background color
-  
   navSC.thumb.tintColor = [UIColor colorWithRed:255/255.0 green:223/255.0 blue:4/255.0 alpha:1];
   
   navSC.changeHandler = ^(NSUInteger newIndex) {
@@ -115,7 +116,7 @@
 	[headsignSwitcher addSubview:navSC];
 	[navSC release];
 	
-	navSC.center = CGPointMake(self.view.frame.size.width / 2, 30);
+	navSC.center = CGPointMake(self.view.frame.size.width / 2, 27);
   
   [container addSubview:headsignSwitcher];
   [container addSubview:self.tableView];
