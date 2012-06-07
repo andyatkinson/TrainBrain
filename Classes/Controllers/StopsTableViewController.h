@@ -9,8 +9,9 @@
 #import <CoreLocation/CoreLocation.h>
 #import "SVSegmentedControl.h"
 #import "Route.h"
+#import "MBProgressHUD.h"
 
-@interface StopsTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate> {
+@interface StopsTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, MBProgressHUDDelegate> {
   UITableView *tableView;
   NSArray *headsigns;
   NSArray *stops;
@@ -22,6 +23,7 @@
   
   CLLocation *myLocation;
   CLLocationManager *locationManager;
+  MBProgressHUD *HUD;
 }
 
 @property (nonatomic, retain) UITableView *tableView;

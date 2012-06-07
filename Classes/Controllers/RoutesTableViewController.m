@@ -103,7 +103,7 @@
   [dataArraysForRoutesScreen addObject:lastStopIDDict];
 	[dataArraysForRoutesScreen addObject:stopsDict];
 	
-	self.navigationItem.title = @"train brain";
+	self.navigationItem.title = @"Routes";
 
   
   if (_refreshHeaderView == nil) {
@@ -362,10 +362,9 @@
 }
 
 - (void)dealloc {
-	
+	[HUD dealloc];
 	[dataArraysForRoutesScreen release];
-  [super dealloc];
-  [HUD dealloc];
+  [super dealloc];  
 }
 
 @end

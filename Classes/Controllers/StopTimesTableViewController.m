@@ -104,6 +104,19 @@
         [[self bigCell] setStopTime:stop_time];
         
         [self setupRefresh];
+      } else {
+        
+        UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
+        container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20,5,self.view.frame.size.width, 50)];
+        label.backgroundColor = [UIColor clearColor];
+        label.textAlignment = UITextAlignmentLeft;
+        label.textColor = [UIColor whiteColor];
+        label.text = @"No upcoming departures.";
+        label.font = [UIFont boldSystemFontOfSize:14.0];
+        [container addSubview:label];
+        self.view = container;
+        
       }
         
       [self.tableView reloadData];
@@ -117,11 +130,8 @@
       
       [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 
-    }];
-    
-  }
-  
-  
+    }];    
+  }  
 }
 
 - (void)viewDidLoad {
@@ -129,6 +139,7 @@
   // TODO set the custom background
   UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backBarButton;
+  self.navigationController.navigationBar.tintColor = [UIColor blackColor];
   [backBarButton release];
 
   self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(22, 207, 270, 233)];

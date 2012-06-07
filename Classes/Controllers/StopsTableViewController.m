@@ -25,18 +25,71 @@
 }
 
 - (void)loadStopsWithHeadsigns:(CLLocation *)location {
+  /* Progress HUD overlay START */  
+  UIWindow *window = [UIApplication sharedApplication].keyWindow;
+	HUD = [[MBProgressHUD alloc] initWithWindow:window];
+	[window addSubview:HUD];
+	HUD.delegate = self;
+  HUD.labelText = @"Loading";
+	[HUD show:YES];
+  /* Progress HUD overlay END */ 
+    
     NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/with_headsigns", self.selectedRoute.route_id];
   
     [Stop stopsWithHeadsigns:url near:location parameters:nil block:^(NSDictionary *blockdata) {
-    self.headsigns = [blockdata objectForKey:@"headsigns"];
+      self.headsigns = [blockdata objectForKey:@"headsigns"];
+      self.stopsIndex0 = [blockdata objectForKey:@"stopsIndex0"];
+      self.stopsIndex1 = [blockdata objectForKey:@"stopsIndex1"];
+      self.stops = self.stopsIndex0;
+      
+      UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
+      container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
+      
+      UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 55)];
+      //headsignSwitcher.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tabswitcher.png"]];
+      
+      // TODO make these titles dynamic
+      SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[self.headsigns valueForKey:@"headsign_public_name"]];
+      navSC.height = 35.0f;
+      navSC.font = [UIFont boldSystemFontOfSize:14.0];
+      
+      navSC.tintColor = [UIColor blackColor]; // background color
+      navSC.thumb.tintColor = [UIColor colorWithRed:255/255.0 green:223/255.0 blue:4/255.0 alpha:1];
+      navSC.thumb.textColor = [UIColor blackColor];
+      navSC.thumb.textShadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.5];
+      navSC.thumb.textShadowOffset = CGSizeMake(0,1);
+      
+      navSC.changeHandler = ^(NSUInteger newIndex) {
+        if ([self.stopsIndex0 count] > 0 && [self.stopsIndex1 count] > 0) {
+          
+          if (newIndex == 0) {
+            self.stops = self.stopsIndex0;
+          } else if (newIndex == 1) {
+            self.stops = self.stopsIndex1;
+          }
+          
+          [self.tableView reloadData];
+          [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+          
+        }
+        
+      };
+      
+      [headsignSwitcher addSubview:navSC];
+      [navSC release];
+      
+      navSC.center = CGPointMake(self.view.frame.size.width / 2, 25);
+      
+      [container addSubview:headsignSwitcher];
+      [container addSubview:self.tableView];
+      
+      self.view = container;
+      
+      [HUD hide:YES];
+
     
-    self.stopsIndex0 = [blockdata objectForKey:@"stopsIndex0"];
-    self.stopsIndex1 = [blockdata objectForKey:@"stopsIndex1"];
-    
-    self.stops = self.stopsIndex0;
-    
-    [self.tableView reloadData];
-    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+      [self.tableView reloadData];
+      [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
   }];
   
 }
@@ -83,44 +136,6 @@
 	//Set the title
 	self.navigationItem.title = self.selectedRoute.short_name;
   
-  UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
-  container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
-  
-  UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 55)];
-  headsignSwitcher.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tabswitcher.png"]];
-  
-  // TODO make these titles dynamic
-  SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[NSArray arrayWithObjects:@"Downtown Mpls", @"Mall of America", nil]];
-  navSC.height = 45.0f;
-  navSC.font = [UIFont boldSystemFontOfSize:14];
-  
-  navSC.tintColor = [UIColor blackColor]; // background color
-  navSC.thumb.tintColor = [UIColor colorWithRed:255/255.0 green:223/255.0 blue:4/255.0 alpha:1];
-  
-  navSC.changeHandler = ^(NSUInteger newIndex) {
-    if ([self.stopsIndex0 count] > 0 && [self.stopsIndex1 count] > 0) {
-      
-      if (newIndex == 0) {
-        self.stops = self.stopsIndex0;
-      } else if (newIndex == 1) {
-        self.stops = self.stopsIndex1;
-      }
-      
-      [self.tableView reloadData];
-      [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
-        
-    }
-    
-  };
-  
-	[headsignSwitcher addSubview:navSC];
-	[navSC release];
-	
-	navSC.center = CGPointMake(self.view.frame.size.width / 2, 27);
-  
-  [container addSubview:headsignSwitcher];
-  [container addSubview:self.tableView];
-  
   UIButton *mapBtn = [UIButton buttonWithType:UIButtonTypeCustom];
   [mapBtn setFrame:CGRectMake(0.0f, 0.0f, 35.0f, 30.0f)];
   [mapBtn addTarget:self action:@selector(loadMapView) forControlEvents:UIControlEventTouchUpInside];
@@ -128,13 +143,17 @@
   UIBarButtonItem *mapButtonItem = [[UIBarButtonItem alloc] initWithCustomView:mapBtn];
   self.navigationItem.rightBarButtonItem = mapButtonItem;
   [mapButtonItem release];
-
+  
   
   UIImage *backButton = [[UIImage imageNamed:@"btn.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(12, 12, 12, 12)];
   [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButton forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
   
+  UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
+  container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
   self.view = container;
-  
+}
+
+-(void)hudWasHidden{
 }
 
 - (void)viewDidUnload
@@ -180,7 +199,7 @@
 
     cell.icon.image = [UIImage imageNamed:stop.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
-  cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.selectionStyle = UITableViewCellSelectionStyleGray;
   
     return cell;
 }
@@ -200,6 +219,11 @@
     StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
     [target setSelectedStop:stop];  
     [[self navigationController] pushViewController:target animated:YES];
+}
+
+- (void)dealloc {
+	[HUD dealloc];
+  [super dealloc];  
 }
 
 @end
