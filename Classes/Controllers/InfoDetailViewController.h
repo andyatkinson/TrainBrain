@@ -17,6 +17,6 @@
 @property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) NSString *selectedRow;
 
-- (void)loadInfo;
+- (void) loadHTML;
 
 @end

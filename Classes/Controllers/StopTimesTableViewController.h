@@ -12,13 +12,13 @@
 #import "EGORefreshTableHeaderView.h"
 
 @interface StopTimesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, MBProgressHUDDelegate, EGORefreshTableHeaderDelegate> {
-  UITableView *tableView;
-  NSMutableArray *data;
-  Stop *selectedStop;
-  NSArray *stop_times;
-  MBProgressHUD *HUD;
+  UITableView               *tableView;
+  NSMutableArray            *data;
+  Stop                      *selectedStop;
+  NSArray                   *stop_times;
+  MBProgressHUD             *HUD;
   BigDepartureTableViewCell *bigCell;
-  NSTimer  *_refreshTimer;
+  NSTimer                   *_refreshTimer;
   EGORefreshTableHeaderView *_refreshHeaderView;
 }
 

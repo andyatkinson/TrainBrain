@@ -28,12 +28,12 @@
 
 #pragma mark - View lifecycle
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+- (UIView *)tableView:(UITableView *)tView viewForHeaderInSection:(NSInteger)section {
   UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.tableView.frame.size.width,29)] autorelease];
   
   UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 20)];
   headerLabel.textAlignment = UITextAlignmentLeft;
-  headerLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+  headerLabel.text = [self tableView:tView titleForHeaderInSection:section];
   headerLabel.font = [UIFont boldSystemFontOfSize:14.0];
   headerLabel.textColor = [UIColor grayColor];
   headerLabel.backgroundColor = [UIColor clearColor];
@@ -131,9 +131,8 @@
   return NULL;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-  [self.dataArrays count];
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+  return [self.dataArrays count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
