@@ -6,7 +6,6 @@
 //
 
 #import "BigDepartureTableViewCell.h"
-#import "FunnyPhrase.h"
 #import "StopTime.h"
 
 @implementation BigDepartureTableViewCell
@@ -82,10 +81,15 @@
   thisLabel.shadowOffset = CGSizeMake(0.0, 2.0);
 }
 
-- (id) initWithFrame:(CGRect)aRect {
-  if (self = [super initWithFrame:aRect]) {
-
-    self.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_timer.png"]];
+- (id) initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
+  if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+    UIView *contentView = self.contentView;    
+    
+    UIImage *img = [UIImage imageWithContentsOfFile: [[NSBundle mainBundle] pathForResource:@"bg_timer" ofType:@"png"]];
+    
+    UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
+    [imgView setUserInteractionEnabled:NO];	
+    self.backgroundView = imgView;
     
     self.bigDepartureHour    = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:70.0 bold:YES];
     self.bigDepartureMinute  = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:70.0 bold:YES];
@@ -106,21 +110,18 @@
     self.formattedTime = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:NO];
     self.price = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:12.0 bold:NO];
     
-    self.funnySaying.text = [FunnyPhrase rand];
-    self.description.text = @"Next estimated train departure:";
+		[contentView addSubview:self.bigDepartureHour];
+    [contentView addSubview:self.bigDepartureMinute];
+    [contentView addSubview:self.bigDepartureSeconds];
     
-		[self addSubview:self.bigDepartureHour];
-    [self addSubview:self.bigDepartureMinute];
-    [self addSubview:self.bigDepartureSeconds];
+    [contentView addSubview:bigDepartureHourUnit];
+    [contentView addSubview:bigDepartureMinuteUnit];
+    [contentView addSubview:bigDepartureSecondsUnit];
     
-    [self addSubview:bigDepartureHourUnit];
-    [self addSubview:bigDepartureMinuteUnit];
-    [self addSubview:bigDepartureSecondsUnit];
-    
-    [self addSubview:self.funnySaying];
-    [self addSubview:self.description];
-    [self addSubview:self.formattedTime];
-    [self addSubview:self.price];
+    [contentView addSubview:self.funnySaying];
+    [contentView addSubview:self.description];
+    [contentView addSubview:self.formattedTime];
+    [contentView addSubview:self.price];
 		
     [self.bigDepartureHour release];
     [self.bigDepartureMinute release];
@@ -144,6 +145,10 @@
   return self;
 }
 
+- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
+	[super setSelected:selected animated:animated];
+}
+
 - (void) setData:(NSDictionary *)dict {
 	self.bigDepartureHour.text = [dict objectForKey:@"title"];
 }
@@ -165,22 +170,19 @@
 }
 
 - (void) layoutTimer:(BOOL) showHours {
-  CGRect contentRect = self.bounds;
+  CGRect contentRect = self.contentView.bounds;
   CGFloat boundsX    = contentRect.origin.x;
   
   if (showHours) {
-    self.bigDepartureSeconds.frame     = CGRectMake(boundsX - 100,   0, 300, 100);
-    self.bigDepartureSecondsUnit.frame = CGRectMake(boundsX - 100,  14, 300, 100);
-    
-    self.bigDepartureHour.frame        = CGRectMake(boundsX +  40,   0, 300, 100);
-    self.bigDepartureHourUnit.frame    = CGRectMake(boundsX + 118,  14, 300, 100);
-    self.bigDepartureMinute.frame      = CGRectMake(boundsX + 154,   0, 300, 100);
-    self.bigDepartureMinuteUnit.frame  = CGRectMake(boundsX + 232,  14, 300, 100);
-    
+    self.bigDepartureHour.frame        = CGRectMake(boundsX +  10,   0, 300, 100);
+    self.bigDepartureHourUnit.frame    = CGRectMake(boundsX +  88,  14, 300, 100);
+    self.bigDepartureMinute.frame      = CGRectMake(boundsX + 108,   0, 300, 100);
+    self.bigDepartureMinuteUnit.frame  = CGRectMake(boundsX + 185,  14, 300, 100);
+    self.bigDepartureSeconds.frame     = CGRectMake(boundsX + 214,   0, 300, 100);
+    self.bigDepartureSecondsUnit.frame = CGRectMake(boundsX + 290,  14, 300, 100);
   } else {
     self.bigDepartureHour.frame        = CGRectMake(boundsX - 100,   0, 300, 100);
     self.bigDepartureHourUnit.frame    = CGRectMake(boundsX - 100,  14, 300, 100);
-    
     self.bigDepartureMinute.frame      = CGRectMake(boundsX +  40,   0, 300, 100);
     self.bigDepartureMinuteUnit.frame  = CGRectMake(boundsX + 118,  14, 300, 100);
     self.bigDepartureSeconds.frame     = CGRectMake(boundsX + 154,   0, 300, 100);
@@ -194,8 +196,10 @@
   [super layoutSubviews];
   
 	// getting the cell size
-  CGRect contentRect = self.bounds;
+  CGRect contentRect = self.contentView.bounds;
   
+	// In this example we will never be editing, but this illustrates the appropriate pattern
+  if (!self.editing) {
     [self layoutTimer:false];
     
 		// get the X pixel spot
@@ -204,7 +208,8 @@
 		self.description.frame   = CGRectMake(boundsX +  20, 115, 200,  20);
 		self.formattedTime.frame = CGRectMake(boundsX + 250,  95,  80,  20);
 		self.price.frame         = CGRectMake(boundsX + 250, 115,  80,  20);
-
+    
+	}
 }
 
 - (UILabel *)newLabelWithPrimaryColor:(UIColor *)primaryColor selectedColor:(UIColor *)selectedColor fontSize:(CGFloat)fontSize bold:(BOOL)bold

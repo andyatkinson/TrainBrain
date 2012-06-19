@@ -102,7 +102,7 @@
       if ([self.stop_times count] > 0) {
         StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:0];
         [[self bigCell] setStopTime:stop_time];
-
+        
         [self setupRefresh];
       } else {
         
@@ -142,30 +142,23 @@
   self.navigationController.navigationBar.tintColor = [UIColor blackColor];
   [backBarButton release];
 
-  UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height)] autorelease];
-  container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
-  
-  [self setBigCell:[[BigDepartureTableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width,154)]];
-  [self setTableView: [[UITableView alloc] initWithFrame:CGRectMake(0, 154, self.view.frame.size.width, self.view.frame.size.height)]];
+  self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(22, 207, 270, 233)];
   
   [super viewDidLoad];
   
   self.tableView.dataSource = self;
-  self.tableView.delegate   = self;
+  self.tableView.delegate = self;
+  
+  self.data = [[NSMutableArray alloc] init];
+  
+  self.stop_times = [[NSArray alloc] init];
+  [self loadStopTimes];
+
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
   
-  self.data       = [[NSMutableArray alloc] init];
-  self.stop_times = [[NSArray alloc] init];
-  [self loadStopTimes];
   
   self.navigationItem.title = self.selectedStop.stop_name;
-  
-  [container addSubview:self.bigCell];
-  [container addSubview:self.tableView];
-  self.view = container;
-  
-  [[self bigCell] startTimer];
   
   if (_refreshHeaderView == nil) {
 		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
@@ -174,9 +167,11 @@
 		_refreshHeaderView = view;
 		[view release];
 	}
+	
 	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
   
+  self.view = self.tableView; 
 }
 
 - (void)viewDidUnload
@@ -186,59 +181,94 @@
     // e.g. self.myOutlet = nil;
 }
 
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  return 1;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+  return 2;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+  UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.tableView.frame.size.width,30)] autorelease];
   
-  if(section == 0){
-    UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.tableView.frame.size.width,30)] autorelease];
-    
-    UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,0,headerView.frame.size.width, headerView.frame.size.height)];
-    headerLabel.textAlignment = UITextAlignmentLeft;
-    headerLabel.textColor = [UIColor blackColor];
-    headerLabel.text = @"Upcoming Departures";
-    headerLabel.font = [UIFont boldSystemFontOfSize:14.0];
-    headerLabel.shadowColor = [UIColor whiteColor];
-    headerLabel.shadowOffset = CGSizeMake(0,1);
-    
-    headerLabel.backgroundColor = [UIColor clearColor];
-    [headerView addSubview:headerLabel];
-    
-    headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"header_bar_default.png"]];
-    
-    return headerView;
-  }
+  UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,0,headerView.frame.size.width, headerView.frame.size.height)];
+  headerLabel.textAlignment = UITextAlignmentLeft;
+  headerLabel.textColor = [UIColor blackColor];
+  headerLabel.text = @"Upcoming Departures";
+  headerLabel.font = [UIFont boldSystemFontOfSize:14.0];
+  headerLabel.shadowColor = [UIColor whiteColor];
+  headerLabel.shadowOffset = CGSizeMake(0,1);
   
-  return nil;
+  headerLabel.backgroundColor = [UIColor clearColor];
+  [headerView addSubview:headerLabel];
+  
+  headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"header_bar_default.png"]];
+  
+  return headerView;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  if (indexPath.section == 0) {
+    return 154;
+  } 
   return 57;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-  return 28;
+  if (section == 0) {
+    return 0;
+  } else if (section == 1) {
+    return 28;
+  }
+  else {
+    // error case
+    return 0;
+  }
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return [self.stop_times count];
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+  if (section == 0) {
+    return 1;
+  } else if (section == 1) {
+    return [self.stop_times count];
+  } else {
+    // error
+    return 0;
+  }
+
 }
   
 
-- (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
 
   static NSString *CellIdentifier = @"Cell";
   UITableViewCell *cell = [[UITableViewCell alloc] init];
   
   if ([self.stop_times count] > 0) {
     if (indexPath.section == 0) {
+      
+      StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
+      
+      if (bigCell == NULL) {
+        [self setBigCell:[[BigDepartureTableViewCell alloc] init]];
+
+        [[self bigCell] setStopTime:stop_time];
+        [self bigCell].funnySaying.text = [FunnyPhrase rand];
+        [self bigCell].description.text = @"Next estimated train departure:";
+        
+        [[self bigCell] startTimer];
+        self.bigCell.selectionStyle = UITableViewCellSelectionStyleNone;
+      }
+      return [self bigCell];
+      
+      
+    } else if (indexPath.section == 1) {
       
       StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
       StopTimeCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];

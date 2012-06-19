@@ -9,6 +9,15 @@
 
 @implementation NSString (BeetleFight)
 
+- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
+{
+    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
 // Expects time strings in this format: 00:00:00, e.g. "08:10:00"
 
 - (NSString *)relativeTimeHourAndMinute {

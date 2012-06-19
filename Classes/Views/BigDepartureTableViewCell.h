@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import "StopTime.h"
 
-@interface BigDepartureTableViewCell : UIView {
+@interface BigDepartureTableViewCell : UITableViewCell {
   UILabel *bigDepartureHour;
   UILabel *bigDepartureMinute;
   UILabel *bigDepartureSeconds;
