@@ -21,8 +21,8 @@
     
     self.icon = [[ UIImageView alloc ] init];
     
-    self.title = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:16.0 bold:YES];
-    self.description = [self newLabelWithPrimaryColor:[UIColor grayColor] selectedColor:[UIColor whiteColor] fontSize:14.0 bold:NO];
+    self.title = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:15 bold:YES];
+    self.description = [self newLabelWithPrimaryColor:[UIColor colorWithHexString:@"#7a7a7a"] selectedColor:[UIColor whiteColor] fontSize:13.0 bold:NO];
     
     self.extraInfo = [self newLabelWithPrimaryColor:[UIColor whiteColor] selectedColor:[UIColor whiteColor] fontSize:16.0 bold:YES];
     self.extraInfo.textAlignment = UITextAlignmentRight;
@@ -65,13 +65,13 @@
     frame = CGRectMake(boundsX + 10, 15, 27, 28);
     self.icon.frame = frame;
     
-		frame = CGRectMake(boundsX + 46, 10, 200, 20);
+		frame = CGRectMake(boundsX + 46, 10, 180, 20);
 		self.title.frame = frame;
     
-    frame = CGRectMake(boundsX + 46, 28, 200, 20);
+    frame = CGRectMake(boundsX + 46, 28, 180, 20);
     self.description.frame = frame;
     
-    frame = CGRectMake(boundsX + 204, 18, 80, 20);
+    frame = CGRectMake(boundsX + 210, 18, 80, 20);
     self.extraInfo.frame = frame;
     
     //    CGRect imageRectangle = CGRectMake(0.0f,0.0f,320.0f,44.0f); //cells are 44 px high

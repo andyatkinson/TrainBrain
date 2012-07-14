@@ -54,10 +54,9 @@
     if (self) {
 		self.userInteractionEnabled = NO;
 		self.backgroundColor = [UIColor clearColor];
-		self.textColor = [UIColor whiteColor];
+      self.textColor = [UIColor colorWithHexString:@"#333333"];
 		self.textShadowColor = [UIColor blackColor];
-		self.textShadowOffset = CGSizeMake(0, -1);
-		self.tintColor = [UIColor grayColor];
+		self.textShadowOffset = CGSizeMake(0,1);
         self.shouldCastShadow = YES;
     }
 	

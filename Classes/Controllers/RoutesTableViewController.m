@@ -87,7 +87,7 @@
 	//Initialize the array.
 	dataArraysForRoutesScreen = [[NSMutableArray alloc] init];
   
-  Route *r1 = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Loading...", @"route_desc", nil]];
+  Route *r1 = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"", @"route_desc", nil]];
 	self.routes = [NSArray arrayWithObjects:r1, nil];
 	NSDictionary *routesDict = [NSDictionary dictionaryWithObject:self.routes forKey:@"items"];
   
@@ -95,7 +95,7 @@
   NSDictionary *lastStopIDDict = [NSDictionary dictionaryWithObject:lastStopID forKey:@"items"];
 	
   
-  Stop *s1 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"Loading...", @"stop_desc", nil]];
+  Stop *s1 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"", @"stop_desc", nil]];
   self.stops = [NSArray arrayWithObjects:s1, nil];
 	NSDictionary *stopsDict = [NSDictionary dictionaryWithObject:self.stops forKey:@"items"];
 	
@@ -149,10 +149,10 @@
   
   UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,0,headerView.frame.size.width, headerView.frame.size.height)];
   headerLabel.textAlignment = UITextAlignmentLeft;
-  headerLabel.textColor = [UIColor blackColor];
+  headerLabel.textColor = [UIColor colorWithHexString:@"#4a3c00"];
   headerLabel.text = [self tableView:tv titleForHeaderInSection:section];
   headerLabel.font = [UIFont boldSystemFontOfSize:14.0];
-  headerLabel.shadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.5];
+  headerLabel.shadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.4];
   headerLabel.shadowOffset = CGSizeMake(0,1);
   headerLabel.backgroundColor = [UIColor clearColor];
   [headerView addSubview:headerLabel];
@@ -236,7 +236,7 @@
     cell.title.text = stop.stop_name;
     cell.description.text = stop.stop_desc;
     if ([self.lastViewed valueForKey:@"next_depature"]) {
-        cell.extraInfo.text = [[self.lastViewed valueForKey:@"next_departure"] hourMinuteFormatted];
+      cell.extraInfo.text = [[self.lastViewed valueForKey:@"next_departure"] hourMinuteFormatted];
     }
     cell.icon.image = [UIImage imageNamed:stop.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
@@ -257,8 +257,10 @@
       cell.description.text = stop.stop_desc;
       
       double dist = [self.myLocation distanceFromLocation:stop.location] / 1609.344;
-    
-      cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
+      if (dist < 100) {
+        cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
+      }
+      
       cell.icon.image = [UIImage imageNamed:stop.icon_path];
       cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
       cell.selectionStyle = UITableViewCellSelectionStyleGray;

@@ -142,7 +142,7 @@
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-      cell.backgroundColor = [UIColor clearColor];
+      cell.backgroundColor = [UIColor colorWithHexString:@"#2c2c2c"];
       cell.textLabel.textColor = [UIColor whiteColor];
       cell.selectionStyle = UITableViewCellSelectionStyleGray;
     }

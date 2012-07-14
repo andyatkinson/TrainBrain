@@ -97,8 +97,8 @@
         self.animateToInitialSelection = NO;
         self.clipsToBounds = NO;
         
-        self.font = [UIFont boldSystemFontOfSize:15];
-        self.textColor = [UIColor grayColor];
+        self.font = [UIFont boldSystemFontOfSize:13];
+        self.textColor = [UIColor colorWithHexString:@"#999999"];
         self.textShadowColor = [UIColor blackColor];
         self.textShadowOffset = CGSizeMake(0, -1);
         

@@ -51,12 +51,14 @@
       // TODO make these titles dynamic
       SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[self.headsigns valueForKey:@"headsign_public_name"]];
       navSC.height = 35.0f;
-      navSC.font = [UIFont boldSystemFontOfSize:14.0];
+      navSC.font = [UIFont boldSystemFontOfSize:13];
       
       navSC.tintColor = [UIColor blackColor]; // background color
-      navSC.thumb.tintColor = [UIColor colorWithRed:255/255.0 green:223/255.0 blue:4/255.0 alpha:1];
-      navSC.thumb.textColor = [UIColor blackColor];
-      navSC.thumb.textShadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.5];
+      //navSC.thumb.tintColor = [UIColor colorWithRed:255/255.0 green:223/255.0 blue:4/255.0 alpha:1];
+      navSC.thumb.tintColor = [UIColor colorWithHexString:@"#fdd72c"];
+      navSC.thumb.shouldCastShadow = NO;
+      navSC.thumb.textColor = [UIColor colorWithHexString:@"#333333"];
+      navSC.thumb.textShadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.4];
       navSC.thumb.textShadowOffset = CGSizeMake(0,1);
       
       navSC.changeHandler = ^(NSUInteger newIndex) {
@@ -192,10 +194,10 @@
   
     Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
     cell.title.text = stop.stop_name;
-    cell.description.text = stop.stop_desc;
+    //cell.description.text = stop.stop_desc;
   
     double dist = [self.myLocation distanceFromLocation:stop.location] / 1609.344;
-    cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
+    cell.extraInfo.text = [NSString stringWithFormat:@"%.1f mi", dist];
 
     cell.icon.image = [UIImage imageNamed:stop.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];

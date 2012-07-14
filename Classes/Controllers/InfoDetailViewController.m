@@ -50,9 +50,7 @@
   [super viewDidLoad];
   
   self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
-
   self.navigationController.navigationBar.tintColor = [UIColor blackColor];
-  
   self.infos = [[NSArray alloc] init];
   
   [self loadInfo:self.selectedRow];
@@ -62,6 +60,12 @@
   
   [self.webView setOpaque:NO];
   self.view = self.webView;
+  
+  if (selectedRow == @"northstar") {
+    self.title = @"Northstar Commuter Rail";
+  } else if (selectedRow == @"hiawatha") {
+    self.title = @"Hiawatha Light Rail";
+  }
 }
 
 - (void)viewDidUnload
