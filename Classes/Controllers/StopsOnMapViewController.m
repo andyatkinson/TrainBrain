@@ -10,7 +10,7 @@
 
 @implementation StopsOnMapViewController
 
-@synthesize stops, mapView, selectedRoute;
+@synthesize stops, mapView, selectedRoute, viewTitle;
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
@@ -48,7 +48,8 @@
 
 	
 	[self loadStops];
-	self.title = @"Map";
+  
+  self.title = self.viewTitle;
   
   self.view = self.mapView;
 }
@@ -86,42 +87,33 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mv viewForAnnotation:(id <MKAnnotation>)annotation {
 
   static NSString *ai = @"AnnotationIdentifier";
-  MKPinAnnotationView *pin = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:ai];
+  MKPinAnnotationView *pv = (MKPinAnnotationView *)[mv dequeueReusableAnnotationViewWithIdentifier:ai];
 
-  if (!pin) {
-    pin = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ai] autorelease];
-    [pin setUserInteractionEnabled:YES];
-    [pin setEnabled:YES];
-    [pin setCanShowCallout:YES];
-    [pin setAnimatesDrop:NO];
-    [pin setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
+  if (!pv) {
+    pv = [[[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:ai] autorelease];
+    
+    NSRange hiawatha = [self.selectedRoute.route_id rangeOfString:@"55"];
+    NSRange northstar = [self.selectedRoute.route_id rangeOfString:@"888"];
+    if (hiawatha.location != NSNotFound) {
+      pv.image = [UIImage imageNamed:@"hiaw_map_pin.png"];
+    } else if(northstar.location != NSNotFound) {
+      pv.image = [UIImage imageNamed:@"nstr_map_pin.png"];
+    }
+    
+    [pv setUserInteractionEnabled:YES];
+    [pv setEnabled:YES];
+    [pv setCanShowCallout:YES];
+    //[pin setAnimatesDrop:NO];
+    [pv setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
     
   } else {
     
     //we're re-using an annotation view
     //update annotation property in case re-used view was for another  
-    pin.annotation = annotation;
+    pv.annotation = annotation;
   }
-  
-//	if (annotation != mv.userLocation) {
-//    
-//    
-//    
-//    
-//    //[view setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
-//    
-//    //      NSString *route_id = stopAnnotation.stop.route.route_id;
-//    //      NSRange hiawathaRange = [routeId rangeOfString:@"55"];
-//    //      NSRange northstarRange = [routeId rangeOfString:@"888"];
-//    //      if (hiawathaRange.location != NSNotFound) {
-//    //        view = [[[CustomPinBlack alloc] initWithAnnotation:annotation] autorelease];
-//    //      } else if(northstarRange.location != NSNotFound) {
-//    //        view = [[[CustomPinBlue alloc] initWithAnnotation:annotation] autorelease];
-//    //      }
-//    
-//	}
 
-	return pin;
+	return pv;
 }
 
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {

@@ -122,8 +122,6 @@
 		A1E848401569BBAE007DF636 /* TimeEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E8483F1569BBAE007DF636 /* TimeEntry.m */; };
 		A1E848521569BC45007DF636 /* BigDepartureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848431569BC45007DF636 /* BigDepartureTableViewCell.m */; };
 		A1E848531569BC45007DF636 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848451569BC45007DF636 /* CustomCell.m */; };
-		A1E848541569BC45007DF636 /* CustomPinBlack.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848471569BC45007DF636 /* CustomPinBlack.m */; };
-		A1E848551569BC45007DF636 /* CustomPinBllue.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848481569BC45007DF636 /* CustomPinBllue.m */; };
 		A1E848561569BC45007DF636 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E8484B1569BC45007DF636 /* DepartureDetailCell.m */; };
 		A1E848571569BC45007DF636 /* RouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E8484D1569BC45007DF636 /* RouteCell.m */; };
 		A1E848581569BC45007DF636 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E8484F1569BC45007DF636 /* StopAnnotation.m */; };
@@ -297,10 +295,6 @@
 		A1E848431569BC45007DF636 /* BigDepartureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigDepartureTableViewCell.m; sourceTree = "<group>"; };
 		A1E848441569BC45007DF636 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		A1E848451569BC45007DF636 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
-		A1E848461569BC45007DF636 /* CustomPinBlack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPinBlack.h; sourceTree = "<group>"; };
-		A1E848471569BC45007DF636 /* CustomPinBlack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPinBlack.m; sourceTree = "<group>"; };
-		A1E848481569BC45007DF636 /* CustomPinBllue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPinBllue.m; sourceTree = "<group>"; };
-		A1E848491569BC45007DF636 /* CustomPinBlue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPinBlue.h; sourceTree = "<group>"; };
 		A1E8484A1569BC45007DF636 /* DepartureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureDetailCell.h; sourceTree = "<group>"; };
 		A1E8484B1569BC45007DF636 /* DepartureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureDetailCell.m; sourceTree = "<group>"; };
 		A1E8484C1569BC45007DF636 /* RouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteCell.h; sourceTree = "<group>"; };
@@ -632,10 +626,6 @@
 				A1E848431569BC45007DF636 /* BigDepartureTableViewCell.m */,
 				A1E848441569BC45007DF636 /* CustomCell.h */,
 				A1E848451569BC45007DF636 /* CustomCell.m */,
-				A1E848461569BC45007DF636 /* CustomPinBlack.h */,
-				A1E848471569BC45007DF636 /* CustomPinBlack.m */,
-				A1E848481569BC45007DF636 /* CustomPinBllue.m */,
-				A1E848491569BC45007DF636 /* CustomPinBlue.h */,
 				A1E8484A1569BC45007DF636 /* DepartureDetailCell.h */,
 				A1E8484B1569BC45007DF636 /* DepartureDetailCell.m */,
 				A1E8484C1569BC45007DF636 /* RouteCell.h */,
@@ -848,8 +838,6 @@
 				A1E848401569BBAE007DF636 /* TimeEntry.m in Sources */,
 				A1E848521569BC45007DF636 /* BigDepartureTableViewCell.m in Sources */,
 				A1E848531569BC45007DF636 /* CustomCell.m in Sources */,
-				A1E848541569BC45007DF636 /* CustomPinBlack.m in Sources */,
-				A1E848551569BC45007DF636 /* CustomPinBllue.m in Sources */,
 				A1E848561569BC45007DF636 /* DepartureDetailCell.m in Sources */,
 				A1E848571569BC45007DF636 /* RouteCell.m in Sources */,
 				A1E848581569BC45007DF636 /* StopAnnotation.m in Sources */,

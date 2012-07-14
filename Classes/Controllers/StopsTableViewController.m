@@ -99,6 +99,7 @@
 - (void)loadMapView {
   StopsOnMapViewController *target = [[StopsOnMapViewController alloc] init];
   [target setSelectedRoute:self.selectedRoute];
+  [target setViewTitle:self.title];
   [[self navigationController] pushViewController:target animated:YES];
 }
 
@@ -136,7 +137,13 @@
   [data addObject:stopsDict];
 	
 	//Set the title
-	self.navigationItem.title = self.selectedRoute.short_name;
+  NSRange hiawatha = [self.selectedRoute.route_id rangeOfString:@"55"];
+  NSRange northstar = [self.selectedRoute.route_id rangeOfString:@"888"];
+  if (hiawatha.location != NSNotFound) {
+    self.title = @"Hiawatha Stations";
+  } else if(northstar.location != NSNotFound) {
+    self.title = @"Northstar Stations";
+  }
   
   UIButton *mapBtn = [UIButton buttonWithType:UIButtonTypeCustom];
   [mapBtn setFrame:CGRectMake(0.0f, 0.0f, 35.0f, 30.0f)];

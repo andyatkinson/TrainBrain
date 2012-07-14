@@ -196,10 +196,10 @@
   
   UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,0,headerView.frame.size.width, headerView.frame.size.height)];
   headerLabel.textAlignment = UITextAlignmentLeft;
-  headerLabel.textColor = [UIColor blackColor];
+  headerLabel.textColor = [UIColor colorWithHexString:@"#4a3c00"];
   headerLabel.text = @"Upcoming Departures";
   headerLabel.font = [UIFont boldSystemFontOfSize:14.0];
-  headerLabel.shadowColor = [UIColor whiteColor];
+  headerLabel.shadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.4];
   headerLabel.shadowOffset = CGSizeMake(0,1);
   
   headerLabel.backgroundColor = [UIColor clearColor];
