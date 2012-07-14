@@ -20,11 +20,8 @@
   NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/all", self.selectedRoute.route_id];
   
   [Stop stopsWithURLString:url near:nil parameters:nil block:^(NSArray *data) {
-
     self.stops = data;
-    
     [self displayMapData];
-
   }];
   
 }
@@ -103,7 +100,7 @@
     [pv setUserInteractionEnabled:YES];
     [pv setEnabled:YES];
     [pv setCanShowCallout:YES];
-    //[pin setAnimatesDrop:NO];
+    [pv setAnimatesDrop:NO];
     [pv setRightCalloutAccessoryView:[UIButton buttonWithType:UIButtonTypeDetailDisclosure]];
     
   } else {
@@ -155,6 +152,10 @@
 - (void)dealloc {
 	[super dealloc];
 	[mapView dealloc];
+	[HUD dealloc];
+  [stops dealloc];
+  [selectedRoute dealloc];
+  [viewTitle dealloc];
 }
 
 

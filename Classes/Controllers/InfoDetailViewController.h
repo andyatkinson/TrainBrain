@@ -7,7 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InfoDetailViewController : UIViewController {
+@interface InfoDetailViewController : UIViewController<UIWebViewDelegate> {
   NSArray *infos;
   UIWebView *webView;
   NSString *selectedRow;
@@ -17,6 +17,7 @@
 @property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) NSString *selectedRow;
 
-- (void)loadInfo;
+- (void)loadInfo:(NSString *)endpoint;
+-(void) loadHTML;
 
 @end

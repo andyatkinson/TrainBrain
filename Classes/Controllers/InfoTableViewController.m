@@ -28,12 +28,12 @@
 
 #pragma mark - View lifecycle
 
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
+- (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)section {
   UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.tableView.frame.size.width,29)] autorelease];
   
   UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 20)];
   headerLabel.textAlignment = UITextAlignmentLeft;
-  headerLabel.text = [self tableView:tableView titleForHeaderInSection:section];
+  headerLabel.text = [self tableView:tv titleForHeaderInSection:section];
   headerLabel.font = [UIFont boldSystemFontOfSize:14.0];
   headerLabel.textColor = [UIColor grayColor];
   headerLabel.backgroundColor = [UIColor clearColor];
@@ -133,7 +133,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-  [self.dataArrays count];
+  if ([self.dataArrays count] > 0) {
+    return [self.dataArrays count];
+  } else {
+    return 0;
+  }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -156,11 +160,11 @@
 }
 
 - (void)composeEmail:(NSString *)emailAddr {
-  NSArray *recipients = [[NSArray alloc] initWithObjects:emailAddr, nil];
-  
-  NSString *emailBody = @"<br/><br/>Download <a href='http://itunes.apple.com/us/app/train-brain/id328945770'>Train Brain</a> for iOS and follow <a href='http://twitter.com/trainbrainapp'>@trainbrainapp</a> on twitter";
   
   if ([MFMailComposeViewController canSendMail]) {
+    NSArray *recipients = [[NSArray alloc] initWithObjects:emailAddr, nil];
+    
+    NSString *emailBody = @"<br/><br/>Download <a href='http://itunes.apple.com/us/app/train-brain/id328945770'>Train Brain</a> for iOS and follow <a href='http://twitter.com/trainbrainapp'>@trainbrainapp</a> on twitter";
     
     MFMailComposeViewController *mailViewController = [[MFMailComposeViewController alloc] init];
     mailViewController.mailComposeDelegate = self;
@@ -171,6 +175,8 @@
     
     [self presentModalViewController:mailViewController animated:YES];
     [mailViewController release];
+    [recipients release];
+    [emailBody release];
     
   } else {
     NSLog(@"can't send email");
