@@ -31,7 +31,7 @@
 - (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)section {
   UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.tableView.frame.size.width,29)] autorelease];
   
-  UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 200, 20)];
+  UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 10, 200, 20)];
   headerLabel.textAlignment = UITextAlignmentLeft;
   headerLabel.text = [self tableView:tv titleForHeaderInSection:section];
   headerLabel.font = [UIFont boldSystemFontOfSize:14.0];
@@ -140,20 +140,40 @@
   }
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return 46;
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";    
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-      cell.backgroundColor = [UIColor colorWithHexString:@"#2c2c2c"];
+      cell.backgroundColor = [UIColor clearColor];
       cell.textLabel.textColor = [UIColor whiteColor];
       cell.selectionStyle = UITableViewCellSelectionStyleGray;
+      
+      cell.textLabel.shadowColor = [UIColor blackColor];
+      cell.textLabel.shadowOffset = CGSizeMake(0,-1);
+      
     }
     
     if (indexPath.section == 0) {
       cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+      if (indexPath.row == 0) {
+        // super ghetto to hard-code these bg images, but oh well
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"info_cell_top.png"] 
+                                                                  resizableImageWithCapInsets:UIEdgeInsetsZero]];
+      } else if (indexPath.row == 1) {
+        cell.backgroundView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"info_cell_bottom.png"] 
+                                                                  resizableImageWithCapInsets:UIEdgeInsetsZero]];
+      }
+    } else if (indexPath.section == 1 || indexPath.section == 2) {
+      cell.backgroundView = [[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"info_cell_single.png"] 
+                                                                resizableImageWithCapInsets:UIEdgeInsetsZero]];
     }
+    
   
     cell.textLabel.text = [[self.dataArrays objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     return cell;
