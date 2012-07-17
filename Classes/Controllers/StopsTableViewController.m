@@ -48,14 +48,13 @@
       UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 55)];
       //headsignSwitcher.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tabswitcher.png"]];
       
-      // TODO make these titles dynamic
+
       SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[self.headsigns valueForKey:@"headsign_public_name"]];
       navSC.height = 35.0f;
       navSC.font = [UIFont boldSystemFontOfSize:13];
       
       navSC.tintColor = [UIColor blackColor]; // background color
-      //navSC.thumb.tintColor = [UIColor colorWithRed:255/255.0 green:223/255.0 blue:4/255.0 alpha:1];
-      navSC.thumb.tintColor = [UIColor colorWithHexString:@"#fdd72c"];
+      navSC.thumb.tintColor = [UIColor colorWithHexString:@"#FFDE00"];
       navSC.thumb.shouldCastShadow = NO;
       navSC.thumb.textColor = [UIColor colorWithHexString:@"#333333"];
       navSC.thumb.textShadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.4];

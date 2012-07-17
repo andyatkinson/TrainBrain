@@ -51,15 +51,33 @@
   }
   
   [Route routesWithNearbyStops:@"train/v1/routes/nearby_stops" near:location parameters:params block:^(NSDictionary *data) {
-    self.routes = [data objectForKey:@"routes"];
-    self.stops = [data objectForKey:@"stops"];
-    self.lastViewed = [data objectForKey:@"last_viewed"];
     
-    [self.tableView reloadData];
-    [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
     [HUD hide:YES];
-    
     [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+
+    if (data == NULL || ![data isKindOfClass:[NSDictionary class]]) {
+      
+      UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
+      container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
+      UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20,5,self.view.frame.size.width, 50)];
+      label.backgroundColor = [UIColor clearColor];
+      label.textAlignment = UITextAlignmentLeft;
+      label.textColor = [UIColor whiteColor];
+      label.text = @"Error loading data. Please email support.";
+      label.font = [UIFont boldSystemFontOfSize:14.0];
+      [container addSubview:label];
+      self.view = container;
+      
+    } else {
+      
+      self.routes = [data objectForKey:@"routes"];
+      self.stops = [data objectForKey:@"stops"];
+      self.lastViewed = [data objectForKey:@"last_viewed"];
+      
+      [self.tableView reloadData];
+      [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];      
+    }
+    
     
   }];
 

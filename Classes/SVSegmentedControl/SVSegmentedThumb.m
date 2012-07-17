@@ -138,8 +138,8 @@
         CGFloat fillComponents[4] = {0.5, 1,   0.35, 1};
         
         if(self.selected) {
-            fillComponents[0]-=0.1;
-            fillComponents[2]-=0.1;
+            //fillComponents[0]-=0.1;
+            //fillComponents[2]-=0.1;
         }
 
         CGGradientRef fillGradient = CGGradientCreateWithColorComponents(colorSpace, fillComponents, NULL, 2);	
@@ -199,7 +199,7 @@
 }
 
 - (void)setShouldCastShadow:(BOOL)b {
-    self.layer.shadowOpacity = b ? 1 : 0;
+  self.layer.shadowOpacity = b ? 1 : 0;
 }
 
 

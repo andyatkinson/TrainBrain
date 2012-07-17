@@ -336,7 +336,7 @@
 		self.changeHandler(self.snapToIndex);
 
 	if(animated)
-		[self moveThumbToIndex:index animate:YES];
+		[self moveThumbToIndex:index animate:NO];
 	else
 		self.thumb.frame = [[self.thumbRects objectAtIndex:index] CGRectValue];
 }
