@@ -170,8 +170,8 @@
 		A102D4DA15B75CDD00D56712 /* tab_selected_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_selected_left@2x.png"; sourceTree = "<group>"; };
 		A11B344B1521472100A948F3 /* TrainBrain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TrainBrain.entitlements; sourceTree = "<group>"; };
 		A1201226157C4CF300A25DAB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		A1271F9515B1F2AD00578BE3 /* UIColor_Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor_Categories.h; sourceTree = "<group>"; };
-		A1271F9615B1F2AD00578BE3 /* UIColor_Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIColor_Categories.m; sourceTree = "<group>"; };
+		A1271F9515B1F2AD00578BE3 /* UIColor_Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UIColor_Categories.h; path = Models/UIColor_Categories.h; sourceTree = "<group>"; };
+		A1271F9615B1F2AD00578BE3 /* UIColor_Categories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UIColor_Categories.m; path = Models/UIColor_Categories.m; sourceTree = "<group>"; };
 		A1271F9A15B235EC00578BE3 /* bg_info_cell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg_info_cell.png; sourceTree = "<group>"; };
 		A1271F9B15B235EC00578BE3 /* bg_info_cell@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg_info_cell@2x.png"; sourceTree = "<group>"; };
 		A1271F9E15B2398F00578BE3 /* info_cell_bottom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = info_cell_bottom.png; sourceTree = "<group>"; };
@@ -513,6 +513,8 @@
 		A1DD5C83152DD86800C1A88A /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				A1271F9515B1F2AD00578BE3 /* UIColor_Categories.h */,
+				A1271F9615B1F2AD00578BE3 /* UIColor_Categories.m */,
 				A1DD5C84152DD89F00C1A88A /* NSString+BeetleFight.h */,
 				A1DD5C85152DD89F00C1A88A /* NSString+BeetleFight.m */,
 			);
@@ -649,8 +651,6 @@
 				A1E848371569BAD3007DF636 /* TransitAPIClient.m */,
 				A16E23C3156C6EAE008B4A3F /* Info.h */,
 				A16E23C4156C6EAE008B4A3F /* Info.m */,
-				A1271F9515B1F2AD00578BE3 /* UIColor_Categories.h */,
-				A1271F9615B1F2AD00578BE3 /* UIColor_Categories.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -910,6 +910,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = TrainBrain.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -921,6 +922,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = TrainBrain;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
 				SDKROOT = iphoneos5.1;
@@ -954,14 +956,16 @@
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_ENTITLEMENTS = dist.plist;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Andy Atkinson";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Andy Atkinson";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PREBINDING = NO;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos5.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -972,8 +976,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_ENTITLEMENTS = TrainBrain.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = TrainBrain_Prefix.pch;
