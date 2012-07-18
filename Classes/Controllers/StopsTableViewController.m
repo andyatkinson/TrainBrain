@@ -59,6 +59,7 @@
       navSC.thumb.textColor = [UIColor colorWithHexString:@"#333333"];
       navSC.thumb.textShadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.4];
       navSC.thumb.textShadowOffset = CGSizeMake(0,1);
+      navSC.cornerRadius = 8.0;
       
       navSC.changeHandler = ^(NSUInteger newIndex) {
         if ([self.stopsIndex0 count] > 0 && [self.stopsIndex1 count] > 0) {
@@ -70,7 +71,7 @@
           }
           
           [self.tableView reloadData];
-          [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+          [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationNone];
           
         }
         
@@ -207,7 +208,7 @@
 
     cell.icon.image = [UIImage imageNamed:stop.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
   
     return cell;
 }

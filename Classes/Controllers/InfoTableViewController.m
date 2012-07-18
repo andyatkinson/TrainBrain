@@ -152,7 +152,7 @@
       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
       cell.backgroundColor = [UIColor clearColor];
       cell.textLabel.textColor = [UIColor whiteColor];
-      cell.selectionStyle = UITableViewCellSelectionStyleGray;
+      cell.selectionStyle = UITableViewCellSelectionStyleNone;
       
       cell.textLabel.shadowColor = [UIColor blackColor];
       cell.textLabel.shadowOffset = CGSizeMake(0,-1);

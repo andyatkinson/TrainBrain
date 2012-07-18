@@ -239,7 +239,7 @@
     cell.description.text = route.route_desc;
     cell.icon.image = [UIImage imageNamed:route.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_lg.png"]];
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
     
@@ -258,7 +258,7 @@
     }
     cell.icon.image = [UIImage imageNamed:stop.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
-    cell.selectionStyle = UITableViewCellSelectionStyleGray;
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 
@@ -281,7 +281,7 @@
       
       cell.icon.image = [UIImage imageNamed:stop.icon_path];
       cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
-      cell.selectionStyle = UITableViewCellSelectionStyleGray;
+      cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
   }
