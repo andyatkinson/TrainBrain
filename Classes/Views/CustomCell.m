@@ -25,8 +25,8 @@
 			self.distanceLabel.textAlignment = UITextAlignmentLeft;
 			[myContentView addSubview:self.distanceLabel];
 			[self.distanceLabel release];
-    }
-    return self;
+  }
+  return self;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

@@ -16,6 +16,9 @@
 		52113EED157168AC00CD19DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52113EEC157168AC00CD19DE /* Foundation.framework */; };
 		52113EFA1571746F00CD19DE /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 52113EF71571745900CD19DE /* NSAttributedString+Attributes.m */; };
 		52113EFB1571747700CD19DE /* OHAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52113EF91571745900CD19DE /* OHAttributedLabel.m */; };
+		A102D4D815B754A200D56712 /* BasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A102D4D715B754A200D56712 /* BasicCell.m */; };
+		A102D4DB15B75CDD00D56712 /* tab_selected_left.png in Resources */ = {isa = PBXBuildFile; fileRef = A102D4D915B75CDD00D56712 /* tab_selected_left.png */; };
+		A102D4DC15B75CDD00D56712 /* tab_selected_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A102D4DA15B75CDD00D56712 /* tab_selected_left@2x.png */; };
 		A1201227157C4CF300A25DAB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1201226157C4CF300A25DAB /* MessageUI.framework */; };
 		A1271F9715B1F2AD00578BE3 /* UIColor_Categories.m in Sources */ = {isa = PBXBuildFile; fileRef = A1271F9615B1F2AD00578BE3 /* UIColor_Categories.m */; };
 		A1271F9C15B235EC00578BE3 /* bg_info_cell.png in Resources */ = {isa = PBXBuildFile; fileRef = A1271F9A15B235EC00578BE3 /* bg_info_cell.png */; };
@@ -132,7 +135,6 @@
 		A1E848401569BBAE007DF636 /* TimeEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E8483F1569BBAE007DF636 /* TimeEntry.m */; };
 		A1E848521569BC45007DF636 /* BigDepartureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848431569BC45007DF636 /* BigDepartureTableViewCell.m */; };
 		A1E848531569BC45007DF636 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848451569BC45007DF636 /* CustomCell.m */; };
-		A1E848561569BC45007DF636 /* DepartureDetailCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E8484B1569BC45007DF636 /* DepartureDetailCell.m */; };
 		A1E848571569BC45007DF636 /* RouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E8484D1569BC45007DF636 /* RouteCell.m */; };
 		A1E848581569BC45007DF636 /* StopAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E8484F1569BC45007DF636 /* StopAnnotation.m */; };
 		A1E848591569BC45007DF636 /* StopTimeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848511569BC45007DF636 /* StopTimeCell.m */; };
@@ -162,6 +164,10 @@
 		52113EF81571745900CD19DE /* OHAttributedLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OHAttributedLabel.h; path = OHAttributedLabel/OHAttributedLabel.h; sourceTree = "<group>"; };
 		52113EF91571745900CD19DE /* OHAttributedLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OHAttributedLabel.m; path = OHAttributedLabel/OHAttributedLabel.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TrainBrain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TrainBrain-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		A102D4D615B754A200D56712 /* BasicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicCell.h; sourceTree = "<group>"; };
+		A102D4D715B754A200D56712 /* BasicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicCell.m; sourceTree = "<group>"; };
+		A102D4D915B75CDD00D56712 /* tab_selected_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_selected_left.png; sourceTree = "<group>"; };
+		A102D4DA15B75CDD00D56712 /* tab_selected_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_selected_left@2x.png"; sourceTree = "<group>"; };
 		A11B344B1521472100A948F3 /* TrainBrain.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = TrainBrain.entitlements; sourceTree = "<group>"; };
 		A1201226157C4CF300A25DAB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		A1271F9515B1F2AD00578BE3 /* UIColor_Categories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIColor_Categories.h; sourceTree = "<group>"; };
@@ -315,8 +321,6 @@
 		A1E848431569BC45007DF636 /* BigDepartureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigDepartureTableViewCell.m; sourceTree = "<group>"; };
 		A1E848441569BC45007DF636 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
 		A1E848451569BC45007DF636 /* CustomCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomCell.m; sourceTree = "<group>"; };
-		A1E8484A1569BC45007DF636 /* DepartureDetailCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DepartureDetailCell.h; sourceTree = "<group>"; };
-		A1E8484B1569BC45007DF636 /* DepartureDetailCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DepartureDetailCell.m; sourceTree = "<group>"; };
 		A1E8484C1569BC45007DF636 /* RouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteCell.h; sourceTree = "<group>"; };
 		A1E8484D1569BC45007DF636 /* RouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteCell.m; sourceTree = "<group>"; };
 		A1E8484E1569BC45007DF636 /* StopAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StopAnnotation.h; sourceTree = "<group>"; };
@@ -518,6 +522,8 @@
 		A1DE8E3B1568597100EE3BE0 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				A102D4D915B75CDD00D56712 /* tab_selected_left.png */,
+				A102D4DA15B75CDD00D56712 /* tab_selected_left@2x.png */,
 				A19E6D4715B638D900033B1D /* nav_info_norm.png */,
 				A19E6D4815B638D900033B1D /* nav_info_norm@2X.png */,
 				A1271FAE15B23C1300578BE3 /* info_cell_single.png */,
@@ -656,14 +662,14 @@
 				A1E848431569BC45007DF636 /* BigDepartureTableViewCell.m */,
 				A1E848441569BC45007DF636 /* CustomCell.h */,
 				A1E848451569BC45007DF636 /* CustomCell.m */,
-				A1E8484A1569BC45007DF636 /* DepartureDetailCell.h */,
-				A1E8484B1569BC45007DF636 /* DepartureDetailCell.m */,
 				A1E8484C1569BC45007DF636 /* RouteCell.h */,
 				A1E8484D1569BC45007DF636 /* RouteCell.m */,
 				A1E8484E1569BC45007DF636 /* StopAnnotation.h */,
 				A1E8484F1569BC45007DF636 /* StopAnnotation.m */,
 				A1E848501569BC45007DF636 /* StopTimeCell.h */,
 				A1E848511569BC45007DF636 /* StopTimeCell.m */,
+				A102D4D615B754A200D56712 /* BasicCell.h */,
+				A102D4D715B754A200D56712 /* BasicCell.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -835,6 +841,8 @@
 				A1271FB115B23C1300578BE3 /* info_cell_single@2x.png in Resources */,
 				A19E6D4915B638D900033B1D /* nav_info_norm.png in Resources */,
 				A19E6D4A15B638D900033B1D /* nav_info_norm@2X.png in Resources */,
+				A102D4DB15B75CDD00D56712 /* tab_selected_left.png in Resources */,
+				A102D4DC15B75CDD00D56712 /* tab_selected_left@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -878,7 +886,6 @@
 				A1E848401569BBAE007DF636 /* TimeEntry.m in Sources */,
 				A1E848521569BC45007DF636 /* BigDepartureTableViewCell.m in Sources */,
 				A1E848531569BC45007DF636 /* CustomCell.m in Sources */,
-				A1E848561569BC45007DF636 /* DepartureDetailCell.m in Sources */,
 				A1E848571569BC45007DF636 /* RouteCell.m in Sources */,
 				A1E848581569BC45007DF636 /* StopAnnotation.m in Sources */,
 				A1E848591569BC45007DF636 /* StopTimeCell.m in Sources */,
@@ -891,6 +898,7 @@
 				A16E23C5156C6EAE008B4A3F /* Info.m in Sources */,
 				A1C3D478156C8FC8007212F5 /* EGORefreshTableHeaderView.m in Sources */,
 				A1271F9715B1F2AD00578BE3 /* UIColor_Categories.m in Sources */,
+				A102D4D815B754A200D56712 /* BasicCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

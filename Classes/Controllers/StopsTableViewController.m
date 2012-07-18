@@ -47,9 +47,8 @@
       
       UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 55)];
       //headsignSwitcher.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tabswitcher.png"]];
-      
 
-      SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[self.headsigns valueForKey:@"headsign_public_name"]];
+      SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[self.headsigns valueForKey:@"headsign_name"]];
       navSC.height = 35.0f;
       navSC.font = [UIFont boldSystemFontOfSize:13];
       
@@ -91,7 +90,7 @@
 
     
       [self.tableView reloadData];
-      [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
+      [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationNone];
   }];
   
 }

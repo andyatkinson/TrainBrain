@@ -24,7 +24,7 @@
 	self = [super init];
 	if (nil != self) {
 		self.title = stop.stop_name;
-		self.subtitle = stop.stop_desc;
+		self.subtitle = stop.headsign.headsign_name;
 		self.coordinate = stop.location.coordinate;
 		self.stop = stop;
 	}

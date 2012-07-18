@@ -9,7 +9,7 @@
 
 @implementation Headsign
 
-@synthesize headsign_key, headsign_public_name;
+@synthesize headsign_key, headsign_name;
 
 - (id)initWithAttributes:(NSDictionary *)attributes {
   self = [super init];
@@ -18,7 +18,7 @@
   }
   
   self.headsign_key = [attributes valueForKeyPath:@"headsign_key"];
-  self.headsign_public_name = [attributes valueForKeyPath:@"headsign_public_name"];
+  self.headsign_name = [attributes valueForKeyPath:@"headsign_name"];
   
   return self;
 }

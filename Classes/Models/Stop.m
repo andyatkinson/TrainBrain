@@ -8,11 +8,10 @@
 
 #import "Stop.h"
 #import "TransitAPIClient.h"
-#import "Headsign.h"
 
 @implementation Stop
 
-@synthesize stop_id, stop_name, stop_street, stop_lat, stop_lon, stop_city, stop_desc, location, icon_path, headsign_key, route;
+@synthesize stop_id, stop_name, stop_street, stop_lat, stop_lon, stop_desc, location, icon_path, headsign, route;
 
 - (id)initWithAttributes:(NSDictionary *)attributes {
     self = [super init];
@@ -25,18 +24,31 @@
     self.stop_desc = [attributes valueForKeyPath:@"stop_desc"];
     self.stop_lat = [attributes valueForKeyPath:@"stop_lat"];
     self.stop_lon = [attributes valueForKeyPath:@"stop_lon"];
-    self.stop_city = [attributes valueForKeyPath:@"stop_city"];
     self.location = [[CLLocation alloc] initWithLatitude:self.stop_lat.floatValue longitude:self.stop_lon.floatValue];
   
     NSString *family = [attributes valueForKeyPath:@"route_family"];
     if ([family length] > 0) {
       self.icon_path = [NSString stringWithFormat: @"icon_%@.png", family];
     }
-  
-    self.headsign_key = [attributes valueForKeyPath:@"headsign_key"];
-  
-    self.route = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[attributes valueForKeyPath:@"route_id"], @"route_id", nil]];
     
+  /* FIXME initializer with a dictionary isnt' working, not sure what I'm doing wrong! */
+//    self.headsign = [[Headsign alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                                        [attributes valueForKeyPath:@"headsign_key"], @"headsign_key", 
+//                                                        [attributes valueForKeyPath:@"headsign_name"], @"headsign_name", 
+//                                                        nil]];
+
+    self.headsign = [[Headsign alloc] init];
+    self.headsign.headsign_key = [attributes valueForKeyPath:@"headsign_key"];
+    self.headsign.headsign_name = [attributes valueForKeyPath:@"headsign_name"];
+
+  
+//    self.route = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+//                                                    [attributes valueForKeyPath:@"route_id"], @"route_id", 
+//                                                    nil]];
+
+    self.route = [[Route alloc] init];
+    self.route.route_id = [attributes valueForKeyPath:@"route_id"];
+  
     return self;
 }
 
@@ -109,9 +121,9 @@
     Headsign *h1 = (Headsign *)[headsigns objectAtIndex:1];
     
     for(Stop *stop in sortedStops) {
-      if ([stop.headsign_key isEqualToString:h0.headsign_key]) {
+      if ([stop.headsign.headsign_key isEqualToString:h0.headsign_key]) {
         [stopsIndex0 addObject:stop];
-      } else if ([stop.headsign_key isEqualToString:h1.headsign_key]) {
+      } else if ([stop.headsign.headsign_key isEqualToString:h1.headsign_key]) {
         [stopsIndex1 addObject:stop]; 
       }
     }

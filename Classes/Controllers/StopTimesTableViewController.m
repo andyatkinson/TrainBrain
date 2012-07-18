@@ -12,6 +12,7 @@
 #import "StopTime.h"
 #import "NSString+BeetleFight.h"
 #import "FunnyPhrase.h"
+#import "BasicCell.h"
 
 @implementation StopTimesTableViewController
 
@@ -104,6 +105,7 @@
         [[self bigCell] setStopTime:stop_time];
         
         [self setupRefresh];
+        
       } else {
         
         UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
@@ -212,7 +214,11 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.section == 0) {
-    return 154;
+    if (indexPath.row == 0) {
+        return 28;
+    } else if (indexPath.row == 1) {
+        return 154;
+    }
   } 
   return 57;
 }
@@ -233,7 +239,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   if (section == 0) {
-    return 1;
+    return 2;
   } else if (section == 1) {
     return [self.stop_times count];
   } else {
@@ -247,25 +253,44 @@
 - (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
+  static NSString *BasicCellIdentifier = @"BasicCell";
   static NSString *CellIdentifier = @"Cell";
   UITableViewCell *cell = [[UITableViewCell alloc] init];
   
   if ([self.stop_times count] > 0) {
     if (indexPath.section == 0) {
       
-      StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
-      
-      if (bigCell == NULL) {
-        [self setBigCell:[[BigDepartureTableViewCell alloc] init]];
-
-        [[self bigCell] setStopTime:stop_time];
-        [self bigCell].funnySaying.text = [FunnyPhrase rand];
-        [self bigCell].description.text = @"Next estimated train departure:";
+      if (indexPath.row == 0) {
         
-        [[self bigCell] startTimer];
-        self.bigCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        BasicCell *cell = [thisTableView dequeueReusableCellWithIdentifier:BasicCellIdentifier];
+        if (cell == nil) {
+          cell = [[[BasicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BasicCellIdentifier] autorelease];
+        }
+        
+        cell.titleLabel.backgroundColor = [UIColor clearColor];
+        cell.titleLabel.textColor = [UIColor grayColor];
+        cell.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
+        cell.titleLabel.text = [NSString stringWithFormat:@"To %@", self.selectedStop.headsign.headsign_name];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
+        return cell;
+        
+        
+      } else if (indexPath.row == 1)  {
+        StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
+        
+        if (bigCell == NULL) {
+          [self setBigCell:[[BigDepartureTableViewCell alloc] init]];
+          
+          [[self bigCell] setStopTime:stop_time];
+          [self bigCell].funnySaying.text = [FunnyPhrase rand];
+          [self bigCell].description.text = @"Next estimated train departure:";
+          
+          [[self bigCell] startTimer];
+          self.bigCell.selectionStyle = UITableViewCellSelectionStyleNone;
+        }
+        return [self bigCell];
       }
-      return [self bigCell];
       
       
     } else if (indexPath.section == 1) {

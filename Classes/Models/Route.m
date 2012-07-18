@@ -73,17 +73,17 @@
       [routes addObject:route];
     }
     
-    NSMutableDictionary *lastViewedResult = [[NSMutableDictionary alloc] init];
-    NSDictionary *lastViewed = [JSON valueForKeyPath:@"last_viewed"];
-    if ([lastViewed valueForKey:@"next_departure"] != NULL) {
-      NSString *nextDeparture = [lastViewed valueForKey:@"next_departure"];
-      [lastViewedResult setValue:nextDeparture forKey:@"next_departure"];
-    }
-    if ([lastViewed valueForKey:@"stop"] != NULL) {
-      Stop *stop = [[[Stop alloc] initWithAttributes:[lastViewed valueForKey:@"stop"]] autorelease];
-      [lastViewedResult setValue:stop forKey:@"stop"];
-    }
+    NSMutableDictionary *lastViewed = [[NSMutableDictionary alloc] init];
+    NSDictionary *parsedDict = [JSON valueForKeyPath:@"last_viewed"];
 
+    if ([parsedDict valueForKey:@"next_departure"]) {
+      [lastViewed setValue:@"08:45" forKey:@"next_departure"];
+    }
+    if ([parsedDict valueForKey:@"stop"]) {
+      NSDictionary *stopAttributes = [parsedDict valueForKeyPath:@"stop"];
+      Stop *stop = [[[Stop alloc] initWithAttributes:stopAttributes] autorelease];
+      [lastViewed setValue:stop forKey:@"stop"];
+    }
     
     NSMutableArray *stops = [NSMutableArray array];
     for (NSDictionary *attributes in [JSON valueForKeyPath:@"stops"]) {
@@ -105,7 +105,7 @@
     }];
     
     [data setObject:routes forKey:@"routes"];
-    [data setObject:lastViewedResult forKey:@"last_viewed"];
+    [data setObject:lastViewed forKey:@"last_viewed"];
     [data setObject:sortedStops forKey:@"stops"];
     
     if (block) {

@@ -75,7 +75,7 @@
       self.lastViewed = [data objectForKey:@"last_viewed"];
       
       [self.tableView reloadData];
-      [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];      
+      [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationNone];      
     }
     
     
@@ -251,8 +251,10 @@
     }
           
     Stop *stop = (Stop *)[self.lastViewed valueForKey:@"stop"];
+
+    
     cell.title.text = stop.stop_name;
-    cell.description.text = stop.stop_desc;
+    cell.description.text = stop.headsign.headsign_name;
     if ([self.lastViewed valueForKey:@"next_depature"]) {
       cell.extraInfo.text = [[self.lastViewed valueForKey:@"next_departure"] hourMinuteFormatted];
     }
@@ -272,7 +274,7 @@
     
       Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
       cell.title.text = stop.stop_name;
-      cell.description.text = stop.stop_desc;
+      cell.description.text = stop.headsign.headsign_name;
       
       double dist = [self.myLocation distanceFromLocation:stop.location] / 1609.344;
       if (dist < 100) {
