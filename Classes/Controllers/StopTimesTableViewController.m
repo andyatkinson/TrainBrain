@@ -277,7 +277,7 @@
         
         
       } else if (indexPath.row == 1)  {
-        StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:indexPath.row];
+        StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:0];
         
         if (bigCell == NULL) {
           [self setBigCell:[[BigDepartureTableViewCell alloc] init]];
