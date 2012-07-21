@@ -58,7 +58,14 @@
   NSArray  *departureData = [stop_time getTimeTillDeparture];
   NSNumber *timeTillDeparture = (NSNumber*) [departureData objectAtIndex:0];
   if ([timeTillDeparture intValue] == 0) {
-    [self loadStopTimes];
+    
+    UIApplication* app = [UIApplication sharedApplication];
+    UIApplicationState state = [app applicationState];
+    
+    if(state == UIApplicationStateActive) {
+      [self loadStopTimes];
+    }
+    
   } else {
     [self.tableView reloadData];
   }
