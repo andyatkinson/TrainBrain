@@ -127,7 +127,9 @@
     StopAnnotation *annotation = [StopAnnotation annotationWithStop:stop];
     [self.mapView addAnnotation:annotation];
     [stop release];
-    [annotation release];
+    
+    // not releasing memory here because there is a crash
+    //[annotation release];
   }
 	
   [self recenterMap];

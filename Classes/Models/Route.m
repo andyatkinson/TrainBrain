@@ -63,6 +63,16 @@
 		[mutableParameters setValue:[NSString stringWithFormat:@"%1.7f", location.coordinate.longitude] forKey:@"lon"];
 	}
   
+  NSDate *date = [NSDate date];
+  NSCalendar *calendar = [NSCalendar currentCalendar];
+  NSDateComponents *components = [calendar components:(NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit) fromDate:date];
+  NSInteger hour    = [components hour];
+  NSInteger minute = [components minute];
+  if (hour && minute) {
+    [mutableParameters setValue:[NSString stringWithFormat:@"%d", hour] forKey:@"hour"];
+		[mutableParameters setValue:[NSString stringWithFormat:@"%d", minute] forKey:@"minute"];
+  }
+  
   [[TransitAPIClient sharedClient] getPath:urlString parameters:mutableParameters success:^(__unused AFHTTPRequestOperation *operation, id JSON) {
     
     NSMutableDictionary *data = [NSMutableDictionary dictionary];
@@ -77,7 +87,7 @@
     NSDictionary *parsedDict = [JSON valueForKeyPath:@"last_viewed"];
 
     if ([parsedDict valueForKey:@"next_departure"]) {
-      [lastViewed setValue:@"08:45" forKey:@"next_departure"];
+      [lastViewed setValue:[parsedDict valueForKey:@"next_departure"] forKey:@"next_departure"];
     }
     if ([parsedDict valueForKey:@"stop"]) {
       NSDictionary *stopAttributes = [parsedDict valueForKeyPath:@"stop"];

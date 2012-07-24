@@ -255,9 +255,10 @@
     
     cell.title.text = stop.stop_name;
     cell.description.text = stop.headsign.headsign_name;
-    if ([self.lastViewed valueForKey:@"next_depature"]) {
+    if ([self.lastViewed valueForKey:@"next_departure"]) {
       cell.extraInfo.text = [[self.lastViewed valueForKey:@"next_departure"] hourMinuteFormatted];
     }
+
     cell.icon.image = [UIImage imageNamed:stop.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
