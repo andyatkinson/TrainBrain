@@ -65,7 +65,7 @@
     frame = CGRectMake(boundsX + 10, 15, 27, 28);
     self.icon.frame = frame;
     
-		frame = CGRectMake(boundsX + 46, 10, 200, 20);
+		frame = CGRectMake(boundsX + 46, 10, 180, 20);
 		self.title.frame = frame;
     
     frame = CGRectMake(boundsX + 46, 28, 180, 20);
