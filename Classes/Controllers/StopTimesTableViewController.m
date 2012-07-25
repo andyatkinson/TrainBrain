@@ -121,7 +121,7 @@
         label.backgroundColor = [UIColor clearColor];
         label.textAlignment = UITextAlignmentLeft;
         label.textColor = [UIColor whiteColor];
-        label.text = @"No upcoming departures.";
+        label.text = @"No upcoming departures. Check later.";
         label.font = [UIFont boldSystemFontOfSize:14.0];
         [container addSubview:label];
         self.view = container;

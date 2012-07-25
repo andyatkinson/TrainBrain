@@ -88,7 +88,13 @@
   // Load from a fixed location, in case location services are disabled or unavailable
   CLLocation *mpls = [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223];
   self.myLocation = mpls;
-  [self loadRoutesForLocation:mpls];
+  
+  
+  UIApplication* app = [UIApplication sharedApplication];
+  UIApplicationState state = [app applicationState];
+  if (state == UIApplicationStateActive) {
+    [self loadRoutesForLocation:mpls];
+  }    
   
   [self.locationManager startUpdatingLocation];
   
@@ -233,13 +239,15 @@
     if (cell == nil) {
       cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-    Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
-    
-    cell.title.text = route.long_name;
-    cell.description.text = route.route_desc;
-    cell.icon.image = [UIImage imageNamed:route.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_lg.png"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    if ([self.routes objectAtIndex:indexPath.row]) {
+      Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
+      cell.title.text = route.long_name;
+      cell.description.text = route.route_desc;
+      cell.icon.image = [UIImage imageNamed:route.icon_path];
+    }
     
     return cell;
     
@@ -249,22 +257,21 @@
     if (cell == nil) {
       cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
-          
-    Stop *stop = (Stop *)[self.lastViewed valueForKey:@"stop"];
-
-    
-    cell.title.text = stop.stop_name;
-    cell.description.text = stop.headsign.headsign_name;
-    if ([self.lastViewed valueForKey:@"next_departure"]) {
-      cell.extraInfo.text = [[self.lastViewed valueForKey:@"next_departure"] hourMinuteFormatted];
-    }
-
-    cell.icon.image = [UIImage imageNamed:stop.icon_path];
-    cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+    cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
+
+    if (self.lastViewed && [self.lastViewed valueForKey:@"stop"]) {
+      Stop *stop = (Stop *)[self.lastViewed valueForKey:@"stop"];
+      cell.title.text = stop.stop_name;
+      cell.description.text = stop.headsign.headsign_name;
+      cell.icon.image = [UIImage imageNamed:stop.icon_path];
+      
+      if ([self.lastViewed valueForKey:@"next_departure"]) {
+        cell.extraInfo.text = [[self.lastViewed valueForKey:@"next_departure"] hourMinuteFormatted];
+      }
+    }
     
     return cell;
-
     
   } else if (indexPath.section == 2) {
     
@@ -272,19 +279,22 @@
       if (cell == nil) {
         cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
       }
-    
-      Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
-      cell.title.text = stop.stop_name;
-      cell.description.text = stop.headsign.headsign_name;
-      
-      double dist = [self.myLocation distanceFromLocation:stop.location] / 1609.344;
-      if (dist < 100) {
-        cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
-      }
-      
-      cell.icon.image = [UIImage imageNamed:stop.icon_path];
-      cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+      cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+      if ([self.stops objectAtIndex:indexPath.row]) {
+        Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
+        cell.title.text = stop.stop_name;
+        cell.description.text = stop.headsign.headsign_name;
+        cell.icon.image = [UIImage imageNamed:stop.icon_path];
+        
+        if (self.myLocation) {
+          double dist = [self.myLocation distanceFromLocation:stop.location] / 1609.344;
+          if (dist < 100) {
+            cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
+          }
+        }
+      }      
     
     return cell;
   }
@@ -294,13 +304,12 @@
 
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  
   if (indexPath.section == 0) {
-    // route_id available => go to stops
     Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
     StopsTableViewController *target = [[StopsTableViewController alloc] init];
     target.selectedRoute = route;
-    target.myLocation = self.myLocation;
-    
+    target.myLocation = self.myLocation;  
     [[self navigationController] pushViewController:target animated:YES];
     
   } else if (indexPath.section == 1) {

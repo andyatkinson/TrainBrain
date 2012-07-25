@@ -96,9 +96,11 @@
     }
     
     NSMutableArray *stops = [NSMutableArray array];
-    for (NSDictionary *attributes in [JSON valueForKeyPath:@"stops"]) {
-      Stop *stop = [[[Stop alloc] initWithAttributes:attributes] autorelease];
-      [stops addObject:stop];
+    if ([JSON valueForKeyPath:@"stops"]) {
+      for (NSDictionary *attributes in [JSON valueForKeyPath:@"stops"]) {
+        Stop *stop = [[[Stop alloc] initWithAttributes:attributes] autorelease];
+        [stops addObject:stop];
+      }
     }
     
     NSArray *sortedStops = [stops sortedArrayUsingComparator:^ NSComparisonResult(id obj1, id obj2) {
