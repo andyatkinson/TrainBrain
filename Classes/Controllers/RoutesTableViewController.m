@@ -16,13 +16,21 @@
 @synthesize tableView, dataArraysForRoutesScreen, routes, stops, lastViewed, locationManager, myLocation;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-	[self loadRoutesForLocation:newLocation];
+	
   self.myLocation = newLocation;
-  [self.locationManager stopUpdatingLocation];
+  
+  UIApplication* app = [UIApplication sharedApplication];
+  UIApplicationState state = [app applicationState];
+  if (state == UIApplicationStateActive) {
+    //[self loadRoutesForLocation:self.locationManager];
+    [self loadRoutesForLocation:self.myLocation];
+    [self.locationManager stopUpdatingLocation];
+  }
+  
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to acquire location." 
+	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to acquire location. Location Services may be disabled.\n\n Pull to refresh data with pre-set location. Distances will not be accurate." 
                                                     message:nil 
                                                    delegate:nil 
                                           cancelButtonTitle:@"OK" 
@@ -83,20 +91,38 @@
 
 }
 
-- (void)viewDidLoad {
+- (void)viewDidLoad {  
   
-  // Load from a fixed location, in case location services are disabled or unavailable
-  CLLocation *mpls = [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223];
-  self.myLocation = mpls;
-  
-  
-  UIApplication* app = [UIApplication sharedApplication];
-  UIApplicationState state = [app applicationState];
-  if (state == UIApplicationStateActive) {
-    [self loadRoutesForLocation:mpls];
-  }    
-  
-  [self.locationManager startUpdatingLocation];
+  if ([CLLocationManager locationServicesEnabled]) {
+    
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager setDelegate:self];
+    [self.locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
+    [self.locationManager setDistanceFilter:10.0];
+    [self.locationManager startUpdatingLocation];
+    
+  } else {
+
+    UIAlertView *alert = [[UIAlertView alloc] 
+                          initWithTitle: @"Location Services Unavailable"
+                          message: @"Location Services are not available. A static location is being used."
+                          delegate: nil
+                          cancelButtonTitle:@"OK"
+                          otherButtonTitles:nil];
+    [alert show];
+    [alert release];
+    
+    // use the hard-coded location, perhaps notify the user this is happening
+    // Load from a fixed location, in case location services are disabled or unavailable
+    CLLocation *mpls = [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223];
+    self.myLocation = mpls;
+    UIApplication* app = [UIApplication sharedApplication];
+    UIApplicationState state = [app applicationState];
+    if (state == UIApplicationStateActive) {
+      [self loadRoutesForLocation:self.myLocation];
+    }
+    
+  }
   
   
   self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(22, 207, 270, 233)];
@@ -266,7 +292,9 @@
       cell.description.text = stop.headsign.headsign_name;
       cell.icon.image = [UIImage imageNamed:stop.icon_path];
       
-      if ([self.lastViewed valueForKey:@"next_departure"]) {
+      if ([self.lastViewed valueForKey:@"next_departure"] && 
+          [[self.lastViewed valueForKey:@"next_departure"] isKindOfClass:[NSString class]] &&
+          [[self.lastViewed valueForKey:@"next_departure"] length] > 0) {
         cell.extraInfo.text = [[self.lastViewed valueForKey:@"next_departure"] hourMinuteFormatted];
       }
     }
@@ -379,6 +407,12 @@
 	[self loadRoutesForLocation:self.myLocation];
 	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
 	
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+  [HUD hide:YES];
+  [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
 
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{

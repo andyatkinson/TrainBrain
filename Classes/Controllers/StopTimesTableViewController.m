@@ -221,11 +221,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   if (indexPath.section == 0) {
-    if (indexPath.row == 0) {
-        return 28;
-    } else if (indexPath.row == 1) {
-        return 154;
-    }
+    return 154;
   } 
   return 57;
 }
@@ -246,7 +242,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   if (section == 0) {
-    return 2;
+    return 1;
   } else if (section == 1) {
     return [self.stop_times count];
   } else {
@@ -267,37 +263,19 @@
   if ([self.stop_times count] > 0) {
     if (indexPath.section == 0) {
       
-      if (indexPath.row == 0) {
+      StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:0];
+      
+      if (bigCell == NULL) {
+        [self setBigCell:[[BigDepartureTableViewCell alloc] init]];
         
-        BasicCell *cell = [thisTableView dequeueReusableCellWithIdentifier:BasicCellIdentifier];
-        if (cell == nil) {
-          cell = [[[BasicCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:BasicCellIdentifier] autorelease];
-        }
+        [[self bigCell] setStopTime:stop_time];
+        [self bigCell].funnySaying.text = [FunnyPhrase rand];
+        [self bigCell].description.text = [NSString stringWithFormat:@"To %@", self.selectedStop.headsign.headsign_name];
         
-        cell.titleLabel.backgroundColor = [UIColor clearColor];
-        cell.titleLabel.textColor = [UIColor grayColor];
-        cell.titleLabel.font = [UIFont boldSystemFontOfSize:14.0];
-        cell.titleLabel.text = [NSString stringWithFormat:@"To %@", self.selectedStop.headsign.headsign_name];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
-        return cell;
-        
-        
-      } else if (indexPath.row == 1)  {
-        StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:0];
-        
-        if (bigCell == NULL) {
-          [self setBigCell:[[BigDepartureTableViewCell alloc] init]];
-          
-          [[self bigCell] setStopTime:stop_time];
-          [self bigCell].funnySaying.text = [FunnyPhrase rand];
-          [self bigCell].description.text = @"Next estimated train departure:";
-          
-          [[self bigCell] startTimer];
-          self.bigCell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-        return [self bigCell];
+        [[self bigCell] startTimer];
+        self.bigCell.selectionStyle = UITableViewCellSelectionStyleNone;
       }
+      return [self bigCell];
       
       
     } else if (indexPath.section == 1) {
@@ -361,6 +339,12 @@
 	
 	return [NSDate date]; // should return date data source was last changed
 	
+}
+
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+  [HUD hide:YES];
+  [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
 
 - (void)dealloc {

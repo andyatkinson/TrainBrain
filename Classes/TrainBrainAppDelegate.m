@@ -2,8 +2,7 @@
 //  TrainBrainAppDelegate.m
 //  train brain
 //
-//  Created by Andy Atkinson on 6/22/09.
-//  Copyright Andy Atkinson 2009 http://webandy.com. All rights reserved.
+//  Copyright 2009 Beetle Fight, LLC. All rights reserved.
 //
 
 #import "TrainBrainAppDelegate.h"
@@ -20,9 +19,6 @@
 
     UIImage *navigationBarImage = [UIImage imageNamed:@"bg_header.png"];
     [[UINavigationBar appearance] setBackgroundImage:navigationBarImage forBarMetrics:UIBarMetricsDefault];
-  
-    [application setStatusBarStyle:UIStatusBarStyleBlackOpaque];
-	
 	
     tabBarController = [[UITabBarController alloc] init];
     routesTableViewController = [[RoutesTableViewController alloc] init];
