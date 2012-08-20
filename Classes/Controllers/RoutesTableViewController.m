@@ -13,7 +13,7 @@
 
 @implementation RoutesTableViewController
 
-@synthesize tableView, dataArraysForRoutesScreen, routes, stops, lastViewed, locationManager, myLocation;
+@synthesize tableView, dataArraysForRoutesScreen, routes, stops, lastViewed, locationManager, myLocation, mplsLocation;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 	
@@ -22,7 +22,6 @@
   UIApplication* app = [UIApplication sharedApplication];
   UIApplicationState state = [app applicationState];
   if (state == UIApplicationStateActive) {
-    //[self loadRoutesForLocation:self.locationManager];
     [self loadRoutesForLocation:self.myLocation];
     [self.locationManager stopUpdatingLocation];
   }
@@ -30,6 +29,8 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+  [self loadRoutesForLocation:self.mplsLocation];
+  
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to acquire location. Location Services may be disabled.\n\n Pull to refresh data with pre-set location. Distances will not be accurate." 
                                                     message:nil 
                                                    delegate:nil 
@@ -40,7 +41,11 @@
 	
 }
 
-- (void)loadRoutesForLocation:(CLLocation *)location {  
+- (void)loadRoutesForLocation:(CLLocation *)location {
+  if(location == nil){
+    location = self.mplsLocation;
+  }
+  
   /* Progress HUD overlay START */  
   UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
@@ -92,9 +97,12 @@
 }
 
 - (void)viewDidLoad {  
+
+  // use the hard-coded location, perhaps notify the user this is happening
+  // Load from a fixed location, in case location services are disabled or unavailable
+  [self setMplsLocation: [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223]];
   
   if ([CLLocationManager locationServicesEnabled]) {
-    
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager setDelegate:self];
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
@@ -102,7 +110,6 @@
     [self.locationManager startUpdatingLocation];
     
   } else {
-
     UIAlertView *alert = [[UIAlertView alloc] 
                           initWithTitle: @"Location Services Unavailable"
                           message: @"Location Services are not available. A static location is being used."
@@ -111,15 +118,11 @@
                           otherButtonTitles:nil];
     [alert show];
     [alert release];
-    
-    // use the hard-coded location, perhaps notify the user this is happening
-    // Load from a fixed location, in case location services are disabled or unavailable
-    CLLocation *mpls = [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223];
-    self.myLocation = mpls;
+
     UIApplication* app = [UIApplication sharedApplication];
     UIApplicationState state = [app applicationState];
     if (state == UIApplicationStateActive) {
-      [self loadRoutesForLocation:self.myLocation];
+      [self loadRoutesForLocation:self.mplsLocation];
     }
     
   }
@@ -382,28 +385,20 @@
 #pragma mark UIScrollViewDelegate Methods
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
-	//[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
   [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-	
-  //[self loadRoutesForLocation:self.myLocation];
   [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 }
 
 - (void)doneLoadingTableViewData{
-	
-	//  model should call this when its done loading
-	//_reloading = NO;
-	//[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
 
 #pragma mark -
 #pragma mark EGORefreshTableHeaderDelegate Methods
 
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
-	
 	[self loadRoutesForLocation:self.myLocation];
 	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
 	
