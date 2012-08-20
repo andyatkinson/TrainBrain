@@ -229,6 +229,11 @@
     [[self navigationController] pushViewController:target animated:YES];
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application
+{
+  [HUD hide:YES];
+}
+
 - (void)dealloc {
 	[HUD dealloc];
   [super dealloc];  
