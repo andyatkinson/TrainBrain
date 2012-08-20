@@ -199,6 +199,7 @@
     [emailBody release];
     
   } else {
+    // pop an UIAlertView?
     NSLog(@"can't send email");
   }
 }
