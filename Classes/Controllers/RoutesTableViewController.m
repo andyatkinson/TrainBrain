@@ -381,7 +381,7 @@
 
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
 	[self loadRoutesForLocation:self.myLocation];
-	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:2.0];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

@@ -144,8 +144,6 @@
 }
 
 - (void)viewDidLoad {
-  
-  // TODO set the custom background
   UIBarButtonItem *backBarButton = [[UIBarButtonItem alloc] initWithTitle:@"Back" style:UIBarButtonItemStyleBordered target:nil action:nil];
   self.navigationItem.backBarButtonItem = backBarButton;
   self.navigationController.navigationBar.tintColor = [UIColor blackColor];
@@ -176,8 +174,7 @@
 		_refreshHeaderView = view;
 		[view release];
 	}
-	
-	//  update the last update date
+
 	[_refreshHeaderView refreshLastUpdatedDate];
   
   self.view = self.tableView; 
@@ -302,17 +299,14 @@
 #pragma mark UIScrollViewDelegate Methods
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{	
-	//[_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
   [_refreshHeaderView egoRefreshScrollViewDidScroll:scrollView];
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-	
-  //[self loadRoutesForLocation:self.myLocation];
   [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 }
 
-- (void)doneLoadingTableViewData{
+- (void)doneLoadingTableViewData {
 	
 	//  model should call this when its done loading
 	//_reloading = NO;
@@ -325,13 +319,11 @@
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
 	
 	[self loadStopTimes];
-	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
+	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:2.0];
 	
 }
 
-- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
-	
-	//return _reloading; // should return if data source model is reloading
+- (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view {
   return NO;
 }
 

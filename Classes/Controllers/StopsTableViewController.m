@@ -117,7 +117,6 @@
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
   
-  // set height of frame of tableview
   CGRect tvframe = [self.tableView frame];
   [self.tableView setFrame:CGRectMake(tvframe.origin.x, 
                                  tvframe.origin.y, 
@@ -132,8 +131,7 @@
 	self.stops = [NSArray arrayWithObjects:s1, nil];
 	NSDictionary *stopsDict = [NSDictionary dictionaryWithObject:self.stops forKey:@"items"];
   [data addObject:stopsDict];
-	
-	//Set the title
+
   NSRange hiawatha = [self.selectedRoute.route_id rangeOfString:@"55"];
   NSRange northstar = [self.selectedRoute.route_id rangeOfString:@"888"];
   if (hiawatha.location != NSNotFound) {
@@ -165,8 +163,6 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -186,7 +182,6 @@
   return [stops count];
 }
 
-// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
     static NSString *CellIdentifier = @"Cell";
@@ -198,11 +193,10 @@
   
     Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
     cell.title.text = stop.stop_name;
-    //cell.description.text = stop.stop_desc;
   
     double dist = [self.myLocation distanceFromLocation:stop.location] / 1609.344;
     cell.extraInfo.text = [NSString stringWithFormat:@"%.1f mi", dist];
-
+  
     cell.icon.image = [UIImage imageNamed:stop.icon_path];
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
