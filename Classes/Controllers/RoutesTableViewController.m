@@ -16,7 +16,6 @@
 @synthesize tableView, dataArraysForRoutesScreen, routes, stops, lastViewed, locationManager, myLocation;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-	
   self.myLocation = newLocation;
   
   UIApplication* app = [UIApplication sharedApplication];
@@ -31,8 +30,10 @@
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
   [self setMyLocation:[[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223]];
   [self loadRoutesForLocation:self.myLocation];
+  [self.locationManager stopUpdatingLocation];
   
-	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to acquire location. Location Services may be disabled.\n\n Pull to refresh data with pre-set location. Distances will not be accurate." 
+  NSString *locationErrorMessage = @"Failed to acquire location. Location Services may be disabled.\n\n Pull to refresh data with pre-set location. Distances will not be accurate.";
+  UIAlertView *alert = [[UIAlertView alloc] initWithTitle: locationErrorMessage
                                                     message:nil 
                                                    delegate:nil 
                                           cancelButtonTitle:@"OK" 
@@ -43,15 +44,13 @@
 }
 
 - (void)loadRoutesForLocation:(CLLocation *)location {
-  
-  /* Progress HUD overlay START */  
+
   UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
 	[window addSubview:HUD];
 	HUD.delegate = self;
   HUD.labelText = @"Loading";
 	[HUD show:YES];
-  /* Progress HUD overlay END */
   
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
@@ -61,12 +60,10 @@
   }
   
   [Route routesWithNearbyStops:@"train/v1/routes/nearby_stops" near:location parameters:params block:^(NSDictionary *data) {
-    
     [HUD hide:YES];
     [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 
     if (data == NULL || ![data isKindOfClass:[NSDictionary class]]) {
-      
       UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
       container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
       UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20,5,self.view.frame.size.width, 50)];
@@ -95,16 +92,14 @@
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager setDelegate:self];
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
-    //[self.locationManager setDistanceFilter:10.0];
     [self.locationManager startUpdatingLocation];
     
   } else {
 
     [self setMyLocation:[[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223]];
-    
     UIAlertView *alert = [[UIAlertView alloc] 
                           initWithTitle: @"Location Services Unavailable"
-                          message: @"Location Services are not available. A static location is being used."
+                          message: @"\n\nLocation Services are not available. A pre-set location will be used. Distances will not be accurate."
                           delegate: nil
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil];
@@ -140,7 +135,6 @@
   [dataArraysForRoutesScreen addObject:lastStopIDDict];
 	
 	self.navigationItem.title = @"Routes";
-
   
   if (_refreshHeaderView == nil) {
 		EGORefreshTableHeaderView *view = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 0.0f - self.tableView.bounds.size.height, self.view.frame.size.width, self.tableView.bounds.size.height)];
@@ -151,7 +145,6 @@
 	}
 	
 	[_refreshHeaderView refreshLastUpdatedDate];
-  
   self.view = self.tableView;
 }
 
@@ -168,15 +161,13 @@
 
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
   if ([self tableView:tv titleForHeaderInSection:section] != nil) {
-    return 28; // want to eliminate a 1px bottom gray line, and a 1px bottom white line under
-  }
-  else {
+    return 28;
+  } else {
     return 0;
   }
 }
 
 - (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)section {
-  
   UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.tableView.frame.size.width,30)] autorelease];
   UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,0,headerView.frame.size.width, headerView.frame.size.height)];
   headerLabel.textAlignment = UITextAlignmentLeft;
@@ -197,11 +188,10 @@
   if (section == 0) {
     return [self.routes count];
   } else if (section == 1) {
-    
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
     NSString *last_stop_id = [settings stringForKey: @"last_stop_id"];
     if (last_stop_id != NULL) {
-        return 1;
+      return 1;
     } else {
       return 0;
     }
@@ -283,7 +273,6 @@
   } else if (indexPath.section == 2) {
 
     if ([self.stops count] == 0) {
-      
       // TODO could put a basic table view cell with a message about no stops within 25 miles.
       
     } else if ([self.stops count] > 1) {
@@ -310,10 +299,8 @@
       }
       
       return cell;
-      
     }
   }
-  
   return NULL;
 }
 
@@ -355,7 +342,8 @@
 	[self tableView:tv didSelectRowAtIndexPath:indexPath];
 }
 
--(void)hudWasHidden{
+-(void)hudWasHidden {
+  [HUD removeFromSuperview];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -402,6 +390,12 @@
 	[HUD dealloc];
 	[dataArraysForRoutesScreen release];
   [super dealloc];  
+  [tableView dealloc];
+  [routes dealloc];
+  [stops dealloc];
+  [lastViewed dealloc];
+  [myLocation dealloc];
+  [locationManager dealloc];
 }
 
 @end

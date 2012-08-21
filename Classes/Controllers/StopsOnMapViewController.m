@@ -22,13 +22,10 @@
   [Stop stopsWithURLString:url near:nil parameters:nil block:^(NSArray *data) {
     self.stops = data;
     [self displayMapData];
-  }];
-  
+  }];  
 }
 
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-- (void)viewDidLoad {	
-		
+- (void)viewDidLoad {			
 	[super viewDidLoad];
   
   HUD.labelText = @"Loading";
@@ -42,15 +39,11 @@
   
   self.mapView = [[MKMapView alloc] initWithFrame:CGRectMake(0, 60, self.view.frame.size.width, 260)];  
   self.mapView.delegate = self;
-
 	
-	[self loadStops];
-  
+	[self loadStops];  
   self.title = self.viewTitle;
-  
   self.view = self.mapView;
 }
-
 
 - (void)recenterMap {
 	NSArray *coordinates = [self.mapView valueForKeyPath:@"annotations.coordinate"];
@@ -105,8 +98,6 @@
     
   } else {
     
-    //we're re-using an annotation view
-    //update annotation property in case re-used view was for another  
     pv.annotation = annotation;
   }
 
@@ -137,19 +128,15 @@
 }
 
 - (void)didReceiveMemoryWarning {
-	// Releases the view if it doesn't have a superview.
 	[super didReceiveMemoryWarning];
 }
 
 - (void)viewDidUnload {
-	// Release any retained subviews of the main view.
-	// e.g. self.myOutlet = nil;
 }
 
--(void)hudWasHidden{
-  
+-(void)hudWasHidden {
+  [HUD removeFromSuperview];
 }
-
 
 - (void)dealloc {
 	[super dealloc];

@@ -25,14 +25,12 @@
 }
 
 - (void)loadStopsWithHeadsigns:(CLLocation *)location {
-  /* Progress HUD overlay START */  
   UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	HUD = [[MBProgressHUD alloc] initWithWindow:window];
 	[window addSubview:HUD];
 	HUD.delegate = self;
   HUD.labelText = @"Loading";
 	[HUD show:YES];
-  /* Progress HUD overlay END */ 
     
     NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/with_headsigns", self.selectedRoute.route_id];
   
@@ -46,7 +44,6 @@
       container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
       
       UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 55)];
-      //headsignSwitcher.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_tabswitcher.png"]];
 
       SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[self.headsigns valueForKey:@"headsign_name"]];
       navSC.height = 35.0f;
@@ -87,8 +84,6 @@
       self.view = container;
       
       [HUD hide:YES];
-
-    
       [self.tableView reloadData];
       [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationNone];
   }];
@@ -157,7 +152,8 @@
   self.view = container;
 }
 
--(void)hudWasHidden{
+-(void)hudWasHidden {
+  [HUD removeFromSuperview];
 }
 
 - (void)viewDidUnload
@@ -184,24 +180,24 @@
 
 - (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
-    static NSString *CellIdentifier = @"Cell";
+  static NSString *CellIdentifier = @"Cell";
   
-    RouteCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-      cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+  RouteCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];
+  if (cell == nil) {
+    cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+  }
   
-    Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
-    cell.title.text = stop.stop_name;
+  Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
+  cell.title.text = stop.stop_name;
   
-    double dist = [self.myLocation distanceFromLocation:stop.location] / 1609.344;
-    cell.extraInfo.text = [NSString stringWithFormat:@"%.1f mi", dist];
+  double dist = [self.myLocation distanceFromLocation:stop.location] / 1609.344;
+  cell.extraInfo.text = [NSString stringWithFormat:@"%.1f mi", dist];
   
-    cell.icon.image = [UIImage imageNamed:stop.icon_path];
-    cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  cell.icon.image = [UIImage imageNamed:stop.icon_path];
+  cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
+  cell.selectionStyle = UITableViewCellSelectionStyleNone;
   
-    return cell;
+  return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
@@ -215,10 +211,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
-    StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
-    [target setSelectedStop:stop];  
-    [[self navigationController] pushViewController:target animated:YES];
+  Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
+  StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
+  [target setSelectedStop:stop];  
+  [[self navigationController] pushViewController:target animated:YES];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -228,7 +224,16 @@
 
 - (void)dealloc {
 	[HUD dealloc];
-  [super dealloc];  
+  [super dealloc];
+  [tableView dealloc];
+  [headsigns dealloc];
+  [stops dealloc];
+  [stopsIndex0 dealloc];
+  [stopsIndex1 dealloc];
+  [data dealloc];
+  [myLocation dealloc];
+  [locationManager dealloc];
+  [selectedRoute dealloc];
 }
 
 @end

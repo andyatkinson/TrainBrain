@@ -28,24 +28,20 @@
   return self;
 }
 
--(void)hudWasHidden{
-}
-
-- (void) setupRefresh{
-
-  if ( [self refreshTimer] != (id)[NSNull null] ) {
+- (void) setupRefresh {
+  if ([self refreshTimer] != (id)[NSNull null]) {
     StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:0];
     NSArray  *departureData = [stop_time getTimeTillDeparture];
     NSNumber *seconds = (NSNumber*) [departureData objectAtIndex:3];
     
     int interval = 0;
-    if( [seconds intValue] < 30 ){
+    if ([seconds intValue] < 30) {
       interval = 30 + [seconds intValue];
-    } else if ([seconds intValue] > 30 ) {
+    } else if ([seconds intValue] > 30) {
       interval = [seconds intValue] - 30;
     }
     
-    [self setRefreshTimer: [NSTimer scheduledTimerWithTimeInterval:interval
+    [self setRefreshTimer:[NSTimer scheduledTimerWithTimeInterval:interval
                                                             target:self
                                                           selector:@selector(refeshTable)
                                                           userInfo:nil
@@ -53,7 +49,7 @@
   }
 }
 
-- (void) refeshTable{
+- (void) refeshTable {
   StopTime *stop_time = (StopTime *)[self.stop_times objectAtIndex:0];
   NSArray  *departureData = [stop_time getTimeTillDeparture];
   NSNumber *timeTillDeparture = (NSNumber*) [departureData objectAtIndex:0];
@@ -62,7 +58,7 @@
     UIApplication* app = [UIApplication sharedApplication];
     UIApplicationState state = [app applicationState];
     
-    if(state == UIApplicationStateActive) {
+    if (state == UIApplicationStateActive) {
       [self loadStopTimes];
     }
     
@@ -83,26 +79,21 @@
   NSCalendar *calendar = [NSCalendar currentCalendar];
   NSDateComponents *components = [calendar components:NSHourCalendarUnit fromDate:now];
   
-  
   if (self.selectedStop == NULL || self.selectedStop.route.route_id == NULL) {
     NSLog(@"tried to call controller but didn't supply enough data. <selectedStop>: %@", self.selectedStop);
 
   } else {
     
-    
     NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/%@/stop_times", 
                      self.selectedStop.route.route_id, self.selectedStop.stop_id];
     
     NSDictionary *params = [NSDictionary dictionaryWithObject:[NSString stringWithFormat:@"%d", [components hour]] forKey:@"hour"];
-    
-    /* Progress HUD overlay START */  
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     HUD = [[MBProgressHUD alloc] initWithWindow:window];
     [window addSubview:HUD];
     HUD.delegate = self;
     HUD.labelText = @"Loading";
     [HUD show:YES];
-    /* Progress HUD overlay END */
     
     [StopTime stopTimesSimple:url near:nil parameters:params block:^(NSArray *stops) {
       self.stop_times = stops;
@@ -235,7 +226,6 @@
   }
 }
 
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
   if (section == 0) {
@@ -246,9 +236,7 @@
     // error
     return 0;
   }
-
 }
-  
 
 - (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -288,7 +276,6 @@
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
       return cell;
-      
     }
   }  
 
@@ -307,10 +294,6 @@
 }
 
 - (void)doneLoadingTableViewData {
-	
-	//  model should call this when its done loading
-	//_reloading = NO;
-	//[_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
 
 #pragma mark -
@@ -327,10 +310,12 @@
   return NO;
 }
 
-- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
-	
-	return [NSDate date]; // should return date data source was last changed
-	
+- (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view {
+	return [NSDate date];	
+}
+
+-(void)hudWasHidden {
+  [HUD removeFromSuperview];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -342,6 +327,13 @@
 - (void)dealloc {
   [super dealloc];
   [HUD dealloc];
+  [tableView dealloc];
+  [data dealloc];
+  [selectedStop dealloc];
+  [stop_times dealloc];
+  [bigCell dealloc];
+  [_refreshTimer dealloc];
+  [_refreshHeaderView dealloc];
 }
 
 @end
