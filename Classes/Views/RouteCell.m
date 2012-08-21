@@ -74,9 +74,6 @@
     frame = CGRectMake(boundsX + 210, 18, 80, 20);
     self.extraInfo.frame = frame;
     
-    //    CGRect imageRectangle = CGRectMake(0.0f,0.0f,320.0f,44.0f); //cells are 44 px high
-    //    bgImageView.frame = imageRectangle;
-    
 	}
 }
 

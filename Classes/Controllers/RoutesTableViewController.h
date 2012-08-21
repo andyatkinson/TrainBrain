@@ -11,7 +11,6 @@
 	UITableView *tableView;
 	NSMutableArray *dataArraysForRoutesScreen;
   CLLocation *myLocation;
-  CLLocation *mplsLocation;
   CLLocationManager *locationManager;
   NSArray *routes;
   NSArray *stops;
@@ -26,7 +25,6 @@
 @property (nonatomic, retain) NSArray *stops;
 @property (nonatomic, retain) NSDictionary *lastViewed;
 
-@property (nonatomic, retain) CLLocation *mplsLocation;
 @property (nonatomic, retain) CLLocation *myLocation;
 @property (nonatomic, retain) CLLocationManager *locationManager;
 

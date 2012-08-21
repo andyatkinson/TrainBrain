@@ -1,10 +1,10 @@
 //
 //  RoutesTableViewController.m
 //
-//
 
 #import "RoutesTableViewController.h"
 #import "RouteCell.h"
+#import "BasicCell.h"
 #import "Route.h"
 #import "Stop.h"
 #import "StopsTableViewController.h"
@@ -13,7 +13,7 @@
 
 @implementation RoutesTableViewController
 
-@synthesize tableView, dataArraysForRoutesScreen, routes, stops, lastViewed, locationManager, myLocation, mplsLocation;
+@synthesize tableView, dataArraysForRoutesScreen, routes, stops, lastViewed, locationManager, myLocation;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 	
@@ -29,7 +29,8 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-  [self loadRoutesForLocation:self.mplsLocation];
+  [self setMyLocation:[[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223]];
+  [self loadRoutesForLocation:self.myLocation];
   
 	UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Failed to acquire location. Location Services may be disabled.\n\n Pull to refresh data with pre-set location. Distances will not be accurate." 
                                                     message:nil 
@@ -42,9 +43,6 @@
 }
 
 - (void)loadRoutesForLocation:(CLLocation *)location {
-  if(location == nil){
-    location = self.mplsLocation;
-  }
   
   /* Progress HUD overlay START */  
   UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -55,7 +53,6 @@
 	[HUD show:YES];
   /* Progress HUD overlay END */
   
-  //NSDictionary *params = [NSDictionary dictionaryWithObject:@"1000" forKey:@"last_viewed_stop_id"];
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
   NSString *last_stop_id = [settings stringForKey: @"last_stop_id"];
@@ -86,30 +83,25 @@
       self.routes = [data objectForKey:@"routes"];
       self.stops = [data objectForKey:@"stops"];
       self.lastViewed = [data objectForKey:@"last_viewed"];
-      
       [self.tableView reloadData];
       [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationNone];      
     }
-    
-    
   }];
-
 }
 
 - (void)viewDidLoad {  
 
-  // use the hard-coded location, perhaps notify the user this is happening
-  // Load from a fixed location, in case location services are disabled or unavailable
-  [self setMplsLocation: [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223]];
-  
   if ([CLLocationManager locationServicesEnabled]) {
     self.locationManager = [[CLLocationManager alloc] init];
     [self.locationManager setDelegate:self];
     [self.locationManager setDesiredAccuracy:kCLLocationAccuracyNearestTenMeters];
-    [self.locationManager setDistanceFilter:10.0];
+    //[self.locationManager setDistanceFilter:10.0];
     [self.locationManager startUpdatingLocation];
     
   } else {
+
+    [self setMyLocation:[[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223]];
+    
     UIAlertView *alert = [[UIAlertView alloc] 
                           initWithTitle: @"Location Services Unavailable"
                           message: @"Location Services are not available. A static location is being used."
@@ -122,11 +114,9 @@
     UIApplication* app = [UIApplication sharedApplication];
     UIApplicationState state = [app applicationState];
     if (state == UIApplicationStateActive) {
-      [self loadRoutesForLocation:self.mplsLocation];
-    }
-    
+      [self loadRoutesForLocation:self.myLocation];
+    } 
   }
-  
   
   self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(22, 207, 270, 233)];
   
@@ -136,8 +126,7 @@
   self.tableView.dataSource = self;
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
-	
-	//Initialize the array.
+
 	dataArraysForRoutesScreen = [[NSMutableArray alloc] init];
   
   Route *r1 = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"", @"route_desc", nil]];
@@ -147,14 +136,8 @@
   NSArray *lastStopID = [NSArray arrayWithObjects:@"", nil];
   NSDictionary *lastStopIDDict = [NSDictionary dictionaryWithObject:lastStopID forKey:@"items"];
 	
-  
-  Stop *s1 = [[Stop alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"", @"stop_desc", nil]];
-  self.stops = [NSArray arrayWithObjects:s1, nil];
-	NSDictionary *stopsDict = [NSDictionary dictionaryWithObject:self.stops forKey:@"items"];
-	
 	[dataArraysForRoutesScreen addObject:routesDict];
   [dataArraysForRoutesScreen addObject:lastStopIDDict];
-	[dataArraysForRoutesScreen addObject:stopsDict];
 	
 	self.navigationItem.title = @"Routes";
 
@@ -167,7 +150,6 @@
 		[view release];
 	}
 	
-	//  update the last update date
 	[_refreshHeaderView refreshLastUpdatedDate];
   
   self.view = self.tableView;
@@ -175,15 +157,13 @@
 
 
 - (void)didReceiveMemoryWarning {
-  [super didReceiveMemoryWarning]; // Releases the view if it doesn't have a superview
-  // Release anything that's not essential, such as cached data
+  [super didReceiveMemoryWarning];
 }
 
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-  
-	return [dataArraysForRoutesScreen count];
+  return 3;
 }
 
 - (CGFloat)tableView:(UITableView *)tv heightForHeaderInSection:(NSInteger)section {
@@ -191,7 +171,6 @@
     return 28; // want to eliminate a 1px bottom gray line, and a 1px bottom white line under
   }
   else {
-    // If no section header title, no section header needed
     return 0;
   }
 }
@@ -199,7 +178,6 @@
 - (UIView *)tableView:(UITableView *)tv viewForHeaderInSection:(NSInteger)section {
   
   UIView *headerView = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.tableView.frame.size.width,30)] autorelease];
-  
   UILabel *headerLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,0,headerView.frame.size.width, headerView.frame.size.height)];
   headerLabel.textAlignment = UITextAlignmentLeft;
   headerLabel.textColor = [UIColor colorWithHexString:@"#4a3c00"];
@@ -214,8 +192,6 @@
   return headerView;
 }
 
-
-// Customize the number of rows in the table view.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
   if (section == 0) {
@@ -258,9 +234,9 @@
   return NULL;
 }
 
-// Customize the appearance of table view cells.
 - (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   
+  static NSString *BasicCellIdentifier = @"BasicCell";
   static NSString *CellIdentifier = @"Cell";
 
   if (indexPath.section == 0) {
@@ -305,14 +281,20 @@
     return cell;
     
   } else if (indexPath.section == 2) {
-    
+
+    if ([self.stops count] == 0) {
+      
+      // TODO could put a basic table view cell with a message about no stops within 25 miles.
+      
+    } else if ([self.stops count] > 1) {
+        
       RouteCell *cell = [thisTableView dequeueReusableCellWithIdentifier:CellIdentifier];
       if (cell == nil) {
         cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
       }
       cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
       cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+      
       if ([self.stops objectAtIndex:indexPath.row]) {
         Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
         cell.title.text = stop.stop_name;
@@ -325,9 +307,11 @@
             cell.extraInfo.text = [NSString stringWithFormat:@"%.1f miles", dist];
           }
         }
-      }      
-    
-    return cell;
+      }
+      
+      return cell;
+      
+    }
   }
   
   return NULL;
@@ -340,36 +324,34 @@
     Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
     StopsTableViewController *target = [[StopsTableViewController alloc] init];
     target.selectedRoute = route;
-    target.myLocation = self.myLocation;  
+    target.myLocation = self.myLocation;
     [[self navigationController] pushViewController:target animated:YES];
     
   } else if (indexPath.section == 1) {
     
     Stop *stop = (Stop *)[self.lastViewed valueForKey:@"stop"];
     StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
-    [target setSelectedStop:stop];    
-    
+    [target setSelectedStop:stop];
     [[self navigationController] pushViewController:target animated:YES];
     
   } else if (indexPath.section == 2) {
     
-    Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
-    StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
-    [target setSelectedStop:stop];    
+    if ([self.stops count] > 0) {
+      Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];
+      StopTimesTableViewController *target = [[StopTimesTableViewController alloc] init];
+      [target setSelectedStop:stop];    
+      [[self navigationController] pushViewController:target animated:YES];
+    }
     
-    [[self navigationController] pushViewController:target animated:YES];
   }
 	
 }
 
 - (UITableViewCellAccessoryType)tableView:(UITableView *)tableView accessoryTypeForRowWithIndexPath:(NSIndexPath *)indexPath {
-	
-	//return UITableViewCellAccessoryDetailDisclosureButton;
 	return UITableViewCellAccessoryDisclosureIndicator;
 }
 
 - (void)tableView:(UITableView *)tv accessoryButtonTappedForRowWithIndexPath:(NSIndexPath *)indexPath {
-	
 	[self tableView:tv didSelectRowAtIndexPath:indexPath];
 }
 
@@ -377,7 +359,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  // indexPath.section && indexPath.row (inside a section) are options to control in more detail
   return 57;
 }
 
@@ -392,7 +373,7 @@
   [_refreshHeaderView egoRefreshScrollViewDidEndDragging:scrollView];
 }
 
-- (void)doneLoadingTableViewData{
+- (void)doneLoadingTableViewData {
 }
 
 #pragma mark -
@@ -401,7 +382,6 @@
 - (void)egoRefreshTableHeaderDidTriggerRefresh:(EGORefreshTableHeaderView*)view{
 	[self loadRoutesForLocation:self.myLocation];
 	[self performSelector:@selector(doneLoadingTableViewData) withObject:nil afterDelay:3.0];
-	
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
@@ -411,15 +391,11 @@
 }
 
 - (BOOL)egoRefreshTableHeaderDataSourceIsLoading:(EGORefreshTableHeaderView*)view{
-	
-	//return _reloading; // should return if data source model is reloading
   return NO;
 }
 
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view{
-	
-	return [NSDate date]; // should return date data source was last changed
-	
+	return [NSDate date];
 }
 
 - (void)dealloc {

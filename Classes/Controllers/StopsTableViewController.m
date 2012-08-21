@@ -104,10 +104,8 @@
 
 - (void)viewDidLoad
 {
-  
-  CLLocation *mpls = [[CLLocation alloc] initWithLatitude:44.949651 longitude:-93.242223];
-  self.myLocation = mpls;
-  [self loadStopsWithHeadsigns:mpls];
+
+  [self loadStopsWithHeadsigns:self.myLocation];
   
   self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 55, self.view.frame.size.width, 260)];
 
