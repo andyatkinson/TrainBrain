@@ -44,13 +44,7 @@
 }
 
 - (void)loadRoutesForLocation:(CLLocation *)location {
-
-  UIWindow *window = [UIApplication sharedApplication].keyWindow;
-	HUD = [[MBProgressHUD alloc] initWithWindow:window];
-	[window addSubview:HUD];
-	HUD.delegate = self;
-  HUD.labelText = @"Loading";
-	[HUD show:YES];
+  [HUD show:YES];
   
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
@@ -60,7 +54,7 @@
   }
   
   [Route routesWithNearbyStops:@"train/v1/routes/nearby_stops" near:location parameters:params block:^(NSDictionary *data) {
-    [HUD hide:YES];
+    
     [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 
     if (data == NULL || ![data isKindOfClass:[NSDictionary class]]) {
@@ -74,6 +68,8 @@
       label.font = [UIFont boldSystemFontOfSize:14.0];
       [container addSubview:label];
       self.view = container;
+        
+      [HUD hide:YES];
       
     } else {
       
@@ -82,11 +78,20 @@
       self.lastViewed = [data objectForKey:@"last_viewed"];
       [self.tableView reloadData];
       [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationNone];      
+      
+      [HUD hide:YES];
     }
   }];
 }
 
 - (void)viewDidLoad {  
+  
+  UIWindow *window = [UIApplication sharedApplication].keyWindow;
+	HUD = [[MBProgressHUD alloc] initWithWindow:window];
+	[window addSubview:HUD];
+	HUD.delegate = self;
+  HUD.labelText = @"Loading";
+  [HUD show:NO];
 
   if ([CLLocationManager locationServicesEnabled]) {
     self.locationManager = [[CLLocationManager alloc] init];
