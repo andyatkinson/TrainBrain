@@ -39,8 +39,6 @@
 	<string>Andy Atkinson</string>
 	<key>CFBundleVersion</key>
 	<string>2.0.17</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
 	<key>UIPrerenderedIcon</key>
