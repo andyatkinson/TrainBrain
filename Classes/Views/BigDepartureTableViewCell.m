@@ -45,16 +45,9 @@
 
 - (void)updateTimer {
   NSArray  *departureData = [[self stopTime] getTimeTillDeparture];
-  NSNumber *timeTillDeparture = (NSNumber*) [departureData objectAtIndex:0];
   NSNumber *hour    = (NSNumber*) [departureData objectAtIndex:1];
   NSNumber *minute  = (NSNumber*) [departureData objectAtIndex:2];
   NSNumber *seconds = (NSNumber*) [departureData objectAtIndex:3];
-  
-  if([timeTillDeparture intValue] > 0) {
-    [self setTimerColor:[UIColor whiteColor]];
-  } else {
-    [self setTimerColor:[UIColor redColor]];
-  }
   
   self.bigDepartureHour.text    = [NSString stringWithFormat:@"%02d", [hour intValue]];
   self.bigDepartureMinute.text  = [NSString stringWithFormat:@"%02d", [minute intValue]];
