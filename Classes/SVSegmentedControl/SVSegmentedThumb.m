@@ -11,6 +11,7 @@
 #import "SVSegmentedThumb.h"
 #import <QuartzCore/QuartzCore.h>
 #import "SVSegmentedControl.h"
+#import "UIColor_Categories.h"
 
 @interface SVSegmentedThumb ()
 
@@ -54,7 +55,7 @@
     if (self) {
 		self.userInteractionEnabled = NO;
 		self.backgroundColor = [UIColor clearColor];
-      self.textColor = [UIColor colorWithHexString:@"#333333"];
+    self.textColor = [UIColor colorWithHexString:@"#333333"];
 		self.textShadowColor = [UIColor blackColor];
 		self.textShadowOffset = CGSizeMake(0,1);
         self.shouldCastShadow = YES;
@@ -111,30 +112,45 @@
         
         // STROKE GRADIENT
         
-        CGPathRef strokeRect = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:cornerRadius-1.5].CGPath;
+        //CGPathRef strokeRect = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:cornerRadius-1.5].CGPath;
+        float pathRadius = cornerRadius - 1.5;
+        
+        CGPathRef strokeRect;
+        if(self.segmentedControl.selectedIndex == 0) {
+          strokeRect = [UIBezierPath bezierPathWithRoundedRect:rect
+                                             byRoundingCorners:UIRectCornerTopLeft | UIRectCornerBottomLeft
+                                                   cornerRadii:CGSizeMake(pathRadius, pathRadius)].CGPath;
+        } else if (self.segmentedControl.titlesArray.count - 1 == self.segmentedControl.selectedIndex) {
+          strokeRect = [UIBezierPath bezierPathWithRoundedRect:rect
+                                             byRoundingCorners:UIRectCornerTopRight | UIRectCornerBottomRight
+                                                   cornerRadii:CGSizeMake(pathRadius, pathRadius)].CGPath;
+        } else {
+          strokeRect = [UIBezierPath bezierPathWithRoundedRect:rect cornerRadius:0].CGPath;
+        }
+
         CGContextAddPath(context, strokeRect);
         CGContextClip(context);
         
         CGContextSaveGState(context);
         
-        CGFloat strokeComponents[4] = {0.55, 1,    0.40, 1};
+        CGFloat strokeComponents[4] = {0.55, 0.8,    0.40, 1};
         
         if(self.selected) {
             strokeComponents[0]-=0.1;
             strokeComponents[2]-=0.1;
         }
         
-        CGGradientRef strokeGradient = CGGradientCreateWithColorComponents(colorSpace, strokeComponents, NULL, 2);	
-        CGContextDrawLinearGradient(context, strokeGradient, CGPointMake(0,0), CGPointMake(0,CGRectGetHeight(rect)), 0);
+        CGGradientRef strokeGradient = CGGradientCreateWithColorComponents(colorSpace, strokeComponents, NULL, 2);
+        CGContextDrawLinearGradient(context, strokeGradient, CGPointMake(0,CGRectGetHeight(rect)), CGPointMake(0,0) , 0);
         CGGradientRelease(strokeGradient);
         
         
         // FILL GRADIENT
-        
         CGPathRef fillRect = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(rect, 1, 1) cornerRadius:cornerRadius-2.5].CGPath;
         CGContextAddPath(context, fillRect);
         CGContextClip(context);
-        
+      
+        /*
         CGFloat fillComponents[4] = {0.5, 1,   0.35, 1};
         
         if(self.selected) {
@@ -145,7 +161,8 @@
         CGGradientRef fillGradient = CGGradientCreateWithColorComponents(colorSpace, fillComponents, NULL, 2);	
         CGContextDrawLinearGradient(context, fillGradient, CGPointMake(0,0), CGPointMake(0,CGRectGetHeight(rect)), 0);
         CGGradientRelease(fillGradient);
-        
+        */
+      
         CGColorSpaceRelease(colorSpace);
         
         CGContextRestoreGState(context);
@@ -213,7 +230,8 @@
 	
 	if(pointSize%2 != 0)
 		posY--;
-    
+  
+  posY = posY + 2;
 	self.label.frame = self.secondLabel.frame = CGRectMake(0, posY, newFrame.size.width, self.font.pointSize);
     
     self.layer.shadowOffset = CGSizeMake(0, 0);

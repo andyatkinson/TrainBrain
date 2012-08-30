@@ -19,6 +19,7 @@
 @property (nonatomic, copy) void (^changeHandler)(NSUInteger newIndex); // you can also use addTarget:action:forControlEvents:
 
 @property (nonatomic, retain, readonly) SVSegmentedThumb *thumb;
+@property (nonatomic, retain) NSMutableArray *titlesArray;
 @property (nonatomic, readwrite) NSUInteger selectedIndex; // default is 0
 @property (nonatomic, readwrite) BOOL animateToInitialSelection; // default is NO
 @property (nonatomic, readwrite) BOOL crossFadeLabelsOnDrag; // default is NO

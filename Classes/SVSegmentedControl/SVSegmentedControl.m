@@ -9,6 +9,7 @@
 
 #import <QuartzCore/QuartzCore.h>
 #import "SVSegmentedControl.h"
+#import "UIColor_Categories.h"
 
 #define SVSegmentedControlBG [[UIImage imageNamed:@"SVSegmentedControl.bundle/inner-shadow"] stretchableImageWithLeftCapWidth:4 topCapHeight:5]
 
@@ -35,7 +36,6 @@
 - (void)updateTitles;
 - (void)toggle;
 
-@property (nonatomic, retain) NSMutableArray *titlesArray;
 @property (nonatomic, retain) NSMutableArray *thumbRects;
 
 @property (nonatomic, readwrite) NSUInteger snapToIndex;
@@ -197,8 +197,8 @@
         
         // inner shadow
         CGContextAddPath(context, roundedRect);
-        CGContextSetShadowWithColor(UIGraphicsGetCurrentContext(), CGSizeMake(0, 1), 1, [UIColor colorWithWhite:0 alpha:0.6].CGColor);
-        CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:0 alpha:0.9].CGColor);
+        CGContextSetShadowWithColor(UIGraphicsGetCurrentContext(), CGSizeMake(0, 1), 1, [UIColor colorWithWhite:1 alpha:0.6].CGColor);
+        CGContextSetStrokeColorWithColor(context, [UIColor colorWithWhite:0.2 alpha:0.4].CGColor);
         CGContextStrokePath(context);
         
         CGColorSpaceRelease(colorSpace);
@@ -213,8 +213,8 @@
 	if(pointSize%2 != 0)
 		posY--;
 	
+  posY = posY + 2;
 	int i = 0;
-	
 	for(NSString *titleString in self.titlesArray) {
         CGRect labelRect = CGRectMake((self.segmentWidth*i), posY, self.segmentWidth, self.font.pointSize);
         //CGContextFillRect(context, labelRect);

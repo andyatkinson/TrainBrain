@@ -10,6 +10,7 @@
 #import "StopTimesTableViewController.h"
 #import "RouteCell.h"
 #import "StopsOnMapViewController.h"
+#import "UIColor_Categories.h"
 
 @implementation StopsTableViewController
 
@@ -43,19 +44,30 @@
       UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
       container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
       
-      UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, 55)];
+      UIView *headsignSwitcher = [[UIView alloc] initWithFrame:CGRectMake(0,-2,self.view.frame.size.width, 55)];
 
       SVSegmentedControl *navSC = [[SVSegmentedControl alloc] initWithSectionTitles:[self.headsigns valueForKey:@"headsign_name"]];
-      navSC.height = 35.0f;
-      navSC.font = [UIFont boldSystemFontOfSize:13];
       
+      navSC.height = 31.0f;
+      navSC.font = [UIFont boldSystemFontOfSize:13];
       navSC.tintColor = [UIColor blackColor]; // background color
+      navSC.cornerRadius = 8.0;
+      navSC.crossFadeLabelsOnDrag = NO;
+      
+      navSC.thumbEdgeInset = UIEdgeInsetsMake(2, 1, 1, 1);
+      if( [self.selectedRoute.short_name isEqualToString:@"55"] ) {
+        navSC.titleEdgeInsets = UIEdgeInsetsMake(0, 22, 0, 22);
+      } else if ([self.selectedRoute.short_name isEqualToString:@"888"] ) {
+        navSC.titleEdgeInsets = UIEdgeInsetsMake(0, 45, 0, 45);
+      }
+      
+      
       navSC.thumb.tintColor = [UIColor colorWithHexString:@"#FFDE00"];
       navSC.thumb.shouldCastShadow = NO;
       navSC.thumb.textColor = [UIColor colorWithHexString:@"#333333"];
-      navSC.thumb.textShadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.4];
-      navSC.thumb.textShadowOffset = CGSizeMake(0,1);
-      navSC.cornerRadius = 8.0;
+      navSC.thumb.textShadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.0];
+      navSC.thumb.textShadowOffset = CGSizeMake(0,0);
+      
       
       navSC.changeHandler = ^(NSUInteger newIndex) {
         if ([self.stopsIndex0 count] > 0 && [self.stopsIndex1 count] > 0) {
@@ -102,7 +114,7 @@
 
   [self loadStopsWithHeadsigns:self.myLocation];
   
-  self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 55, self.view.frame.size.width, 260)];
+  self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, 260)];
 
   [super viewDidLoad];  
   
