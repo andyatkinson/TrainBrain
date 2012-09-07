@@ -8,7 +8,6 @@
 
 #import "StopTime.h"
 #import "TransitAPIClient.h"
-#import "TimeEntry.h"
 #import "NSString+BeetleFight.h"
 
 @implementation StopTime
@@ -73,26 +72,6 @@
                                                  [NSNumber numberWithInteger:seconds],
                                                  nil];
   return timeArray;
-}
-
-
-+ (void)stopTimesWithURLString:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block {
-    NSDictionary *mutableParameters = [NSMutableDictionary dictionaryWithDictionary:parameters];
-    
-    [[TransitAPIClient sharedClient] getPath:urlString parameters:mutableParameters success:^(__unused AFHTTPRequestOperation *operation, id JSON) {
-        NSMutableArray *mutableRecords = [NSMutableArray array];
-        
-        TimeEntry *te = [[[TimeEntry alloc] initWithAttributes:[JSON valueForKeyPath:@"time_entry"]] autorelease];
-        [mutableRecords addObject:te];
-        
-        if (block) {
-            block([NSArray arrayWithArray:mutableRecords]);
-        }
-    } failure:^(__unused AFHTTPRequestOperation *operation, NSError *error) {
-        if (block) {
-            block([NSArray array]);
-        }
-    }];
 }
 
 + (void)stopTimesSimple:(NSString *)urlString near:(CLLocation *)location parameters:(NSDictionary *)parameters block:(void (^)(NSArray *records))block {

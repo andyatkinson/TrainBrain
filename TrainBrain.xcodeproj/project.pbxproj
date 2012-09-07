@@ -132,7 +132,6 @@
 		A1E8483B1569BAD3007DF636 /* Stop.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848331569BAD3007DF636 /* Stop.m */; };
 		A1E8483C1569BAD3007DF636 /* StopTime.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848351569BAD3007DF636 /* StopTime.m */; };
 		A1E8483D1569BAD3007DF636 /* TransitAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848371569BAD3007DF636 /* TransitAPIClient.m */; };
-		A1E848401569BBAE007DF636 /* TimeEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E8483F1569BBAE007DF636 /* TimeEntry.m */; };
 		A1E848521569BC45007DF636 /* BigDepartureTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848431569BC45007DF636 /* BigDepartureTableViewCell.m */; };
 		A1E848531569BC45007DF636 /* CustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E848451569BC45007DF636 /* CustomCell.m */; };
 		A1E848571569BC45007DF636 /* RouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1E8484D1569BC45007DF636 /* RouteCell.m */; };
@@ -315,8 +314,6 @@
 		A1E848351569BAD3007DF636 /* StopTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StopTime.m; sourceTree = "<group>"; };
 		A1E848361569BAD3007DF636 /* TransitAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransitAPIClient.h; sourceTree = "<group>"; };
 		A1E848371569BAD3007DF636 /* TransitAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransitAPIClient.m; sourceTree = "<group>"; };
-		A1E8483E1569BBAE007DF636 /* TimeEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeEntry.h; sourceTree = "<group>"; };
-		A1E8483F1569BBAE007DF636 /* TimeEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeEntry.m; sourceTree = "<group>"; };
 		A1E848421569BC45007DF636 /* BigDepartureTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigDepartureTableViewCell.h; sourceTree = "<group>"; };
 		A1E848431569BC45007DF636 /* BigDepartureTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigDepartureTableViewCell.m; sourceTree = "<group>"; };
 		A1E848441569BC45007DF636 /* CustomCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomCell.h; sourceTree = "<group>"; };
@@ -635,8 +632,6 @@
 		A1E8482B1569BAD3007DF636 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A1E8483E1569BBAE007DF636 /* TimeEntry.h */,
-				A1E8483F1569BBAE007DF636 /* TimeEntry.m */,
 				A1E8482C1569BAD3007DF636 /* FunnyPhrase.h */,
 				A1E8482D1569BAD3007DF636 /* FunnyPhrase.m */,
 				A1E8482E1569BAD3007DF636 /* Headsign.h */,
@@ -884,7 +879,6 @@
 				A1E8483B1569BAD3007DF636 /* Stop.m in Sources */,
 				A1E8483C1569BAD3007DF636 /* StopTime.m in Sources */,
 				A1E8483D1569BAD3007DF636 /* TransitAPIClient.m in Sources */,
-				A1E848401569BBAE007DF636 /* TimeEntry.m in Sources */,
 				A1E848521569BC45007DF636 /* BigDepartureTableViewCell.m in Sources */,
 				A1E848531569BC45007DF636 /* CustomCell.m in Sources */,
 				A1E848571569BC45007DF636 /* RouteCell.m in Sources */,
