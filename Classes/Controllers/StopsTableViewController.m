@@ -51,7 +51,7 @@
       navSC.height = 31.0f;
       navSC.font = [UIFont boldSystemFontOfSize:13];
       navSC.tintColor = [UIColor blackColor]; // background color
-      navSC.cornerRadius = 8.0;
+      navSC.cornerRadius = 6.0;
       navSC.crossFadeLabelsOnDrag = NO;
       
       navSC.thumbEdgeInset = UIEdgeInsetsMake(2, 1, 1, 1);
@@ -61,12 +61,11 @@
         navSC.titleEdgeInsets = UIEdgeInsetsMake(0, 45, 0, 45);
       }
       
-      
       navSC.thumb.tintColor = [UIColor colorWithHexString:@"#FFDE00"];
       navSC.thumb.shouldCastShadow = NO;
       navSC.thumb.textColor = [UIColor colorWithHexString:@"#333333"];
-      navSC.thumb.textShadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.0];
-      navSC.thumb.textShadowOffset = CGSizeMake(0,0);
+      navSC.thumb.textShadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.4];
+      navSC.thumb.textShadowOffset = CGSizeMake(0,1);
       
       
       navSC.changeHandler = ^(NSUInteger newIndex) {
@@ -114,7 +113,7 @@
 
   [self loadStopsWithHeadsigns:self.myLocation];
   
-  self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, 260)];
+  self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, 280)];
 
   [super viewDidLoad];  
   
