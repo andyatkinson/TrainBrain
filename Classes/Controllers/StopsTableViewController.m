@@ -53,24 +53,16 @@
       navSC.tintColor = [UIColor blackColor]; // background color
       navSC.cornerRadius = 6.0;
       navSC.crossFadeLabelsOnDrag = NO;
-      
       navSC.thumbEdgeInset = UIEdgeInsetsMake(2, 1, 1, 1);
-      if( [self.selectedRoute.short_name isEqualToString:@"55"] ) {
-        navSC.titleEdgeInsets = UIEdgeInsetsMake(0, 22, 0, 22);
-      } else if ([self.selectedRoute.short_name isEqualToString:@"888"] ) {
-        navSC.titleEdgeInsets = UIEdgeInsetsMake(0, 45, 0, 45);
-      }
-      
+      navSC.titleEdgeInsets = UIEdgeInsetsMake(0, 22, 0, 22);
       navSC.thumb.tintColor = [UIColor colorWithHexString:@"#FFDE00"];
       navSC.thumb.shouldCastShadow = NO;
       navSC.thumb.textColor = [UIColor colorWithHexString:@"#333333"];
       navSC.thumb.textShadowColor = [UIColor colorWithRed:255/255.0 green:255/255.0 blue:255/255.0 alpha:0.4];
       navSC.thumb.textShadowOffset = CGSizeMake(0,1);
       
-      
       navSC.changeHandler = ^(NSUInteger newIndex) {
         if ([self.stopsIndex0 count] > 0 && [self.stopsIndex1 count] > 0) {
-          
           if (newIndex == 0) {
             self.stops = self.stopsIndex0;
           } else if (newIndex == 1) {
@@ -79,9 +71,7 @@
           
           [self.tableView reloadData];
           [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationNone];
-          
         }
-        
       };
       
       [headsignSwitcher addSubview:navSC];
