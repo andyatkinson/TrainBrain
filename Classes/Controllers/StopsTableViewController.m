@@ -195,7 +195,10 @@
   
   cell.icon.image = [UIImage imageNamed:stop.icon_path];
   cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
-  cell.selectionStyle = UITableViewCellSelectionStyleNone;
+  
+  UIView *selectHighlightView = [[UIView alloc] init];
+  [selectHighlightView setBackgroundColor:[UIColor blackColor]];
+  [cell setSelectedBackgroundView: selectHighlightView];
   
   return cell;
 }

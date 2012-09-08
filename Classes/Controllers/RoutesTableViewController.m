@@ -240,7 +240,10 @@
       cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     cell.accessoryView = [[ UIImageView alloc ] initWithImage:[UIImage imageNamed:@"arrow_lg.png"]];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UIView *selectHighlightView = [[UIView alloc] init];
+    [selectHighlightView setBackgroundColor:[UIColor blackColor]];
+    [cell setSelectedBackgroundView: selectHighlightView];
     
     if ([self.routes objectAtIndex:indexPath.row]) {
       Route *route = (Route *)[self.routes objectAtIndex:indexPath.row];
@@ -258,7 +261,10 @@
       cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    UIView *selectHighlightView = [[UIView alloc] init];
+    [selectHighlightView setBackgroundColor:[UIColor blackColor]];
+    [cell setSelectedBackgroundView: selectHighlightView];
 
     if (self.lastViewed && [self.lastViewed valueForKey:@"stop"]) {
       Stop *stop = (Stop *)[self.lastViewed valueForKey:@"stop"];
@@ -287,7 +293,10 @@
         cell = [[[RouteCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
       }
       cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"arrow_cell.png"]];
-      cell.selectionStyle = UITableViewCellSelectionStyleNone;
+      
+      UIView *selectHighlightView = [[UIView alloc] init];
+      [selectHighlightView setBackgroundColor:[UIColor blackColor]];
+      [cell setSelectedBackgroundView: selectHighlightView];
       
       if ([self.stops objectAtIndex:indexPath.row]) {
         Stop *stop = (Stop *)[self.stops objectAtIndex:indexPath.row];

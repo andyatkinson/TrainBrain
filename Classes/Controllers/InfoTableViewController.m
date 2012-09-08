@@ -152,7 +152,10 @@
       cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
       cell.backgroundColor = [UIColor clearColor];
       cell.textLabel.textColor = [UIColor whiteColor];
-      cell.selectionStyle = UITableViewCellSelectionStyleNone;
+      
+      UIView *selectHighlightView = [[UIView alloc] init];
+      [selectHighlightView setBackgroundColor:[UIColor blackColor]];
+      [cell setSelectedBackgroundView: selectHighlightView];
       
       cell.textLabel.shadowColor = [UIColor blackColor];
       cell.textLabel.shadowOffset = CGSizeMake(0,-1);

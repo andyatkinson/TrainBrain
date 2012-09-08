@@ -273,7 +273,10 @@
       
       cell.icon.image = [UIImage imageNamed:@"icon_clock.png"];      
       [cell setStopTime:stop_time];
-      cell.selectionStyle = UITableViewCellSelectionStyleNone;
+      
+      UIView *selectHighlightView = [[UIView alloc] init];
+      [selectHighlightView setBackgroundColor:[UIColor blackColor]];
+      [cell setSelectedBackgroundView: selectHighlightView];
 
       return cell;
     }
