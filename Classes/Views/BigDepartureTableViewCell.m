@@ -167,19 +167,21 @@
   CGFloat boundsX    = contentRect.origin.x;
   
   if (showHours) {
-    self.bigDepartureHour.frame        = CGRectMake(boundsX +  10,   0, 300, 100);
-    self.bigDepartureHourUnit.frame    = CGRectMake(boundsX +  88,  14, 300, 100);
-    self.bigDepartureMinute.frame      = CGRectMake(boundsX + 108,   0, 300, 100);
-    self.bigDepartureMinuteUnit.frame  = CGRectMake(boundsX + 185,  14, 300, 100);
-    self.bigDepartureSeconds.frame     = CGRectMake(boundsX + 214,   0, 300, 100);
-    self.bigDepartureSecondsUnit.frame = CGRectMake(boundsX + 290,  14, 300, 100);
+    [[self bigDepartureSeconds]     setFrame: CGRectMake(boundsX - 100,   0, 300, 100)];
+    [[self bigDepartureSecondsUnit] setFrame: CGRectMake(boundsX - 100,  45, 300, 100)];
+    
+    [[self bigDepartureHour]        setFrame: CGRectMake(boundsX +  40,   0, 300, 100)];
+    [[self bigDepartureHourUnit]    setFrame: CGRectMake(boundsX + 123,  45, 300, 100)];
+    [[self bigDepartureMinute]      setFrame: CGRectMake(boundsX + 154,   0, 300, 100)];
+    [[self bigDepartureMinuteUnit]  setFrame: CGRectMake(boundsX + 237,  45, 300, 100)];
   } else {
-    self.bigDepartureHour.frame        = CGRectMake(boundsX - 100,   0, 300, 100);
-    self.bigDepartureHourUnit.frame    = CGRectMake(boundsX - 100,  14, 300, 100);
-    self.bigDepartureMinute.frame      = CGRectMake(boundsX +  40,   0, 300, 100);
-    self.bigDepartureMinuteUnit.frame  = CGRectMake(boundsX + 118,  14, 300, 100);
-    self.bigDepartureSeconds.frame     = CGRectMake(boundsX + 154,   0, 300, 100);
-    self.bigDepartureSecondsUnit.frame = CGRectMake(boundsX + 232,  14, 300, 100);
+    [[self bigDepartureHour]        setFrame: CGRectMake(boundsX - 100,   0, 300, 100)];
+    [[self bigDepartureHourUnit]    setFrame: CGRectMake(boundsX - 100,  45, 300, 100)];
+    
+    [[self bigDepartureMinute]      setFrame: CGRectMake(boundsX +  40,   0, 300, 100)];
+    [[self bigDepartureMinuteUnit]  setFrame: CGRectMake(boundsX + 123,  45, 300, 100)];
+    [[self bigDepartureSeconds]     setFrame: CGRectMake(boundsX + 154,   0, 300, 100)];
+    [[self bigDepartureSecondsUnit] setFrame: CGRectMake(boundsX + 237,  45, 300, 100)];
   }
   
 }
