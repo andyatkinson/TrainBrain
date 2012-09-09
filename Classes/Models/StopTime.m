@@ -30,6 +30,11 @@
     self.departure_time_hour = [self.departure_time hourFromDepartureString];
     self.departure_time_minute = [self.departure_time minuteFromDepartureString];
 
+  if([self departure_time_hour] >= 24){
+    int hour = [self departure_time_hour] - 24;
+    [self setDeparture_time:[NSString stringWithFormat:@"%i:%i:00", hour, [self departure_time_minute]] ];
+  }
+  
     return self;
 }
 
