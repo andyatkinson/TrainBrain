@@ -16,6 +16,7 @@
 		52113EED157168AC00CD19DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52113EEC157168AC00CD19DE /* Foundation.framework */; };
 		52113EFA1571746F00CD19DE /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 52113EF71571745900CD19DE /* NSAttributedString+Attributes.m */; };
 		52113EFB1571747700CD19DE /* OHAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52113EF91571745900CD19DE /* OHAttributedLabel.m */; };
+		52AEC5C41602D6EF004C548E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52AEC5C31602D6EF004C548E /* Default-568h@2x.png */; };
 		A102D4D815B754A200D56712 /* BasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A102D4D715B754A200D56712 /* BasicCell.m */; };
 		A102D4DB15B75CDD00D56712 /* tab_selected_left.png in Resources */ = {isa = PBXBuildFile; fileRef = A102D4D915B75CDD00D56712 /* tab_selected_left.png */; };
 		A102D4DC15B75CDD00D56712 /* tab_selected_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A102D4DA15B75CDD00D56712 /* tab_selected_left@2x.png */; };
@@ -164,6 +165,7 @@
 		52113EF71571745900CD19DE /* NSAttributedString+Attributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Attributes.m"; path = "OHAttributedLabel/NSAttributedString+Attributes.m"; sourceTree = "<group>"; };
 		52113EF81571745900CD19DE /* OHAttributedLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OHAttributedLabel.h; path = OHAttributedLabel/OHAttributedLabel.h; sourceTree = "<group>"; };
 		52113EF91571745900CD19DE /* OHAttributedLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OHAttributedLabel.m; path = OHAttributedLabel/OHAttributedLabel.m; sourceTree = "<group>"; };
+		52AEC5C31602D6EF004C548E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TrainBrain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TrainBrain-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A102D4D615B754A200D56712 /* BasicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicCell.h; sourceTree = "<group>"; };
 		A102D4D715B754A200D56712 /* BasicCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BasicCell.m; sourceTree = "<group>"; };
@@ -393,6 +395,7 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				52AEC5C31602D6EF004C548E /* Default-568h@2x.png */,
 				A1A796C41569D4E2006ACAAD /* MainWindow.xib */,
 				A11B344B1521472100A948F3 /* TrainBrain.entitlements */,
 				8D1107310486CEB800E47090 /* TrainBrain-Info.plist */,
@@ -847,6 +850,7 @@
 				A102D4DC15B75CDD00D56712 /* tab_selected_left@2x.png in Resources */,
 				A14DC56715F98CE200DAF8CB /* icon_info.png in Resources */,
 				A14DC56815F98CE200DAF8CB /* icon_info@2x.png in Resources */,
+				52AEC5C41602D6EF004C548E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -928,7 +932,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				SDKROOT = iphoneos5.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -951,7 +955,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				SDKROOT = iphoneos5.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
@@ -967,7 +971,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos5.0;
@@ -995,7 +999,7 @@
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 				SCAN_ALL_SOURCE_FILES_FOR_INCLUDES = YES;
-				SDKROOT = iphoneos5.1;
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Distribution;
@@ -1009,7 +1013,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos5.0;
 			};
 			name = Debug;
@@ -1023,7 +1027,7 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos5.0;
 			};
 			name = Release;
