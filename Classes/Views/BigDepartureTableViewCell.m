@@ -168,20 +168,20 @@
   
   if (showHours) {
     [[self bigDepartureSeconds]     setFrame: CGRectMake(boundsX - 100,   0, 300, 100)];
-    [[self bigDepartureSecondsUnit] setFrame: CGRectMake(boundsX - 100,  45, 300, 100)];
+    [[self bigDepartureSecondsUnit] setFrame: CGRectMake(boundsX - 100,  15, 300, 100)];
     
     [[self bigDepartureHour]        setFrame: CGRectMake(boundsX +  40,   0, 300, 100)];
-    [[self bigDepartureHourUnit]    setFrame: CGRectMake(boundsX + 123,  45, 300, 100)];
+    [[self bigDepartureHourUnit]    setFrame: CGRectMake(boundsX + 123,  15, 300, 100)];
     [[self bigDepartureMinute]      setFrame: CGRectMake(boundsX + 154,   0, 300, 100)];
-    [[self bigDepartureMinuteUnit]  setFrame: CGRectMake(boundsX + 237,  45, 300, 100)];
+    [[self bigDepartureMinuteUnit]  setFrame: CGRectMake(boundsX + 237,  15, 300, 100)];
   } else {
     [[self bigDepartureHour]        setFrame: CGRectMake(boundsX - 100,   0, 300, 100)];
-    [[self bigDepartureHourUnit]    setFrame: CGRectMake(boundsX - 100,  45, 300, 100)];
+    [[self bigDepartureHourUnit]    setFrame: CGRectMake(boundsX - 100,  15, 300, 100)];
     
     [[self bigDepartureMinute]      setFrame: CGRectMake(boundsX +  40,   0, 300, 100)];
-    [[self bigDepartureMinuteUnit]  setFrame: CGRectMake(boundsX + 123,  45, 300, 100)];
+    [[self bigDepartureMinuteUnit]  setFrame: CGRectMake(boundsX + 123,  15, 300, 100)];
     [[self bigDepartureSeconds]     setFrame: CGRectMake(boundsX + 154,   0, 300, 100)];
-    [[self bigDepartureSecondsUnit] setFrame: CGRectMake(boundsX + 237,  45, 300, 100)];
+    [[self bigDepartureSecondsUnit] setFrame: CGRectMake(boundsX + 237,  15, 300, 100)];
   }
   
 }

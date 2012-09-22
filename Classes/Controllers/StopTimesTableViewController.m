@@ -13,6 +13,7 @@
 #import "NSString+BeetleFight.h"
 #import "FunnyPhrase.h"
 #import "BasicCell.h"
+#import "UIColor_Categories.h"
 
 @implementation StopTimesTableViewController
 
@@ -240,7 +241,6 @@
 - (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
 
-  static NSString *BasicCellIdentifier = @"BasicCell";
   static NSString *CellIdentifier = @"Cell";
   UITableViewCell *cell = [[UITableViewCell alloc] init];
   
