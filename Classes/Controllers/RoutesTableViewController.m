@@ -126,7 +126,8 @@
   self.tableView.dataSource = self;
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
-
+  self.view = self.tableView;
+  
 	dataArraysForRoutesScreen = [[NSMutableArray alloc] init];
   
   Route *r1 = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"", @"route_desc", nil]];
@@ -150,7 +151,7 @@
 	}
 	
 	[_refreshHeaderView refreshLastUpdatedDate];
-  self.view = self.tableView;
+  
 }
 
 

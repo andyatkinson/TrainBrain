@@ -9,15 +9,6 @@
 
 @implementation NSString (BeetleFight)
 
-- (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
-    self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
-
 // Expects time strings in this format: 00:00:00, e.g. "08:10:00"
 
 - (NSString *)relativeTimeHourAndMinute {
@@ -36,7 +27,7 @@
   if (scheduleHour > currentHour) {
     relativeHour = scheduleHour - currentHour;
   }
-
+  
   int relativeMinute = 0;
   if (scheduleMinute > currentMinute) {
     relativeMinute = scheduleMinute - currentMinute;
@@ -65,7 +56,7 @@
   NSString *formattedTime = [NSString stringWithFormat:@"%@", [formatter stringFromDate:date]];
   [formatter release];
   
-  return  formattedTime;
+  return formattedTime;
 }
 
 @end
