@@ -17,6 +17,7 @@
 @property (nonatomic, retain) UITableViewController *infoTableViewController;
 @property (nonatomic, retain) UITabBarController *tabBarController;
 
+- (void) saveAnalytics:(NSString*) pageName;
 
 @end
 

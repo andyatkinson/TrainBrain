@@ -5,6 +5,7 @@
 //  Copyright (c) 2012 Beetle Fight. All rights reserved.
 //
 
+#import "TrainBrainAppDelegate.h"
 #import "InfoTableViewController.h"
 #import "InfoDetailViewController.h"
 
@@ -78,9 +79,11 @@
     [super viewDidUnload];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-    [super viewWillAppear:animated];
+- (void) viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  TrainBrainAppDelegate *app = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+  [app saveAnalytics:@"InfoTableView"];
 }
 
 - (void)viewDidAppear:(BOOL)animated

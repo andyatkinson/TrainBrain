@@ -16,6 +16,9 @@
 		52113EED157168AC00CD19DE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52113EEC157168AC00CD19DE /* Foundation.framework */; };
 		52113EFA1571746F00CD19DE /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = 52113EF71571745900CD19DE /* NSAttributedString+Attributes.m */; };
 		52113EFB1571747700CD19DE /* OHAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52113EF91571745900CD19DE /* OHAttributedLabel.m */; };
+		52169E4B1631746D0089A4A6 /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52169E4A1631746D0089A4A6 /* libGoogleAnalytics.a */; };
+		52169E4E163174F70089A4A6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52169E4D163174F70089A4A6 /* CFNetwork.framework */; };
+		52169E50163175150089A4A6 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 52169E4F163175150089A4A6 /* libsqlite3.0.dylib */; };
 		52AEC5C41602D6EF004C548E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 52AEC5C31602D6EF004C548E /* Default-568h@2x.png */; };
 		A102D4D815B754A200D56712 /* BasicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A102D4D715B754A200D56712 /* BasicCell.m */; };
 		A102D4DB15B75CDD00D56712 /* tab_selected_left.png in Resources */ = {isa = PBXBuildFile; fileRef = A102D4D915B75CDD00D56712 /* tab_selected_left.png */; };
@@ -165,6 +168,10 @@
 		52113EF71571745900CD19DE /* NSAttributedString+Attributes.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "NSAttributedString+Attributes.m"; path = "OHAttributedLabel/NSAttributedString+Attributes.m"; sourceTree = "<group>"; };
 		52113EF81571745900CD19DE /* OHAttributedLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = OHAttributedLabel.h; path = OHAttributedLabel/OHAttributedLabel.h; sourceTree = "<group>"; };
 		52113EF91571745900CD19DE /* OHAttributedLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = OHAttributedLabel.m; path = OHAttributedLabel/OHAttributedLabel.m; sourceTree = "<group>"; };
+		52169E491631746D0089A4A6 /* GANTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GANTracker.h; path = Google/GANTracker.h; sourceTree = "<group>"; };
+		52169E4A1631746D0089A4A6 /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalytics.a; path = Google/libGoogleAnalytics.a; sourceTree = "<group>"; };
+		52169E4D163174F70089A4A6 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		52169E4F163175150089A4A6 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		52AEC5C31602D6EF004C548E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* TrainBrain-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "TrainBrain-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		A102D4D615B754A200D56712 /* BasicCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BasicCell.h; sourceTree = "<group>"; };
@@ -351,6 +358,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52169E50163175150089A4A6 /* libsqlite3.0.dylib in Frameworks */,
+				52169E4E163174F70089A4A6 /* CFNetwork.framework in Frameworks */,
 				52113EDF1571685900CD19DE /* CoreText.framework in Frameworks */,
 				52113EE31571687900CD19DE /* CoreGraphics.framework in Frameworks */,
 				A1201227157C4CF300A25DAB /* MessageUI.framework in Frameworks */,
@@ -359,6 +368,7 @@
 				A1EB2649152151E800134440 /* MapKit.framework in Frameworks */,
 				52113EE11571686A00CD19DE /* QuartzCore.framework in Frameworks */,
 				52113EDD1571684F00CD19DE /* UIKit.framework in Frameworks */,
+				52169E4B1631746D0089A4A6 /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,14 +378,9 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				52113EF51571741600CD19DE /* OHAttributedLabel */,
-				A1C3D46A156C8FC8007212F5 /* EGOTableViewPullRefresh */,
+				52583618163173F200D2CEE8 /* 3rdParty */,
 				A1E8485A1569BC7F007DF636 /* Controllers */,
 				A1E848411569BC45007DF636 /* Views */,
-				A16BA38415685C4C00B8BB55 /* JSON */,
-				A1DE8E9C156859CC00EE3BE0 /* AFNetworking */,
-				A1BC257E122338B500C324C9 /* HUD */,
-				A1FD11D61521682A002D6E20 /* SVSegmentedControl */,
 				A1DD5C83152DD86800C1A88A /* Categories */,
 				A1E8482B1569BAD3007DF636 /* Models */,
 				1D3623250D0F684500981E51 /* TrainBrainAppDelegate.m */,
@@ -421,6 +426,8 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				52169E4F163175150089A4A6 /* libsqlite3.0.dylib */,
+				52169E4D163174F70089A4A6 /* CFNetwork.framework */,
 				A1201226157C4CF300A25DAB /* MessageUI.framework */,
 				52113EEC157168AC00CD19DE /* Foundation.framework */,
 				52113EE21571687900CD19DE /* CoreGraphics.framework */,
@@ -442,6 +449,29 @@
 				52113EF91571745900CD19DE /* OHAttributedLabel.m */,
 			);
 			name = OHAttributedLabel;
+			sourceTree = "<group>";
+		};
+		52583618163173F200D2CEE8 /* 3rdParty */ = {
+			isa = PBXGroup;
+			children = (
+				5258361A1631741600D2CEE8 /* Google */,
+				A1FD11D61521682A002D6E20 /* SVSegmentedControl */,
+				A1BC257E122338B500C324C9 /* HUD */,
+				A1DE8E9C156859CC00EE3BE0 /* AFNetworking */,
+				A16BA38415685C4C00B8BB55 /* JSON */,
+				A1C3D46A156C8FC8007212F5 /* EGOTableViewPullRefresh */,
+				52113EF51571741600CD19DE /* OHAttributedLabel */,
+			);
+			name = 3rdParty;
+			sourceTree = "<group>";
+		};
+		5258361A1631741600D2CEE8 /* Google */ = {
+			isa = PBXGroup;
+			children = (
+				52169E491631746D0089A4A6 /* GANTracker.h */,
+				52169E4A1631746D0089A4A6 /* libGoogleAnalytics.a */,
+			);
+			name = Google;
 			sourceTree = "<group>";
 		};
 		A16BA38415685C4C00B8BB55 /* JSON */ = {
@@ -926,6 +956,10 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "TrainBrain-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/Google\"",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = TrainBrain;
@@ -949,6 +983,10 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "TrainBrain-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/Google\"",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = TrainBrain;
@@ -992,6 +1030,10 @@
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				INFOPLIST_FILE = "TrainBrain-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/Classes/Google\"",
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR = NO;
 				PRODUCT_NAME = TrainBrain;

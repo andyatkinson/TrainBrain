@@ -5,6 +5,7 @@
 //  Copyright (c) 2012 Beetle Fight. All rights reserved.
 //
 
+#import "TrainBrainAppDelegate.h"
 #import "StopTimesTableViewController.h"
 #import "BigDepartureTableViewCell.h"
 #import "RouteCell.h"
@@ -133,6 +134,11 @@
 
     }];    
   }  
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+  TrainBrainAppDelegate *app = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+  [app saveAnalytics:@"StopTimesTableView"];
 }
 
 - (void)viewDidLoad {

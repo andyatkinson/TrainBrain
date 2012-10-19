@@ -11,12 +11,35 @@
 #import "StopTimesTableViewController.h"
 #import "InfoTableViewController.h"
 
+#import "GANTracker.h"
+static const NSInteger kGANDispatchPeriodSec = 10;
+
 @implementation TrainBrainAppDelegate
 
 @synthesize window, routesTableViewController, infoTableViewController, tabBarController;
 
-- (void)applicationDidFinishLaunching:(UIApplication *)application {
+- (void) saveAnalytics:(NSString*) pageName {
+  
+  [[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-34997631-2" 
+                                         dispatchPeriod:kGANDispatchPeriodSec
+                                               delegate:nil];
+  
+  NSError *error;
+  
+  if (![[GANTracker sharedTracker] trackPageview:pageName
+                                       withError:&error]) {
+    // Handle error here
+  }
+  
+}
 
+- (void) applicationWillEnterForeground:(UIApplication *)application {
+  [self saveAnalytics:@"/app_entry_point"];
+}
+
+- (void)applicationDidFinishLaunching:(UIApplication *)application {
+    [self saveAnalytics:@"/app_entry_point"];
+  
     UIImage *navigationBarImage = [UIImage imageNamed:@"bg_header.png"];
     [[UINavigationBar appearance] setBackgroundImage:navigationBarImage forBarMetrics:UIBarMetricsDefault];
 	

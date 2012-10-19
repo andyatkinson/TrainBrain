@@ -3,6 +3,7 @@
 //  TrainBrain
 //
 
+#import "TrainBrainAppDelegate.h"
 #import "StopsOnMapViewController.h"
 #import "Stop.h"
 #import "StopAnnotation.h"
@@ -12,8 +13,11 @@
 
 @synthesize stops, mapView, selectedRoute, viewTitle;
 
-- (void)viewWillAppear:(BOOL)animated {
+- (void) viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  
+  TrainBrainAppDelegate *app = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+  [app saveAnalytics:@"StopsOnMap"];
 }
 
 - (void)loadStops {

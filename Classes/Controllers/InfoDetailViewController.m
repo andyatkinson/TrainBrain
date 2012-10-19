@@ -5,6 +5,7 @@
 //  Copyright (c) 2012 Beetle Fight. All rights reserved.
 //
 
+#import "TrainBrainAppDelegate.h"
 #import "InfoDetailViewController.h"
 #import "Info.h"
 
@@ -43,6 +44,11 @@
     [self.webView loadHTMLString:info.detail baseURL:nil];
   }
   
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+  TrainBrainAppDelegate *app = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+  [app saveAnalytics:@"InfoDetailView"];
 }
 
 - (void)viewDidLoad

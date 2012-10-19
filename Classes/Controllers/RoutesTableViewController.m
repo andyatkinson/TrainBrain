@@ -2,6 +2,7 @@
 //  RoutesTableViewController.m
 //
 
+#import "TrainBrainAppDelegate.h"
 #import "RoutesTableViewController.h"
 #import "RouteCell.h"
 #import "BasicCell.h"
@@ -82,6 +83,11 @@
       [HUD hide:YES];
     }
   }];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+  TrainBrainAppDelegate *app = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+  [app saveAnalytics:@"RoutesTableView"];
 }
 
 - (void)viewDidLoad {  

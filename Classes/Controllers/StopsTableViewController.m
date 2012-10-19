@@ -5,6 +5,7 @@
 //  Copyright (c) 2012 Beetle Fight. All rights reserved.
 //
 
+#import "TrainBrainAppDelegate.h"
 #import "StopsTableViewController.h"
 #import "Stop.h"
 #import "StopTimesTableViewController.h"
@@ -96,6 +97,11 @@
   [target setSelectedRoute:self.selectedRoute];
   [target setViewTitle:self.title];
   [[self navigationController] pushViewController:target animated:YES];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+  TrainBrainAppDelegate *app = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+  [app saveAnalytics:@"StopsTableView"];
 }
 
 - (void)viewDidLoad
