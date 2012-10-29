@@ -38,7 +38,7 @@
 	<key>CFBundleSignature</key>
 	<string>Andy Atkinson</string>
 	<key>CFBundleVersion</key>
-	<string>2.0.18</string>
+	<string>2.0.19</string>
 	<key>NSMainNibFile</key>
 	<string>MainWindow</string>
 	<key>UIPrerenderedIcon</key>
