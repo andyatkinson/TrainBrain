@@ -45,7 +45,7 @@
 }
 
 - (void)loadRoutesForLocation:(CLLocation *)location {
-  [HUD show:YES];
+  [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
   
   NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
@@ -58,6 +58,8 @@
     
     [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
     if (data == NULL || ![data isKindOfClass:[NSDictionary class]]) {
       UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
       container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
@@ -69,8 +71,6 @@
       label.font = [UIFont boldSystemFontOfSize:14.0];
       [container addSubview:label];
       self.view = container;
-        
-      [HUD hide:YES];
       
     } else {
       
@@ -78,9 +78,7 @@
       self.stops = [data objectForKey:@"stops"];
       self.lastViewed = [data objectForKey:@"last_viewed"];
       [self.tableView reloadData];
-      [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationNone];      
-      
-      [HUD hide:YES];
+      [self.tableView reloadRowsAtIndexPaths:[self.tableView indexPathsForVisibleRows] withRowAnimation:UITableViewRowAnimationFade];
     }
   }];
 }
@@ -93,11 +91,6 @@
 - (void)viewDidLoad {  
   
   UIWindow *window = [UIApplication sharedApplication].keyWindow;
-	HUD = [[MBProgressHUD alloc] initWithWindow:window];
-	[window addSubview:HUD];
-	HUD.delegate = self;
-  HUD.labelText = @"Loading";
-  [HUD show:NO];
 
   if ([CLLocationManager locationServicesEnabled]) {
     self.locationManager = [[CLLocationManager alloc] init];
@@ -155,8 +148,6 @@
 		_refreshHeaderView = view;
 		[view release];
 	}
-	
-	[_refreshHeaderView refreshLastUpdatedDate];
   
 }
 
@@ -363,10 +354,6 @@
 	[self tableView:tv didSelectRowAtIndexPath:indexPath];
 }
 
--(void)hudWasHidden {
-  [HUD removeFromSuperview];
-}
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
   return 57;
 }
@@ -395,7 +382,6 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
-  [HUD hide:YES];
   [_refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
 
@@ -408,7 +394,6 @@
 }
 
 - (void)dealloc {
-	[HUD dealloc];
 	[dataArraysForRoutesScreen release];
   [super dealloc];  
   [tableView dealloc];

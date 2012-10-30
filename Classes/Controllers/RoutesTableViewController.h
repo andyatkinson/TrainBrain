@@ -7,7 +7,7 @@
 #import "MBProgressHUD.h"
 #import "EGORefreshTableHeaderView.h"
 
-@interface RoutesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, MBProgressHUDDelegate, EGORefreshTableHeaderDelegate> {
+@interface RoutesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, EGORefreshTableHeaderDelegate> {
 	UITableView *tableView;
 	NSMutableArray *dataArraysForRoutesScreen;
   CLLocation *myLocation;
@@ -15,7 +15,6 @@
   NSArray *routes;
   NSArray *stops;
   NSDictionary *lastViewed;
-  MBProgressHUD *HUD;
   EGORefreshTableHeaderView *_refreshHeaderView;
 }
 

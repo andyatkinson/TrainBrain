@@ -173,8 +173,6 @@
 		_refreshHeaderView = view;
 		[view release];
 	}
-
-	[_refreshHeaderView refreshLastUpdatedDate];
 }
 
 - (void)viewDidUnload
