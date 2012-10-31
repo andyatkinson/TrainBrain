@@ -14,7 +14,7 @@
 
 @implementation RoutesTableViewController
 
-@synthesize tableView, dataArraysForRoutesScreen, routes, stops, lastViewed, locationManager, myLocation;
+@synthesize tableView, routes, stops, lastViewed, locationManager, myLocation;
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
   self.myLocation = newLocation;
@@ -126,18 +126,8 @@
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
   self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
   self.view = self.tableView;
-  
-	dataArraysForRoutesScreen = [[NSMutableArray alloc] init];
-  
-  Route *r1 = [[Route alloc] initWithAttributes:[NSDictionary dictionaryWithObjectsAndKeys:@"", @"route_desc", nil]];
-	self.routes = [NSArray arrayWithObjects:r1, nil];
-	NSDictionary *routesDict = [NSDictionary dictionaryWithObject:self.routes forKey:@"items"];
-  
-  NSArray *lastStopID = [NSArray arrayWithObjects:@"", nil];
-  NSDictionary *lastStopIDDict = [NSDictionary dictionaryWithObject:lastStopID forKey:@"items"];
-	
-	[dataArraysForRoutesScreen addObject:routesDict];
-  [dataArraysForRoutesScreen addObject:lastStopIDDict];
+
+	self.routes = [[NSMutableArray alloc] init];
 	
 	self.navigationItem.title = @"Routes";
   
@@ -183,7 +173,29 @@
   [headerView addSubview:headerLabel];
   headerView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"header_bar_default.png"]];
   
-  return headerView;
+  if (section == 0) {
+    if ([self.routes count] == 0) {
+      return NULL;
+    } else {
+      return headerView;
+    }
+  } else if (section == 1) {
+    NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+    NSString *last_stop_id = [settings stringForKey: @"last_stop_id"];
+    if ([self.routes count] > 0 && last_stop_id != NULL) {
+      return headerView;
+    } else {
+      return NULL;
+    }
+  } else if (section == 2) {
+    if ([self.stops count] == 0) {
+      return NULL;
+    } else {
+      return headerView;
+    }
+  } else {
+    return NULL;
+  }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -193,12 +205,12 @@
   } else if (section == 1) {
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
     NSString *last_stop_id = [settings stringForKey: @"last_stop_id"];
-    if (last_stop_id != NULL) {
+    // wait until there is routes data back from the API
+    if ([self.routes count] > 0 && last_stop_id != NULL) {
       return 1;
     } else {
       return 0;
     }
-    
   } else if (section == 2) {
     return [self.stops count];
   } else {
@@ -210,21 +222,28 @@
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
 	
 	if (section == 0) {
-    return @"Choose Your Line";
+    if ([self.routes count] == 0) {
+      return NULL;
+    } else {
+      return @"Choose Your Line";
+    }
   } else if (section == 1) {
-    
     NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
     NSString *last_stop_id = [settings stringForKey: @"last_stop_id"];
-    if (last_stop_id != NULL) {
+    if ([self.routes count] > 0 && last_stop_id != NULL) {
       return @"Last Viewed";
     } else {
       return NULL;
     }
     
   } else if (section == 2) {
-    return @"Nearby Stops";
+    if ([self.stops count] == 0) {
+      return NULL;
+    } else {
+      return @"Nearby Stops";
+    }
   }
-  return NULL;
+  return NULL; // error case
 }
 
 - (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -394,7 +413,6 @@
 }
 
 - (void)dealloc {
-	[dataArraysForRoutesScreen release];
   [super dealloc];  
   [tableView dealloc];
   [routes dealloc];

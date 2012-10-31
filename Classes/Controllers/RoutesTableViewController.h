@@ -9,7 +9,6 @@
 
 @interface RoutesTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, EGORefreshTableHeaderDelegate> {
 	UITableView *tableView;
-	NSMutableArray *dataArraysForRoutesScreen;
   CLLocation *myLocation;
   CLLocationManager *locationManager;
   NSArray *routes;
@@ -19,7 +18,6 @@
 }
 
 @property (nonatomic, retain) UITableView *tableView;
-@property (nonatomic, retain) NSMutableArray *dataArraysForRoutesScreen;
 @property (nonatomic, retain) NSArray *routes;
 @property (nonatomic, retain) NSArray *stops;
 @property (nonatomic, retain) NSDictionary *lastViewed;
