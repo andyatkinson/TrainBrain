@@ -88,9 +88,7 @@
   [app saveAnalytics:@"RoutesTableView"];
 }
 
-- (void)viewDidLoad {  
-  
-  UIWindow *window = [UIApplication sharedApplication].keyWindow;
+- (void)viewDidLoad {
 
   if ([CLLocationManager locationServicesEnabled]) {
     self.locationManager = [[CLLocationManager alloc] init];
@@ -247,8 +245,6 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)thisTableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  
-  static NSString *BasicCellIdentifier = @"BasicCell";
   static NSString *CellIdentifier = @"Cell";
 
   if (indexPath.section == 0) {
