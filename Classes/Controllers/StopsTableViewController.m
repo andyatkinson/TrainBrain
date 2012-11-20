@@ -37,6 +37,22 @@
     NSString *url = [NSString stringWithFormat:@"train/v1/routes/%@/stops/with_headsigns", self.selectedRoute.route_id];
   
     [Stop stopsWithHeadsigns:url near:location parameters:nil block:^(NSDictionary *blockdata) {
+      if(! [blockdata isKindOfClass:[NSDictionary class]]){
+        [HUD hide:YES];
+        
+        UIView *container = [[[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,400)] autorelease];
+        container.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20,5,self.view.frame.size.width, 50)];
+        label.backgroundColor = [UIColor clearColor];
+        label.textAlignment = UITextAlignmentLeft;
+        label.textColor = [UIColor whiteColor];
+        label.text = @"Error loading data. Please email support.";
+        label.font = [UIFont boldSystemFontOfSize:14.0];
+        [container addSubview:label];
+        self.view = container;
+        
+        return;
+      }
       self.headsigns = [blockdata objectForKey:@"headsigns"];
       self.stopsIndex0 = [blockdata objectForKey:@"stopsIndex0"];
       self.stopsIndex1 = [blockdata objectForKey:@"stopsIndex1"];
@@ -109,7 +125,10 @@
 
   [self loadStopsWithHeadsigns:self.myLocation];
   
-  self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, 280)];
+  CGRect screenRect     = [[UIScreen mainScreen] bounds];
+  CGFloat screenHeight  = screenRect.size.height;
+  
+  self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 45, self.view.frame.size.width, screenHeight-200)];
 
   [super viewDidLoad];  
   
