@@ -11,6 +11,7 @@
 #import "StopsTableViewController.h"
 #import "StopTimesTableViewController.h"
 #import "NSString+BeetleFight.h"
+#import "UIColor_Categories.h"
 
 @implementation RoutesTableViewController
 
@@ -44,6 +45,10 @@
 	
 }
 
+-( void) reloadData:(id)sender {
+  [self loadRoutesForLocation:self.myLocation];
+}
+
 - (void)loadRoutesForLocation:(CLLocation *)location {
   [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
   
@@ -70,6 +75,14 @@
       label.text = @"Error loading data. Please email support.";
       label.font = [UIFont boldSystemFontOfSize:14.0];
       [container addSubview:label];
+      
+      
+      UITapGestureRecognizer *singleFingerTap =
+      [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(reloadData:)];
+      [singleFingerTap setNumberOfTapsRequired:1];
+      [container addGestureRecognizer:singleFingerTap];
+      
+      
       self.view = container;
       
     } else {
