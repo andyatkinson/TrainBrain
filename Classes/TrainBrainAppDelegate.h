@@ -4,6 +4,7 @@
 //
 //  Copyright 2009 Beetle Fight, LLC. All rights reserved.
 //
+#import "GAI.h"
 
 @interface TrainBrainAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
   UIWindow *window;
@@ -12,6 +13,7 @@
 	UITabBarController    *tabBarController;
 }
 
+@property (nonatomic, retain) id<GAITracker> tracker;
 @property (nonatomic, retain) UIWindow *window;
 @property (nonatomic, retain) UITableViewController	*routesTableViewController;
 @property (nonatomic, retain) UITableViewController *infoTableViewController;

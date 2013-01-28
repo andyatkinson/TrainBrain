@@ -119,6 +119,10 @@
         [container addSubview:label];
         self.view = container;
         
+        TrainBrainAppDelegate *app = (TrainBrainAppDelegate *)[[UIApplication sharedApplication] delegate];
+        [app saveAnalytics:[NSString stringWithFormat:@"StopTimesTableView/%@/%@/NoDepartures",self.selectedStop.route.route_id,
+                            self.selectedStop.stop_id]];
+        
       }
         
       [self.tableView reloadData];

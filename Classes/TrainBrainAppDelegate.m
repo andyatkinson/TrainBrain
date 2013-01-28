@@ -11,56 +11,63 @@
 #import "StopTimesTableViewController.h"
 #import "InfoTableViewController.h"
 
-#import "GANTracker.h"
+#import "GAI.h"
+
 static const NSInteger kGANDispatchPeriodSec = 10;
+static NSString *const kTrackingId = @"UA-34997631-4";
 
 @implementation TrainBrainAppDelegate
 
-@synthesize window, routesTableViewController, infoTableViewController, tabBarController;
+@synthesize window, routesTableViewController, infoTableViewController, tabBarController, tracker;
+
+- (NSString*) getDeviceName {
+  NSArray *chunks = [[[UIDevice currentDevice] name] componentsSeparatedByString: @"'"];
+  NSString *deviceName = [[NSString alloc] initWithString:[chunks objectAtIndex:0]];
+  return deviceName;
+}
 
 - (void) saveAnalytics:(NSString*) pageName {
-  
-  [[GANTracker sharedTracker] startTrackerWithAccountID:@"UA-34997631-2" 
-                                         dispatchPeriod:kGANDispatchPeriodSec
-                                               delegate:nil];
-  
-  NSError *error;
-  
-  if (![[GANTracker sharedTracker] trackPageview:pageName
-                                       withError:&error]) {
-    // Handle error here
+  if([[self getDeviceName] isEqualToString:@"iPhone Simulator"]){
+    NSLog(@"Skip GA in Simulator: %@", pageName);
+    //return;
   }
   
+  [self.tracker trackView:pageName];
 }
 
 - (void) applicationWillEnterForeground:(UIApplication *)application {
-  [self saveAnalytics:@"/app_entry_point"];
+  [self saveAnalytics:@"Entry"];
 }
 
 - (void)applicationDidFinishLaunching:(UIApplication *)application {
-    [self saveAnalytics:@"/app_entry_point"];
+  // Initialize Google Analytics
+  [GAI sharedInstance].debug = NO;
+  [GAI sharedInstance].dispatchInterval = kGANDispatchPeriodSec;
+  [GAI sharedInstance].trackUncaughtExceptions = YES;
+  self.tracker = [[GAI sharedInstance] trackerWithTrackingId:kTrackingId];
+  [self saveAnalytics:@"Entry"];
   
-    UIImage *navigationBarImage = [UIImage imageNamed:@"bg_header.png"];
-    [[UINavigationBar appearance] setBackgroundImage:navigationBarImage forBarMetrics:UIBarMetricsDefault];
+  UIImage *navigationBarImage = [UIImage imageNamed:@"bg_header.png"];
+  [[UINavigationBar appearance] setBackgroundImage:navigationBarImage forBarMetrics:UIBarMetricsDefault];
 	
-    tabBarController = [[UITabBarController alloc] init];
-    routesTableViewController = [[RoutesTableViewController alloc] init];
-    UINavigationController *routesController = [[[UINavigationController alloc] initWithRootViewController:routesTableViewController] autorelease];
-    routesController.navigationBar.barStyle = UIBarStyleDefault;
-    routesController.tabBarItem.title = @"Departures";
-    routesController.tabBarItem.image = [UIImage imageNamed:@"11-clock.png"];
-    [routesTableViewController release];
+  tabBarController = [[UITabBarController alloc] init];
+  routesTableViewController = [[RoutesTableViewController alloc] init];
+  UINavigationController *routesController = [[[UINavigationController alloc] initWithRootViewController:routesTableViewController] autorelease];
+  routesController.navigationBar.barStyle = UIBarStyleDefault;
+  routesController.tabBarItem.title = @"Departures";
+  routesController.tabBarItem.image = [UIImage imageNamed:@"11-clock.png"];
+  [routesTableViewController release];
 	
-    infoTableViewController = [[InfoTableViewController alloc] init];
-    UINavigationController *infoController = [[[UINavigationController alloc] initWithRootViewController:infoTableViewController] autorelease];
-    infoController.navigationBar.barStyle = UIBarStyleDefault;
-    infoController.title = @"Info";
-    infoController.tabBarItem.image = [UIImage imageNamed:@"icon_info.png"];
-    [infoTableViewController release];
+  infoTableViewController = [[InfoTableViewController alloc] init];
+  UINavigationController *infoController = [[[UINavigationController alloc] initWithRootViewController:infoTableViewController] autorelease];
+  infoController.navigationBar.barStyle = UIBarStyleDefault;
+  infoController.title = @"Info";
+  infoController.tabBarItem.image = [UIImage imageNamed:@"icon_info.png"];
+  [infoTableViewController release];
 	
-    tabBarController.viewControllers = [NSArray arrayWithObjects:routesController, infoController, nil];
-    [window addSubview:tabBarController.view];
-    [window makeKeyAndVisible];
+  tabBarController.viewControllers = [NSArray arrayWithObjects:routesController, infoController, nil];
+  [window addSubview:tabBarController.view];
+  [window makeKeyAndVisible];
 }
 
 - (void)dealloc {

@@ -11,6 +11,7 @@
 #import "StopsTableViewController.h"
 #import "StopTimesTableViewController.h"
 #import "NSString+BeetleFight.h"
+#import "UIColor_Categories.h"
 
 @implementation RoutesTableViewController
 
