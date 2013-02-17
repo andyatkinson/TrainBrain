@@ -55,7 +55,8 @@
   
   
   self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone; 
-  self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
+  //self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg_app.png"]];
+  self.tableView.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg_app.png"]];
 	
 	//Initialize the array.
 	dataArrays = [[NSMutableArray alloc] init];
