@@ -16,7 +16,7 @@ NSString * const kTransitAPIBaseURLString = @"http://api.beetlefight.com";
 //NSString * const kTransitAPIBaseURLString = @"http://localhost:3000";
 
 @implementation TransitAPIClient
-
+åå
 + (TransitAPIClient *)sharedClient {
     static TransitAPIClient *_sharedClient = nil;
     static dispatch_once_t oncePredicate;

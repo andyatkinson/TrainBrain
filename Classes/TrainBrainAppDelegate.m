@@ -14,7 +14,7 @@
 #import "GAI.h"
 
 static const NSInteger kGANDispatchPeriodSec = 10;
-static NSString *const kTrackingId = @"UA-34997631-4";
+static NSString *const kTrackingId = @"XXX"; // Something like UA-12997631-4
 
 @implementation TrainBrainAppDelegate
 
